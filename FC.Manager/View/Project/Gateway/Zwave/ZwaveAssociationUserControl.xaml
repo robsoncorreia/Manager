@@ -1,0 +1,340 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Project.Gateway.Zwave.ZwaveAssociationUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:FC.Manager.View.Components"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
+    xmlns:device="clr-namespace:FC.Domain.Model.Device;assembly=FC.Domain"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    x:Name="_ZwaveAssociationUserControl"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    DataContext="{Binding ZwaveAssociation, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding ZwaveAssociation.LoadedCommand,Source={StaticResource Locator}}" CommandParameter="{Binding ElementName=_ZwaveAssociationUserControl, UpdateSourceTrigger=PropertyChanged}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <DataTemplate x:Key="zwaveDeviceCard" DataType="{x:Type device:ZwaveDevice}">
+            <Border
+                Width="200"
+                Background="{StaticResource TundoraBillson}"
+                BorderBrush="Black"
+                BorderThickness="1"
+                CornerRadius="2">
+                <Grid Margin="8">
+                    <components:ZwaveDeviceInformationUserControl />
+                    <Border
+                        Grid.Column="1"
+                        Margin="-8"
+                        Padding="2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Background="{StaticResource BigStoneBillson}"
+                        CornerRadius="2">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ZWaveComponents}" Value="{x:Static device:ZWaveComponents.Slave}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <TextBlock
+                            FontSize="8"
+                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                            Text="{Binding ZWaveComponents}" />
+                    </Border>
+                    <components:ModuleIdUserControl
+                        Margin="0,-8,-8,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        DataContext="{Binding Path=.}" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="insideZwaveDeviceCard" DataType="{x:Type device:ZwaveDevice}">
+            <Border
+                Width="220"
+                Background="{StaticResource TundoraBillson}"
+                BorderBrush="Black"
+                BorderThickness="1"
+                CornerRadius="2"
+                FocusVisualStyle="{x:Null}">
+                <Grid Margin="8">
+                    <components:ZwaveDeviceInformationUserControl />
+                    <Border
+                        Grid.Column="0"
+                        Margin="-8,-8,-8,-8"
+                        Padding="2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Background="{StaticResource BigStoneBillson}"
+                        CornerRadius="2">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ZWaveComponents}" Value="{x:Static device:ZWaveComponents.Slave}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <TextBlock
+                            FontSize="8"
+                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                            Text="{Binding ZWaveComponents}" />
+                    </Border>
+                    <Button
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Background="{StaticResource AttentionToActionBrush}"
+                        BorderBrush="{StaticResource AttentionToActionBrush}"
+                        Command="{Binding ZwaveAssociation.RemoveAssociationCommmand, Source={StaticResource Locator}}"
+                        CommandParameter="{Binding Path=.}"
+                        FocusVisualStyle="{x:Null}"
+                        Foreground="{StaticResource FireEngineRed}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryLightButton}">
+                        <materialDesign:PackIcon Kind="Delete" />
+                    </Button>
+                    <components:ModuleIdUserControl
+                        Margin="0,-8,-8,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        DataContext="{Binding Path=.}" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+    <materialDesign:DialogHost
+        BorderBrush="Black"
+        DialogContent="{Binding DialogContent}"
+        FocusVisualStyle="{x:Null}"
+        IsOpen="{Binding IsOpenDialogHost}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Menu Grid.Row="0">
+                <MenuItem Command="{Binding GetAllAssociationCommand}" Header="{x:Static p:Resources.Sync}" />
+            </Menu>
+            <ScrollViewer
+                x:Name="ScrollViewer"
+                Grid.Row="1"
+                Grid.Column="0"
+                VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <ListBox
+                        x:Name="Associations"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalContentAlignment="Stretch"
+                        ItemsSource="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.Associations}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="{x:Type device:AssociationGroup}">
+                                <Expander
+                                    HorizontalAlignment="Stretch"
+                                    Background="{StaticResource ChathamsBlueBillson}"
+                                    BorderBrush="{StaticResource BigStoneBillson}"
+                                    BorderThickness="1"
+                                    Style="{StaticResource MaterialDesignExpander}">
+                                    <Expander.Header>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                Margin="-10,0,0,0"
+                                                FontWeight="Bold"
+                                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                                Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                Text="{Binding Name}" />
+                                            <StackPanel
+                                                Grid.Row="1"
+                                                Margin="-10,0,0,0"
+                                                Opacity=".8"
+                                                Orientation="Horizontal">
+                                                <TextBlock
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Margin="0,0,8,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="10"
+                                                    FontWeight="Bold"
+                                                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                                    Opacity=".5"
+                                                    Text="{x:Static p:Resources.Associations}" />
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontSize="10"
+                                                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                                    Opacity=".5"
+                                                    Text="{Binding ZwaveDevices.Count}" />
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontSize="10"
+                                                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                                    Opacity=".5"
+                                                    Text="/" />
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontSize="10"
+                                                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                                    Opacity=".5"
+                                                    Text="{Binding MaxRegister, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Expander.Header>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="PreviewDrop">
+                                            <i:InvokeCommandAction Command="{Binding ElementName=ScrollViewer, Path=DataContext.DropCommand}" CommandParameter="{Binding GroupId}" />
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="MouseEnter">
+                                            <i:InvokeCommandAction Command="{Binding ElementName=ScrollViewer, Path=DataContext.DropCommand}" CommandParameter="{Binding GroupId}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Rectangle
+                                            Grid.Row="0"
+                                            Height="1"
+                                            Fill="{StaticResource BigStoneBillson}" />
+                                        <ListBox
+                                            x:Name="AssociationsZwaveDevices"
+                                            Grid.Row="1"
+                                            MinHeight="200"
+                                            dd:DragDrop.DropHandler="{Binding ElementName=ScrollViewer, Path=DataContext}"
+                                            dd:DragDrop.IsDragSource="True"
+                                            dd:DragDrop.IsDropTarget="True"
+                                            dd:DragDrop.UseDefaultDragAdorner="True"
+                                            Background="{StaticResource DenimBillson}"
+                                            ItemTemplate="{StaticResource insideZwaveDeviceCard}"
+                                            ItemsSource="{Binding ZwaveDevices}">
+                                            <ListBox.Style>
+                                                <Style BasedOn="{StaticResource MaterialDesignListBox}" TargetType="{x:Type ListBox}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property="HasItems" Value="False">
+                                                            <Setter Property="Template">
+                                                                <Setter.Value>
+                                                                    <ControlTemplate>
+                                                                        <Border
+                                                                            HorizontalAlignment="Stretch"
+                                                                            VerticalAlignment="Stretch"
+                                                                            Background="{StaticResource DenimBillson}">
+                                                                            <TextBlock
+                                                                                HorizontalAlignment="Center"
+                                                                                VerticalAlignment="Center"
+                                                                                FontWeight="Bold"
+                                                                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                                                                Text="{x:Static p:Resources.Drag_the_device_here}" />
+                                                                        </Border>
+                                                                    </ControlTemplate>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListBox.Style>
+                                            <ListBox.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel />
+                                                </ItemsPanelTemplate>
+                                            </ListBox.ItemsPanel>
+                                        </ListBox>
+                                    </Grid>
+                                </Expander>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </ScrollViewer>
+            <ScrollViewer
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalScrollBarVisibility="Auto">
+                <Border
+                    Grid.Row="0"
+                    Margin="16,8,8,8"
+                    Background="{StaticResource ChathamsBlueBillson}"
+                    BorderBrush="{StaticResource BigStoneBillson}"
+                    BorderThickness="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Margin="13">
+                            <TextBlock
+                                Grid.Row="0"
+                                FontWeight="Bold"
+                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                Text="{x:Static p:Resources.Zwave_Devices}" />
+                            <TextBlock
+                                Grid.Row="0"
+                                FontSize="10"
+                                Opacity=".5"
+                                Text="{x:Static p:Resources.Devices_linked_to_the_gateway}" />
+                        </StackPanel>
+                        <Border
+                            Grid.Row="1"
+                            Height="1"
+                            Background="{StaticResource BigStoneBillson}" />
+                        <ListBox
+                            x:Name="ZwaveDevices"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            dd:DragDrop.DropHandler="{Binding}"
+                            dd:DragDrop.IsDragSource="True"
+                            dd:DragDrop.UseDefaultDragAdorner="True"
+                            Background="{StaticResource DenimBillson}"
+                            ItemTemplate="{StaticResource zwaveDeviceCard}"
+                            ItemsSource="{Binding ZwaveDevices}"
+                            SelectionMode="Single">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </Grid>
+                </Border>
+            </ScrollViewer>
+            <Border
+                Grid.Row="1"
+                Grid.ColumnSpan="3"
+                Height="1"
+                Margin="0"
+                VerticalAlignment="Top"
+                materialDesign:ThemeAssist.Theme="Dark"
+                Background="Black"
+                Cursor="Hand">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                </Border.Effect>
+            </Border>
+        </Grid>
+    </materialDesign:DialogHost>
+</UserControl>

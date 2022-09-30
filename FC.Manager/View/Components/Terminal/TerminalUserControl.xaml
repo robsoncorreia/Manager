@@ -1,0 +1,811 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Components.TerminalUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:FC.Domain.Model;assembly=FC.Domain"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    xmlns:validator="clr-namespace:FC.Domain.Validator;assembly=FC.Domain"
+    xmlns:components="clr-namespace:FC.Manager.View.Components"
+    xmlns:core="clr-namespace:System;assembly=mscorlib"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="Transparent"
+    DataContext="{Binding Terminal, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ObjectDataProvider
+            x:Key="enumType"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="model:ProtocolTypeEnum" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <UserControl.Style>
+        <Style TargetType="{x:Type UserControl}">
+            <Setter Property="IsEnabled" Value="True" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSendingToGateway, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+    <materialDesign:DialogHost
+        Margin="0"
+        Padding="0"
+        DialogContent="{Binding DialogContent}"
+        FocusVisualStyle="{x:Null}"
+        IsOpen="{Binding IsOpenDialogHost}">
+        <Border
+            VerticalAlignment="Stretch"
+            Background="{StaticResource TundoraBillson}"
+            CornerRadius="2">
+            <Grid
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                FocusVisualStyle="{x:Null}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="1">
+                    <Grid>
+                        <DataGrid
+                            x:Name="DataGrid"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            materialDesign:ThemeAssist.Theme="Dark"
+                            AutoGenerateColumns="False"
+                            Background="{StaticResource Dark}"
+                            CanUserAddRows="false"
+                            FocusVisualStyle="{x:Null}"
+                            IsReadOnly="True"
+                            ItemsSource="{Binding CommandsSent}"
+                            SelectedIndex="{Binding SelectedIndexCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            SelectionMode="Single">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <DataGrid.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignDataGrid}" TargetType="{x:Type DataGrid}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedIndexVisualization}" Value="1">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.Style>
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridColumnHeadersPresenter}">
+                                    <Setter Property="FontSize" Value="10" />
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Binding="{Binding IPTarget}"
+                                    FontSize="11"
+                                    Header="{x:Static p:Resources.Sent_to_IP}" />
+                                <DataGridTextColumn
+                                    Binding="{Binding IP}"
+                                    FontSize="11"
+                                    Header="{x:Static p:Resources.Received_by_IP}" />
+                                <DataGridTextColumn
+                                    Binding="{Binding Port}"
+                                    FontSize="11"
+                                    Header="{x:Static p:Resources.Port}" />
+                                <DataGridTextColumn
+                                    Binding="{Binding ProtocolType}"
+                                    FontSize="11"
+                                    Header="{x:Static p:Resources.Protocol}" />
+                                <DataGridTextColumn
+                                    Binding="{Binding ConnectionType}"
+                                    FontSize="11"
+                                    Header="{x:Static p:Resources.Connection_type}" />
+                                <DataGridTextColumn
+                                    Binding="{Binding StartDateTime, Converter={StaticResource dateToHours}}"
+                                    FontSize="11"
+                                    Header="{x:Static p:Resources.Schedule}" />
+                                <DataGridTextColumn
+                                    Binding="{Binding ResponseTime}"
+                                    FontSize="11"
+                                    Header="{x:Static p:Resources.Response_time}" />
+                                <DataGridTemplateColumn Width="*" Header="{x:Static p:Resources.Sent}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Send}" TextTrimming="CharacterEllipsis" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="*" Header="{x:Static p:Resources.Received}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Receive}" TextTrimming="CharacterEllipsis">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Receive}" Value="{x:Static p:Resources.No_reply}">
+                                                                <Setter Property="Foreground" Value="White" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn
+                                    Binding="{Binding Receive.Length}"
+                                    FontSize="11"
+                                    Header="{x:Static p:Resources.Response_size}" />
+                            </DataGrid.Columns>
+                            <DataGrid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Command="{Binding CopyCommand}" Header="{x:Static p:Resources._Copy}" />
+                                    <MenuItem Command="{Binding DeleteRowCommand}" Header="{x:Static p:Resources._Delete}" />
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                            <DataGrid.RowDetailsTemplate>
+                                <DataTemplate>
+                                    <Border Padding="10" FocusVisualStyle="{x:Null}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                <i:InvokeCommandAction Command="{Binding Terminal.MouseLeftButtonDownDataGridCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Path=.}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <Grid Margin="0" FocusVisualStyle="{x:Null}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <materialDesign:PackIcon
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Margin="2,0,2,0"
+                                                VerticalAlignment="Top"
+                                                FontSize="11"
+                                                Kind="CallMade" />
+                                            <TextBlock
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                VerticalAlignment="Top"
+                                                FontSize="11"
+                                                Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                                Text="{x:Static p:Resources.Send}" />
+                                            <TextBlock
+                                                Grid.Row="0"
+                                                Grid.Column="2"
+                                                VerticalAlignment="Top"
+                                                FontSize="11"
+                                                Text="{Binding Send}"
+                                                TextTrimming="CharacterEllipsis" />
+                                            <materialDesign:PackIcon
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Margin="2,0,2,0"
+                                                VerticalAlignment="Top"
+                                                FontSize="11"
+                                                Kind="CallReceived" />
+                                            <TextBlock
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Margin="0,0,8,0"
+                                                VerticalAlignment="Top"
+                                                FontSize="11"
+                                                Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                                Text="{x:Static p:Resources.Receive}" />
+                                            <TextBlock
+                                                Grid.Row="1"
+                                                Grid.Column="2"
+                                                VerticalAlignment="Top"
+                                                FontSize="11"
+                                                Text="{Binding Receive}"
+                                                TextTrimming="CharacterEllipsis" />
+                                            <Button
+                                                Grid.Row="2"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="3"
+                                                Margin="0,8,0,0"
+                                                HorizontalAlignment="Left"
+                                                Background="{StaticResource BigStoneBillson}"
+                                                BorderBrush="{StaticResource BigStoneBillson}"
+                                                Command="{Binding Terminal.ResendCommand, Source={StaticResource Locator}}"
+                                                CommandParameter="{Binding Path=.}"
+                                                Content="{x:Static p:Resources.Resend}"
+                                                FocusVisualStyle="{x:Null}" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGrid.RowDetailsTemplate>
+                        </DataGrid>
+                        <ListBox
+                            x:Name="ListBoxCommandsSent"
+                            materialDesign:ThemeAssist.Theme="Dark"
+                            ItemsSource="{Binding CommandsSent}"
+                            SelectedIndex="{Binding SelectedIndexCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            SelectionMode="Single">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding ElementName=ListBoxCommandsSent, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}" />
+                                </i:EventTrigger>
+                                <!--<i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}" CommandParameter="{Binding ElementName=ListBoxCommandsSent, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}" />
+                                </i:EventTrigger>-->
+                            </i:Interaction.Triggers>
+                            <ListBox.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignNavigationPrimaryListBox}" TargetType="{x:Type ListBox}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedIndexVisualization}" Value="0">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListBox.Style>
+                            <ListBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem
+                                        Command="{Binding CopyCommand}"
+                                        Header="{x:Static p:Resources._Copy}"
+                                        Style="{StaticResource MaterialDesignMenuItem}" />
+                                    <MenuItem
+                                        Command="{Binding DeleteRowCommand}"
+                                        Header="{x:Static p:Resources._Delete}"
+                                        Style="{StaticResource MaterialDesignMenuItem}" />
+                                </ContextMenu>
+                            </ListBox.ContextMenu>
+                            <ListBox.ItemContainerStyle>
+                                <Style BasedOn="{StaticResource MaterialDesignListBoxItem}" TargetType="{x:Type ListBoxItem}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="BorderThickness" Value="1" />
+                                    <Setter Property="BorderBrush" Value="#2F000000" />
+                                    <Setter Property="Margin" Value="2" />
+                                    <Setter Property="Padding" Value="16" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="{x:Type model:CommandModel}">
+                                    <Grid HorizontalAlignment="Stretch">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                            <TextBlock
+                                                Margin="0,0,4,0"
+                                                Opacity=".5"
+                                                Text="{x:Static p:Resources.IP}" />
+                                            <TextBlock Margin="0,0,8,0" Text="{Binding IP}" />
+                                            <TextBlock
+                                                Margin="0,0,4,0"
+                                                Opacity=".5"
+                                                Text="{x:Static p:Resources.Port}" />
+                                            <TextBlock Margin="0,0,8,0" Text="{Binding Port}" />
+                                            <TextBlock
+                                                Margin="0,0,4,0"
+                                                Opacity=".5"
+                                                Text="{x:Static p:Resources.Protocol}" />
+                                            <TextBlock Margin="0,0,8,0" Text="{Binding ProtocolType}" />
+                                            <TextBlock
+                                                Margin="0,0,4,0"
+                                                Opacity=".5"
+                                                Text="{x:Static p:Resources.Connection_type}" />
+                                            <TextBlock Margin="0,0,8,0" Text="{Binding ConnectionType}" />
+                                            <StackPanel Margin="0,0,8,0" Orientation="Horizontal">
+                                                <StackPanel.Style>
+                                                    <Style TargetType="{x:Type StackPanel}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ResponseTime}" Value="0">
+                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </StackPanel.Style>
+                                                <TextBlock
+                                                    Margin="0,0,4,0"
+                                                    Opacity=".5"
+                                                    Text="{x:Static p:Resources.Response_time}" />
+                                                <TextBlock Margin="0,0,0,0" Text="{Binding ResponseTime}" />
+                                                <TextBlock Margin="0,0,0,0" Text="ms" />
+                                            </StackPanel>
+                                            <TextBlock
+                                                Margin="0,0,4,0"
+                                                Opacity=".5"
+                                                Text="{x:Static p:Resources.Timeout}" />
+                                            <TextBlock Margin="0,0,8,0">
+                                                <Run Text="{Binding Timeout, Mode=OneTime}" />
+                                                <Run Text="ms" />
+                                            </TextBlock>
+                                        </StackPanel>
+                                        <Separator
+                                            Grid.Row="1"
+                                            Margin="0,6"
+                                            Opacity=".1" />
+                                        <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Opacity=".5"
+                                                Text="{x:Static p:Resources.Sent}" />
+                                            <TextBlock
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Opacity=".5"
+                                                Text="{x:Static p:Resources.Received}">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Receive}" Value="{x:Static p:Resources.No_reply}">
+                                                                <Setter Property="Foreground" Value="{StaticResource FireEngineRed}" />
+                                                                <Setter Property="Opacity" Value="1" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                            <TextBlock
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Margin="8,0"
+                                                Text="{Binding Send}"
+                                                TextWrapping="Wrap" />
+                                            <TextBlock
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Margin="8,0"
+                                                Text="{Binding Receive}"
+                                                TextWrapping="Wrap">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Receive}" Value="{x:Static p:Resources.No_reply}">
+                                                                <Setter Property="Foreground" Value="{StaticResource FireEngineRed}" />
+                                                                <Setter Property="Opacity" Value="1" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                        <Button
+                                            Grid.Row="0"
+                                            Grid.RowSpan="3"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            Command="{Binding Terminal.MouseDoubleClickCommand, Source={StaticResource Locator}}"
+                                            CommandParameter="{Binding ElementName=ListBoxCommandsSent, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                                            Content="{x:Static p:Resources.Send}">
+                                            <Button.Style>
+                                                <Style BasedOn="{StaticResource SetFlatButton}" TargetType="{x:Type Button}">
+                                                    <Setter Property="Visibility" Value="Hidden" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsMouseOver}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Button
+                            Margin="24,18"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding DownCommand}"
+                            CommandParameter="{Binding ElementName=ListBoxCommandsSent, Path=.}"
+                            FocusVisualStyle="{x:Null}"
+                            Opacity=".5">
+                            <Button.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignFloatingActionMiniButton}" TargetType="{x:Type Button}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedIndexVisualization}" Value="0">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <materialDesign:PackIcon Kind="ArrowBottomBold" />
+                        </Button>
+                        <Button
+                            Margin="24,18"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Command="{Binding TopCommand}"
+                            CommandParameter="{Binding ElementName=ListBoxCommandsSent, Path=.}"
+                            FocusVisualStyle="{x:Null}"
+                            Opacity=".5">
+                            <Button.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignFloatingActionMiniButton}" TargetType="{x:Type Button}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedIndexVisualization}" Value="0">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <materialDesign:PackIcon Kind="ArrowTopBold" />
+                        </Button>
+                        <Button
+                            Margin="24,18"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding DownCommand}"
+                            CommandParameter="{Binding ElementName=DataGrid, Path=.}"
+                            FocusVisualStyle="{x:Null}"
+                            Opacity=".5">
+                            <Button.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignFloatingActionMiniButton}" TargetType="{x:Type Button}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedIndexVisualization}" Value="1">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <materialDesign:PackIcon Kind="ArrowBottomBold" />
+                        </Button>
+                        <Button
+                            Margin="24,18"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Command="{Binding TopCommand}"
+                            CommandParameter="{Binding ElementName=DataGrid, Path=.}"
+                            FocusVisualStyle="{x:Null}"
+                            Opacity=".5">
+                            <Button.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignFloatingActionMiniButton}" TargetType="{x:Type Button}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedIndexVisualization}" Value="1">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <materialDesign:PackIcon Kind="ArrowTopBold" />
+                        </Button>
+                        <components:SnackbarUserControl
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            VerticalAlignment="Bottom" />
+                    </Grid>
+                </Border>
+                <Expander
+                    Grid.Row="2"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    Background="{StaticResource BigStoneBillson}"
+                    BorderBrush="Black"
+                    BorderThickness="0,1,0,0"
+                    Foreground="White"
+                    Header="{x:Static p:Resources.Terminal}">
+
+                    <Border
+                        Grid.Row="2"
+                        Margin="8,0,8,8"
+                        Padding="8"
+                        Background="{StaticResource CodGrayBillson}"
+                        CornerRadius="8"
+                        FocusVisualStyle="{x:Null}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBox
+                                Name="TxtCommand"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Height="100"
+                                Margin="0,0,0,8"
+                                HorizontalAlignment="Stretch"
+                                materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                                materialDesign:TextFieldAssist.HasClearButton="True"
+                                materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                AcceptsReturn="True"
+                                Background="Black"
+                                BorderThickness="0"
+                                Foreground="White"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                TextWrapping="Wrap"
+                                VerticalScrollBarVisibility="Auto">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Return" Command="{Binding SendCommand}" />
+                                    <KeyBinding Key="Enter" Command="{Binding SendCommand}" />
+                                </TextBox.InputBindings>
+                                <TextBox.Text>
+                                    <Binding
+                                        Mode="TwoWay"
+                                        Path="SelectedCommandSend"
+                                        UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <validator:CommandValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <Button
+                                x:Name="BtnCommand"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Height="100"
+                                Margin="4,0,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding IsSendingToGateway}"
+                                materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSendingToGateway}"
+                                materialDesign:ButtonProgressAssist.Value="-1"
+                                Command="{Binding SendCommand}"
+                                Content="{x:Static p:Resources._Send}"
+                                FocusVisualStyle="{x:Null}">
+                                <Button.Style>
+                                    <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                        <Style.Triggers>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtIp}" Value="False" />
+                                                    <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtTcpPort}" Value="False" />
+                                                    <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtCommand}" Value="False" />
+                                                    <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=CbTimeout}" Value="False" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="IsEnabled" Value="True" />
+                                            </MultiDataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=TxtCommand, Path=Text.Count, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=IsSendingToGateway, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <StackPanel
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Orientation="Horizontal">
+                                <TextBox
+                                    x:Name="TxtIp"
+                                    Width="120"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom"
+                                    materialDesign:HintAssist.Hint="IP"
+                                    materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                                    materialDesign:ValidationAssist.Background="Black"
+                                    materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                    materialDesign:ValidationAssist.PopupPlacement="Bottom"
+                                    materialDesign:ValidationAssist.UsePopup="True"
+                                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                    MaxLength="15"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}">
+                                    <TextBox.Text>
+                                        <Binding
+                                            Mode="TwoWay"
+                                            Path="SelectedCommandIP"
+                                            UpdateSourceTrigger="PropertyChanged"
+                                            ValidatesOnDataErrors="True">
+                                            <Binding.ValidationRules>
+                                                <validator:RegexValidateRule
+                                                    Expression="^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
+                                                    TextError="IP invalid"
+                                                    ValidatesOnTargetUpdated="True" />
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <TextBox
+                                    x:Name="TxtTcpPort"
+                                    Width="84"
+                                    Margin="16,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom"
+                                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Port}"
+                                    materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
+                                    materialDesign:ValidationAssist.Background="Black"
+                                    materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                    materialDesign:ValidationAssist.PopupPlacement="Bottom"
+                                    materialDesign:ValidationAssist.UsePopup="True"
+                                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                    MaxLength="5"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}">
+                                    <TextBox.Text>
+                                        <Binding
+                                            Mode="TwoWay"
+                                            Path="SelectedCommandPort"
+                                            UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.ValidationRules>
+                                                <validator:PortValidationRule
+                                                    Min="1"
+                                                    RangeEnd="65535"
+                                                    RangeInit="1"
+                                                    TextMinError="{x:Static p:Resources.The_Port_must_be_at_least_1_characters}"
+                                                    TextNumberInvalid="{x:Static p:Resources.Only_numbers}"
+                                                    TextRangeError="{x:Static p:Resources.Invalid_port_number}"
+                                                    ValidatesOnTargetUpdated="True" />
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <ComboBox
+                                    x:Name="CbTimeout"
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Width="120"
+                                    Margin="16,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Timeout}"
+                                    materialDesign:TextFieldAssist.SuffixText="ms"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    materialDesign:ValidationAssist.Suppress="True"
+                                    Foreground="White"
+                                    IsEditable="True"
+                                    ItemsSource="{Binding Timeouts}"
+                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                    <ComboBox.Text>
+                                        <Binding
+                                            Mode="TwoWay"
+                                            Path="Timeout"
+                                            UpdateSourceTrigger="PropertyChanged"
+                                            ValidatesOnDataErrors="True">
+                                            <Binding.ValidationRules>
+                                                <validator:NumberRangeValidationRule Max="30000" Min="1000" />
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </ComboBox.Text>
+                                    <ComboBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ComboBox.ItemsPanel>
+                                </ComboBox>
+                                <ComboBox
+                                    x:Name="ComboBoxChannel"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="84"
+                                    Margin="16,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Protocol}"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                    materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                    FocusVisualStyle="{x:Null}"
+                                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                    ItemsSource="{Binding Source={StaticResource enumType}}"
+                                    SelectedIndex="{Binding SelectedIndexProtocolType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={StaticResource enumComboboxConverter}}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <ComboBox
+                                    Margin="8,0"
+                                    VerticalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Visualization}"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    Foreground="White"
+                                    SelectedIndex="{Binding SelectedIndexVisualization}"
+                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                    <ComboBoxItem Content="Lista" />
+                                    <ComboBoxItem Content="Tabela" />
+                                </ComboBox>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="8,8,0,4"
+                                        VerticalAlignment="Center"
+                                        Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                        Text="{x:Static p:Resources.Auto_complete}"
+                                        Typography.Capitals="AllSmallCaps" />
+                                    <components:TerminalAutoCompleteUserControl
+                                        Margin="4,8,4,2"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Margin="16,8,0,4"
+                                        VerticalAlignment="Center"
+                                        Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                        Text="{x:Static p:Resources.Autoscroll}"
+                                        Typography.Capitals="AllSmallCaps" />
+                                    <components:TerminalAutoScrollUserControl
+                                        Margin="4,8,4,2"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Expander>
+                <Border
+                    Grid.Row="0"
+                    Grid.ColumnSpan="3"
+                    Style="{StaticResource BorderMenu}" />
+                <Menu
+                    Grid.Row="0"
+                    Grid.ColumnSpan="3"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    Background="{StaticResource Dark}"
+                    Cursor="Hand"
+                    IsMainMenu="True"
+                    Style="{StaticResource MaterialDesignMenuBillson}">
+
+                    <MenuItem
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        Command="{Binding ExportToExcelCommand}"
+                        Header="{x:Static p:Resources._Export_To_Excel}" />
+                    <MenuItem
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        Command="{Binding ClearAllCommand}"
+                        Foreground="White"
+                        Header="{x:Static p:Resources._Delete_All}"
+                        Style="{StaticResource MaterialDesignMenuItem}" />
+                </Menu>
+                <Border
+                    Margin="16,16,42,0"
+                    Padding="4"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Background="{StaticResource AmericanRed}"
+                    CornerRadius="4">
+                    <TextBlock Foreground="White" Text="{Binding CommandsSent.Count}" />
+                </Border>
+            </Grid>
+        </Border>
+    </materialDesign:DialogHost>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Terminal.LoadedCommand, Source={StaticResource Locator}}">
+                <i:InvokeCommandAction.CommandParameter>
+                    <MultiBinding Converter="{StaticResource conversor}">
+                        <Binding ElementName="DataGrid" />
+                        <Binding ElementName="ListBoxCommandsSent" />
+                    </MultiBinding>
+                </i:InvokeCommandAction.CommandParameter>
+            </i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+</UserControl> 

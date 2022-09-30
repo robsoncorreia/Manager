@@ -1,0 +1,795 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Project.Gateway.SerialGatewayUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:const="clr-namespace:FC.Domain._Util;assembly=FC.Domain"
+    xmlns:enum="clr-namespace:FC.Domain.Model._Serial;assembly=FC.Domain"
+    xmlns:serial="clr-namespace:FC.Domain.Model._Serial;assembly=FC.Domain"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    xmlns:validator="clr-namespace:FC.Domain.Validator;assembly=FC.Domain"
+    x:Name="serialGatewayUserControl"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    DataContext="{Binding SerialDetailDevice, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=serialGatewayUserControl, Path=IsVisible}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <i:InvokeCommandAction Command="{Binding UnloadedCommand}" CommandParameter="{Binding ElementName=serialGatewayUserControl, Path=IsVisible}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding GetAllFromGatewayCommand}" Gesture="Ctrl+R" />
+        <KeyBinding Command="{Binding NewCommand}" Gesture="Ctrl+N" />
+        <KeyBinding Command="{Binding SaveCommand}" Gesture="Ctrl+S" />
+        <KeyBinding Command="{Binding DeleteFromGatewayAwaitCommand}" Gesture="Ctrl+D" />
+    </UserControl.InputBindings>
+    <UserControl.Resources>
+        <DataTemplate x:Key="itemComboxProtocol">
+            <Grid>
+                <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+        <Style
+            x:Key="SelectedIR"
+            BasedOn="{StaticResource MaterialDesignListBoxItem}"
+            TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Margin" Value="4,0,4,2" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Padding" Value="0" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="{StaticResource SecondaryHueMidBrush}" />
+                    <Setter Property="BorderThickness" Value="2" />
+                </Trigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+            </Style.Resources>
+        </Style>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border
+                            Name="Border"
+                            Margin="0,0,0,0"
+                            Background="Transparent"
+                            BorderBrush="{StaticResource PrimaryHueDarkBrush}"
+                            CornerRadius="5 5 0 0">
+                            <ContentPresenter
+                                x:Name="ContentSite"
+                                Margin="12,12,12,12"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                ContentSource="Header"
+                                RecognizesAccessKey="True">
+                                <ContentPresenter.LayoutTransform>
+                                    <RotateTransform Angle="0" />
+                                </ContentPresenter.LayoutTransform>
+                            </ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="BorderBrush" Value="{StaticResource PrimaryHueDarkBrush}" />
+                                <Setter Property="Panel.ZIndex" Value="100" />
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=TundoraBillson}" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="BorderThickness" Value="2,2,2,0" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=Dark}" />
+                                <Setter Property="BorderBrush" Value="White" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <materialDesign:DialogHost
+            x:Name="DialogHost"
+            Grid.Row="1"
+            Margin="0"
+            DialogContent="{Binding DialogContent}"
+            IsOpen="{Binding IsOpenDialogHost}">
+            <materialDesign:DialogHost.InputBindings>
+                <KeyBinding Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Gesture="Esc" />
+            </materialDesign:DialogHost.InputBindings>
+            <ScrollViewer FocusVisualStyle="{x:Null}" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer.Style>
+                    <Style TargetType="{x:Type ScrollViewer}">
+                        <Setter Property="IsEnabled" Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSendingToGateway, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsSendingToCloud, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ScrollViewer.Style>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" MinHeight="480" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Border
+                        Grid.Column="0"
+                        Margin="8,8,4,8"
+                        Padding="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="Black"
+                        CornerRadius="2">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="8"
+                                Direction="4"
+                                ShadowDepth="0" />
+                        </Border.Effect>
+                    </Border>
+                    <Border
+                        Grid.Column="0"
+                        Margin="8,8,4,8"
+                        VerticalAlignment="Stretch"
+                        Background="{StaticResource TundoraBillson}"
+                        CornerRadius="2">
+                        <Grid Margin="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" MinHeight="40" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.Resources>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="Margin" Value="0,8,0,0" />
+                                </Style>
+                            </Grid.Resources>
+                            <Label
+                                Grid.Row="0"
+                                Margin="0"
+                                Content="{x:Static p:Resources.Baud_Rate}" />
+                            <Border Grid.Row="1" CornerRadius="2">
+                                <Grid Margin="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Baud_Rate_232}"
+                                        materialDesign:ThemeAssist.Theme="Dark"
+                                        ItemTemplate="{StaticResource itemComboxProtocol}"
+                                        ItemsSource="{Binding SelectedProjectModel.SelectedGateway.BaudRates232, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectedIndex="{Binding SelectedProjectModel.SelectedGateway.SelectedBaudRates232Index, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="DropDownClosed">
+                                                <i:InvokeCommandAction Command="{Binding SetBaudRateCommand}" CommandParameter="{x:Static enum:SerialProtocol.T232}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </ComboBox>
+                                    <Button
+                                        Grid.Column="1"
+                                        Margin="16,0"
+                                        VerticalAlignment="Bottom"
+                                        Command="{Binding GetBaudRateCommand}"
+                                        CommandParameter="{x:Static enum:SerialProtocol.T232}"
+                                        Content="{x:Static p:Resources.Get}"
+                                        Style="{StaticResource GetFlatButton}" />
+                                    <ComboBox
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Baud_Rate_485}"
+                                        materialDesign:ThemeAssist.Theme="Dark"
+                                        ItemTemplate="{StaticResource itemComboxProtocol}"
+                                        ItemsSource="{Binding SelectedProjectModel.SelectedGateway.BaudRates485, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectedIndex="{Binding SelectedProjectModel.SelectedGateway.SelectedBaudRates485Index, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                        <ComboBox.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}" TargetType="{x:Type ComboBox}">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.IsSupportSerial485}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ComboBox.Style>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="DropDownClosed">
+                                                <i:InvokeCommandAction Command="{Binding SetBaudRateCommand}" CommandParameter="{x:Static enum:SerialProtocol.T485}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </ComboBox>
+                                    <Button
+                                        Grid.Column="3"
+                                        Margin="16,0,0,0"
+                                        VerticalAlignment="Bottom"
+                                        Command="{Binding GetBaudRateCommand}"
+                                        CommandParameter="{x:Static enum:SerialProtocol.T485}"
+                                        Content="{x:Static p:Resources.Get}"
+                                        Style="{StaticResource GetFlatButton}" />
+                                </Grid>
+                            </Border>
+                            <Label Grid.Row="2" Content="{x:Static p:Resources.Parity}" />
+                            <Border Grid.Row="3" CornerRadius="2">
+                                <Grid Margin="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Parity_232}"
+                                        materialDesign:ThemeAssist.Theme="Dark"
+                                        ItemTemplate="{StaticResource itemComboxProtocol}"
+                                        ItemsSource="{Binding SelectedProjectModel.SelectedGateway.Paritys232, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectedIndex="{Binding SelectedProjectModel.SelectedGateway.SelectedParity232Index, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="DropDownClosed">
+                                                <i:InvokeCommandAction Command="{Binding SetParityCommand}" CommandParameter="{x:Static enum:SerialProtocol.T232}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </ComboBox>
+                                    <Button
+                                        Grid.Column="1"
+                                        Margin="16,0"
+                                        VerticalAlignment="Bottom"
+                                        Command="{Binding GetParityCommand}"
+                                        CommandParameter="{x:Static enum:SerialProtocol.T232}"
+                                        Content="{x:Static p:Resources.Get}"
+                                        Style="{StaticResource GetFlatButton}" />
+                                    <ComboBox
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Parity_485}"
+                                        materialDesign:ThemeAssist.Theme="Dark"
+                                        ItemTemplate="{StaticResource itemComboxProtocol}"
+                                        ItemsSource="{Binding SelectedProjectModel.SelectedGateway.Paritys485, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectedIndex="{Binding SelectedProjectModel.SelectedGateway.SelectedParity485Index, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                        <ComboBox.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}" TargetType="{x:Type ComboBox}">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.IsSupportSerial485}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ComboBox.Style>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="DropDownClosed">
+                                                <i:InvokeCommandAction Command="{Binding SetParityCommand}" CommandParameter="{x:Static enum:SerialProtocol.T485}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </ComboBox>
+                                    <Button
+                                        Grid.Column="3"
+                                        Margin="16,0,0,0"
+                                        VerticalAlignment="Bottom"
+                                        Command="{Binding GetParityCommand}"
+                                        CommandParameter="{x:Static enum:SerialProtocol.T485}"
+                                        Content="{x:Static p:Resources.Get}"
+                                        Style="{StaticResource GetFlatButton}" />
+                                </Grid>
+                            </Border>
+                            <Label Grid.Row="4" Content="{x:Static p:Resources.Command}" />
+                            <Border Grid.Row="5" CornerRadius="2">
+                                <StackPanel Margin="8" Orientation="Horizontal">
+                                    <ComboBox
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,0,16,2"
+                                        VerticalAlignment="Center"
+                                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Protocol}"
+                                        materialDesign:ThemeAssist.Theme="Dark"
+                                        ItemTemplate="{StaticResource itemComboxProtocol}"
+                                        ItemsSource="{Binding Protocols, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectedIndex="{Binding SelectedProjectModel.SelectedGateway.SelectedSerialModel.SelectedProtocolIndex, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                        <ComboBox.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}" TargetType="{x:Type ComboBox}">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.IsSupportSerial485}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ComboBox.Style>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="DropDownClosed">
+                                                <i:InvokeCommandAction Command="{Binding SaveProtocolCommand}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </ComboBox>
+                                    <TextBox
+                                        x:Name="TxtDelay"
+                                        Width="64"
+                                        Margin="0,0,0,4"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Delay_ms}"
+                                        materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                        materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                        materialDesign:ValidationAssist.Suppress="True"
+                                        Background="Transparent"
+                                        Foreground="White">
+                                        <TextBox.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="Validation.HasError" Value="true">
+                                                        <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                        <TextBox.Text>
+                                            <Binding
+                                                Mode="TwoWay"
+                                                Path="SelectedProjectModel.SelectedGateway.SelectedSerialModel.Delay"
+                                                UpdateSourceTrigger="PropertyChanged"
+                                                ValidatesOnDataErrors="True">
+                                                <Binding.ValidationRules>
+                                                    <validator:NumberRangeValidationRule Max="25500" Min="0" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                    <TextBox
+                                        x:Name="TxtRepetition"
+                                        Width="58"
+                                        Margin="16,0,0,4"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Repetition}"
+                                        materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                        materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                        materialDesign:ValidationAssist.Suppress="True"
+                                        Background="Transparent"
+                                        Foreground="White">
+                                        <TextBox.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="Validation.HasError" Value="true">
+                                                        <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                        <TextBox.Text>
+                                            <Binding
+                                                Mode="TwoWay"
+                                                Path="SelectedProjectModel.SelectedGateway.SelectedSerialModel.Repetition"
+                                                UpdateSourceTrigger="PropertyChanged"
+                                                ValidatesOnDataErrors="True">
+                                                <Binding.ValidationRules>
+                                                    <validator:NumberRangeValidationRule Max="255" Min="0" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </StackPanel>
+                            </Border>
+                            <Label Grid.Row="6" Content="{x:Static p:Resources.Data}" />
+                            <Grid Grid.Row="7" VerticalAlignment="Stretch">
+                                <TextBox
+                                    x:Name="TextBoxCommand"
+                                    Grid.Row="8"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="6"
+                                    MinHeight="40"
+                                    Margin="4"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Top"
+                                    materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                                    materialDesign:TextFieldAssist.HasClearButton="True"
+                                    materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                    materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                    BorderThickness="0"
+                                    Foreground="White"
+                                    MaxLength="100"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    TextWrapping="Wrap">
+                                    <TextBox.Text>
+                                        <Binding
+                                            Mode="TwoWay"
+                                            NotifyOnValidationError="True"
+                                            Path="SelectedProjectModel.SelectedGateway.SelectedSerialModel.Data"
+                                            UpdateSourceTrigger="PropertyChanged"
+                                            ValidatesOnDataErrors="True"
+                                            ValidatesOnNotifyDataErrors="True">
+                                            <Binding.ValidationRules>
+                                                <validator:NotEmptyValidationRule TextError="{x:Static p:Resources.Field_Is_Required}" ValidatesOnTargetUpdated="True" />
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
+                            </Grid>
+                            <StackPanel
+                                Grid.Row="8"
+                                Margin="0,16,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Orientation="Horizontal">
+                                <Button
+                                    Margin="0,0,8,0"
+                                    BorderThickness="0"
+                                    Command="{Binding NewCommand}"
+                                    Content="{x:Static p:Resources._New}"
+                                    FocusVisualStyle="{x:Null}"
+                                    ToolTip="{x:Static p:Resources.Create_New_Command}">
+                                    <Button.Style>
+                                        <Style BasedOn="{StaticResource NewButton}" TargetType="{x:Type Button}">
+                                            <Setter Property="IsEnabled" Value="True" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.SelectedSerialModel.MemoryId, UpdateSourceTrigger=PropertyChanged}" Value="-1">
+                                                    <Setter Property="IsEnabled" Value="False" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.Serials.Count, UpdateSourceTrigger=PropertyChanged}" Value="{x:Static const:AppConstants.LENGTH_SERIALS_IN_MEMORY}">
+                                                    <Setter Property="IsEnabled" Value="False" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Button
+                                    Command="{Binding SaveCommand}"
+                                    Content="{x:Static p:Resources._Save}"
+                                    FocusVisualStyle="{x:Null}"
+                                    ToolTip="{x:Static p:Resources.Save_New_Command}">
+                                    <Button.Style>
+                                        <Style BasedOn="{StaticResource SaveButton}" TargetType="Button">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                            <Style.Triggers>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TextBoxCommand}" Value="False" />
+                                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtDelay}" Value="False" />
+                                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtRepetition}" Value="False" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="IsEnabled" Value="True" />
+                                                </MultiDataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Grid.Column="1"
+                        Margin="4,8,8,8"
+                        Padding="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="Black">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="8" ShadowDepth="0" />
+                        </Border.Effect>
+                    </Border>
+                    <Border
+                        Grid.Column="1"
+                        Margin="4,8,8,8"
+                        Padding="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="Black">
+                        <Grid>
+                            <Border
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="{StaticResource TundoraBillson}">
+                                <Grid>
+                                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <ListBox
+                                            x:Name="LbSerial"
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            FocusVisualStyle="{x:Null}"
+                                            ItemsSource="{Binding SelectedProjectModel.SelectedGateway.Serials}"
+                                            ScrollViewer.CanContentScroll="True"
+                                            SelectedIndex="{Binding SelectedProjectModel.SelectedGateway.SelectedIndexSerial}"
+                                            SelectionMode="Single">
+                                            <ListBox.ItemContainerStyle>
+                                                <Style BasedOn="{StaticResource MaterialDesignListBoxItem}" TargetType="{x:Type ListBoxItem}">
+                                                    <Setter Property="ToolTip" Value="{Binding Data}" />
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
+                                            <ListBox.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel />
+                                                </ItemsPanelTemplate>
+                                            </ListBox.ItemsPanel>
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate DataType="{x:Type serial:SerialModel}">
+                                                    <Grid>
+                                                        <Border
+                                                            Width="264"
+                                                            HorizontalAlignment="Stretch"
+                                                            Background="{StaticResource Dark}"
+                                                            BorderBrush="Black"
+                                                            CornerRadius="2"
+                                                            Cursor="Hand">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseUp">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=LbSerial, Path=DataContext.SelectionChangedSerialCommand}" CommandParameter="{Binding Path=., UpdateSourceTrigger=PropertyChanged}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                            <Border.Effect>
+                                                                <DropShadowEffect ShadowDepth="0" />
+                                                            </Border.Effect>
+                                                        </Border>
+                                                        <Grid Margin="8">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseUp">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=LbSerial, Path=DataContext.SelectionChangedSerialCommand}" CommandParameter="{Binding Path=., UpdateSourceTrigger=PropertyChanged}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto" />
+                                                                <RowDefinition Height="Auto" />
+                                                                <RowDefinition Height="Auto" />
+                                                                <RowDefinition Height="Auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel
+                                                                Grid.Row="0"
+                                                                Grid.Column="0"
+                                                                Grid.ColumnSpan="4">
+                                                                <TextBlock
+                                                                    FontSize="14"
+                                                                    Foreground="{StaticResource MaterialDesignBackground}"
+                                                                    Text="{Binding Data, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                    TextTrimming="CharacterEllipsis" />
+                                                                <TextBlock
+                                                                    FontSize="10"
+                                                                    Foreground="{StaticResource MaterialDesignBackground}"
+                                                                    Opacity=".5"
+                                                                    Text="{x:Static p:Resources.Data}" />
+                                                            </StackPanel>
+                                                            <StackPanel
+                                                                Grid.Row="1"
+                                                                Grid.Column="0"
+                                                                Orientation="Horizontal">
+                                                                <TextBlock
+                                                                    VerticalAlignment="Bottom"
+                                                                    FontSize="10"
+                                                                    Foreground="{StaticResource MaterialDesignBackground}"
+                                                                    Opacity=".5"
+                                                                    Text="{x:Static p:Resources.Memory_Id}" />
+                                                                <TextBlock
+                                                                    Margin="8,0,0,0"
+                                                                    VerticalAlignment="Bottom"
+                                                                    Foreground="{StaticResource MaterialDesignBackground}"
+                                                                    Text="{Binding MemoryId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                            </StackPanel>
+                                                            <StackPanel
+                                                                Grid.Row="1"
+                                                                Grid.Column="1"
+                                                                Margin="8,0,0,0"
+                                                                Orientation="Horizontal">
+                                                                <TextBlock
+                                                                    VerticalAlignment="Bottom"
+                                                                    FontSize="10"
+                                                                    Foreground="{StaticResource MaterialDesignBackground}"
+                                                                    Opacity=".5"
+                                                                    Text="{x:Static p:Resources.Delay}" />
+                                                                <TextBlock
+                                                                    Margin="8,0,0,0"
+                                                                    VerticalAlignment="Bottom"
+                                                                    Foreground="White"
+                                                                    Text="{Binding Delay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                            </StackPanel>
+                                                            <StackPanel
+                                                                Grid.Row="1"
+                                                                Grid.Column="2"
+                                                                Margin="8,0,0,0"
+                                                                Orientation="Horizontal">
+                                                                <TextBlock
+                                                                    VerticalAlignment="Bottom"
+                                                                    FontSize="10"
+                                                                    Foreground="{StaticResource MaterialDesignBackground}"
+                                                                    Opacity=".5"
+                                                                    Text="{x:Static p:Resources.Repetition}" />
+                                                                <TextBlock
+                                                                    Margin="8,0,0,0"
+                                                                    VerticalAlignment="Bottom"
+                                                                    Foreground="White"
+                                                                    Text="{Binding Repetition, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                            </StackPanel>
+                                                            <StackPanel
+                                                                Grid.Row="3"
+                                                                Grid.Column="0"
+                                                                Grid.ColumnSpan="5"
+                                                                Margin="8,8,0,0"
+                                                                HorizontalAlignment="Right"
+                                                                Orientation="Horizontal">
+                                                                <Button
+                                                                    Margin="0,0,8,0"
+                                                                    Command="{Binding ElementName=LbSerial, Path=DataContext.PlayCommand}"
+                                                                    CommandParameter="{Binding Path=., UpdateSourceTrigger=PropertyChanged}"
+                                                                    Content="{x:Static p:Resources._Play}"
+                                                                    FocusVisualStyle="{x:Null}">
+                                                                    <Button.Style>
+                                                                        <Style BasedOn="{StaticResource PlayButton}" TargetType="{x:Type Button}">
+                                                                            <Setter Property="IsEnabled" Value="True" />
+                                                                            <Style.Triggers>
+                                                                                <DataTrigger Binding="{Binding ElementName=LbSerial, Path=DataContext.IsSendingToGateway}" Value="True">
+                                                                                    <Setter Property="IsEnabled" Value="False" />
+                                                                                </DataTrigger>
+                                                                            </Style.Triggers>
+                                                                        </Style>
+                                                                    </Button.Style>
+                                                                </Button>
+                                                                <Button
+                                                                    Command="{Binding ElementName=LbSerial, Path=DataContext.DeleteFromGatewayAwaitCommand}"
+                                                                    CommandParameter="{Binding Path=.}"
+                                                                    Content="{x:Static p:Resources._Delete}"
+                                                                    FocusVisualStyle="{x:Null}">
+                                                                    <Button.Style>
+                                                                        <Style BasedOn="{StaticResource DeleteButton}" TargetType="{x:Type Button}">
+                                                                            <Setter Property="IsEnabled" Value="True" />
+                                                                            <Style.Triggers>
+                                                                                <DataTrigger Binding="{Binding ElementName=LbSerial, Path=DataContext.IsSendingToGateway}" Value="True">
+                                                                                    <Setter Property="IsEnabled" Value="False" />
+                                                                                </DataTrigger>
+                                                                            </Style.Triggers>
+                                                                        </Style>
+                                                                    </Button.Style>
+                                                                </Button>
+                                                            </StackPanel>
+                                                            <ProgressBar
+                                                                Grid.ColumnSpan="4"
+                                                                Width="20"
+                                                                Height="20"
+                                                                Margin="0,0,8,0"
+                                                                HorizontalAlignment="Right"
+                                                                VerticalAlignment="Top"
+                                                                IsIndeterminate="True">
+                                                                <ProgressBar.Style>
+                                                                    <Style BasedOn="{StaticResource MaterialDesignCircularProgressBar}" TargetType="{x:Type ProgressBar}">
+                                                                        <Setter Property="Visibility" Value="Hidden" />
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding ElementName=serialGatewayUserControl, Path=DataContext.IsSendingToGateway, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                                                <Setter Property="Visibility" Value="Visible" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </ProgressBar.Style>
+                                                            </ProgressBar>
+                                                        </Grid>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                            <ListBox.Style>
+                                                <Style BasedOn="{StaticResource MaterialDesignCardsListBox}" TargetType="{x:Type ListBox}">
+                                                    <Setter Property="IsEnabled" Value="True" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsSendingToGateway}" Value="True">
+                                                            <Setter Property="IsEnabled" Value="False" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListBox.Style>
+                                        </ListBox>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+        </materialDesign:DialogHost>
+        <Border
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            Margin="0"
+            materialDesign:ThemeAssist.Theme="Dark"
+            Background="Black"
+            Cursor="Hand">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+            </Border.Effect>
+        </Border>
+        <Menu
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            Margin="0"
+            materialDesign:ThemeAssist.Theme="Dark"
+            Cursor="Hand"
+            IsMainMenu="True"
+            Style="{StaticResource MaterialDesignMenuBillson}">
+            <MenuItem Header="{x:Static p:Resources._Edit}">
+                <MenuItem Command="{Binding DeleteAllFromGatewayAwaitCommand}" Header="{x:Static p:Resources.Delete_all_serials}">
+                    <MenuItem.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignMenuItem}" TargetType="{x:Type MenuItem}">
+                            <Setter Property="IsEnabled" Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.Serials.Count}" Value="0">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.Style>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Command="{Binding GetAllFromGatewayCommand}" Header="{x:Static p:Resources._Reload}" />
+        </Menu>
+        <StackPanel
+            Margin="16"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <TextBlock
+                Margin="0,0,8,0"
+                VerticalAlignment="Center"
+                Opacity=".8"
+                Text="{x:Static p:Resources.Memory}" />
+            <TextBlock
+                VerticalAlignment="Center"
+                Opacity=".8"
+                Text="{Binding SelectedProjectModel.SelectedGateway.Serials.Count, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock
+                VerticalAlignment="Center"
+                Opacity=".8"
+                Text="/" />
+            <TextBlock
+                VerticalAlignment="Center"
+                Opacity=".8"
+                Text="{Binding SelectedProjectModel.SelectedGateway.SerialsCommandLimit, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

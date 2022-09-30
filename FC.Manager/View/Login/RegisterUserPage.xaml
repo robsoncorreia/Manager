@@ -1,0 +1,220 @@
+﻿<Page
+    x:Class="FC.Manager.View.Login.RegisterUserPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    xmlns:validator="clr-namespace:FC.Domain.Validator;assembly=FC.Domain"
+    xmlns:Components="clr-namespace:FC.Manager.View.Components"
+    x:Name="registerUserPage"
+    Title="RegisterUserPage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    DataContext="{Binding RegisterUser, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <materialDesign:DialogHost
+        BorderBrush="{DynamicResource MaterialDesignDivider}"
+        DialogContent="{Binding DialogContent}"
+        IsOpen="{Binding IsOpenDialogHost}">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="{x:Type Image}">
+                    <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
+                </Style>
+            </Grid.Resources>
+            <Image Source="/FC.Domain;component/Assets/Login/FCB_FCC_front_logo_cable_large background.jpg" Stretch="UniformToFill" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="64" />
+                </Grid.ColumnDefinitions>
+                <Border
+                    Grid.Column="1"
+                    Width="360"
+                    Height="640"
+                    Padding="16"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Background="{StaticResource TundoraBillson}"
+                    CornerRadius="4">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="4" ShadowDepth="0" />
+                    </Border.Effect>
+                </Border>
+                <Border
+                    Grid.Column="1"
+                    Width="360"
+                    Height="640"
+                    Padding="16"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Background="{StaticResource TundoraBillson}"
+                    CornerRadius="4">
+                    <AdornerDecorator>
+                        <StackPanel>
+                            <Border
+                                Height="124"
+                                Margin="16,16,16,16"
+                                Padding="0,16"
+                                VerticalAlignment="Center">
+                                <Image Source="/FC.Domain;component/Assets/Flex Control Logo Full White_White.png" />
+                            </Border>
+                            <TextBlock
+                                Margin="16,8"
+                                HorizontalAlignment="Center"
+                                FontSize="18"
+                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                Text="{x:Static p:Resources.App_Name}" />
+                            <TextBlock
+                                Margin="16,8"
+                                HorizontalAlignment="Left"
+                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                Text="{x:Static p:Resources.Sign_Up}" />
+                            <TextBox
+                                x:Name="txtUserName"
+                                Margin="16,8"
+                                materialDesign:HintAssist.FloatingScale="0.80"
+                                materialDesign:HintAssist.Hint="{x:Static p:Resources.User_Name}"
+                                materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
+                                materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                Style="{StaticResource MaterialDesignFilledTextBox}">
+                                <TextBox.Text>
+                                    <Binding
+                                        Mode="TwoWay"
+                                        Path="UserName"
+                                        UpdateSourceTrigger="PropertyChanged"
+                                        ValidatesOnDataErrors="True">
+                                        <Binding.ValidationRules>
+                                            <validator:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <TextBox
+                                x:Name="txtEmail"
+                                Margin="16,8"
+                                materialDesign:HintAssist.FloatingScale="0.80"
+                                materialDesign:HintAssist.Hint="{x:Static p:Resources.Email}"
+                                materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
+                                materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                Style="{StaticResource MaterialDesignFilledTextBox}">
+                                <TextBox.Text>
+                                    <Binding
+                                        Mode="TwoWay"
+                                        Path="Email"
+                                        UpdateSourceTrigger="PropertyChanged"
+                                        ValidatesOnDataErrors="True">
+                                        <Binding.ValidationRules>
+                                            <validator:EmailRule ValidatesOnTargetUpdated="True" />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <TextBox
+                                x:Name="txtPassword"
+                                Margin="16,8,16,16"
+                                materialDesign:HintAssist.FloatingScale="0.80"
+                                materialDesign:HintAssist.Hint="{x:Static p:Resources.Password}"
+                                materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
+                                materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                Style="{StaticResource MaterialDesignFilledTextBox}">
+                                <TextBox.Text>
+                                    <Binding
+                                        Mode="TwoWay"
+                                        Path="Password"
+                                        UpdateSourceTrigger="PropertyChanged"
+                                        ValidatesOnDataErrors="True">
+                                        <Binding.ValidationRules>
+                                            <validator:TextBoxValidationRule
+                                                Max="100"
+                                                Min="4"
+                                                TextError="{x:Static p:Resources.Password_Validation}"
+                                                ValidatesOnTargetUpdated="True" />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <CheckBox
+                                x:Name="ckTermsConditions"
+                                Margin="16,16,16,0"
+                                FocusVisualStyle="{x:Null}"
+                                Foreground="{StaticResource MaterialDesignDarkForeground}">
+                                <CheckBox.Content>
+                                    <Hyperlink
+                                        x:Name="Hyperlink"
+                                        Command="{Binding TermsConditionsHiperLinkCommand}"
+                                        Style="{StaticResource MaterialDesignBody1Hyperlink}">
+                                        <TextBlock
+                                            Margin="0,0,0,4"
+                                            Foreground="{StaticResource DenimBillson}"
+                                            Text="{x:Static p:Resources.Terms_Conditions}" />
+                                    </Hyperlink>
+                                </CheckBox.Content>
+                            </CheckBox>
+                            <StackPanel
+                                Margin="16,20,16,0"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <Button
+                                    Margin="0,0,8,0"
+                                    Command="{Binding Path=CancelRegisterCommand}"
+                                    CommandParameter="{Binding ElementName=registerUserPage}"
+                                    Content="{x:Static p:Resources.Cancel}"
+                                    FocusVisualStyle="{x:Null}" />
+                                <Button
+                                    x:Name="btnSignup"
+                                    Margin="8,0,0,0"
+                                    Background="{StaticResource BigStoneBillson}"
+                                    BorderBrush="{StaticResource BigStoneBillson}"
+                                    Command="{Binding Path=RegisterUserCommand}"
+                                    Content="{x:Static p:Resources.Sign_Up}"
+                                    FocusVisualStyle="{x:Null}">
+                                    <Button.Style>
+                                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                            <Style.Triggers>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=txtUserName}" Value="False" />
+                                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=txtPassword}" Value="False" />
+                                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=txtEmail}" Value="False" />
+                                                        <Condition Binding="{Binding Path=IsChecked, UpdateSourceTrigger=PropertyChanged, ElementName=ckTermsConditions}" Value="True" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="IsEnabled" Value="True" />
+                                                </MultiDataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                            <StackPanel
+                                Margin="0,16"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <TextBlock Foreground="{StaticResource MaterialDesignDarkForeground}" Text="{x:Static p:Resources.Allready_Have_Account}">
+                                    <Hyperlink NavigateUri="/View/Login/LoginPage.xaml" Style="{StaticResource MaterialDesignBody1Hyperlink}">
+                                        <TextBlock
+                                            Margin="10,0,0,0"
+                                            Foreground="{StaticResource DenimBillson}"
+                                            Text="{x:Static p:Resources.Login}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </AdornerDecorator>
+                </Border>
+            </Grid>
+            <Components:SnackbarUserControl />
+        </Grid>
+    </materialDesign:DialogHost>
+</Page>

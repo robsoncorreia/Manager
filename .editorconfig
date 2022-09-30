@@ -1,0 +1,13 @@
+﻿[*.cs]
+
+# CA2227: Collection properties should be read only
+dotnet_diagnostic.CA2227.severity = none
+
+# CA2008: Não crie tarefas sem passar um TaskScheduler
+dotnet_diagnostic.CA2008.severity = silent
+
+# CA1307: Specify StringComparison
+dotnet_diagnostic.CA1307.severity = none
+
+# CA1304: Especificar CultureInfo
+dotnet_diagnostic.CA1304.severity = none

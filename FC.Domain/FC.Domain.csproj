@@ -1,0 +1,109 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <LangVersion>Latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>flex.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm">
+      <Version>7.1.2</Version>
+    </PackageReference>
+    <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
+    <PackageReference Include="Google.Apis.Drive.v3">
+      <Version>1.57.0.2684</Version>
+    </PackageReference>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
+    <PackageReference Include="LiteDB" Version="5.0.12" />
+    <PackageReference Include="managedwifi" Version="1.1.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="parse" Version="1.7.0" />
+    <PackageReference Include="Portable.BouncyCastle">
+      <Version>1.9.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.330701">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ZwaveDevice\FXA-3000\drawable-hdpi\FXA-3000.png" />
+    <Resource Include="Assets\ZwaveDevice\FXA-5029\drawable-hdpi\FXA-5029.png" />
+    <Resource Include="Assets\ZwaveDevice\FXA-5014\drawable-hdpi\FXA-5014.png" />
+    <Resource Include="Assets\ZwaveDevice\FXA-0404\drawable-hdpi\FXA-0404.png" />
+    <Resource Include="Assets\ZwaveDevice\FXA-3011\drawable-hdpi\FXA-3011.png" />
+    <Resource Include="Assets\ZwaveDevice\FXA-5016\drawable-hdpi\FXA-5016.png" />
+    <Resource Include="Assets\ZwaveDevice\FXA-3012\drawable-hdpi\FXA-3012.png" />
+    <Resource Include="Assets\ZwaveDevice\FXA-5018\drawable-hdpi\FXA-5018.png" />
+    <Resource Include="Assets\ZwaveDevice\FXA-0400\drawable-hdpi\FXA-0400.png" />
+    <Resource Include="Assets\ZwaveDevice\FX-C222\drawable-hdpi\FX-C222.png" />
+    <Resource Include="Assets\ZwaveDevice\FX-D211\drawable-hdpi\FX-D211.png" />
+    <Resource Include="Assets\ZwaveDevice\FX-C221\drawable-hdpi\FX-C221.png" />
+    <Resource Include="Assets\ZwaveDevice\FX-D220\drawable-hdpi\FX-D220.png" />
+    <Resource Include="Assets\ZwaveDevice\FX-R211\drawable-hdpi\FX-R211.png" />
+    <Resource Include="Assets\ZwaveDevice\FXD-5011\drawable-hdpi\FXD-5011.png" />
+    <Resource Include="Assets\ZwaveDevice\FXR-5013\drawable-hdpi\FXR-5013.png" />
+    <Resource Include="Assets\ZwaveDevice\FXR-5012\drawable-hdpi\FXR-5012.png" />
+    <Resource Include="Assets\ZwaveDevice\FXM-5012\drawable-hdpi\FXM-5012.png" />
+    <Resource Include="Assets\ZwaveDevice\Motion Sensor\drawable-hdpi\Motion Sensor.png" />
+    <Resource Include="Assets\ZwaveDevice\Door &amp; Window Sensor\drawable-hdpi\Door &amp; Window Sensor.png" />
+    <Resource Include="Assets\ZwaveDevice\Smart Button\drawable-hdpi\Smart Button.png" />
+    <Resource Include="Assets\ZwaveDevice\Sensor 4x1 - PST02\drawable-hdpi\Sensor 4x1 - PST02.png" />
+    <Resource Include="Assets\ZwaveDevice\FXR-5011\drawable-hdpi\FXR-5011.png" />
+    <Resource Include="Assets\ZwaveDevice\FX-S69A\drawable-hdpi\FX-S69A.png" />
+    <Resource Include="Assets\ZwaveDevice\FXA-0600\drawable-hdpi\FXA-0600.png" />
+    <Resource Include="flex.ico" />
+    <Resource Include="Assets\Brand\flex-automation-logo.png" />
+    <Resource Include="Assets\Controller\somfy_controller.png" />
+    <Resource Include="Assets\CountrysFlags\australia.png" />
+    <Resource Include="Assets\CountrysFlags\brazil.png" />
+    <Resource Include="Assets\CountrysFlags\newZealand.png" />
+    <Resource Include="Assets\default.png" />
+    <Resource Include="Assets\Flex Control Logo Full White_White.png" />
+    <Resource Include="Assets\Login\FCB_FCC_front_logo_cable_large background.jpg" />
+    <Resource Include="Assets\logo.png" />
+    <Resource Include="Assets\Gateway\Black\drawable-hdpi\Black.png" />
+    <Resource Include="Assets\Gateway\White\drawable-hdpi\White.png" />
+    <Resource Include="Assets\programming_button.png" />
+    <Resource Include="Assets\User\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ZwaveDevice\ZXT-600\drawable-hdpi\ZXT-600.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+</Project>

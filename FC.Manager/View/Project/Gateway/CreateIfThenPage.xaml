@@ -1,0 +1,1639 @@
+﻿<Page
+    x:Class="FC.Manager.View.Project.Gateway.CreateIfThenPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:FC.Manager.View.Components"
+    xmlns:core="clr-namespace:System;assembly=mscorlib"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
+    xmlns:device="clr-namespace:FC.Domain.Model.Device;assembly=FC.Domain"
+    xmlns:gateway="clr-namespace:FC.Domain.Model;assembly=FC.Domain"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:FC.Domain.Model.FlexCloudClone;assembly=FC.Domain"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    xmlns:validation="clr-namespace:FC.Domain.Validator;assembly=FC.Domain"
+    x:Name="createIfThen"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    DataContext="{Binding CreateIfThen, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=createIfThen}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <i:InvokeCommandAction Command="{Binding UnloadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Page.Resources>
+        <ObjectDataProvider
+            x:Key="relayStateMode"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="{x:Type gateway:RelayStateMode}" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="actionsRTSSomfy"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="{x:Type model:ActionsRTSSomfy}" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="operatorType"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="device:LogicGateIfThen" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="operatorTypeIfThen"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="device:OperatorTypeIfThen" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <DataTemplate x:Key="zwaveDeviceCard" DataType="{x:Type device:ZwaveDevice}">
+            <Grid>
+                <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="4" ShadowDepth="4" />
+                    </Border.Effect>
+                </Border>
+                <Border
+                    Width="180"
+                    Background="{StaticResource BigStoneBillson}"
+                    CornerRadius="4">
+                    <Border.Style>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ModuleId}" Value="1">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <Grid Cursor="Hand" ToolTip="{Binding Path=.}">
+                        <components:ZwaveDeviceInformationUserControl Margin="8" />
+                        <components:ModuleIdUserControl
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            DataContext="{Binding Path=.}" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="zwaveDeviceIfCard" DataType="{x:Type device:ZwaveDevice}">
+            <Grid>
+                <ContentControl Content="{Binding Path=., Converter={StaticResource zwaveDeviceToViewConverter}}" />
+                <components:ModuleIdUserControl
+                    Margin="0,4,4,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="zwaveDeviceThenElseCard" DataType="{x:Type device:ZwaveDevice}">
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Grid>
+                                    <ContentControl Content="{Binding Path=., Converter={StaticResource zwaveDeviceToViewThenElseConverter}}" />
+                                    <components:ModuleIdUserControl
+                                        Margin="0,4"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top" />
+                                </Grid>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ModuleId}" Value="-1">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <ContentControl Content="{Binding Path=., Converter={StaticResource zwaveDeviceToViewThenElseConverter}}" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </DataTemplate>
+        <DataTemplate x:Key="gatewaysCard" DataType="{x:Type gateway:GatewayModel}">
+            <Grid>
+                <Border
+                    Width="254"
+                    Margin="8"
+                    Background="{Binding Background}"
+                    CornerRadius="2">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="8" ShadowDepth="1" />
+                    </Border.Effect>
+                </Border>
+                <Border
+                    Width="254"
+                    Margin="8"
+                    Background="{Binding Background}"
+                    CornerRadius="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Margin="8,8,16,0"
+                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                            Text="{Binding Name}"
+                            TextTrimming="CharacterEllipsis" />
+                        <StackPanel
+                            Grid.Row="1"
+                            Margin="8,0,0,4"
+                            Orientation="Horizontal">
+                            <TextBlock
+                                Grid.Row="1"
+                                Margin="0,0,0,4"
+                                FontSize="10"
+                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                Opacity=".5"
+                                Text="{Binding LocalIP}"
+                                TextTrimming="CharacterEllipsis" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Margin="8,0,0,4"
+                                FontSize="10"
+                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                Opacity=".5"
+                                Text="{Binding Pin}"
+                                TextTrimming="CharacterEllipsis" />
+                        </StackPanel>
+                        <TabControl
+                            Grid.Row="2"
+                            Height="178"
+                            Background="#55000000"
+                            SelectedIndex="{Binding SelectedTabIndexIfThen}"
+                            Style="{StaticResource TabControlCustom}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding CreateIfThen.SelectionChangedCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Path=.}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <TabControl.Resources>
+                                <Style BasedOn="{StaticResource TabItemZwaveConfi}" TargetType="{x:Type TabItem}" />
+                                <Style BasedOn="{StaticResource MaterialDesignRaisedDarkButton}" TargetType="{x:Type Button}">
+                                    <Setter Property="Foreground" Value="White" />
+                                </Style>
+                            </TabControl.Resources>
+                            <!--#region IP Command-->
+                            <TabItem Header="{x:Static p:Resources.Ip_Command}" Style="{StaticResource TabItemGateway}">
+                                <Border Padding="8" VerticalAlignment="Stretch">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <materialDesign:Badged
+                                            Grid.Column="0"
+                                            Margin="4,0,0,0"
+                                            VerticalAlignment="Center"
+                                            BadgePlacementMode="TopLeft">
+                                            <materialDesign:Badged.Style>
+                                                <Style TargetType="{x:Type materialDesign:Badged}">
+                                                    <Setter Property="Badge" Value="{Binding IpCommands.Count}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IpCommands.Count}" Value="0">
+                                                            <Setter Property="Badge" Value="{x:Null}" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </materialDesign:Badged.Style>
+                                            <ComboBox
+                                                x:Name="CbIPCommand"
+                                                Width="140"
+                                                Margin="8,0,8,0"
+                                                materialDesign:HintAssist.FloatingScale="0.8"
+                                                materialDesign:HintAssist.Hint="{x:Static p:Resources.Select_the_IP_command}"
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                                materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                                ItemsSource="{Binding IpCommands}"
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="White" Text="{Binding Name}" />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                                <ComboBox.SelectedIndex>
+                                                    <Binding
+                                                        Mode="TwoWay"
+                                                        Path="SelectedIndexIPCommand"
+                                                        UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <validation:ComboboxValidation ValidatesOnTargetUpdated="True" />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </ComboBox.SelectedIndex>
+                                            </ComboBox>
+                                        </materialDesign:Badged>
+                                        <Button
+                                            Grid.Column="1"
+                                            Margin="8,8,8,0"
+                                            VerticalAlignment="Center"
+                                            Command="{Binding CreateIfThen.TestCommand, Source={StaticResource Locator}}"
+                                            CommandParameter="{Binding Path=.}"
+                                            Style="{StaticResource PlayButton}">
+                                            <materialDesign:PackIcon Kind="Play" />
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </TabItem>
+                            <!--#endregion IP Command-->
+                            <!--#region IR-->
+                            <TabItem Header="{x:Static p:Resources.IR}">
+                                <TabItem.Style>
+                                    <Style BasedOn="{StaticResource TabItemGateway}" TargetType="{x:Type TabItem}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsSupportsIR}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TabItem.Style>
+                                <Border Padding="8" VerticalAlignment="Stretch">
+                                    <Grid VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <materialDesign:Badged
+                                            Grid.Column="0"
+                                            Margin="4,0,0,0"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Center"
+                                            BadgePlacementMode="TopLeft">
+                                            <materialDesign:Badged.Style>
+                                                <Style TargetType="{x:Type materialDesign:Badged}">
+                                                    <Setter Property="Badge" Value="{Binding IRsGateway.Count}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IRsGateway.Count}" Value="0">
+                                                            <Setter Property="Badge" Value="{x:Null}" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </materialDesign:Badged.Style>
+                                            <ComboBox
+                                                x:Name="ComboBoxIR"
+                                                Width="140"
+                                                Margin="8,0,8,0"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Center"
+                                                materialDesign:HintAssist.FloatingScale="0.8"
+                                                materialDesign:HintAssist.Hint="{x:Static p:Resources.Action}"
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                                materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                                ItemsSource="{Binding IRsGateway}"
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                ToolTip="{Binding ElementName=ComboBoxIR, Path=SelectedItem}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Path=.}" TextTrimming="CharacterEllipsis" />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                                <ComboBox.SelectedIndex>
+                                                    <Binding
+                                                        Mode="TwoWay"
+                                                        Path="SelectedIndexIR"
+                                                        UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <validation:ComboboxValidation ValidatesOnTargetUpdated="True" />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </ComboBox.SelectedIndex>
+                                            </ComboBox>
+                                        </materialDesign:Badged>
+                                        <Button
+                                            Grid.Column="1"
+                                            Margin="8,8,8,0"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Command="{Binding CreateIfThen.TestCommand, Source={StaticResource Locator}}"
+                                            CommandParameter="{Binding Path=.}"
+                                            Style="{StaticResource PlayButton}">
+                                            <materialDesign:PackIcon Kind="Play" />
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </TabItem>
+                            <!--#endregion IR-->
+                            <!--#region Radio 433MHz-->
+                            <TabItem Header="{x:Static p:Resources.Radio_433MHz}">
+                                <TabItem.Style>
+                                    <Style BasedOn="{StaticResource TabItemGateway}" TargetType="{x:Type TabItem}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsSupportsRF}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TabItem.Style>
+                                <Border Padding="8" VerticalAlignment="Stretch">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <materialDesign:Badged
+                                            Grid.Column="0"
+                                            Margin="4,0,0,0"
+                                            VerticalAlignment="Center"
+                                            BadgePlacementMode="TopLeft">
+                                            <materialDesign:Badged.Style>
+                                                <Style TargetType="{x:Type materialDesign:Badged}">
+                                                    <Setter Property="Badge" Value="{Binding Radios433Gateway.Count}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Radios433Gateway.Count}" Value="0">
+                                                            <Setter Property="Badge" Value="{x:Null}" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </materialDesign:Badged.Style>
+                                            <ComboBox
+                                                x:Name="ComboBoxRadio433"
+                                                Grid.Column="0"
+                                                Width="140"
+                                                Margin="8,0,8,0"
+                                                VerticalAlignment="Center"
+                                                materialDesign:HintAssist.FloatingScale="0.8"
+                                                materialDesign:HintAssist.Hint="{x:Static p:Resources.Select_the_radio}"
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                                materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                                materialDesign:TextFieldAssist.SuffixText="{Binding ElementName=ComboBoxRadio433, Path=SelectedItem.MemoryId}"
+                                                ItemsSource="{Binding Radios433Gateway}"
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Description}" />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                                <ComboBox.SelectedIndex>
+                                                    <Binding
+                                                        Mode="TwoWay"
+                                                        Path="SelectedIndexRadio433"
+                                                        UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <validation:ComboboxValidation ValidatesOnTargetUpdated="True" />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </ComboBox.SelectedIndex>
+                                            </ComboBox>
+                                        </materialDesign:Badged>
+                                        <Button
+                                            Grid.Column="1"
+                                            Margin="8,8,8,0"
+                                            VerticalAlignment="Center"
+                                            Command="{Binding CreateIfThen.TestCommand, Source={StaticResource Locator}}"
+                                            CommandParameter="{Binding Path=.}"
+                                            Style="{StaticResource PlayButton}">
+                                            <materialDesign:PackIcon Kind="Play" />
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </TabItem>
+                            <!--#endregion Radio 433MHz-->
+                            <!--#region RTS-->
+                            <TabItem Header="{x:Static p:Resources.RTS}">
+                                <TabItem.Style>
+                                    <Style BasedOn="{StaticResource TabItemGateway}" TargetType="{x:Type TabItem}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsSupportsRF}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TabItem.Style>
+                                <Border Padding="8">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <materialDesign:Badged
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="4,0,0,0"
+                                            VerticalAlignment="Center"
+                                            BadgePlacementMode="TopLeft">
+                                            <materialDesign:Badged.Style>
+                                                <Style TargetType="{x:Type materialDesign:Badged}">
+                                                    <Setter Property="Badge" Value="{Binding RadiosRTSGateway.Count}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RadiosRTSGateway.Count}" Value="0">
+                                                            <Setter Property="Badge" Value="{x:Null}" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </materialDesign:Badged.Style>
+                                            <ComboBox
+                                                x:Name="ComboBoxRTS"
+                                                Width="180"
+                                                Margin="8,0,8,8"
+                                                VerticalAlignment="Center"
+                                                materialDesign:HintAssist.Hint="{x:Static p:Resources.Select_the_radio}"
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                                materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                                ItemsSource="{Binding RadiosRTSGateway}"
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock>
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="{x:Type TextBlock}">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Description}" Value="{x:Null}">
+                                                                            <Setter Property="Text" Value="{Binding MemoryId, StringFormat='Memory Id {0}'}" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                    <Setter Property="Text" Value="{Binding Description}" />
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                                <ComboBox.SelectedIndex>
+                                                    <Binding
+                                                        Mode="TwoWay"
+                                                        Path="SelectedIndexRTS"
+                                                        UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <validation:ComboboxValidation ValidatesOnTargetUpdated="True" />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </ComboBox.SelectedIndex>
+                                            </ComboBox>
+                                        </materialDesign:Badged>
+                                        <ComboBox
+                                            x:Name="CbActionsRTSSomfy"
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Margin="10,8,8,8"
+                                            materialDesign:HintAssist.Hint="{x:Static p:Resources.Actions}"
+                                            materialDesign:ThemeAssist.Theme="Dark"
+                                            ItemsSource="{Binding Source={StaticResource actionsRTSSomfy}}"
+                                            SelectedIndex="{Binding SelectedIndexActionRTSSomfy, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding Converter={StaticResource enumDescriptionConverter}}" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <Button
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Margin="8,8,8,0"
+                                            VerticalAlignment="Center"
+                                            Command="{Binding CreateIfThen.TestCommand, Source={StaticResource Locator}}"
+                                            CommandParameter="{Binding Path=.}"
+                                            Style="{StaticResource PlayButton}">
+                                            <materialDesign:PackIcon Kind="Play" />
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </TabItem>
+                            <!--#endregion RTS-->
+                            <!--#region Serial-->
+                            <TabItem Header="{x:Static p:Resources.Serial}">
+                                <TabItem.Style>
+                                    <Style BasedOn="{StaticResource TabItemGateway}" TargetType="{x:Type TabItem}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsSupportsSerial}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TabItem.Style>
+                                <Border Padding="8" VerticalAlignment="Stretch">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <ComboBox
+                                            x:Name="CbSerial"
+                                            Grid.Column="0"
+                                            Margin="8,0,8,0"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.FloatingScale="0.8"
+                                            materialDesign:HintAssist.Hint="{x:Static p:Resources.Select_the_serial}"
+                                            materialDesign:ThemeAssist.Theme="Dark"
+                                            materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                            materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                            ItemsSource="{Binding Serials}"
+                                            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="White" Text="{Binding Data}" />
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                            <ComboBox.SelectedIndex>
+                                                <Binding
+                                                    Mode="TwoWay"
+                                                    Path="SelectedIndexSerial"
+                                                    UpdateSourceTrigger="PropertyChanged">
+                                                    <Binding.ValidationRules>
+                                                        <validation:ComboboxValidation ValidatesOnTargetUpdated="True" />
+                                                    </Binding.ValidationRules>
+                                                </Binding>
+                                            </ComboBox.SelectedIndex>
+                                        </ComboBox>
+                                        <Button
+                                            Grid.Column="1"
+                                            Margin="8,8,8,0"
+                                            VerticalAlignment="Center"
+                                            Command="{Binding CreateIfThen.TestCommand, Source={StaticResource Locator}}"
+                                            CommandParameter="{Binding Path=.}"
+                                            Style="{StaticResource PlayButton}">
+                                            <materialDesign:PackIcon Kind="Play" />
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </TabItem>
+                            <!--#endregion Serial-->
+                            <!--#region Relay-->
+                            <TabItem Header="{x:Static p:Resources.Relay}">
+                                <TabItem.Style>
+                                    <Style BasedOn="{StaticResource TabItemGateway}" TargetType="{x:Type TabItem}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsSupportsRelay}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TabItem.Style>
+                                <Grid Margin="16" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Orientation="Horizontal">
+                                        <StackPanel.Style>
+                                            <Style TargetType="{x:Type StackPanel}">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedIndexRelayStateMode}" Value="0">
+                                                        <Setter Property="Visibility" Value="Hidden" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </StackPanel.Style>
+                                        <ComboBox
+                                            x:Name="CbTimeRelay"
+                                            Width="126"
+                                            Margin="0,8,8,0"
+                                            materialDesign:HintAssist.Hint="{x:Static p:Resources.Time_Relay}"
+                                            materialDesign:ThemeAssist.Theme="Dark"
+                                            materialDesign:ValidationAssist.Suppress="True"
+                                            IsEditable="True"
+                                            ItemsSource="{Binding TimesRelay}"
+                                            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                            <ComboBox.Text>
+                                                <Binding
+                                                    Mode="TwoWay"
+                                                    Path="RelayPulseTime"
+                                                    UpdateSourceTrigger="PropertyChanged">
+                                                    <Binding.ValidationRules>
+                                                        <validation:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                    </Binding.ValidationRules>
+                                                </Binding>
+                                            </ComboBox.Text>
+                                            <ComboBox.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <VirtualizingStackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ComboBox.ItemsPanel>
+                                        </ComboBox>
+                                        <Label
+                                            VerticalAlignment="Bottom"
+                                            Content="ms"
+                                            Foreground="White"
+                                            IsEnabled="False" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="0,4,0,0"
+                                            VerticalAlignment="Center"
+                                            Foreground="White"
+                                            Text="{x:Static p:Resources.State}" />
+                                        <ToggleButton
+                                            Margin="8,8,0,0"
+                                            VerticalAlignment="Center"
+                                            FocusVisualStyle="{x:Null}"
+                                            IsChecked="{Binding StateRelay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        <ComboBox
+                                            x:Name="ComboBoxModeRelay"
+                                            Width="82"
+                                            Margin="8,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="{x:Static p:Resources.Mode}"
+                                            materialDesign:ThemeAssist.Theme="Dark"
+                                            FocusVisualStyle="{x:Null}"
+                                            Foreground="White"
+                                            ItemsSource="{Binding Source={StaticResource relayStateMode}}"
+                                            SelectedIndex="{Binding SelectedIndexRelayStateMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Converter={StaticResource enumComboboxConverter}}" />
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <Button
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="8,8,0,0"
+                                        VerticalAlignment="Center"
+                                        Command="{Binding CreateIfThen.TestCommand, Source={StaticResource Locator}}"
+                                        CommandParameter="{Binding Path=.}"
+                                        FocusVisualStyle="{x:Null}"
+                                        Style="{StaticResource PlayButton}">
+                                        <materialDesign:PackIcon Kind="Play" />
+                                    </Button>
+                                </Grid>
+                            </TabItem>
+                            <!--#endregion Relay-->
+                        </TabControl>
+                        <Button
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Width="24"
+                            Height="24"
+                            Margin="0,-3,-3,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding IsSync}"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSync}"
+                            materialDesign:ButtonProgressAssist.Value="-1"
+                            Background="{StaticResource ChathamsBlueBillson}"
+                            BorderBrush="#80000000"
+                            BorderThickness="8"
+                            Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.GetAllCommand}"
+                            CommandParameter="{Binding Path=.}"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon VerticalAlignment="Center" Kind="Sync" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <materialDesign:DialogHost
+        x:Name="dialogHost"
+        Margin="0"
+        Padding="0"
+        AllowDrop="True"
+        CloseOnClickAway="True"
+        DialogContent="{Binding DialogContent}"
+        FocusVisualStyle="{x:Null}"
+        IsOpen="{Binding IsOpenDialogHost}">
+        <Grid>
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="IsEnabled" Value="True" />
+                    <Setter Property="Opacity" Value="1" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsSendingToGateway, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsSendingToCloud, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <materialDesign:DrawerHost
+                Grid.Row="1"
+                VerticalAlignment="Stretch"
+                VerticalContentAlignment="Stretch"
+                FocusVisualStyle="{x:Null}"
+                IsRightDrawerOpen="{Binding IsRightDrawerOpen}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="DragOver">
+                        <i:InvokeCommandAction Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <materialDesign:DrawerHost.RightDrawerContent>
+                    <!--  Devices of project  -->
+                    <ScrollViewer
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="600"
+                        Background="Black"
+                        VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Expander
+                                Grid.Row="0"
+                                Margin="1,2,1,1"
+                                Background="{StaticResource Dark}">
+                                <Expander.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                            Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                            Text="{x:Static p:Resources.Zwave_Devices}" />
+                                        <Button
+                                            Margin="8,0,0,0"
+                                            Command="{Binding ReloadCommand}"
+                                            CommandParameter="{StaticResource True}"
+                                            Content="{x:Static p:Resources.Reload}"
+                                            Style="{StaticResource MaterialDesignFlatButton}" />
+                                    </StackPanel>
+                                </Expander.Header>
+                                <Grid MinHeight="74">
+                                    <ListBox
+                                        x:Name="ZwaveDevices"
+                                        dd:DragDrop.DropHandler="{Binding}"
+                                        dd:DragDrop.IsDragSource="True"
+                                        dd:DragDrop.UseDefaultDragAdorner="True"
+                                        Background="#80000000"
+                                        BorderBrush="Black"
+                                        BorderThickness="1"
+                                        ItemTemplate="{StaticResource zwaveDeviceCard}"
+                                        ItemsSource="{Binding ZwaveDevices}"
+                                        SelectionMode="Single">
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel />
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                    </ListBox>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ZwaveDevices.Count}" Value="0">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                        <Hyperlink
+                                            Command="{Binding ChangeTabCommand}"
+                                            Foreground="White"
+                                            Style="{StaticResource MaterialDesignBody1Hyperlink}">
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Text="{x:Static p:Resources.No_devices_found__Include_Z_Wave_devices_}" />
+                                        </Hyperlink>
+                                    </TextBlock>
+                                </Grid>
+                            </Expander>
+                            <Expander
+                                Grid.Row="1"
+                                Margin="1"
+                                Background="{StaticResource Dark}">
+                                <Expander.Header>
+                                    <StackPanel>
+                                        <TextBlock
+                                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                            Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                            Text="{x:Static p:Resources.Gateway}" />
+                                    </StackPanel>
+                                </Expander.Header>
+                                <ListBox
+                                    x:Name="Gateways"
+                                    dd:DragDrop.DropHandler="{Binding}"
+                                    dd:DragDrop.IsDragSource="True"
+                                    dd:DragDrop.UseDefaultDragAdorner="True"
+                                    Background="#80000000"
+                                    BorderBrush="Black"
+                                    BorderThickness="1"
+                                    ItemTemplate="{StaticResource gatewaysCard}"
+                                    ItemsSource="{Binding SelectedProjectModel.Devices}"
+                                    SelectionMode="Single">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                </ListBox>
+                            </Expander>
+                        </Grid>
+                    </ScrollViewer>
+                </materialDesign:DrawerHost.RightDrawerContent>
+                <ScrollViewer
+                    Grid.Row="2"
+                    CanContentScroll="True"
+                    FocusVisualStyle="{x:Null}"
+                    VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <!--  Device If  -->
+                        <Expander
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="8"
+                            VerticalAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Background="{StaticResource ChathamsBlueBillson}"
+                            BorderBrush="{StaticResource BigStoneBillson}"
+                            BorderThickness="1"
+                            IsExpanded="{Binding IsExpandedIf}">
+                            <Expander.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="52" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <materialDesign:Badged
+                                        Grid.Row="0"
+                                        VerticalAlignment="Center"
+                                        Badge="{Binding SelectedIfThenModel.ZwaveDevicesIf.Count}"
+                                        BadgeBackground="{StaticResource MineShaftBillson}"
+                                        BadgeForeground="{StaticResource MaterialDesignDarkForeground}">
+                                        <TextBlock
+                                            Grid.Row="0"
+                                            Margin="0,0,10,0"
+                                            VerticalAlignment="Center"
+                                            FontWeight="Bold"
+                                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                            Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                            Text="{x:Static p:Resources.If}" />
+                                    </materialDesign:Badged>
+                                    <Button
+                                        Grid.Column="2"
+                                        Margin="8,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        Background="{StaticResource DriftwoodBillson}"
+                                        BorderBrush="{StaticResource DriftwoodBillson}"
+                                        Command="{Binding OpenDrawerCommand}"
+                                        Content="{x:Static p:Resources._Add_Device}"
+                                        FocusVisualStyle="{x:Null}" />
+                                </Grid>
+                            </Expander.Header>
+                            <Grid>
+                                <ListBox
+                                    x:Name="ZwaveDevicesIf"
+                                    MinHeight="240"
+                                    Margin="4"
+                                    VerticalAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    dd:DragDrop.DropHandler="{Binding}"
+                                    dd:DragDrop.IsDragSource="True"
+                                    dd:DragDrop.IsDropTarget="True"
+                                    dd:DragDrop.UseDefaultDragAdorner="True"
+                                    Background="{StaticResource BigStoneBillson}"
+                                    BorderBrush="Black"
+                                    BorderThickness="2"
+                                    ItemTemplate="{StaticResource zwaveDeviceIfCard}"
+                                    ItemsSource="{Binding SelectedIfThenModel.ZwaveDevicesIf}"
+                                    SelectionMode="Single">
+                                    <ListBox.Resources>
+                                        <ContextMenu
+                                            x:Key="ItemContextMenu"
+                                            materialDesign:ThemeAssist.Theme="Dark"
+                                            Style="{StaticResource MaterialDesignContextMenu}">
+                                            <MenuItem
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.CopyCommand}"
+                                                CommandParameter="{Binding Path=.}"
+                                                Header="{x:Static p:Resources._Copy}"
+                                                Style="{StaticResource MaterialDesignMenuItem}" />
+                                            <MenuItem
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.PasteCommand}"
+                                                Header="{x:Static p:Resources._Paste}"
+                                                Style="{StaticResource MaterialDesignMenuItem}">
+                                                <MenuItem.CommandParameter>
+                                                    <MultiBinding Converter="{StaticResource conversor}">
+                                                        <MultiBinding.Bindings>
+                                                            <Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ListBox}}" />
+                                                            <Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ListBox}}" />
+                                                        </MultiBinding.Bindings>
+                                                    </MultiBinding>
+                                                </MenuItem.CommandParameter>
+                                            </MenuItem>
+                                            <MenuItem
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.RemoveCommand}"
+                                                CommandParameter="{Binding Path=.}"
+                                                Header="{x:Static p:Resources._Remove}"
+                                                Style="{StaticResource MaterialDesignMenuItem}" />
+                                        </ContextMenu>
+                                    </ListBox.Resources>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style BasedOn="{StaticResource ListBoxItemStyle}" TargetType="{x:Type ListBoxItem}">
+                                            <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}" />
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                </ListBox>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="{x:Static p:Resources.Drag_the_device_here}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding SelectedIfThenModel.ZwaveDevicesIf.Count}" Value="0">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsSendingToCloud}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <Grid
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="#99000000">
+                                    <Grid.Style>
+                                        <Style TargetType="{x:Type Grid}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsSendingToCloud}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <ProgressBar
+                                        Grid.Column="1"
+                                        Margin="0,0,8,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        IsIndeterminate="True"
+                                        Style="{StaticResource MaterialDesignCircularProgressBar}" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Foreground="White"
+                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                        Text="{x:Static p:Resources.Loading}" />
+                                </Grid>
+                                <Border
+                                    Height="2"
+                                    Margin="0"
+                                    VerticalAlignment="Top"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    Background="Black"
+                                    Cursor="Hand">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                                    </Border.Effect>
+                                </Border>
+                            </Grid>
+                        </Expander>
+                        <!--  Device Then  -->
+                        <Expander
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="8,0,8,8"
+                            VerticalAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Background="{StaticResource ChathamsBlueBillson}"
+                            BorderBrush="{StaticResource BigStoneBillson}"
+                            BorderThickness="1"
+                            IsExpanded="{Binding IsExpandedThen}">
+                            <Expander.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="52" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <materialDesign:Badged
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Badge="{Binding SelectedProjectModel.SelectedIfThen.ZwaveDevicesThen.Count}"
+                                        BadgeBackground="{StaticResource MineShaftBillson}"
+                                        BadgeForeground="{StaticResource MaterialDesignDarkForeground}">
+                                        <TextBlock
+                                            Margin="0,0,8,0"
+                                            FontWeight="Bold"
+                                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                            Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                            Text="{x:Static p:Resources.Then}" />
+                                    </materialDesign:Badged>
+                                    <Button
+                                        Grid.Column="2"
+                                        Margin="8,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        Background="{StaticResource DriftwoodBillson}"
+                                        BorderBrush="{StaticResource DriftwoodBillson}"
+                                        Command="{Binding OpenDrawerCommand}"
+                                        Content="{x:Static p:Resources._Add_Device}" />
+                                    <Button
+                                        Grid.Column="3"
+                                        Margin="8,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding PlayMacroCommand}"
+                                        CommandParameter="{Binding SelectedIfThenModel.MacroIdThen}"
+                                        Content="{x:Static p:Resources._Play}">
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource PlayButton}" TargetType="{x:Type Button}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedIfThenModel.MacroIdThen}" Value="-1">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button
+                                        Grid.Column="4"
+                                        Margin="8,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding StopMacroCommand}"
+                                        CommandParameter="{Binding SelectedIfThenModel.MacroIdThen}"
+                                        Content="{x:Static p:Resources._Stop}">
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource StopButton}" TargetType="{x:Type Button}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedIfThenModel.MacroIdThen}" Value="-1">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                            </Expander.Header>
+                            <Grid>
+                                <ListBox
+                                    x:Name="ZwaveDevicesThen"
+                                    MinHeight="240"
+                                    Margin="4"
+                                    VerticalAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    dd:DragDrop.DropHandler="{Binding}"
+                                    dd:DragDrop.IsDragSource="True"
+                                    dd:DragDrop.IsDropTarget="True"
+                                    dd:DragDrop.UseDefaultDragAdorner="True"
+                                    Background="{StaticResource BigStoneBillson}"
+                                    BorderBrush="Black"
+                                    BorderThickness="2"
+                                    ItemTemplate="{StaticResource zwaveDeviceThenElseCard}"
+                                    ItemsSource="{Binding SelectedIfThenModel.ZwaveDevicesThen}"
+                                    SelectionMode="Single">
+                                    <ListBox.Resources>
+                                        <ContextMenu
+                                            x:Key="ItemContextMenu"
+                                            materialDesign:ThemeAssist.Theme="Dark"
+                                            Style="{StaticResource MaterialDesignContextMenu}">
+                                            <MenuItem
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.CopyCommand}"
+                                                CommandParameter="{Binding Path=.}"
+                                                Header="{x:Static p:Resources._Copy}"
+                                                Style="{StaticResource MaterialDesignMenuItem}" />
+                                            <MenuItem
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.PasteCommand}"
+                                                Header="{x:Static p:Resources._Paste}"
+                                                Style="{StaticResource MaterialDesignMenuItem}">
+                                                <MenuItem.CommandParameter>
+                                                    <MultiBinding Converter="{StaticResource conversor}">
+                                                        <MultiBinding.Bindings>
+                                                            <Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ListBox}}" />
+                                                            <Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ListBox}}" />
+                                                        </MultiBinding.Bindings>
+                                                    </MultiBinding>
+                                                </MenuItem.CommandParameter>
+                                            </MenuItem>
+                                            <MenuItem
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.RemoveCommand}"
+                                                CommandParameter="{Binding Path=.}"
+                                                Header="{x:Static p:Resources._Remove}"
+                                                Style="{StaticResource MaterialDesignMenuItem}" />
+                                        </ContextMenu>
+                                    </ListBox.Resources>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style BasedOn="{StaticResource ListBoxItemStyle}" TargetType="{x:Type ListBoxItem}">
+                                            <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}" />
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                </ListBox>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="{x:Static p:Resources.Drag_the_device_here}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding SelectedIfThenModel.ZwaveDevicesThen.Count}" Value="0">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsSendingToCloud}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <Grid
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="#77000000">
+                                    <Grid.Style>
+                                        <Style TargetType="{x:Type Grid}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsSendingToCloud}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <ProgressBar
+                                        Grid.Column="1"
+                                        Margin="0,0,8,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        IsIndeterminate="True"
+                                        Style="{StaticResource MaterialDesignCircularProgressBar}" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Foreground="White"
+                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                        Text="{x:Static p:Resources.Loading}" />
+                                </Grid>
+                                <Border
+                                    Height="2"
+                                    Margin="0"
+                                    VerticalAlignment="Top"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    Background="Black"
+                                    Cursor="Hand">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                                    </Border.Effect>
+                                </Border>
+                            </Grid>
+                        </Expander>
+                        <!--  Device Else  -->
+                        <Expander
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Margin="8,0,8,8"
+                            VerticalAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Background="{StaticResource ChathamsBlueBillson}"
+                            BorderBrush="{StaticResource BigStoneBillson}"
+                            BorderThickness="1"
+                            IsExpanded="{Binding IsExpandedElse}">
+                            <Expander.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="52" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <materialDesign:Badged
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Badge="{Binding SelectedProjectModel.SelectedIfThen.ZwaveDevicesElse.Count}"
+                                        BadgeBackground="{StaticResource MineShaftBillson}"
+                                        BadgeForeground="{StaticResource MaterialDesignDarkForeground}">
+                                        <TextBlock
+                                            Grid.Column="0"
+                                            Margin="0,0,8,0"
+                                            VerticalAlignment="Center"
+                                            FontWeight="Bold"
+                                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                            Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                            Text="{x:Static p:Resources.Else}" />
+                                    </materialDesign:Badged>
+                                    <Button
+                                        Grid.Column="2"
+                                        Margin="8,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        Background="{StaticResource DriftwoodBillson}"
+                                        BorderBrush="{StaticResource DriftwoodBillson}"
+                                        Command="{Binding OpenDrawerCommand}"
+                                        Content="{x:Static p:Resources._Add_Device}" />
+                                    <Button
+                                        Grid.Column="3"
+                                        Margin="8,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding PlayMacroCommand}"
+                                        CommandParameter="{Binding SelectedIfThenModel.MacroIdElse}"
+                                        Content="{x:Static p:Resources._Play}">
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource PlayButton}" TargetType="{x:Type Button}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedIfThenModel.MacroIdElse}" Value="-1">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button
+                                        Grid.Column="4"
+                                        Margin="8,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding StopMacroCommand}"
+                                        CommandParameter="{Binding SelectedIfThenModel.MacroIdElse}"
+                                        Content="{x:Static p:Resources._Stop}">
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource StopButton}" TargetType="{x:Type Button}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedIfThenModel.MacroIdElse}" Value="-1">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                            </Expander.Header>
+                            <Grid>
+                                <ListBox
+                                    x:Name="ZwaveDevicesElse"
+                                    MinHeight="240"
+                                    Margin="4"
+                                    VerticalAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    dd:DragDrop.DropHandler="{Binding}"
+                                    dd:DragDrop.IsDragSource="True"
+                                    dd:DragDrop.IsDropTarget="True"
+                                    dd:DragDrop.UseDefaultDragAdorner="True"
+                                    Background="{StaticResource BigStoneBillson}"
+                                    BorderBrush="Black"
+                                    BorderThickness="2"
+                                    ItemTemplate="{StaticResource zwaveDeviceThenElseCard}"
+                                    ItemsSource="{Binding SelectedIfThenModel.ZwaveDevicesElse}"
+                                    SelectionMode="Single">
+                                    <ListBox.Resources>
+                                        <ContextMenu
+                                            x:Key="ItemContextMenu"
+                                            materialDesign:ThemeAssist.Theme="Dark"
+                                            Style="{StaticResource MaterialDesignContextMenu}">
+                                            <MenuItem
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.CopyCommand}"
+                                                CommandParameter="{Binding Path=.}"
+                                                Header="{x:Static p:Resources._Copy}"
+                                                Style="{StaticResource MaterialDesignMenuItem}" />
+                                            <MenuItem
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.PasteCommand}"
+                                                Header="{x:Static p:Resources._Paste}"
+                                                Style="{StaticResource MaterialDesignMenuItem}">
+                                                <MenuItem.CommandParameter>
+                                                    <MultiBinding Converter="{StaticResource conversor}">
+                                                        <MultiBinding.Bindings>
+                                                            <Binding Path="ItemsSource" RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ListBox}}" />
+                                                            <Binding Path="SelectedIndex" RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ListBox}}" />
+                                                        </MultiBinding.Bindings>
+                                                    </MultiBinding>
+                                                </MenuItem.CommandParameter>
+                                            </MenuItem>
+                                            <MenuItem
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.RemoveCommand}"
+                                                CommandParameter="{Binding Path=.}"
+                                                Header="{x:Static p:Resources._Remove}"
+                                                Style="{StaticResource MaterialDesignMenuItem}" />
+                                        </ContextMenu>
+                                    </ListBox.Resources>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style BasedOn="{StaticResource ListBoxItemStyle}" TargetType="{x:Type ListBoxItem}">
+                                            <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}" />
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                </ListBox>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="{x:Static p:Resources.Drag_the_device_here}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding SelectedIfThenModel.ZwaveDevicesElse.Count}" Value="0">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsSendingToCloud}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <Grid
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="#99000000">
+                                    <Grid.Style>
+                                        <Style TargetType="{x:Type Grid}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsSendingToCloud}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <ProgressBar
+                                        Grid.Column="1"
+                                        Margin="0,0,8,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        IsIndeterminate="True"
+                                        Style="{StaticResource MaterialDesignCircularProgressBar}" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Foreground="White"
+                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                        Text="{x:Static p:Resources.Loading}" />
+                                </Grid>
+                                <Border
+                                    Height="2"
+                                    Margin="0"
+                                    VerticalAlignment="Top"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    Background="Black"
+                                    Cursor="Hand">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                                    </Border.Effect>
+                                </Border>
+                            </Grid>
+                        </Expander>
+                    </Grid>
+                </ScrollViewer>
+            </materialDesign:DrawerHost>
+            <Border
+                Grid.Row="0"
+                Grid.ColumnSpan="3"
+                Margin="0"
+                materialDesign:ThemeAssist.Theme="Dark"
+                Background="Black"
+                Cursor="Hand">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                </Border.Effect>
+            </Border>
+            <Menu
+                materialDesign:ThemeAssist.Theme="Dark"
+                FocusVisualStyle="{x:Null}"
+                Style="{StaticResource MaterialDesignMenuBillson}">
+                <MenuItem Command="{Binding BackCommand}" Style="{StaticResource MaterialDesignMenuItem}">
+                    <MenuItem.Header>
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Kind="NavigateBefore" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                Text="{x:Static p:Resources.Back}" />
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </Menu>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <components:InfoIfThenUserControl
+                    Grid.Column="0"
+                    Margin="16,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom" />
+                <Grid Grid.Column="2" Margin="0,0,16,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Command="{Binding EnabledCommand}"
+                        IsChecked="{Binding SelectedIfThenModel.IsEnabled}">
+                        <ToggleButton.Style>
+                            <Style BasedOn="{StaticResource MaterialDesignSwitchDarkToggleButton}" TargetType="{x:Type ToggleButton}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedIfThenModel.ParseObject}" Value="{x:Null}">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding SelectedIfThenModel.RuleIds.Count}" Value="0">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+                    <TextBlock
+                        Grid.Column="0"
+                        Margin="0,0,8,0"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="{x:Static p:Resources.Enable}" />
+                </Grid>
+                <TextBox
+                    Grid.Column="3"
+                    Width="340"
+                    Margin="0,0,16,0"
+                    Padding="8"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Name}"
+                    materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    FontSize="12"
+                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                    MaxLength="60"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Text="{Binding SelectedIfThenModel.Name}" />
+                <Button
+                    Grid.Column="4"
+                    Margin="0,0,16,0"
+                    Background="{StaticResource ElegantBlue}"
+                    BorderBrush="{StaticResource ElegantBlue}"
+                    Command="{Binding RenameCommand}"
+                    Content="{x:Static p:Resources.Rename}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedAccentButton}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SelectedIfThenModel.ParseObject}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button
+                    Grid.Column="5"
+                    Margin="0,0,16,0"
+                    Background="{StaticResource AmericanRed}"
+                    BorderBrush="{StaticResource AmericanRed}"
+                    Command="{Binding DeleteAsyncCommand}"
+                    Content="{x:Static p:Resources.Delete}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedAccentButton}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SelectedIfThenModel.ParseObject}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button
+                    Grid.Column="6"
+                    Margin="0,0,16,0"
+                    Background="{StaticResource PastelGreen}"
+                    BorderBrush="{StaticResource PastelGreen}"
+                    Command="{Binding CreateCommand}"
+                    Content="{x:Static p:Resources.Save}"
+                    FocusVisualStyle="{x:Null}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFlatDarkBgButton}" TargetType="{x:Type Button}">
+                            <Setter Property="IsEnabled" Value="True" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding SelectedIfThenModel.ZwaveDevicesThen.Count}" Value="0" />
+                                        <Condition Binding="{Binding SelectedIfThenModel.ZwaveDevicesElse.Count}" Value="0" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </MultiDataTrigger>
+                                <DataTrigger Binding="{Binding SelectedIfThenModel.ZwaveDevicesIf.Count}" Value="0">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button
+                    Grid.Column="7"
+                    Margin="0,0,16,0"
+                    Command="{Binding NewCommand}"
+                    Content="{x:Static p:Resources.New}"
+                    FocusVisualStyle="{x:Null}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource NewButton}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SelectedIfThenModel.ZwaveDevicesThen.Count}" Value="0">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </Grid>
+    </materialDesign:DialogHost>
+</Page>

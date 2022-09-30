@@ -1,0 +1,462 @@
+﻿<UserControl
+    x:Class="QRCodeGenerator.View.Generator.GeneratorUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:QRCodeGenerator.Properties"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:view="clr-namespace:QRCodeGenerator.View"
+    x:Name="generatorPage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="Transparent"
+    DataContext="{Binding Generator, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <materialDesign:Transitioner SelectedIndex="{Binding SelectedIndexTransitioner}">
+        <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
+            <view:SplashScreenUserControl />
+        </materialDesign:TransitionerSlide>
+        <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{StaticResource headerHeight}" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Border Background="Black">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="8" ShadowDepth="0" />
+                    </Border.Effect>
+                </Border>
+                <Border Background="{StaticResource BigStoneBillson}" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <Button
+                            Margin="4,0,0,0"
+                            Command="{Binding ExportImageCommand}"
+                            FocusVisualStyle="{x:Null}"
+                            Foreground="{StaticResource DriftwoodBillson}"
+                            Style="{StaticResource MaterialDesignToolButton}"
+                            ToolTip="{x:Static p:Resources.Export}">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="{StaticResource packIconHeight}"
+                                    Height="{StaticResource packIconHeight}"
+                                    VerticalAlignment="Bottom"
+                                    Kind="Image" />
+                                <TextBlock
+                                    Margin="4,0,0,1"
+                                    VerticalAlignment="Bottom"
+                                    Text="{x:Static p:Resources.Export}" />
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            Margin="4,0,0,0"
+                            Command="{Binding PrintCommand}"
+                            FocusVisualStyle="{x:Null}"
+                            Foreground="{StaticResource DriftwoodBillson}"
+                            Style="{StaticResource MaterialDesignToolButton}"
+                            ToolTip="{x:Static p:Resources.Print}">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="{StaticResource packIconHeight}"
+                                    Height="{StaticResource packIconHeight}"
+                                    VerticalAlignment="Bottom"
+                                    Kind="Printer" />
+                                <TextBlock
+                                    Margin="4,0,0,1"
+                                    VerticalAlignment="Bottom"
+                                    Text="{x:Static p:Resources.Print}" />
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            Margin="4,0,0,0"
+                            Command="{Binding CopyImageCommand}"
+                            FocusVisualStyle="{x:Null}"
+                            Foreground="{StaticResource DriftwoodBillson}"
+                            Style="{StaticResource MaterialDesignToolButton}"
+                            ToolTip="{x:Static p:Resources.Copy_Image}">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="{StaticResource packIconHeight}"
+                                    Height="{StaticResource packIconHeight}"
+                                    VerticalAlignment="Bottom"
+                                    Kind="ContentCopy" />
+                                <TextBlock
+                                    Margin="4,0,0,1"
+                                    VerticalAlignment="Bottom"
+                                    Text="{x:Static p:Resources.Copy_Image}" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Border>
+                <materialDesign:DialogHost
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    DialogContent="{Binding DialogContent}"
+                    IsOpen="{Binding IsOpenDialogHost}">
+                    <Grid Margin="32" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="16" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="16" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:MaterialDateDisplay
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="4"
+                            materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                            FocusVisualStyle="{x:Null}"
+                            Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Margin="0,0,8,4"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                            FontSize="14"
+                            Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{x:Static p:Resources.Start}" />
+                        <DatePicker
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="100"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            materialDesign:HintAssist.Hint="{x:Static p:Resources.Select_date}"
+                            materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                            DisplayDateStart="{Binding Source={x:Static sys:DateTime.Now}, Mode=OneWay}"
+                            Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                            SelectedDate="{Binding SelectedStartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDateChanged">
+                                    <i:InvokeCommandAction Command="{Binding GenerateQRCodeCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </DatePicker>
+                        <materialDesign:TimePicker
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Width="120"
+                            Margin="16,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            materialDesign:HintAssist.Hint="{x:Static p:Resources.Select_time}"
+                            materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                            FocusVisualStyle="{x:Null}"
+                            Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                            Is24Hours="{Binding Is24Hours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            SelectedTime="{Binding SelectedStartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Style="{StaticResource MaterialDesignFloatingHintTimePicker}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedTimeChanged">
+                                    <i:InvokeCommandAction Command="{Binding GenerateQRCodeCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:TimePicker>
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Margin="0,0,0,4"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                            FontSize="14"
+                            Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{x:Static p:Resources.End}" />
+                        <DatePicker
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Width="100"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            materialDesign:HintAssist.Hint="{x:Static p:Resources.Select_date}"
+                            materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                            DisplayDateStart="{Binding SelectedStartDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                            Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                            SelectedDate="{Binding SelectedEndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDateChanged">
+                                    <i:InvokeCommandAction Command="{Binding GenerateQRCodeCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </DatePicker>
+                        <materialDesign:TimePicker
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            Width="120"
+                            Margin="16,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            materialDesign:HintAssist.Hint="{x:Static p:Resources.Select_time}"
+                            materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                            Focusable="True"
+                            Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                            Is24Hours="{Binding Is24Hours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            SelectedTime="{Binding SelectedEndTime, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                            Style="{StaticResource MaterialDesignFloatingHintTimePicker}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedTimeChanged">
+                                    <i:InvokeCommandAction Command="{Binding GenerateQRCodeCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:TimePicker>
+                        <Image
+                            x:Name="ImgQRCode"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="4"
+                            Width="178"
+                            Height="178"
+                            Margin="4,0"
+                            VerticalAlignment="Top"
+                            Source="{Binding ImageSource, UpdateSourceTrigger=PropertyChanged}">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ImageSource}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Button
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="4"
+                            Margin="32,0,12,12"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Background="{StaticResource DriftwoodBillson}"
+                            BorderBrush="{StaticResource DriftwoodBillson}"
+                            Command="{Binding ExportImageCommand}">
+                            <Button.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="{x:Type Button}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=ImgQRCode, Path=IsMouseOver}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon VerticalAlignment="Bottom" Kind="Download" />
+                                <TextBlock VerticalAlignment="Bottom" Text="{x:Static p:Resources.Export}" />
+                            </StackPanel>
+                        </Button>
+                        <TextBox
+                            x:Name="TxtComment"
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="4"
+                            Margin="0,0,0,8"
+                            materialDesign:HintAssist.Hint="{x:Static p:Resources.Comment}"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            MaxLength="20"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                        <TextBox
+                            Grid.Row="8"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Margin="0,0,0,16"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Bottom"
+                            materialDesign:HintAssist.Hint="{x:Static p:Resources.From}"
+                            materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                            materialDesign:ValidationAssist.Background="Transparent"
+                            Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                            IsEnabled="False"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text="{Binding SelectedEmail.Address}" />
+                        <Grid
+                            Grid.Row="9"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBox
+                                x:Name="TxtEmail"
+                                Grid.Column="0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                materialDesign:HintAssist.Hint="{x:Static p:Resources.To}"
+                                materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                                materialDesign:ValidationAssist.Background="Transparent"
+                                Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                Text="{Binding Emails, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Enter" Command="{Binding AddEmailsCommand}" />
+                                </TextBox.InputBindings>
+                            </TextBox>
+                            <Label
+                                Grid.Row="1"
+                                Margin="0,0,0,4"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                                materialDesign:ValidationAssist.Background="Transparent"
+                                Content="{x:Static p:Resources.Add_one_or_more_email_addresses_separated_by_commas__Press__Enter__to_confirm_}"
+                                FontSize="10"
+                                Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                                Opacity=".6" />
+                            <Label
+                                Grid.Row="3"
+                                Margin="0,0,0,4"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                                materialDesign:ValidationAssist.Background="Transparent"
+                                Content="{x:Static p:Resources.Configure_email_in_the_email_configuration_tab_}"
+                                Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                                Opacity=".6">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=IsConfiguredEmail}" Value="False">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                            <ListBox
+                                x:Name="LbTo"
+                                Grid.Row="2"
+                                Width="480"
+                                Height="90"
+                                HorizontalAlignment="Center"
+                                Background="#22000000"
+                                BorderBrush="{StaticResource PrimaryHueDarkBrush}"
+                                BorderThickness="1"
+                                ItemContainerStyle="{StaticResource SelectionWithoutStyle}"
+                                ItemsSource="{Binding To}">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="#22000000" CornerRadius="8">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    Margin="8"
+                                                    Foreground="{Binding ElementName=LbTo, Path=DataContext.Foreground, UpdateSourceTrigger=PropertyChanged}"
+                                                    Text="{Binding Path=.}" />
+                                                <Button
+                                                    Grid.Column="1"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Top"
+                                                    Command="{Binding ElementName=LbTo, Path=DataContext.RemoveEmailCommand}"
+                                                    CommandParameter="{Binding Path=.}"
+                                                    Style="{StaticResource MaterialDesignToolButton}">
+                                                    <materialDesign:PackIcon Foreground="{Binding ElementName=LbTo, Path=DataContext.Foreground, UpdateSourceTrigger=PropertyChanged}" Kind="Delete" />
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button
+                                Grid.Row="2"
+                                Margin="0,-16,-30,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Command="{Binding DeleteAllCommand}"
+                                FocusVisualStyle="{x:Null}"
+                                ToolTip="{x:Static p:Resources.Delete_All}">
+                                <Button.Style>
+                                    <Style BasedOn="{StaticResource MaterialDesignFloatingActionMiniButton}" TargetType="Button">
+                                        <Setter Property="IsEnabled" Value="True" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=To.Count}" Value="0">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <materialDesign:PackIcon Kind="RemoveCircleMultipleOutline" />
+                            </Button>
+                            <Button
+                                Grid.Row="3"
+                                Margin="0,16,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Background="{StaticResource DriftwoodBillson}"
+                                BorderBrush="{StaticResource DriftwoodBillson}"
+                                Command="{Binding SendToEmailCommand}"
+                                FocusVisualStyle="{x:Null}">
+                                <StackPanel Margin="0,0,0,2" Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,8,0"
+                                        VerticalAlignment="Bottom"
+                                        Text="{x:Static p:Resources.Send}" />
+                                    <materialDesign:PackIcon
+                                        Margin="0,0,0,1"
+                                        VerticalAlignment="Bottom"
+                                        Kind="Send" />
+                                </StackPanel>
+                                <Button.Style>
+                                    <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                                        <Setter Property="IsEnabled" Value="True" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=To.Count}" Value="0">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=IsConfiguredEmail}" Value="False">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </materialDesign:DialogHost>
+            </Grid>
+        </materialDesign:TransitionerSlide>
+    </materialDesign:Transitioner>
+</UserControl>

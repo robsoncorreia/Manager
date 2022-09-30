@@ -1,0 +1,129 @@
+﻿<UserControl
+    x:Class="QRCodeGenerator.View.History.HistoryUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:QRCodeGenerator.Properties"
+    Background="Transparent"
+    DataContext="{Binding History, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource headerHeight}" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Background="Black">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="8" ShadowDepth="0" />
+            </Border.Effect>
+        </Border>
+        <Border Background="{StaticResource BigStoneBillson}" BorderBrush="Transparent">
+            <Button
+                Margin="4,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding ClearAllAsyncCommand}"
+                DockPanel.Dock="Left"
+                FocusVisualStyle="{x:Null}"
+                Foreground="{StaticResource DriftwoodBillson}"
+                Style="{StaticResource MaterialDesignToolButton}"
+                ToolTip="{x:Static p:Resources.Delete_All}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                        Width="{StaticResource packIconHeight}"
+                        Height="{StaticResource packIconHeight}"
+                        VerticalAlignment="Bottom"
+                        Kind="DeleteVariant" />
+                    <TextBlock
+                        Margin="4,0,0,1"
+                        VerticalAlignment="Bottom"
+                        Text="{x:Static p:Resources.Delete_All}" />
+                </StackPanel>
+            </Button>
+        </Border>
+        <materialDesign:DialogHost
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Background="Transparent"
+            DialogContent="{Binding DialogContent}"
+            IsOpen="{Binding IsOpenDialogHost}">
+            <Grid Margin="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <DataGrid
+                    Grid.Row="1"
+                    VerticalContentAlignment="Center"
+                    materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                    AutoGenerateColumns="False"
+                    Background="#50000000"
+                    BorderBrush="#99000000"
+                    BorderThickness="1"
+                    FontSize="10"
+                    ItemsSource="{Binding QRCodes}"
+                    Style="{StaticResource MaterialDesignDataGrid}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Binding="{Binding CreatedAt, StringFormat=d}"
+                            CellStyle="{StaticResource DataGridContentCellCentering}"
+                            Header="{x:Static p:Resources.Created_At}"
+                            IsReadOnly="True" />
+                        <DataGridTextColumn
+                            Binding="{Binding StartDate, StringFormat=d}"
+                            CellStyle="{StaticResource DataGridContentCellCentering}"
+                            Header="{x:Static p:Resources.Start_date}"
+                            IsReadOnly="True" />
+                        <DataGridTextColumn
+                            Binding="{Binding StartTime, StringFormat=t}"
+                            CellStyle="{StaticResource DataGridContentCellCentering}"
+                            Header="{x:Static p:Resources.Start_time}"
+                            IsReadOnly="True" />
+                        <DataGridTextColumn
+                            Binding="{Binding EndDate, StringFormat=d}"
+                            CellStyle="{StaticResource DataGridContentCellCentering}"
+                            Header="{x:Static p:Resources.End_date}"
+                            IsReadOnly="True" />
+                        <DataGridTextColumn
+                            Binding="{Binding EndTime, StringFormat=t}"
+                            CellStyle="{StaticResource DataGridContentCellCentering}"
+                            Header="{x:Static p:Resources.End_time}"
+                            IsReadOnly="True" />
+
+                        <DataGridTemplateColumn Header="{x:Static p:Resources.To}" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Expander
+                                        Margin="0"
+                                        FocusVisualStyle="{x:Null}"
+                                        Foreground="White"
+                                        Header="{x:Static p:Resources.To}"
+                                        Style="{x:Null}">
+                                        <ListBox ItemContainerStyle="{StaticResource SelectionWithoutStyle}" ItemsSource="{Binding To}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="#20000000" CornerRadius="4">
+                                                        <Label Margin="8" Content="{Binding Path=.}" />
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </Expander>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </materialDesign:DialogHost>
+    </Grid>
+</UserControl>

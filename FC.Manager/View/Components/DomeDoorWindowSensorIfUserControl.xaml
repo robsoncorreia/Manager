@@ -1,0 +1,219 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Components.DomeDoorWindowSensorIfUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:FC.Manager.View.Components"
+    xmlns:core="clr-namespace:System;assembly=mscorlib"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:device="clr-namespace:FC.Domain.Model.Device;assembly=FC.Domain"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ObjectDataProvider
+            x:Key="operatorType"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="device:LogicGateIfThen" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="operatorTypeIfThen"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="device:OperatorTypeIfThen" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <components:LogicGateIfThenUserControl Grid.Column="0" />
+        <Border
+            Grid.Column="1"
+            Width="200"
+            VerticalAlignment="Center"
+            Background="{StaticResource TundoraBillson}"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="2">
+            <Grid Grid.Row="1" Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <components:ZwaveDeviceInformationUserControl
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3" />
+                <Grid
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox
+                        x:Name="CbEndpoints"
+                        Grid.Row="1"
+                        Margin="0,8"
+                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Channel}"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        Foreground="{StaticResource MaterialDesignDarkForeground}"
+                        ItemsSource="{Binding Endpoints}"
+                        SelectedIndex="{Binding SelectedIndexEndpoint}">
+                        <ComboBox.Style>
+                            <Style BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}" TargetType="{x:Type ComboBox}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Endpoints.Count}" Value="1">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Endpoints.Count}" Value="0">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Channel}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox
+                        x:Name="CbLogicalComparators"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,8"
+                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Logical_comparators}"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        Foreground="{StaticResource MaterialDesignDarkForeground}"
+                        ItemsSource="{Binding Source={StaticResource operatorTypeIfThen}}"
+                        SelectedIndex="{Binding SelectedIndexOperatorType}"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource enumDescriptionConverter}}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <!--  OnOFF  -->
+                    <StackPanel
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal">
+                        <ToggleButton
+                            x:Name="TbDoorWindow"
+                            FocusVisualStyle="{x:Null}"
+                            IsChecked="{Binding ElementName=CbEndpoints, Path=SelectedItem.IsOn, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"
+                            Style="{StaticResource MaterialDesignActionToggleButton}"
+                            ToolTip="MaterialDesignActionLightToggleButton">
+                            <ToggleButton.Content>
+                                <materialDesign:PackIcon Kind="DoorOpen" />
+                            </ToggleButton.Content>
+                            <materialDesign:ToggleButtonAssist.OnContent>
+                                <materialDesign:PackIcon Kind="DoorClosed" />
+                            </materialDesign:ToggleButtonAssist.OnContent>
+                        </ToggleButton>
+                        <TextBlock
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            FocusVisualStyle="{x:Null}"
+                            Foreground="White">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Text" Value="{x:Static p:Resources.Open_}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=TbDoorWindow, Path=IsChecked}" Value="True">
+                                            <Setter Property="Text" Value="{x:Static p:Resources.Closed}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+                <components:IfthenControlsUserControl
+                    Grid.Row="0"
+                    Grid.RowSpan="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch" />
+            </Grid>
+        </Border>
+        <Border Grid.Column="1" CornerRadius="2">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Background" Value="Black" />
+                    <Setter Property="Opacity" Value=".9" />
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChangedDevice}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <Grid>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    Text="{x:Static p:Resources.Device_not_found}" />
+                <Button
+                    Margin="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Background="Red"
+                    BorderBrush="Red"
+                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Page}}, Path=DataContext.RemoveCommand}"
+                    CommandParameter="{Binding Path=.}"
+                    Foreground="White"
+                    ToolTip="{x:Static p:Resources.Delete}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="{x:Type Button}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Setter Property="Opacity" Value=".6" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Border, Mode=FindAncestor}, Path=IsMouseOver}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <materialDesign:PackIcon Kind="Delete" />
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

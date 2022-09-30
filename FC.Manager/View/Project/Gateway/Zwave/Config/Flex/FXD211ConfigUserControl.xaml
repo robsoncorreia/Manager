@@ -1,0 +1,1876 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Project.Gateway.Zwave.Config.Flex.FXD211ConfigUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    xmlns:validator="clr-namespace:FC.Domain.Validator;assembly=FC.Domain"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    DataContext="{Binding FXD211Config, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <materialDesign:DialogHost
+        DialogContent="{Binding DialogContent}"
+        FocusVisualStyle="{x:Null}"
+        IsOpen="{Binding IsOpenDialogHost}">
+        <Expander
+            Padding="16"
+            materialDesign:ThemeAssist.Theme="Dark"
+            Background="#60000000"
+            BorderBrush="Black"
+            BorderThickness="2"
+            Header="{x:Static p:Resources.Advanced_Settings}">
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="{x:Type materialDesign:PackIcon}">
+                        <Setter Property="Margin" Value="8,0,0,0" />
+                        <Setter Property="Foreground" Value="{StaticResource DenimBillson}" />
+                    </Style>
+                    <Style BasedOn="{StaticResource {x:Type ToolTip}}" TargetType="ToolTip">
+                        <Style.Resources>
+                            <Style TargetType="ContentPresenter">
+                                <Style.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextWrapping" Value="Wrap" />
+                                    </Style>
+                                </Style.Resources>
+                            </Style>
+                        </Style.Resources>
+                        <Setter Property="MaxWidth" Value="233" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Margin="0,0,0,16"
+                    Command="{Binding OpenDocumentationCommand}"
+                    Content="{x:Static p:Resources.Documentation}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}" />
+                <Separator
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Foreground="PaleVioletRed"
+                    Text="{x:Static p:Resources.Make_sure_the_device_is_turned_on}"
+                    ToolTip="{x:Static p:Resources.Make_sure_the_device_is_turned_on}" />
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="2"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetAllCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get_All}" />
+                <Separator
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Margin="8,0"
+                    Text="{x:Static p:Resources.Parameter}" />
+                <TextBlock
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Margin="8,0"
+                    Text="{x:Static p:Resources.Size}" />
+                <TextBlock
+                    Grid.Row="7"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Center"
+                    Text="{x:Static p:Resources.Value}" />
+                <TextBlock
+                    Grid.Row="7"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="2"
+                    Margin="8,0"
+                    HorizontalAlignment="Center"
+                    Text="{x:Static p:Resources.Actions}" />
+                <Separator
+                    Grid.Row="8"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="9"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <TextBlock
+                    Grid.Row="9"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="9" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Save_or_not_save_the_status_of_the_switch_in_case_of_power_failure}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Save_or_not_save_the_status_of_the_switch_in_case_of_power_failure}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_Does_not_save__when_powered_again__the_circuit_will_be_turned_off_}" />
+                </Grid>
+                <StackPanel
+                    Grid.Row="9"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    Orientation="Horizontal">
+                    <ToggleButton
+                        x:Name="TbSavedStatus"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        IsChecked="{Binding IsSavedStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock
+                        Width="72"
+                        Margin="8,0,0,2"
+                        VerticalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Text" Value="{x:Static p:Resources.Disabled}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsChecked, ElementName=TbSavedStatus}" Value="True">
+                                        <Setter Property="Text" Value="{x:Static p:Resources.Enabled}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+                <Button
+                    Grid.Row="9"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetSavedStatusCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="9"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetSavedStatusCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+                <Separator
+                    Grid.Row="10"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="11"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="2" />
+                <TextBlock
+                    Grid.Row="11"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="2" />
+                <Grid Grid.Row="11" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.External_key_type}"
+                        ToolTip="{x:Static p:Resources.External_key_type}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_Push_button_switch_}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtExternalkeyType"
+                    Grid.Row="11"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="0 ~ 2"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="ExternalkeyType"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="2" Min="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="11"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetExternalkeyTypeCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="11"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetExternalkeyTypeCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtExternalkeyType}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="12"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="13"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="3" />
+                <TextBlock
+                    Grid.Row="13"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="13" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources._2_position_switch_Toggle_or_Bistavel}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources._2_position_switch_Toggle_or_Bistavel}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_For_switches_with_the_specified_On___Off_position_}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtPositionSwitchToggleBistavel"
+                    Grid.Row="13"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="0 ~ 1"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="PositionSwitchToggleBistavel"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="1" Min="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="13"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetPositionSwitchToggleBistavelCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="13"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetPositionSwitchToggleBistavelCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtPositionSwitchToggleBistavel}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="18"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="19"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="4" />
+                <TextBlock
+                    Grid.Row="19"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="19" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.All_on_All_off}"
+                        ToolTip="{x:Static p:Resources.All_on_All_off}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_forbid_ALL_ON__forbid_ALL_OFF}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtAllOnAllOff"
+                    Grid.Row="19"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="0,1,2,255"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="AllOnAllOff"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="255" Min="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="19"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetAllOnAllOffCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="19"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetAllOnAllOffCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtAllOnAllOff}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="20"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="21"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="5" />
+                <TextBlock
+                    Grid.Row="21"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="21" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Minimum_brightness_level}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Minimum_brightness_level}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._1_98_percentage_brightness_level}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtMinimumBrightnessLevel"
+                    Grid.Row="21"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="1 ~ 98"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="MinimumBrightnessLevel"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="98" Min="1" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="21"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetMinimumBrightnessLevelCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="21"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetMinimumBrightnessLevelCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtMinimumBrightnessLevel}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="23"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="24"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="6" />
+                <TextBlock
+                    Grid.Row="24"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="24" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Maximum_brightness_level}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._2_99_percentage_brightness_level}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtMaximumBrightnessLevel"
+                    Grid.Row="24"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="2 ~ 99"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="MaximumBrightnessLevel"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="99" Min="2" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="24"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetMaximumBrightnessLevelCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="24"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetMaximumBrightnessLevelCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtMaximumBrightnessLevel}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="25"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="26"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="7" />
+                <TextBlock
+                    Grid.Row="26"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="2" />
+                <Grid Grid.Row="26" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Simple_dimmer_step_time__Manual_}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources.Maximum_2_55_sec__in_10ms_steps}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtSimpleDimmerStepTimeManual"
+                    Grid.Row="26"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="1 ~ 65535 (10 ms)"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SimpleDimmerStepTimeManual"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="65535" Min="1" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="26"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetSimpleDimmerStepTimeManualCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="26"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetSimpleDimmerStepTimeManualCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtSimpleDimmerStepTimeManual}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="29"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="30"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="8" />
+                <TextBlock
+                    Grid.Row="30"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="30" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Simple_dimmer_pitch_size__Manual_}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Simple_dimmer_pitch_size__Manual_}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._1___99_Percentage_value__modifications_are_not_recommended_}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtSimpleDimmerPitchSizeManual"
+                    Grid.Row="30"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="1 ~ 99"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SimpleDimmerPitchSizeManual"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="99" Min="1" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="30"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetSimpleDimmerPitchSizeManualCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="30"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetSimpleDimmerPitchSizeManualCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtSimpleDimmerPitchSizeManual}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="33"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="34"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="9" />
+                <TextBlock
+                    Grid.Row="34"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="2" />
+                <Grid Grid.Row="34" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Simple_dimmer_step_time__Auto_}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Simple_dimmer_step_time__Auto_}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources.Maximum_2_55_sec__in_10ms_steps}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtSimpleDimmerStepTimeAuto"
+                    Grid.Row="34"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="1 ~ 65535 (10 ms)"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SimpleDimmerStepTimeAuto"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="65535" Min="1" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="34"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetSimpleDimmerStepTimeAutoCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="34"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetSimpleDimmerStepTimeAutoCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtSimpleDimmerStepTimeAuto}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="35"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="36"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="10" />
+                <TextBlock
+                    Grid.Row="36"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="36" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Simple_dimmer_step_size__Auto_}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Simple_dimmer_step_size__Auto_}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._1___99_Percentage_value__modifications_are_not_recommended_}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtSimpleDimmerStepSizeAuto"
+                    Grid.Row="36"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="1 ~ 99"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SimpleDimmerStepSizeAuto"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="99" Min="1" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="36"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetSimpleDimmerStepSizeAutoCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="36"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetSimpleDimmerStepSizeAutoCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtSimpleDimmerStepSizeAuto}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="37"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="38"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="11" />
+                <TextBlock
+                    Grid.Row="38"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="2" />
+                <Grid Grid.Row="38" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Timer_function_Auto_off}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Timer_function_Auto_off}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_Disables_the_function_1_255_Value_in_seconds_}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtTimerFunctionAutoOff"
+                    Grid.Row="38"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="0 ~ 255 (sec.)"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="TimerFunctionAutoOff"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="255" Min="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="38"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetTimerFunctionAutoOffCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="38"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetTimerFunctionAutoOffCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtTimerFunctionAutoOff}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="39"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="40"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="13" />
+                <TextBlock
+                    Grid.Row="40"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="40" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.One_click_of_S1}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.One_click_of_S1}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_Switches_between_off_and_the_last_saved_dimmer_level_}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtOneClickS1"
+                    Grid.Row="40"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="0 ~ 99"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="OneClickS1"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="99" Min="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="40"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetOneClickS1Command}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="40"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetOneClickS1Command}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtOneClickS1}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="41"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="42"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="14" />
+                <TextBlock
+                    Grid.Row="42"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="42" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Double_click_of_S1}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Double_click_of_S1}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_Disables_the_function__1_Achieves_maximum_brightness_}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtDoubleClickS1"
+                    Grid.Row="42"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="0 ~ 1"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="DoubleClickS1"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="1" Min="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="42"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetDoubleClickS1Command}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="42"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetDoubleClickS1Command}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtDoubleClickS1}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="43"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="44"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="17" />
+                <TextBlock
+                    Grid.Row="44"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="44" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.S2_functions}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.S2_functions}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_Connection_with_double_switches_}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtS2Functions"
+                    Grid.Row="44"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="0 ~ 255"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="S2Functions"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="255" Min="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="44"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetS2FunctionsCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="44"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetS2FunctionsCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtS2Functions}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="45"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="46"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="19" />
+                <TextBlock
+                    Grid.Row="46"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="46" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Scene_id_sent_to_AG1_when_there_is_a_click_on_S2}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Scene_id_sent_to_AG1_when_there_is_a_click_on_S2}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_Scene_Activation_disabled}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtSceneIdSentAG1ClickS2"
+                    Grid.Row="46"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="0 ~ 255"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SceneIdSentAG1ClickS2"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="255" Min="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="46"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetSceneIdSentAG1ClickS2Command}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="46"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetSceneIdSentAG1ClickS2Command}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtSceneIdSentAG1ClickS2}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="47"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="48"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="20" />
+                <TextBlock
+                    Grid.Row="48"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="48" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Scene_id_sent_to_AG1_when_S2_double_click}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Scene_id_sent_to_AG1_when_S2_double_click}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_Scene_Activation_disabled_1___255_Sends__Activation_CC__to_AG1_with_the_specified_scene_id}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtSceneIdSentAG1S2DoubleClick"
+                    Grid.Row="48"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="0 ~ 255"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SceneIdSentAG1S2DoubleClick"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="255" Min="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="48"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetSceneIdSentAG1S2DoubleClickCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="48"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetSceneIdSentAG1S2DoubleClickCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtSceneIdSentAG1S2DoubleClick}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="49"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="50"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="21" />
+                <TextBlock
+                    Grid.Row="50"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="50" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Scene_id_sent_to_AG1_when_holding_S2}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Scene_id_sent_to_AG1_when_holding_S2}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._0_Scene_Activation_disabled_1___255_Sends__Activation_CC__to_AG1_with_the_specified_scene_id}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtSceneIdSentAG1HoldingS2"
+                    Grid.Row="50"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="0 ~ 255"
+                    materialDesign:ValidationAssist.Suppress="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SceneIdSentAG1HoldingS2"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="255" Min="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="50"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetSceneIdSentAG1HoldingS2Command}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Get}" />
+                <Button
+                    Grid.Row="50"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetSceneIdSentAG1HoldingS2Command}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtSceneIdSentAG1HoldingS2}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="51"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="52"
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="255" />
+                <TextBlock
+                    Grid.Row="52"
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Grid Grid.Row="52" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Factory_setting}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{x:Static p:Resources.Factory_setting}" />
+                    <materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._85_Restore_factory_settings}" />
+                </Grid>
+                <TextBox
+                    x:Name="TxtFactorySetting"
+                    Grid.Row="52"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="85"
+                    materialDesign:ValidationAssist.Suppress="True"
+                    IsReadOnly="True">
+                    <TextBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="true">
+                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="FactorySetting"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NumberRangeValidationRule Max="85" Min="85" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="52"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetFactorySettingCommand}"
+                    CommandParameter="{Binding ZwaveDetailDevice.SelectedProjectModel, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Set}"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+            </Grid>
+        </Expander>
+    </materialDesign:DialogHost>
+</UserControl>

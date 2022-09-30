@@ -1,0 +1,950 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Project.Gateway.Zwave.Config.Flex.ZXT600ConfigUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:enum="clr-namespace:FC.Domain.Model.Device;assembly=FC.Domain"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    xmlns:core="clr-namespace:System;assembly=mscorlib"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:Name="zxt600Config"
+    DataContext="{Binding ZXT600Config, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=zxt600Config}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <i:InvokeCommandAction Command="{Binding UnloadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <ObjectDataProvider
+            x:Key="temperatureOffsetValueEnum"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="{x:Type enum:TemperatureOffsetValueEnum}" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="autoReportCondition"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="{x:Type enum:AutoReportCondition}" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="autoReportConditionTimeInterval"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="{x:Type enum:AutoReportConditionTimeInterval}" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <materialDesign:DialogHost
+        Margin="-16"
+        Padding="0"
+        DialogContent="{Binding DialogContent}"
+        FocusVisualStyle="{x:Null}"
+        IsOpen="{Binding IsOpenDialogHost}">
+        <materialDesign:DialogHost IsOpen="{Binding IsOpenDialogHostBrand}">
+            <materialDesign:DialogHost.DialogContent>
+                <Border
+                    Width="253"
+                    Height="164"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="{StaticResource Dark}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="8"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                            Text="{x:Static p:Resources.Choose_your_air_conditioner_brand}"
+                            TextWrapping="Wrap" />
+                        <ListBox
+                            x:Name="LbBrands"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="8"
+                            VerticalAlignment="Center"
+                            materialDesign:ThemeAssist.Theme="Dark"
+                            ItemsSource="{Binding BrandsFound}"
+                            SelectedItem="{Binding SelectedBrand}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectionChangedBrandCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListBox>
+                    </Grid>
+                </Border>
+            </materialDesign:DialogHost.DialogContent>
+            <Grid Margin="16">
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="Foreground" Value="White" />
+                    </Style>
+                    <Style BasedOn="{StaticResource {x:Type ToolTip}}" TargetType="ToolTip">
+                        <Style.Resources>
+                            <Style TargetType="ContentPresenter">
+                                <Style.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextWrapping" Value="Wrap" />
+                                    </Style>
+                                </Style.Resources>
+                            </Style>
+                        </Style.Resources>
+                        <Setter Property="MaxWidth" Value="233" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <!--#region Header-->
+                <Separator
+                    Grid.Row="0"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="4,0,4,2"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Text="{x:Static p:Resources.Parameter}" />
+                <Separator
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="8,0,8,2"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Text="{x:Static p:Resources.Size}" />
+                <Separator
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Separator
+                    Grid.Row="2"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Header-->
+                <!--#region Download Documentation-->
+                <Separator
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="4"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources.Documentation}" />
+                <Separator
+                    Grid.Row="3"
+                    Grid.Column="6"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="7"
+                    Grid.ColumnSpan="2"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    Command="{Binding ZwaveDeviceConfig.GetDocumentationCommand, Source={StaticResource Locator}}"
+                    Content="{x:Static p:Resources.Download}"
+                    FocusVisualStyle="{x:Null}"
+                    Style="{StaticResource DownloadButton}" />
+                <Separator
+                    Grid.Row="4"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Download Documentation-->
+                <!--#region Code-->
+                <TextBlock
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="27" />
+                <Separator
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <TextBlock
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="2" />
+                <Separator
+                    Grid.Row="5"
+                    Grid.Column="3"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <ComboBox
+                    x:Name="CbBrands"
+                    Grid.Row="5"
+                    Grid.Column="4"
+                    Margin="8"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Brand}"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    IsEditable="True"
+                    ItemsSource="{Binding Codes}"
+                    SelectedIndex="{Binding SelectedIndexCode}"
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                <ComboBox
+                    x:Name="CbCodes"
+                    Grid.Row="5"
+                    Grid.Column="5"
+                    Margin="8"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Code}"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    ItemsSource="{Binding ElementName=CbBrands, Path=SelectedItem.Codes}"
+                    SelectedIndex="{Binding ElementName=CbBrands, Path=SelectedItem.SelectedIndexCode}">
+                    <ComboBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}" TargetType="{x:Type ComboBox}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=CbBrands, Path=SelectedItem.Codes.Count}" Value="1">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                    <Setter Property="Opacity" Value="0.5" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ComboBox.Style>
+                </ComboBox>
+                <Separator
+                    Grid.Row="5"
+                    Grid.Column="6"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Button
+                    Grid.Row="5"
+                    Grid.Column="7"
+                    Margin="8,0"
+                    Command="{Binding GetModelCommand}"
+                    CommandParameter="{Binding ElementName=CbCodes, Path=SelectedItem}"
+                    Content="{x:Static p:Resources.Get}"
+                    FocusVisualStyle="{x:Null}"
+                    Style="{StaticResource GetFlatButton}" />
+                <Button
+                    Grid.Row="5"
+                    Grid.Column="8"
+                    Margin="0,0,8,0"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Right"
+                    Command="{Binding ZXT600Config.SetModelCommand, Source={StaticResource Locator}}"
+                    CommandParameter="{Binding ElementName=CbCodes, Path=SelectedItem}"
+                    Content="{x:Static p:Resources.Set}"
+                    FocusVisualStyle="{x:Null}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource SetFlatButton}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=CbBrands, Path=SelectedItem}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="6"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Code-->
+                <!--#region Swing-->
+                <TextBlock
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="33" />
+                <Separator
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <TextBlock
+                    Grid.Row="7"
+                    Grid.Column="2"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Separator
+                    Grid.Row="7"
+                    Grid.Column="3"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <StackPanel
+                    Grid.Row="7"
+                    Grid.Column="4"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="8,0,8,2"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Swing}" />
+                    <ToggleButton IsChecked="{Binding IsSwing}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SetSwingCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                    <TextBlock Margin="8,0,0,0" FontWeight="Bold">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Text" Value="{x:Static p:Resources.Off}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsSwing}" Value="True">
+                                        <Setter Property="Text" Value="{x:Static p:Resources.Auto}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+                <Separator
+                    Grid.Row="7"
+                    Grid.Column="6"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Button
+                    Grid.Row="7"
+                    Grid.Column="7"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetSwingCommand}"
+                    Content="{x:Static p:Resources.Get}"
+                    FocusVisualStyle="{x:Null}"
+                    Style="{StaticResource GetFlatButton}" />
+                <Separator
+                    Grid.Row="8"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Swing-->
+                <!--#region Battery-->
+                <Separator
+                    Grid.Row="9"
+                    Grid.Column="3"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <StackPanel
+                    Grid.Row="9"
+                    Grid.Column="4"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="8,0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Battery}" />
+                    <materialDesign:PackIcon
+                        VerticalAlignment="Center"
+                        Foreground="{Binding ForegroundBattery}"
+                        Kind="{Binding Path=PackIconBattery, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock VerticalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Battery}" Value="-1">
+                                        <Setter Property="Visibility" Value="Hidden" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                        <Run Text="{Binding Battery}" />
+                        <Run Text="%" />
+                    </TextBlock>
+                </StackPanel>
+                <Separator
+                    Grid.Row="9"
+                    Grid.Column="6"
+                    Margin="0,2"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Button
+                    Grid.Row="9"
+                    Grid.Column="7"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetBatteryCommand}"
+                    Content="{x:Static p:Resources.Get}"
+                    FocusVisualStyle="{x:Null}"
+                    Style="{StaticResource GetFlatButton}" />
+                <Separator
+                    Grid.Row="10"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Battery-->
+                <!--#region Learn Mode-->
+                <Separator
+                    Grid.Row="11"
+                    Grid.Column="3"
+                    Margin="0,2"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <StackPanel
+                    Grid.Row="11"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="8,0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Learn_Mode}" />
+                    <Separator Style="{StaticResource VerticalSeparatorDark}" />
+                    <ComboBox
+                        x:Name="CbIrs"
+                        Width="180"
+                        Margin="8,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.FloatingScale="1"
+                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Choose_the_function}"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        FocusVisualStyle="{x:Null}"
+                        ItemsSource="{Binding IRsLearn}"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                </StackPanel>
+                <Separator
+                    Grid.Row="11"
+                    Grid.Column="6"
+                    Margin="0,2"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Button
+                    Grid.Row="11"
+                    Grid.Column="7"
+                    Grid.ColumnSpan="2"
+                    Margin="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    Command="{Binding LearnCommand}"
+                    CommandParameter="{Binding ElementName=CbIrs, Path=SelectedItem}"
+                    Content="{x:Static p:Resources.Learn}"
+                    FocusVisualStyle="{x:Null}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource LearnButton}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=CbIrs, Path=SelectedItem}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="12"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Learn Mode-->
+                <!--#region Set built-in IR emitter control-->
+                <TextBlock
+                    Grid.Row="16"
+                    Grid.Column="0"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="32" />
+                <Separator
+                    Grid.Row="16"
+                    Grid.Column="1"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <TextBlock
+                    Grid.Row="16"
+                    Grid.Column="2"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Separator
+                    Grid.Row="16"
+                    Grid.Column="3"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <StackPanel
+                    Grid.Row="16"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="2"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="8,0,8,2"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Set_built_in_IR_emitter_control}"
+                        ToolTip="{x:Static p:Resources.If_there_have_two_or_more_air}" />
+                    <Separator
+                        Margin="8,0"
+                        VerticalAlignment="Stretch"
+                        Style="{StaticResource VerticalSeparatorDark}" />
+                    <ToggleButton IsChecked="{Binding IsBuiltinIREmitterControl}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SetBuiltinIREmitterControlCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                    <TextBlock
+                        Margin="8,0,8,2"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Text" Value="{x:Static p:Resources.External}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsBuiltinIREmitterControl}" Value="True">
+                                        <Setter Property="Text" Value="{x:Static p:Resources.Internal}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+                <Separator
+                    Grid.Row="16"
+                    Grid.Column="6"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Button
+                    Grid.Row="16"
+                    Grid.Column="7"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetBuiltinIREmitterCommand}"
+                    Content="{x:Static p:Resources.Get}"
+                    FocusVisualStyle="{x:Null}"
+                    Style="{StaticResource GetFlatButton}" />
+                <Separator
+                    Grid.Row="17"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Set built-in IR emitter control-->
+                <!--#region Calibrate temperature reading-->
+                <TextBlock
+                    Grid.Row="18"
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="37" />
+                <Separator
+                    Grid.Row="18"
+                    Grid.Column="1"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <TextBlock
+                    Grid.Row="18"
+                    Grid.Column="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Separator
+                    Grid.Row="18"
+                    Grid.Column="3"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <StackPanel
+                    Grid.Row="18"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="2"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="8,0,8,2"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Calibrate_temperature_reading}" />
+                    <Separator Style="{StaticResource VerticalSeparatorDark}" />
+                    <ComboBox
+                        x:Name="CbCalibrateTemperatureTeading"
+                        Width="222"
+                        Margin="8,0,0,0"
+                        materialDesign:HintAssist.FloatingScale="1"
+                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Temperature_offset_value}"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        ItemsSource="{Binding Source={StaticResource temperatureOffsetValueEnum}}"
+                        SelectedIndex="{Binding SelectedIndexCalibrate}"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource enumComboboxConverter}}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <Separator
+                    Grid.Row="18"
+                    Grid.Column="6"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Button
+                    Grid.Row="18"
+                    Grid.Column="7"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetCalibrateTemperatureReadingCommand}"
+                    Content="{x:Static p:Resources.Get}"
+                    FocusVisualStyle="{x:Null}"
+                    Style="{StaticResource GetFlatButton}" />
+                <Button
+                    Grid.Row="18"
+                    Grid.Column="8"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetCalibrateTemperatureReadingCommand}"
+                    CommandParameter="{Binding ElementName=CbCalibrateTemperatureTeading, Path=SelectedItem}"
+                    Content="{x:Static p:Resources.Set}"
+                    FocusVisualStyle="{x:Null}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource SetFlatButton}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=CbCalibrateTemperatureTeading, Path=SelectedItem}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="19"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Set built-in IR emitter control-->
+                <!--#region Check ir code learning status-->
+                <TextBlock
+                    Grid.Row="20"
+                    Grid.Column="0"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="26" />
+                <Separator
+                    Grid.Row="20"
+                    Grid.Column="1"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <TextBlock
+                    Grid.Row="20"
+                    Grid.Column="2"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Separator
+                    Grid.Row="20"
+                    Grid.Column="3"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <StackPanel
+                    Grid.Row="20"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="3"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="8,0,8,2"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Check_Ir_code_learning_status}" />
+                    <Separator Style="{StaticResource VerticalSeparatorDark}" />
+                    <TextBlock
+                        Margin="8,0,8,2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        TextWrapping="WrapWithOverflow">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CheckIrCodeLearningStatus}" Value="0">
+                                        <Setter Property="Text" Value="{x:Static p:Resources.Idle___IR_Channel_is_idle}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CheckIrCodeLearningStatus}" Value="1">
+                                        <Setter Property="Text" Value="{x:Static p:Resources.OK___the_last_learning_operation_was_completed_successfully}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CheckIrCodeLearningStatus}" Value="2">
+                                        <Setter Property="Text" Value="{x:Static p:Resources.ZXT_600_is_busy}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CheckIrCodeLearningStatus}" Value="3">
+                                        <Setter Property="Text" Value="{x:Static p:Resources.Full___All_locations_are_being}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CheckIrCodeLearningStatus}" Value="4">
+                                        <Setter Property="Text" Value="{x:Static p:Resources.The_last_learning_request_was_failed}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+                <Separator
+                    Grid.Row="20"
+                    Grid.Column="6"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Button
+                    Grid.Row="20"
+                    Grid.Column="7"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetCheckIrCodeLearningStatusCommand}"
+                    Content="{x:Static p:Resources.Get}"
+                    FocusVisualStyle="{x:Null}"
+                    Style="{StaticResource GetFlatButton}" />
+                <Separator
+                    Grid.Row="21"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Set built-in IR emitter control-->
+                <!--#region Set auto report-->
+                <TextBlock
+                    Grid.Row="22"
+                    Grid.Column="0"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="30" />
+                <Separator
+                    Grid.Row="22"
+                    Grid.Column="1"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <TextBlock
+                    Grid.Row="22"
+                    Grid.Column="2"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Separator
+                    Grid.Row="22"
+                    Grid.Column="3"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <StackPanel
+                    Grid.Row="22"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="3"
+                    HorizontalAlignment="Stretch"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Width="240"
+                        Margin="8,0,8,2"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Set_auto_report_condition_trigger_by_room_temperature_change}"
+                        TextWrapping="WrapWithOverflow" />
+                    <Separator Grid.Row="18" Style="{StaticResource VerticalSeparatorDark}" />
+                    <ComboBox
+                        x:Name="CbAutoReportCondition"
+                        Width="144"
+                        Margin="8,0,0,0"
+                        materialDesign:HintAssist.FloatingScale="1"
+                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Temperature}"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        ItemsSource="{Binding Source={StaticResource autoReportCondition}}"
+                        SelectedIndex="{Binding SelectedIndexAutoReportCondition}"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding Converter={StaticResource enumComboboxConverter}}"
+                                    TextTrimming="WordEllipsis"
+                                    TextWrapping="NoWrap">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=.}" Value="{x:Static enum:AutoReportCondition.DisableAutoReport}">
+                                                    <Setter Property="ToolTip" Value="{x:Static p:Resources.Disable_auto_report}" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <Separator
+                    Grid.Row="22"
+                    Grid.Column="6"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Button
+                    Grid.Row="22"
+                    Grid.Column="7"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetAutoReportConditionCommand}"
+                    Content="{x:Static p:Resources.Get}"
+                    FocusVisualStyle="{x:Null}"
+                    Style="{StaticResource GetFlatButton}" />
+                <Button
+                    Grid.Row="22"
+                    Grid.Column="8"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetAutoReportConditionCommand}"
+                    Content="{x:Static p:Resources.Set}"
+                    FocusVisualStyle="{x:Null}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource SetFlatButton}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=CbAutoReportCondition, Path=SelectedItem}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="23"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Set auto report-->
+                <!--#region Auto Report Condition Time Interval-->
+                <TextBlock
+                    Grid.Row="24"
+                    Grid.Column="0"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="34" />
+                <Separator
+                    Grid.Row="24"
+                    Grid.Column="1"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <TextBlock
+                    Grid.Row="24"
+                    Grid.Column="2"
+                    Margin="8,0,8,2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="1" />
+                <Separator
+                    Grid.Row="24"
+                    Grid.Column="3"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <StackPanel
+                    Grid.Row="24"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="3"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Width="240"
+                        Margin="8,0,8,2"
+                        VerticalAlignment="Center"
+                        Text="{x:Static p:Resources.Set_auto_report_condition_by_time_interval}"
+                        TextWrapping="WrapWithOverflow" />
+                    <Separator Grid.Row="18" Style="{StaticResource VerticalSeparatorDark}" />
+                    <ComboBox
+                        x:Name="CbAutoReportConditionTimeInterval"
+                        Width="146"
+                        Margin="8,0,0,0"
+                        materialDesign:HintAssist.FloatingScale="1"
+                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Interval}"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        ItemsSource="{Binding Source={StaticResource autoReportConditionTimeInterval}}"
+                        SelectedIndex="{Binding SelectedIndexAutoReportConditionTimeInterval}"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding Converter={StaticResource enumComboboxConverter}}"
+                                    TextTrimming="WordEllipsis"
+                                    TextWrapping="NoWrap">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=.}" Value="{x:Static enum:AutoReportConditionTimeInterval.DisableAutoReport}">
+                                                    <Setter Property="ToolTip" Value="{x:Static p:Resources.Disable_auto_report}" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <Separator
+                    Grid.Row="24"
+                    Grid.Column="6"
+                    Style="{StaticResource VerticalSeparatorDark}" />
+                <Button
+                    Grid.Row="24"
+                    Grid.Column="7"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetAutoReportConditionTimeIntervalCommand}"
+                    Content="{x:Static p:Resources.Get}"
+                    FocusVisualStyle="{x:Null}"
+                    Style="{StaticResource GetFlatButton}" />
+                <Button
+                    Grid.Row="24"
+                    Grid.Column="8"
+                    Margin="0,0,8,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetAutoReportConditionTimeIntervalCommand}"
+                    Content="{x:Static p:Resources.Set}"
+                    FocusVisualStyle="{x:Null}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource SetFlatButton}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=CbAutoReportConditionTimeInterval, Path=SelectedItem}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator
+                    Grid.Row="25"
+                    Grid.ColumnSpan="9"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <!--#endregion Auto Report Condition Time Interval-->
+            </Grid>
+        </materialDesign:DialogHost>
+    </materialDesign:DialogHost>
+</UserControl>

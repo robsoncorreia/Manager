@@ -1,0 +1,319 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Components.ScheduleUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:FC.Domain.Model.Device;assembly=FC.Domain"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    xmlns:components="clr-namespace:FC.Manager.View.Components"
+    xmlns:core="clr-namespace:System;assembly=mscorlib"
+    Margin="0,0,0,0"
+    d:DataContext="{d:DesignInstance Type=model:ZwaveDevice}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ObjectDataProvider
+            x:Key="dayPeriod"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="model:DayPeriodEnum" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="dateTypeModel"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="model:DateTypeEnum" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="operatorsTypeSchedule"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="model:OperatorsTypeSchedule" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="daysOfWeek"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="model:DaysOfWeek" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <components:LogicGateIfThenUserControl Grid.Column="0" Margin="0,0,4,0" />
+        <Border
+            Grid.Column="1"
+            Width="340"
+            Height="258"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            Background="{StaticResource TundoraBillson}"
+            CornerRadius="4">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="8"
+                    Direction="0"
+                    ShadowDepth="2" />
+            </Border.Effect>
+        </Border>
+        <Border
+            Grid.Column="1"
+            Width="340"
+            Height="255"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            Background="{StaticResource TundoraBillson}"
+            BorderBrush="{StaticResource TundoraBillson}"
+            BorderThickness="2,0,2,2"
+            CornerRadius="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TabControl
+                    Background="{StaticResource TundoraBillson}"
+                    SelectedIndex="{Binding SelectedIndexTabSchedule, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
+                    TabStripPlacement="Left">
+                    <TabControl.Resources>
+                        <Style x:Key="border" TargetType="{x:Type Border}">
+                            <Setter Property="Background" Value="{StaticResource BigStoneBillson}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource MaterialDesignCardBackground}" />
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Style>
+                    </TabControl.Resources>
+                    <!--#region Timer-->
+                    <TabItem Header="{x:Static p:Resources.Timer}" Style="{DynamicResource TabItemsScheduleCustom}">
+                        <Border Style="{StaticResource border}">
+                            <Grid Margin="8" VerticalAlignment="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ComboBox
+                                    x:Name="ComboBoxDateType"
+                                    Grid.Row="0"
+                                    Margin="8"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Top"
+                                    HorizontalContentAlignment="Stretch"
+                                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Every_amount_of}"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                    materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                    FocusVisualStyle="{x:Null}"
+                                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                    ItemsSource="{Binding Source={StaticResource dateTypeModel}}"
+                                    SelectedIndex="{Binding SelectedIndexDateType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                    ToolTip="{Binding ElementName=ComboBoxDateType, Path=SelectedItem, Converter={StaticResource enumComboboxConverter}}">
+                                    <ComboBox.ItemContainerStyle>
+                                        <Style BasedOn="{StaticResource withoutStyle}" TargetType="{x:Type ComboBoxItem}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding}" Value="{x:Static model:DateTypeEnum.CompareClock}">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding}" Value="{x:Static model:DateTypeEnum.CompareDayWeek}">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ComboBox.ItemContainerStyle>
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                HorizontalAlignment="Left"
+                                                Text="{Binding Converter={StaticResource enumComboboxConverter}}"
+                                                TextTrimming="CharacterEllipsis" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBox
+                                    Grid.Row="1"
+                                    Margin="8"
+                                    materialDesign:TextFieldAssist.SuffixText="{Binding SuffixText}"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    MaxLength="2"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                    Text="{Binding ValueSchedule, UpdateSourceTrigger=PropertyChanged}" />
+                                <CheckBox
+                                    Grid.Row="2"
+                                    Margin="8"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    Content="{x:Static p:Resources.Repeat}"
+                                    IsChecked="True"
+                                    IsEnabled="False" />
+                            </Grid>
+                        </Border>
+                    </TabItem>
+                    <!--#endregion Timer-->
+                    <!--#region Day and Time-->
+                    <TabItem
+                        x:Name="TbiDayTime"
+                        Header="{x:Static p:Resources.Day_and_time}"
+                        Style="{StaticResource TabItemsScheduleCustom}">
+                        <Border Style="{StaticResource border}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Margin="16,8,8,8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        FontWeight="DemiBold"
+                                        Text="{x:Static p:Resources.Select_all}" />
+                                    <CheckBox
+                                        x:Name="selectAll"
+                                        Grid.Column="1"
+                                        materialDesign:ThemeAssist.Theme="Dark"
+                                        Command="{Binding CreateSchedule.SelectedAllDaysCommand, Source={StaticResource Locator}}"
+                                        CommandParameter="{Binding ElementName=selectAll, Path=IsChecked}"
+                                        FocusVisualStyle="{x:Null}" />
+                                </Grid>
+                                <ListBox
+                                    Grid.Row="2"
+                                    Width="202"
+                                    Margin="8"
+                                    ItemsSource="{Binding DaysOfWeekList}"
+                                    Style="{StaticResource MaterialDesignListBox}">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style BasedOn="{StaticResource withoutStyle}" TargetType="{x:Type ListBoxItem}" />
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.Resources>
+                                        <Style BasedOn="{StaticResource MaterialDesignAccentCheckBox}" TargetType="{x:Type RadioButton}">
+                                            <Setter Property="Margin" Value="0,0,0,0" />
+                                            <Setter Property="FontSize" Value="14" />
+                                        </Style>
+                                    </ListBox.Resources>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox
+                                                materialDesign:ThemeAssist.Theme="Dark"
+                                                Content="{Binding Name}"
+                                                Foreground="AliceBlue"
+                                                IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"
+                                                Style="{StaticResource MaterialDesignCheckBox}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                <materialDesign:TimePicker
+                                    Grid.Row="3"
+                                    Margin="16,8"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    Is24Hours="True"
+                                    SelectedTime="{Binding TimePickerValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+                        </Border>
+                    </TabItem>
+                    <!--#endregion Day and Time-->
+                    <!--#region Date and Time-->
+                    <TabItem Header="{x:Static p:Resources.Date_and_time}" Style="{StaticResource TabItemsScheduleCustom}">
+                        <Border Style="{StaticResource border}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <StackPanel VerticalAlignment="Center">
+                                    <DatePicker
+                                        Margin="16,8"
+                                        materialDesign:ThemeAssist.Theme="Dark"
+                                        SelectedDate="{Binding TimePickerValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <materialDesign:TimePicker
+                                        Grid.Row="1"
+                                        Margin="16,8"
+                                        materialDesign:ThemeAssist.Theme="Dark"
+                                        Is24Hours="True"
+                                        SelectedTime="{Binding TimePickerValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                                <components:NotImplementedUserControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                            </Grid>
+                        </Border>
+                    </TabItem>
+                    <!--#endregion-->
+                    <!--#region Day Period-->
+                    <TabItem Header="{x:Static p:Resources.Day_period}" Style="{StaticResource TabItemsScheduleCustom}">
+                        <Border Style="{StaticResource border}">
+                            <Grid>
+                                <ComboBox
+                                    x:Name="CbDayPeriod"
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Width="148"
+                                    Margin="0,0,0,8"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Day_period}"
+                                    materialDesign:ThemeAssist.Theme="Dark"
+                                    FocusVisualStyle="{x:Null}"
+                                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                                    ItemsSource="{Binding Source={StaticResource dayPeriod}}"
+                                    SelectedIndex="{Binding SelectedIndexDayPeriod}"
+                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={StaticResource enumComboboxConverter}}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <components:NotImplementedUserControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                            </Grid>
+                        </Border>
+                    </TabItem>
+                    <!--#endregion Day Period-->
+                </TabControl>
+                <Grid Grid.Row="1" Margin="14,8,8,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Command="{Binding CreateSchedule.GetGatewayClockTimeCommand, Source={StaticResource Locator}}"
+                        Content="{x:Static p:Resources.Get}"
+                        FocusVisualStyle="{x:Null}"
+                        Style="{StaticResource GetFlatButton}" />
+                    <TextBlock
+                        Grid.Column="0"
+                        Margin="0,0,4,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontWeight="DemiBold"
+                        Foreground="{StaticResource MaterialDesignDarkForeground}"
+                        Text="{Binding CreateSchedule.SelectedProjectModel.SelectedGateway.ClockTime, Source={StaticResource Locator}}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="Wrap" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,659 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Project.Gateway.Radio433GatewayUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    xmlns:validator="clr-namespace:FC.Domain.Validator;assembly=FC.Domain"
+    xmlns:components="clr-namespace:FC.Manager.View.Components"
+    x:Name="radio433DetailDeviceUserControl"
+    DataContext="{Binding Radio433DetailDevice, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=radio433DetailDeviceUserControl}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <Style
+            x:Key="SelectedMemory"
+            BasedOn="{StaticResource MaterialDesignListBoxItem}"
+            TargetType="{x:Type ListBoxItem}">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Padding" Value="0" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryHueDarkBrush}" />
+                    <Setter Property="BorderThickness" Value="2" />
+                </Trigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+            </Style.Resources>
+        </Style>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border
+                            Name="Border"
+                            Margin="0,0,0,0"
+                            Background="Transparent"
+                            BorderBrush="{StaticResource PrimaryHueDarkBrush}"
+                            CornerRadius="5 5 0 0">
+                            <ContentPresenter
+                                x:Name="ContentSite"
+                                Margin="12,12,12,12"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                ContentSource="Header"
+                                RecognizesAccessKey="True">
+                                <ContentPresenter.LayoutTransform>
+                                    <RotateTransform Angle="0" />
+                                </ContentPresenter.LayoutTransform>
+                            </ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="BorderBrush" Value="{StaticResource PrimaryHueDarkBrush}" />
+                                <Setter Property="Panel.ZIndex" Value="100" />
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=TundoraBillson}" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="BorderThickness" Value="2,2,2,0" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource ResourceKey=Dark}" />
+                                <Setter Property="BorderBrush" Value="White" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding LearnCommand}" Gesture="Ctrl+L" />
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <materialDesign:DialogHost
+            x:Name="DialogHost"
+            Padding="0"
+            DialogContent="{Binding DialogContent}"
+            FocusVisualStyle="{x:Null}"
+            IsOpen="{Binding IsOpenDialogHost}">
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                        <Setter Property="IsEnabled" Value="True" />
+                        <Setter Property="Opacity" Value="1" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSendingToGateway, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                                <Setter Property="Opacity" Value=".2" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsSendingToCloud, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                                <Setter Property="Opacity" Value=".2" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ScrollViewer
+                    Grid.Row="1"
+                    FocusVisualStyle="{x:Null}"
+                    VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="480" />
+                            <RowDefinition Height="8" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="8,8,4,0"
+                            Padding="16"
+                            VerticalAlignment="Stretch"
+                            Background="{StaticResource TundoraBillson}"
+                            CornerRadius="2">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="4" ShadowDepth="0" />
+                            </Border.Effect>
+                        </Border>
+                        <Border
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="8,8,4,0"
+                            Padding="16"
+                            VerticalAlignment="Stretch"
+                            Background="Transparent"
+                            CornerRadius="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,16"
+                                    Orientation="Horizontal">
+                                    <ComboBox
+                                        x:Name="ComboBoxFrequency"
+                                        Width="84"
+                                        Margin="0,0,8,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Bottom"
+                                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Frequency}"
+                                        materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                        materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                        IsEnabled="False"
+                                        ItemsSource="{Binding RadioFrequencys, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectedIndex="{Binding FrequencySelectedIndex}"
+                                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Name}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                        <ComboBox.Text>
+                                            <Binding
+                                                ElementName="ComboBoxFrequency"
+                                                Mode="TwoWay"
+                                                Path="SelectedValue"
+                                                UpdateSourceTrigger="PropertyChanged"
+                                                ValidatesOnDataErrors="True">
+                                                <Binding.ValidationRules>
+                                                    <validator:NotEmptyValidationRule TextError="{x:Static p:Resources.Field_Is_Required}" ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </ComboBox.Text>
+                                    </ComboBox>
+                                    <TextBox
+                                        x:Name="TxtRepetition"
+                                        Width="98"
+                                        Margin="4,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Bottom"
+                                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Repetition}"
+                                        materialDesign:TextFieldAssist.HasClearButton="True"
+                                        materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                        materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                        materialDesign:ValidationAssist.Suppress="True"
+                                        Background="Transparent"
+                                        BorderBrush="{StaticResource MaterialDesignDarkSeparatorBackground}"
+                                        Foreground="White"
+                                        MaxLength="3">
+                                        <TextBox.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="Validation.HasError" Value="true">
+                                                        <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                        <TextBox.Text>
+                                            <Binding
+                                                Mode="TwoWay"
+                                                Path="SelectedRadioModel.Repetition"
+                                                UpdateSourceTrigger="PropertyChanged"
+                                                ValidatesOnDataErrors="True">
+                                                <Binding.ValidationRules>
+                                                    <validator:NumberRangeValidationRule Max="255" Min="0" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                    <TextBox
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Margin="8,0,8,0"
+                                        VerticalAlignment="Bottom"
+                                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Register}"
+                                        IsEnabled="False"
+                                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                                        Text="{Binding SelectedRadioModel.Register, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        TextWrapping="Wrap" />
+                                </StackPanel>
+                                <TextBox
+                                    x:Name="TextBoxDescription"
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Width="340"
+                                    Margin="0,14"
+                                    HorizontalAlignment="Left"
+                                    materialDesign:HintAssist.FloatingScale="1"
+                                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Description}"
+                                    materialDesign:TextFieldAssist.HasClearButton="True"
+                                    materialDesign:ValidationAssist.Background="{StaticResource Dark}"
+                                    materialDesign:ValidationAssist.FontSize="12"
+                                    materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                                    AutomationProperties.AutomationId="TextBoxDescription"
+                                    MaxLength="30"
+                                    MaxLines="1"
+                                    TextWrapping="Wrap">
+                                    <TextBox.Style>
+                                        <Style BasedOn="{StaticResource MaterialDesignFilledTextBox}" TargetType="{x:Type TextBox}">
+                                            <Setter Property="IsEnabled" Value="True" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway}" Value="{x:Null}">
+                                                    <Setter Property="IsEnabled" Value="False" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                    <TextBox.Text>
+                                        <Binding
+                                            Mode="TwoWay"
+                                            Path="SelectedRadioModel.Description"
+                                            UpdateSourceTrigger="PropertyChanged"
+                                            ValidatesOnDataErrors="True">
+                                            <Binding.ValidationRules>
+                                                <validator:NotEmptyValidationRule TextError="{x:Static p:Resources.Field_Is_Required}" ValidatesOnTargetUpdated="True" />
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <Border
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,16,0,0"
+                                    Padding="8,4"
+                                    HorizontalAlignment="Left"
+                                    Background="{StaticResource DenimBillson}"
+                                    CornerRadius="2,2,0,0">
+                                    <TextBlock Text="{x:Static p:Resources.Last_command_sent}" />
+                                </Border>
+                                <Border
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,2"
+                                    VerticalAlignment="Stretch"
+                                    Background="{StaticResource DenimBillson}"
+                                    BorderBrush="Transparent"
+                                    CornerRadius="0,2,2,2">
+                                    <TextBox
+                                        x:Name="TbLastCommandSent"
+                                        Margin="2"
+                                        Padding="8"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{StaticResource DenimBillson}"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        FontSize="12"
+                                        Foreground="White"
+                                        IsReadOnly="True"
+                                        Text="{Binding LastCommandSend, Mode=TwoWay}"
+                                        TextWrapping="Wrap" />
+                                </Border>
+                                <Button
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Height="26"
+                                    Margin="0,0,0,2"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    VerticalContentAlignment="Center"
+                                    Background="{StaticResource BigStoneBillson}"
+                                    BorderBrush="Transparent"
+                                    Command="{Binding CopyCommand}"
+                                    CommandParameter="{Binding ElementName=TbLastCommandSent, Path=Text}">
+                                    <TextBlock
+                                        Margin="0,0,0,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="10"
+                                        Text="{x:Static p:Resources.Copy}" />
+                                </Button>
+                                <StackPanel
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Orientation="Horizontal">
+                                    <Button
+                                        Margin="8,0"
+                                        HorizontalAlignment="Right"
+                                        AutomationProperties.AutomationId="btnLearn"
+                                        Command="{Binding Radio433DetailDevice.LearnCommand, Source={StaticResource Locator}}"
+                                        Content="{x:Static p:Resources._Learn}"
+                                        FocusVisualStyle="{x:Null}">
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource LearnButton}" TargetType="Button">
+                                                <Setter Property="IsEnabled" Value="True" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TextBoxDescription}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="False" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtRepetition}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="False" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway}" Value="{x:Null}">
+                                                        <Setter Property="IsEnabled" Value="False" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button
+                                        HorizontalAlignment="Right"
+                                        Command="{Binding NewCloneCommand}"
+                                        Content="{x:Static p:Resources._New}">
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource NewButton}" TargetType="{x:Type Button}">
+                                                <Setter Property="IsEnabled" Value="True" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedRadioModel.MemoryId}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="False" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway}" Value="{x:Null}">
+                                                        <Setter Property="IsEnabled" Value="False" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding IsSendingToGateway}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="False" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <!--  TabControl  -->
+                        <Border
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="4,8,8,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="Black"
+                            CornerRadius="2">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="4" ShadowDepth="0" />
+                            </Border.Effect>
+                        </Border>
+                        <Border
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="4,8,8,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{StaticResource TundoraBillson}"
+                            BorderBrush="{StaticResource TundoraBillson}"
+                            CornerRadius="2">
+                            <ListBox
+                                x:Name="LbRFGateway"
+                                Margin="0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                ItemContainerStyle="{StaticResource selectedItem}"
+                                ItemsSource="{Binding SelectedProjectModel.SelectedGateway.Radios433Gateway}"
+                                ScrollViewer.CanContentScroll="True"
+                                SelectedIndex="{Binding SelectedProjectModel.SelectedGateway.SelectedIndexRadio433Gateway, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border
+                                                Width="264"
+                                                Padding="8"
+                                                HorizontalAlignment="Stretch"
+                                                Background="{StaticResource Dark}"
+                                                BorderBrush="Black"
+                                                CornerRadius="2"
+                                                Cursor="Hand"
+                                                ToolTip="{Binding Path=.}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect ShadowDepth="0" />
+                                                </Border.Effect>
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="MouseUp">
+                                                        <i:InvokeCommandAction Command="{Binding ElementName=LbRFGateway, Path=DataContext.SelectionChangedCommand}" CommandParameter="{Binding Path=.}" />
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </Border>
+                                            <Grid Margin="8">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="MouseUp">
+                                                        <i:InvokeCommandAction Command="{Binding ElementName=LbRFGateway, Path=DataContext.SelectionChangedCommand}" CommandParameter="{Binding Path=.}" />
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBox
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="4"
+                                                    Margin="0,-3,0,0"
+                                                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Description}"
+                                                    materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
+                                                    BorderBrush="Transparent"
+                                                    BorderThickness="0"
+                                                    Foreground="White"
+                                                    IsReadOnly="True"
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    Text="{Binding Description, Mode=OneTime}" />
+                                                <StackPanel
+                                                    Grid.Row="0"
+                                                    Grid.Column="3"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    Orientation="Horizontal">
+                                                    <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        FontSize="10"
+                                                        Foreground="White"
+                                                        Opacity=".5"
+                                                        Text="{x:Static p:Resources.Memory}" />
+                                                    <TextBlock
+                                                        Margin="4,0,0,0"
+                                                        VerticalAlignment="Center"
+                                                        FontSize="10"
+                                                        Foreground="White"
+                                                        Text="{Binding MemoryId, Mode=OneTime}" />
+                                                </StackPanel>
+                                                <StackPanel
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="4"
+                                                    Margin="8,8,0,0"
+                                                    HorizontalAlignment="Right"
+                                                    Orientation="Horizontal">
+                                                    <Button
+                                                        Width="82"
+                                                        Margin="0,0,8,0"
+                                                        AutomationProperties.AutomationId="PlayRadio433"
+                                                        Command="{Binding Radio433DetailDevice.PlayMemoryCommad, Source={StaticResource Locator}}"
+                                                        CommandParameter="{Binding Path=., UpdateSourceTrigger=PropertyChanged}"
+                                                        FocusVisualStyle="{x:Null}">
+                                                        <Button.Style>
+                                                            <Style BasedOn="{StaticResource PlayButton}" TargetType="{x:Type Button}">
+                                                                <Setter Property="IsEnabled" Value="True" />
+                                                                <Setter Property="Content">
+                                                                    <Setter.Value>
+                                                                        <TextBlock Text="{x:Static p:Resources.Play}" />
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding ElementName=LbRFGateway, Path=DataContext.IsSendingToGateway}" Value="True">
+                                                                        <Setter Property="IsEnabled" Value="False" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding IsSending}" Value="True">
+                                                                        <Setter Property="Content">
+                                                                            <Setter.Value>
+                                                                                <ProgressBar IsIndeterminate="True" Style="{StaticResource MaterialDesignCircularProgressBar}" />
+                                                                            </Setter.Value>
+                                                                        </Setter>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Button.Style>
+                                                    </Button>
+                                                    <Button
+                                                        Width="82"
+                                                        Command="{Binding ElementName=LbRFGateway, Path=DataContext.DeleteRFFromGatewayAwaitCommand}"
+                                                        CommandParameter="{Binding Path=.}"
+                                                        Content="{x:Static p:Resources._Delete}"
+                                                        FocusVisualStyle="{x:Null}">
+                                                        <Button.Style>
+                                                            <Style BasedOn="{StaticResource DeleteButton}" TargetType="{x:Type Button}">
+                                                                <Setter Property="IsEnabled" Value="True" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding ElementName=LbRFGateway, Path=DataContext.IsSendingToGateway}" Value="True">
+                                                                        <Setter Property="IsEnabled" Value="False" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Button.Style>
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                                <ListBox.Style>
+                                    <Style BasedOn="{StaticResource MaterialDesignListBox}" TargetType="{x:Type ListBox}">
+                                        <Setter Property="IsEnabled" Value="True" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsSendingToGateway}" Value="True">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListBox.Style>
+                            </ListBox>
+                        </Border>
+                    </Grid>
+                </ScrollViewer>
+                <Border
+                    Grid.Row="0"
+                    Grid.ColumnSpan="3"
+                    Margin="0"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    Background="Black"
+                    Cursor="Hand">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                    </Border.Effect>
+                </Border>
+                <Menu
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    Cursor="Hand"
+                    IsMainMenu="True"
+                    Style="{StaticResource MaterialDesignMenuBillson}">
+                    <MenuItem Header="{x:Static p:Resources._Edit}">
+                        <MenuItem Command="{Binding DeleteAllFromGatewayAwaitCommand}" Header="{x:Static p:Resources.Delete_all_radios_from_the_gateway}">
+                            <MenuItem.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignMenuItem}" TargetType="{x:Type MenuItem}">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.Radios433Gateway.Count}" Value="0">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </MenuItem.Style>
+                        </MenuItem>
+                        <!--<MenuItem Command="{Binding DeleteAllCloudAwaitCommand}" Header="{x:Static p:Resources.Delete_all_radios_from_the_cloud}">
+                            <MenuItem.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignMenuItem}" TargetType="{x:Type MenuItem}">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.Radios433Cloud.Count}" Value="0">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </MenuItem.Style>
+                        </MenuItem>-->
+                    </MenuItem>
+                    <MenuItem Command="{Binding GetAllRFGatewayCommand}" Header="{x:Static p:Resources._Reload}" />
+                </Menu>
+                <StackPanel
+                    Margin="16"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="0,0,8,0"
+                        VerticalAlignment="Center"
+                        Opacity=".8"
+                        Text="{x:Static p:Resources.Memory}" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Opacity=".8"
+                        Text="{Binding RadioCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Opacity=".8"
+                        Text="/" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Opacity=".8"
+                        Text="{Binding SelectedProjectModel.SelectedGateway.MaximumNumberRFMemoryPositions, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </Grid>
+        </materialDesign:DialogHost>
+        <components:SnackbarUserControl
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="0"
+            VerticalAlignment="Bottom" />
+    </Grid>
+</UserControl>

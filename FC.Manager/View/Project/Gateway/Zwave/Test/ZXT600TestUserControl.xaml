@@ -1,0 +1,409 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Project.Gateway.Zwave.Test.ZXT600TestUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:FC.Domain.Model.ZXT600;assembly=FC.Domain"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    xmlns:validator="clr-namespace:FC.Domain.Validator;assembly=FC.Domain"
+    xmlns:vm="clr-namespace:FC.Manager.ViewModel.Project.Gateway.Zwave.Test"
+    x:Name="zxt600Test"
+    MinHeight="480"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    DataContext="{Binding ZXT600Test, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="IsVisibleChanged">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding ElementName=zxt600Test}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <i:InvokeCommandAction Command="{Binding UnloadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <materialDesign:DialogHost
+        Margin="0"
+        Padding="0"
+        DialogContent="{Binding DialogContent}"
+        FocusVisualStyle="{x:Null}"
+        IsOpen="{Binding IsOpenDialogHost}">
+
+        <Grid Margin="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="16" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <!--#region Mode-->
+                <Expander
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    VerticalAlignment="Top"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    BorderBrush="{StaticResource MaterialDesignCardBackground}"
+                    BorderThickness="1"
+                    Header="{x:Static p:Resources.Mode}">
+                    <Grid>
+                        <Border Background="{StaticResource AttentionToActionBrush}">
+                            <ListBox
+                                x:Name="LbThermostatMode"
+                                Margin="8"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                ItemsSource="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.ThermostatModes}"
+                                SelectedIndex="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.SelectedIndexThermostatMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource withoutStyle}" TargetType="{x:Type ListBoxItem}" />
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type model:ThermostatModel}">
+                                        <Button
+                                            Width="140"
+                                            Command="{Binding ZXT600Test.ThermostatModeSetCommand, Source={StaticResource Locator}}"
+                                            CommandParameter="{Binding Code}"
+                                            Content="{Binding Name}"
+                                            FocusVisualStyle="{x:Null}">
+                                            <Button.Style>
+                                                <Style BasedOn="{StaticResource MaterialDesignFlatDarkBgButton}" TargetType="{x:Type Button}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Name}" Value="{x:Static p:Resources.Resume}">
+                                                            <Setter Property="Background" Value="MediumSeaGreen" />
+                                                            <Setter Property="BorderBrush" Value="MediumSeaGreen" />
+                                                            <Setter Property="Foreground" Value="White" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Name}" Value="{x:Static p:Resources.Off}">
+                                                            <Setter Property="Background" Value="Red" />
+                                                            <Setter Property="BorderBrush" Value="Red" />
+                                                        </DataTrigger>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Opacity" Value=".5" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                        <Border
+                            Grid.Row="0"
+                            Grid.ColumnSpan="3"
+                            Height="1"
+                            Margin="0"
+                            VerticalAlignment="Top"
+                            materialDesign:ThemeAssist.Theme="Dark"
+                            Background="Black"
+                            Cursor="Hand">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                            </Border.Effect>
+                        </Border>
+                    </Grid>
+                </Expander>
+                <!--#endregion Mode-->
+                <!--#region Fan-->
+                <Expander
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    VerticalAlignment="Top"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    BorderBrush="{StaticResource MaterialDesignCardBackground}"
+                    BorderThickness="1"
+                    Header="{x:Static p:Resources.Fan}">
+                    <Grid>
+                        <Border
+                            Grid.Row="0"
+                            Grid.ColumnSpan="3"
+                            Height="1"
+                            Margin="0"
+                            VerticalAlignment="Top"
+                            materialDesign:ThemeAssist.Theme="Dark"
+                            Background="Black"
+                            Cursor="Hand">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                            </Border.Effect>
+                        </Border>
+                        <Border Background="{StaticResource AttentionToActionBrush}">
+                            <ListBox
+                                x:Name="LbThermostatFan"
+                                Margin="8"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                ItemsSource="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.ThermostatFans}"
+                                SelectedIndex="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.SelectedIndexThermostatFan, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource withoutStyle}" TargetType="{x:Type ListBoxItem}" />
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type model:ThermostatModel}">
+                                        <Button
+                                            Width="140"
+                                            Command="{Binding ZXT600Test.ThermostatFanSetCommand, Source={StaticResource Locator}}"
+                                            CommandParameter="{Binding Code}"
+                                            Content="{Binding Name}"
+                                            Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                    </Grid>
+                </Expander>
+                <!--#endregion Fan-->
+            </Grid>
+            <!--#region Set Temperature-->
+            <Expander
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,8"
+                VerticalAlignment="Top"
+                materialDesign:ThemeAssist.Theme="Dark"
+                Background="{StaticResource BigStoneBillson}"
+                BorderBrush="{StaticResource MaterialDesignCardBackground}"
+                BorderThickness="1"
+                Header="{x:Static p:Resources.Temperature}"
+                IsExpanded="True">
+                <Grid Height="84">
+                    <StackPanel Margin="8" Orientation="Horizontal">
+                        <StackPanel>
+                            <Button
+                                Command="{Binding SetTemperatureCommand}"
+                                CommandParameter="+"
+                                Content="+"
+                                Style="{StaticResource MaterialDesignOutlinedButton}" />
+                            <Button
+                                Margin="0,4,0,0"
+                                Command="{Binding SetTemperatureCommand}"
+                                CommandParameter="-"
+                                Content="-"
+                                Style="{StaticResource MaterialDesignOutlinedButton}" />
+                        </StackPanel>
+                        <Button
+                            x:Name="BtSend"
+                            Height="68"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Stretch"
+                            Command="{Binding SetTemperatureCommand}"
+                            CommandParameter="{x:Static p:Resources.Send}"
+                            Content="{x:Static p:Resources.Set}">
+                            <Button.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignOutlinedButton}" TargetType="Button">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                    <Style.Triggers>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtTemperature}" Value="False" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="IsEnabled" Value="True" />
+                                        </MultiDataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <TextBox
+                            x:Name="TxtTemperature"
+                            Width="128"
+                            Margin="8,0"
+                            VerticalAlignment="Center"
+                            materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                            materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                            materialDesign:TextFieldAssist.SuffixText="C°"
+                            materialDesign:ValidationAssist.Background="Black"
+                            materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                            materialDesign:ValidationAssist.PopupPlacement="Bottom"
+                            materialDesign:ValidationAssist.UsePopup="True"
+                            FontFamily="{DynamicResource 7SegFontFamily}"
+                            FontSize="34"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                            <TextBox.Text>
+                                <Binding
+                                    Mode="TwoWay"
+                                    Path="SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.RoomTemperature"
+                                    UpdateSourceTrigger="PropertyChanged"
+                                    ValidatesOnDataErrors="True">
+                                    <Binding.ValidationRules>
+                                        <validator:NumberRangeValidationRule Max="{x:Static vm:ZXT600TestViewModel.MaximumTemperature}" Min="{x:Static vm:ZXT600TestViewModel.MinimumTemperature}" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                    <Border
+                        Grid.Row="0"
+                        Grid.ColumnSpan="3"
+                        Height="1"
+                        Margin="0"
+                        VerticalAlignment="Top"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        Background="Black"
+                        Cursor="Hand">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                        </Border.Effect>
+                    </Border>
+                </Grid>
+            </Expander>
+            <!--#endregion Set Temperature-->
+            <!--#region Room Temperature-->
+            <Expander
+                Grid.Row="0"
+                Grid.Column="2"
+                Margin="0,8"
+                VerticalAlignment="Top"
+                materialDesign:ThemeAssist.Theme="Dark"
+                Background="{StaticResource BigStoneBillson}"
+                BorderBrush="{StaticResource MaterialDesignCardBackground}"
+                BorderThickness="1"
+                Header="{x:Static p:Resources.Room_Temperature}"
+                IsExpanded="True">
+                <Grid Height="84">
+                    <Border
+                        Grid.Row="0"
+                        Grid.ColumnSpan="3"
+                        Height="1"
+                        Margin="0"
+                        VerticalAlignment="Top"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        Background="Black"
+                        Cursor="Hand">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                        </Border.Effect>
+                    </Border>
+                    <StackPanel
+                        Grid.Column="2"
+                        Margin="8"
+                        Orientation="Horizontal">
+                        <Button
+                            Height="68"
+                            Command="{Binding GetTemperatureCommand}"
+                            Content="{x:Static p:Resources.Get}"
+                            Style="{StaticResource MaterialDesignOutlinedButton}" />
+                        <TextBox
+                            x:Name="TxtRoomTemperature"
+                            Width="160"
+                            Margin="8,0"
+                            VerticalAlignment="Center"
+                            materialDesign:TextFieldAssist.CharacterCounterVisibility="Visible"
+                            materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                            materialDesign:TextFieldAssist.SuffixText="C°"
+                            materialDesign:ValidationAssist.Background="Black"
+                            materialDesign:ValidationAssist.OnlyShowOnFocus="True"
+                            materialDesign:ValidationAssist.PopupPlacement="Bottom"
+                            materialDesign:ValidationAssist.UsePopup="True"
+                            FontFamily="{DynamicResource 7SegFontFamily}"
+                            FontSize="34"
+                            IsReadOnly="True"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            Text="{Binding RoomTemperature}" />
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <!--#endregion Room Temperature-->
+            <!--#region Battery-->
+            <Expander
+                Grid.Row="0"
+                Grid.Column="6"
+                Grid.ColumnSpan="2"
+                Margin="0,8"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                materialDesign:ThemeAssist.Theme="Dark"
+                Background="{StaticResource BigStoneBillson}"
+                BorderBrush="{StaticResource MaterialDesignCardBackground}"
+                BorderThickness="1"
+                Header="{x:Static p:Resources.Battery}"
+                IsExpanded="True">
+                <Grid Height="84">
+                    <StackPanel
+                        Grid.Column="2"
+                        Margin="8"
+                        Orientation="Horizontal">
+                        <Button
+                            Height="68"
+                            Command="{Binding GetBatteryCommand}"
+                            Content="{x:Static p:Resources.Get}"
+                            Style="{StaticResource MaterialDesignOutlinedButton}" />
+                        <Border
+                            Margin="8,0"
+                            Padding="6"
+                            BorderBrush="{Binding ForegroundBattery}"
+                            BorderThickness="2"
+                            CornerRadius="2">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="38"
+                                    Height="38"
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="{Binding ForegroundBattery}"
+                                    Kind="{Binding Path=PackIconBattery, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock
+                                    Margin="0,0,2,2"
+                                    VerticalAlignment="Center"
+                                    FontSize="38">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Battery}" Value="-1">
+                                                    <Setter Property="Visibility" Value="Hidden" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                    <Run Text="{Binding Battery}" />
+                                    <Run Text="%" />
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <Border
+                        Grid.Row="0"
+                        Grid.ColumnSpan="3"
+                        Height="1"
+                        Margin="0"
+                        VerticalAlignment="Top"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        Background="Black"
+                        Cursor="Hand">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="6" ShadowDepth="1" />
+                        </Border.Effect>
+                    </Border>
+                </Grid>
+            </Expander>
+            <!--#endregion Battery-->
+        </Grid>
+    </materialDesign:DialogHost>
+</UserControl>

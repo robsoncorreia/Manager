@@ -1,0 +1,207 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Components.FXR211ThenElseUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:FC.Manager.View.Components"
+    xmlns:core="clr-namespace:System;assembly=mscorlib"
+    xmlns:device="clr-namespace:FC.Domain.Model.Device;assembly=FC.Domain"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain">
+    <UserControl.Resources>
+        <ObjectDataProvider
+            x:Key="operatorType"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="device:LogicGateIfThen" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="operatorTypeIfThen"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="device:OperatorTypeIfThen" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <components:DelayIfThenUserControl Grid.Column="1" />
+        <Border
+            Grid.Column="0"
+            Width="200"
+            VerticalAlignment="Top"
+            Background="{StaticResource TundoraBillson}"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="2">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2" />
+            </Border.Effect>
+        </Border>
+        <Border
+            Grid.Column="0"
+            Width="200"
+            VerticalAlignment="Top"
+            Background="{StaticResource TundoraBillson}"
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="2">
+            <Grid Grid.Row="1" Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <components:ZwaveDeviceInformationUserControl Grid.Column="0" Grid.ColumnSpan="2" />
+                <Border
+                    Grid.Column="1"
+                    Margin="0,-8,-8,0"
+                    Padding="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Background="{StaticResource BigStoneBillson}"
+                    CornerRadius="2">
+                    <Border.Style>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ZWaveComponents}" Value="{x:Static device:ZWaveComponents.Slave}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <TextBlock
+                        FontSize="8"
+                        Foreground="{StaticResource MaterialDesignDarkForeground}"
+                        Text="{Binding ZWaveComponents}" />
+                </Border>
+                <Grid
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <ComboBox
+                        x:Name="CbEndpoints"
+                        Grid.Row="1"
+                        Margin="0,8"
+                        materialDesign:HintAssist.Hint="{x:Static p:Resources.Channel}"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        Foreground="{StaticResource MaterialDesignDarkForeground}"
+                        ItemsSource="{Binding Endpoints}"
+                        SelectedIndex="{Binding SelectedIndexEndpoint}">
+                        <ComboBox.Style>
+                            <Style BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}" TargetType="{x:Type ComboBox}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Endpoints.Count}" Value="0">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Endpoints.Count}" Value="1">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Channel}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <!--  OnOFF  -->
+                    <StackPanel
+                        Grid.Row="4"
+                        Margin="0,8,0,0"
+                        Orientation="Horizontal">
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=CbEndpoints, Path=SelectedItem.GenericDeviceClass}" Value="16">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <CheckBox
+                            Margin="0"
+                            VerticalAlignment="Center"
+                            Cursor="Hand"
+                            FocusVisualStyle="{x:Null}"
+                            IsChecked="{Binding ElementName=CbEndpoints, Path=SelectedItem.IsOn, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}">
+                            <CheckBox.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignCheckBox}" TargetType="{x:Type CheckBox}">
+                                    <Setter Property="Content">
+                                        <Setter.Value>
+                                            <TextBlock Foreground="White" Text="{x:Static p:Resources.Off}" />
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" Value="True">
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <TextBlock Foreground="White" Text="{x:Static p:Resources.On}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </CheckBox.Style>
+                        </CheckBox>
+                    </StackPanel>
+                    <!--  MultiLevel  -->
+                    <StackPanel
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal">
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=CbEndpoints, Path=SelectedItem.GenericDeviceClass}" Value="17">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <Slider
+                            Width="180"
+                            Margin="0,8"
+                            VerticalAlignment="Stretch"
+                            Panel.ZIndex="10"
+                            Cursor="Hand"
+                            FocusVisualStyle="{x:Null}"
+                            Maximum="99"
+                            Minimum="26"
+                            Style="{StaticResource MaterialDesignDiscreteHorizontalSlider}"
+                            Value="{Binding ElementName=CbEndpoints, Path=SelectedItem.MultiLevel, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" />
+                    </StackPanel>
+                </Grid>
+                <components:IfthenControlsUserControl
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

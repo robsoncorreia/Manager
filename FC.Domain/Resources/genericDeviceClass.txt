@@ -1,0 +1,106 @@
+[
+    {
+       "key": "0x03",
+       "name": "GENERIC_TYPE_AV_CONTROL_POINT"
+    },
+    {
+       "key": "0x04",
+       "name": "GENERIC_TYPE_DISPLAY"
+    },
+    {
+       "key": "0x40",
+       "name": "GENERIC_TYPE_ENTRY_CONTROL"
+    },
+    {
+       "key": "0x01",
+       "name": "GENERIC_TYPE_GENERIC_CONTROLLER"
+    },
+    {
+       "key": "0x31",
+       "name": "GENERIC_TYPE_METER"
+    },
+    {
+       "key": "0x30",
+       "name": "GENERIC_TYPE_METER_PULSE"
+    },
+    {
+       "key": "0xFF",
+       "name": "GENERIC_TYPE_NON_INTEROPERABLE"
+    },
+    {
+       "key": "0x0F",
+       "name": "GENERIC_TYPE_REPEATER_SLAVE"
+    },
+    {
+       "key": "0x17",
+       "name": "GENERIC_TYPE_SECURITY_PANEL"
+    },
+    {
+       "key": "0x50",
+       "name": "GENERIC_TYPE_SEMI_INTEROPERABLE"
+    },
+    {
+       "key": "0xA1",
+       "name": "GENERIC_TYPE_SENSOR_ALARM"
+    },
+    {
+       "key": "0x20",
+       "name": "GENERIC_TYPE_SENSOR_BINARY"
+    },
+    {
+       "key": "0x21",
+       "name": "GENERIC_TYPE_SENSOR_MULTILEVEL"
+    },
+    {
+       "key": "0x02",
+       "name": "GENERIC_TYPE_STATIC_CONTROLLER"
+    },
+    {
+       "key": "0x10",
+       "name": "GENERIC_TYPE_SWITCH_BINARY"
+    },
+    {
+       "key": "0x11",
+       "name": "GENERIC_TYPE_SWITCH_MULTILEVEL"
+    },
+    {
+       "key": "0x12",
+       "name": "GENERIC_TYPE_SWITCH_REMOTE"
+    },
+    {
+       "key": "0x13",
+       "name": "GENERIC_TYPE_SWITCH_TOGGLE"
+    },
+    {
+       "key": "0x08",
+       "name": "GENERIC_TYPE_THERMOSTAT"
+    },
+    {
+       "key": "0x16",
+       "name": "GENERIC_TYPE_VENTILATION"
+    },
+    {
+       "key": "0x09",
+       "name": "GENERIC_TYPE_WINDOW_COVERING"
+    },
+    {
+       "key": "0x15",
+       "name": "GENERIC_TYPE_ZIP_NODE"
+    },
+    {
+       "key": "0x18",
+       "name": "GENERIC_TYPE_WALL_CONTROLLER"
+    },
+    {
+       "key": "0x05",
+       "name": "GENERIC_TYPE_NETWORK_EXTENDER"
+    },
+    {
+       "key": "0x06",
+       "name": "GENERIC_TYPE_APPLIANCE"
+    },
+    {
+       "key": "0x07",
+       "name": "GENERIC_TYPE_SENSOR_NOTIFICATION"
+    }
+ ]

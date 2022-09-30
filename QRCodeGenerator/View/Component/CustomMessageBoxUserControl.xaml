@@ -1,0 +1,184 @@
+﻿<UserControl
+    x:Class="QRCodeGenerator.View.Component.CustomMessageBoxUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="Transparent"
+    DataContext="{Binding CustomMessageBox, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <Border
+        Width="280"
+        Margin="4"
+        Padding="16"
+        VerticalAlignment="Stretch"
+        Background="{StaticResource MaterialDesignPaper}"
+        CornerRadius="4"
+        FocusVisualStyle="{x:Null}">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                FontSize="14"
+                FontWeight="Medium"
+                Text="{Binding CustomMessageBoxModel.Header, UpdateSourceTrigger=PropertyChanged}" />
+            <Image Grid.Row="1" Source="{Binding CustomMessageBoxModel.Source, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource nullImageConverter}}">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Visibility" Value="Visible" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CustomMessageBoxModel.Source}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <TextBox
+                Grid.Row="2"
+                MaxHeight="220"
+                Margin="2,16,2,2"
+                BorderBrush="Transparent"
+                FocusVisualStyle="{x:Null}"
+                IsReadOnly="True"
+                Text="{Binding CustomMessageBoxModel.Message}"
+                TextWrapping="Wrap">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Background" Value="{StaticResource MaterialDesignPaper}" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TextBox}">
+                                    <Border
+                                        x:Name="border"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        SnapsToDevicePixels="True">
+                                        <ScrollViewer
+                                            x:Name="PART_ContentHost"
+                                            Focusable="false"
+                                            HorizontalScrollBarVisibility="Hidden"
+                                            VerticalScrollBarVisibility="Hidden" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter TargetName="border" Property="Opacity" Value="0.56" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                                        </Trigger>
+                                        <Trigger Property="IsFocused" Value="true">
+                                            <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CustomMessageBoxModel.Message}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBlock
+                Grid.Row="3"
+                Margin="6"
+                FocusVisualStyle="{x:Null}"
+                Foreground="{StaticResource DenimBillson}"
+                Opacity=".8"
+                Text="{Binding CustomMessageBoxModel.TextRX}"
+                TextOptions.TextFormattingMode="Ideal"
+                TextOptions.TextRenderingMode="Aliased"
+                TextTrimming="CharacterEllipsis">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Background" Value="{StaticResource MaterialDesignPaper}" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CustomMessageBoxModel.TextRX}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <StackPanel
+                Grid.Row="4"
+                Margin="2"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <Button
+                    MinWidth="74"
+                    Margin="2"
+                    Padding="8,4"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Command="{Binding OkCommand}"
+                    Content="{Binding CustomMessageBoxModel.TextButtomOk}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFlatButton}" TargetType="{x:Type Button}">
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CustomMessageBoxModel.ActionOk}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button
+                    MinWidth="74"
+                    Margin="2"
+                    Padding="8,4"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Command="{Binding CancelCommand}"
+                    Content="{Binding CustomMessageBoxModel.TextButtomCancel}"
+                    Foreground="Red">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFlatButton}" TargetType="{x:Type Button}">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CustomMessageBoxModel.ActionCancel}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button
+                    MinWidth="74"
+                    Margin="4,2,2,2"
+                    Padding="8,4"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Command="{Binding CustomCommand}"
+                    Content="{Binding CustomMessageBoxModel.TextButtomCustom}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="{x:Type Button}">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CustomMessageBoxModel.ActionCustom}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

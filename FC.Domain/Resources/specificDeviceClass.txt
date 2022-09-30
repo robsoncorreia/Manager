@@ -1,0 +1,552 @@
+[
+    {
+        "key": "0x04",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x04",
+        "flagname": "SPECIFIC_TYPE_DOORBELL",
+        "flagmask": "0x12"
+    },
+    {
+        "key": "0x04",
+        "flagname": "SPECIFIC_TYPE_SATELLITE_RECEIVER",
+        "flagmask": "0x04"
+    },
+    {
+        "key": "0x04",
+        "flagname": "SPECIFIC_TYPE_SATELLITE_RECEIVER_V2",
+        "flagmask": "0x11"
+    },
+    {
+        "key": "0x04",
+        "flagname": "SPECIFIC_TYPE_SOUND_SWITCH",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x05",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x05",
+        "flagname": "SPECIFIC_TYPE_SIMPLE_DISPLAY",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_DOOR_LOCK",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_ADVANCED_DOOR_LOCK",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_SECURE_KEYPAD_DOOR_LOCK",
+        "flagmask": "0x03"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_SECURE_KEYPAD_DOOR_LOCK_DEADBOLT",
+        "flagmask": "0x04"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_SECURE_DOOR",
+        "flagmask": "0x05"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_SECURE_GATE",
+        "flagmask": "0x06"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_SECURE_BARRIER_ADDON",
+        "flagmask": "0x07"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_SECURE_BARRIER_OPEN_ONLY",
+        "flagmask": "0x08"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_SECURE_BARRIER_CLOSE_ONLY",
+        "flagmask": "0x09"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_SECURE_LOCKBOX",
+        "flagmask": "0x0A"
+    },
+    {
+        "key": "0x41",
+        "flagname": "SPECIFIC_TYPE_SECURE_KEYPAD",
+        "flagmask": "0x0B"
+    },
+    {
+        "key": "0x02",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x02",
+        "flagname": "SPECIFIC_TYPE_PORTABLE_REMOTE_CONTROLLER",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x02",
+        "flagname": "SPECIFIC_TYPE_PORTABLE_SCENE_CONTROLLER",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x02",
+        "flagname": "SPECIFIC_TYPE_PORTABLE_INSTALLER_TOOL",
+        "flagmask": "0x03"
+    },
+    {
+        "key": "0x02",
+        "flagname": "SPECIFIC_TYPE_REMOTE_CONTROL_AV",
+        "flagmask": "0x04"
+    },
+    {
+        "key": "0x02",
+        "flagname": "SPECIFIC_TYPE_REMOTE_CONTROL_SIMPLE",
+        "flagmask": "0x06"
+    },
+    {
+        "key": "0x32",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x32",
+        "flagname": "SPECIFIC_TYPE_SIMPLE_METER",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x32",
+        "flagname": "SPECIFIC_TYPE_ADV_ENERGY_CONTROL",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x32",
+        "flagname": "SPECIFIC_TYPE_WHOLE_HOME_METER_SIMPLE",
+        "flagmask": "0x03"
+    },
+    {
+        "key": "0x10",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x10",
+        "flagname": "SPECIFIC_TYPE_REPEATER_SLAVE",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x10",
+        "flagname": "SPECIFIC_TYPE_VIRTUAL_NODE",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x18",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x18",
+        "flagname": "SPECIFIC_TYPE_ZONED_SECURITY_PANEL",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x51",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x51",
+        "flagname": "SPECIFIC_TYPE_ENERGY_PRODUCTION",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_ADV_ZENSOR_NET_ALARM_SENSOR",
+        "flagmask": "0x05"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_ADV_ZENSOR_NET_SMOKE_SENSOR",
+        "flagmask": "0x0A"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_BASIC_ROUTING_ALARM_SENSOR",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_BASIC_ROUTING_SMOKE_SENSOR",
+        "flagmask": "0x06"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_BASIC_ZENSOR_NET_ALARM_SENSOR",
+        "flagmask": "0x03"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_BASIC_ZENSOR_NET_SMOKE_SENSOR",
+        "flagmask": "0x08"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_ROUTING_ALARM_SENSOR",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_ROUTING_SMOKE_SENSOR",
+        "flagmask": "0x07"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_ZENSOR_NET_ALARM_SENSOR",
+        "flagmask": "0x04"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_ZENSOR_NET_SMOKE_SENSOR",
+        "flagmask": "0x09"
+    },
+    {
+        "key": "0xA2",
+        "flagname": "SPECIFIC_TYPE_ALARM_SENSOR",
+        "flagmask": "0x0B"
+    },
+    {
+        "key": "0x21",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x21",
+        "flagname": "SPECIFIC_TYPE_ROUTING_SENSOR_BINARY",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x22",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x22",
+        "flagname": "SPECIFIC_TYPE_ROUTING_SENSOR_MULTILEVEL",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x22",
+        "flagname": "SPECIFIC_TYPE_CHIMNEY_FAN",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x03",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x03",
+        "flagname": "SPECIFIC_TYPE_PC_CONTROLLER",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x03",
+        "flagname": "SPECIFIC_TYPE_SCENE_CONTROLLER",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x03",
+        "flagname": "SPECIFIC_TYPE_STATIC_INSTALLER_TOOL",
+        "flagmask": "0x03"
+    },
+    {
+        "key": "0x03",
+        "flagname": "SPECIFIC_TYPE_SET_TOP_BOX",
+        "flagmask": "0x04"
+    },
+    {
+        "key": "0x03",
+        "flagname": "SPECIFIC_TYPE_SUB_SYSTEM_CONTROLLER",
+        "flagmask": "0x05"
+    },
+    {
+        "key": "0x03",
+        "flagname": "SPECIFIC_TYPE_TV",
+        "flagmask": "0x06"
+    },
+    {
+        "key": "0x03",
+        "flagname": "SPECIFIC_TYPE_GATEWAY",
+        "flagmask": "0x07"
+    },
+    {
+        "key": "0x11",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x11",
+        "flagname": "SPECIFIC_TYPE_POWER_SWITCH_BINARY",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x11",
+        "flagname": "SPECIFIC_TYPE_SCENE_SWITCH_BINARY",
+        "flagmask": "0x03"
+    },
+    {
+        "key": "0x11",
+        "flagname": "SPECIFIC_TYPE_POWER_STRIP",
+        "flagmask": "0x04"
+    },
+    {
+        "key": "0x11",
+        "flagname": "SPECIFIC_TYPE_SIREN",
+        "flagmask": "0x05"
+    },
+    {
+        "key": "0x11",
+        "flagname": "SPECIFIC_TYPE_VALVE_OPEN_CLOSE",
+        "flagmask": "0x06"
+    },
+    {
+        "key": "0x11",
+        "flagname": "SPECIFIC_TYPE_COLOR_TUNABLE_BINARY",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x11",
+        "flagname": "SPECIFIC_TYPE_IRRIGATION_CONTROLLER",
+        "flagmask": "0x07"
+    },
+    {
+        "key": "0x12",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x12",
+        "flagname": "SPECIFIC_TYPE_CLASS_A_MOTOR_CONTROL",
+        "flagmask": "0x05"
+    },
+    {
+        "key": "0x12",
+        "flagname": "SPECIFIC_TYPE_CLASS_B_MOTOR_CONTROL",
+        "flagmask": "0x06"
+    },
+    {
+        "key": "0x12",
+        "flagname": "SPECIFIC_TYPE_CLASS_C_MOTOR_CONTROL",
+        "flagmask": "0x07"
+    },
+    {
+        "key": "0x12",
+        "flagname": "SPECIFIC_TYPE_MOTOR_MULTIPOSITION",
+        "flagmask": "0x03"
+    },
+    {
+        "key": "0x12",
+        "flagname": "SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x12",
+        "flagname": "SPECIFIC_TYPE_SCENE_SWITCH_MULTILEVEL",
+        "flagmask": "0x04"
+    },
+    {
+        "key": "0x12",
+        "flagname": "SPECIFIC_TYPE_FAN_SWITCH",
+        "flagmask": "0x08"
+    },
+    {
+        "key": "0x12",
+        "flagname": "SPECIFIC_TYPE_COLOR_TUNABLE_MULTILEVEL",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x13",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x13",
+        "flagname": "SPECIFIC_TYPE_SWITCH_REMOTE_BINARY",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x13",
+        "flagname": "SPECIFIC_TYPE_SWITCH_REMOTE_MULTILEVEL",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x13",
+        "flagname": "SPECIFIC_TYPE_SWITCH_REMOTE_TOGGLE_BINARY",
+        "flagmask": "0x03"
+    },
+    {
+        "key": "0x13",
+        "flagname": "SPECIFIC_TYPE_SWITCH_REMOTE_TOGGLE_MULTILEVEL",
+        "flagmask": "0x04"
+    },
+    {
+        "key": "0x14",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x14",
+        "flagname": "SPECIFIC_TYPE_SWITCH_TOGGLE_BINARY",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x14",
+        "flagname": "SPECIFIC_TYPE_SWITCH_TOGGLE_MULTILEVEL",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x09",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x09",
+        "flagname": "SPECIFIC_TYPE_SETBACK_SCHEDULE_THERMOSTAT",
+        "flagmask": "0x03"
+    },
+    {
+        "key": "0x09",
+        "flagname": "SPECIFIC_TYPE_SETBACK_THERMOSTAT",
+        "flagmask": "0x05"
+    },
+    {
+        "key": "0x09",
+        "flagname": "SPECIFIC_TYPE_SETPOINT_THERMOSTAT",
+        "flagmask": "0x04"
+    },
+    {
+        "key": "0x09",
+        "flagname": "SPECIFIC_TYPE_THERMOSTAT_GENERAL",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x09",
+        "flagname": "SPECIFIC_TYPE_THERMOSTAT_GENERAL_V2",
+        "flagmask": "0x06"
+    },
+    {
+        "key": "0x09",
+        "flagname": "SPECIFIC_TYPE_THERMOSTAT_HEATING",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x17",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x17",
+        "flagname": "SPECIFIC_TYPE_RESIDENTIAL_HRV",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x0A",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x0A",
+        "flagname": "SPECIFIC_TYPE_SIMPLE_WINDOW_COVERING",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x16",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x16",
+        "flagname": "SPECIFIC_TYPE_ZIP_ADV_NODE",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x16",
+        "flagname": "SPECIFIC_TYPE_ZIP_TUN_NODE",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x19",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x19",
+        "flagname": "SPECIFIC_TYPE_BASIC_WALL_CONTROLLER",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x06",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x06",
+        "flagname": "SPECIFIC_TYPE_SECURE_EXTENDER",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x07",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x07",
+        "flagname": "SPECIFIC_TYPE_GENERAL_APPLIANCE",
+        "flagmask": "0x01"
+    },
+    {
+        "key": "0x07",
+        "flagname": "SPECIFIC_TYPE_KITCHEN_APPLIANCE",
+        "flagmask": "0x02"
+    },
+    {
+        "key": "0x07",
+        "flagname": "SPECIFIC_TYPE_LAUNDRY_APPLIANCE",
+        "flagmask": "0x03"
+    },
+    {
+        "key": "0x08",
+        "flagname": "SPECIFIC_TYPE_NOT_USED",
+        "flagmask": "0x00"
+    },
+    {
+        "key": "0x08",
+        "flagname": "SPECIFIC_TYPE_NOTIFICATION_SENSOR",
+        "flagmask": "0x01"
+    }
+]

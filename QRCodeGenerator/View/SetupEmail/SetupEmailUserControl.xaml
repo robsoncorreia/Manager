@@ -1,0 +1,365 @@
+﻿<UserControl
+    x:Class="QRCodeGenerator.View.SetupEmail.SetupEmailUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:System;assembly=mscorlib"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:enum="clr-namespace:QRCodeGenerator.Model"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:QRCodeGenerator.Properties"
+    xmlns:validator="clr-namespace:QRCodeGenerator.Validator"
+    x:Name="setupEmail"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="Transparent"
+    DataContext="{Binding SetupEmail, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ObjectDataProvider
+            x:Key="enumType"
+            MethodName="GetValues"
+            ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="{x:Type enum:BodyTypeEnum}" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource headerHeight}" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Background="Black">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="8" ShadowDepth="0" />
+            </Border.Effect>
+        </Border>
+        <Border Background="{StaticResource BigStoneBillson}" BorderBrush="Transparent">
+            <DockPanel>
+                <Button
+                    Margin="0,0,4,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Command="{Binding GoToHelpPageCommand}"
+                    DockPanel.Dock="Right"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="{StaticResource DriftwoodBillson}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignToolButton}" TargetType="{x:Type Button}">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=CbSMTPServer, Path=SelectedItem.HelpPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0,0,4,2"
+                            VerticalAlignment="Bottom"
+                            Text="{x:Static p:Resources.Help}" />
+                        <materialDesign:PackIcon
+                            Width="{StaticResource packIconHeight}"
+                            Height="{StaticResource packIconHeight}"
+                            VerticalAlignment="Bottom"
+                            Kind="HelpCircle" />
+                    </StackPanel>
+                </Button>
+            </DockPanel>
+        </Border>
+        <materialDesign:DialogHost
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            CloseOnClickAway="False"
+            DialogContent="{Binding DialogContent}"
+            IsOpen="{Binding IsOpenDialogHost}">
+            <Grid Grid.Row="1" Margin="24">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox
+                    x:Name="TxtEmail"
+                    Grid.Row="0"
+                    Margin="0,0,0,8"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Email}"
+                    materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:ValidationAssist.Background="Transparent"
+                    Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SelectedEmail.Address"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:EmailRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox
+                    x:Name="TxtPassword"
+                    Grid.Row="1"
+                    Margin="0,8"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Password}"
+                    materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:ValidationAssist.Background="Transparent"
+                    Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SelectedEmail.Password"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NotEmptyValidationRule TextError="{x:Static p:Resources.Field_Is_Required}" ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox
+                    x:Name="TxtSubject"
+                    Grid.Row="2"
+                    Margin="0,8"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Subject}"
+                    materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:ValidationAssist.Background="Transparent"
+                    Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SelectedEmail.Subject"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NotEmptyValidationRule TextError="{x:Static p:Resources.Field_Is_Required}" ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox
+                    x:Name="TxtBody"
+                    Grid.Row="3"
+                    Margin="0,8"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Body}"
+                    materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:ValidationAssist.Background="Transparent"
+                    Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+
+                    <TextBox.Text>
+                        <Binding
+                            Mode="TwoWay"
+                            Path="SelectedEmail.Body"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NotEmptyValidationRule TextError="{x:Static p:Resources.Field_Is_Required}" ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button
+                    Grid.Row="3"
+                    Margin="0,0,0,8"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Command="{Binding OpenHelpDialogHostCommand}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignToolButton}" TargetType="{x:Type Button}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=CbBody, Path=SelectedItem}" Value="{x:Static enum:BodyTypeEnum.HTML}">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <materialDesign:DialogHost Background="{StaticResource TundoraBillson}" IsOpen="{Binding IsOpenHelpDialogHost}">
+                        <materialDesign:PackIcon Kind="Help" />
+                        <materialDesign:DialogHost.DialogContent>
+                            <Border Background="{StaticResource TundoraBillson}">
+                                <StackPanel Margin="8">
+                                    <TextBlock
+                                        FontSize="14"
+                                        Foreground="White"
+                                        Text="{x:Static p:Resources.Example_format}" />
+                                    <TextBox
+                                        Margin="0,8"
+                                        Background="{StaticResource TundoraBillson}"
+                                        BorderBrush="{StaticResource TundoraBillson}"
+                                        FocusVisualStyle="{x:Null}"
+                                        Foreground="White"
+                                        IsReadOnly="True"
+                                        Style="{x:Null}"
+                                        Text="{Binding TextHTMLExample}" />
+                                    <Button
+                                        HorizontalAlignment="Right"
+                                        Command="{Binding CloseHelpDialogHostCommand}"
+                                        Content="{x:Static p:Resources.Close}"
+                                        FocusVisualStyle="{x:Null}" />
+                                </StackPanel>
+                            </Border>
+                        </materialDesign:DialogHost.DialogContent>
+                    </materialDesign:DialogHost>
+                </Button>
+                <ComboBox
+                    x:Name="CbBody"
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Margin="16,0,0,8"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Bottom"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Body_type}"
+                    materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:ValidationAssist.Background="Transparent"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding Source={StaticResource enumType}}"
+                    SelectedIndex="{Binding SelectedIndexBodyType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Foreground="{Binding ElementName=CbBody, Path=DataContext.Foreground}" Text="{Binding Converter={StaticResource enumDescriptionConverter}}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <ComboBox.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}" TargetType="ComboBox">
+                            <Setter Property="IsEnabled" Value="True" />
+                        </Style>
+                    </ComboBox.Style>
+                </ComboBox>
+                <ComboBox
+                    x:Name="CbSMTPServer"
+                    Grid.Row="4"
+                    Margin="0,8"
+                    VerticalAlignment="Bottom"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.SMTP_server}"
+                    materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:ValidationAssist.Background="Transparent"
+                    Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding SMTPMailServers}"
+                    SelectedIndex="{Binding SelectedEmail.SelectedIndexSMTPMailServer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Foreground="{Binding ElementName=CbSMTPServer, Path=DataContext.Foreground}" Text="{Binding Provider}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBox
+                    x:Name="TxtSMTPServerAddress"
+                    Grid.Row="5"
+                    Margin="0,8"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.SMTP_server_address}"
+                    materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:ValidationAssist.Background="Transparent"
+                    Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    <TextBox.Text>
+                        <Binding
+                            ElementName="CbSMTPServer"
+                            Mode="TwoWay"
+                            Path="SelectedItem.SMTPSettings"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NotEmptyValidationRule TextError="{x:Static p:Resources.Field_Is_Required}" ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox
+                    x:Name="TxtPort"
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Margin="16,8,0,8"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Bottom"
+                    materialDesign:HintAssist.Hint="{x:Static p:Resources.Port}"
+                    materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:ValidationAssist.Background="Transparent"
+                    Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    <TextBox.Text>
+                        <Binding
+                            ElementName="CbSMTPServer"
+                            Mode="TwoWay"
+                            Path="SelectedItem.Port"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validator:NotEmptyValidationRule TextError="{x:Static p:Resources.Field_Is_Required}" ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <StackPanel
+                    Grid.Row="5 "
+                    Grid.Column="2"
+                    Margin="16,0,0,8"
+                    VerticalAlignment="Bottom"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="2"
+                        VerticalAlignment="Bottom"
+                        materialDesign:ThemeAssist.Theme="{Binding BaseTheme, UpdateSourceTrigger=PropertyChanged}"
+                        Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{x:Static p:Resources.Enable_Ssl}" />
+                    <ToggleButton VerticalAlignment="Bottom" IsChecked="{Binding ElementName=CbSMTPServer, Path=SelectedItem.EnableSsl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+                <Button
+                    Grid.Row="6"
+                    Margin="0,16"
+                    HorizontalAlignment="Left"
+                    Command="{Binding SaveCommand}"
+                    Content="{x:Static p:Resources._Save}">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtEmail}" Value="False" />
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtPassword}" Value="False" />
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtSubject}" Value="False" />
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtPort}" Value="False" />
+                                        <Condition Binding="{Binding Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged, ElementName=TxtSMTPServerAddress}" Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </materialDesign:DialogHost>
+    </Grid>
+</UserControl>

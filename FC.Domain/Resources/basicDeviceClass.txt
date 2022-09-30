@@ -1,0 +1,18 @@
+[
+    {
+       "key": "0x01",
+       "name": "BASIC_TYPE_CONTROLLER"
+    },
+    {
+       "key": "0x04",
+       "name": "BASIC_TYPE_ROUTING_SLAVE"
+    },
+    {
+       "key": "0x03",
+       "name": "BASIC_TYPE_SLAVE"
+    },
+    {
+       "key": "0x02",
+       "name": "BASIC_TYPE_STATIC_CONTROLLER"
+    }
+ ]

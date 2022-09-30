@@ -1,0 +1,1288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.7\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.7\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" />
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.2.9.7\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.2.9.7\build\Microsoft.NetFramework.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.NetCore.Analyzers.2.9.7\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetCore.Analyzers.2.9.7\build\Microsoft.NetCore.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeQuality.Analyzers.2.9.7\build\Microsoft.CodeQuality.Analyzers.props" Condition="Exists('..\packages\Microsoft.CodeQuality.Analyzers.2.9.7\build\Microsoft.CodeQuality.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.7\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.7\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" />
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3C5C83CF-9B42-452E-9C56-31332F105189}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ConfigurationFlexCloudHubBlaster</RootNamespace>
+    <AssemblyName>FlexCloudManager</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>64x64.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bogus, Version=28.4.1.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bogus.28.4.1\lib\net40\Bogus.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.94.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.94.2\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.9.1\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Dragablz, Version=0.0.3.203, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dragablz.0.0.3.203\lib\net45\Dragablz.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.7.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.7\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.1.5.0\lib\net461\FastMember.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
+    </Reference>
+    <Reference Include="ManagedWifi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\managedwifi.1.1.0\lib\net20\ManagedWifi.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.2.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.4.6.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Parse, Version=1.7.0.0, Culture=neutral, PublicKeyToken=ba48c3a442de616e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Parse.1.7.0\lib\net45\Parse.dll</HintPath>
+    </Reference>
+    <Reference Include="Parse.NetFx45, Version=1.7.0.0, Culture=neutral, PublicKeyToken=ba48c3a442de616e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Parse.1.7.0\lib\net45\Parse.NetFx45.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Specialized, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Specialized.4.3.0\lib\net46\System.Collections.Specialized.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.111.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.111.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.111.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.FileVersionInfo, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.FileVersionInfo.4.3.0\lib\net46\System.Diagnostics.FileVersionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.TraceSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.TraceSource.4.3.0\lib\net46\System.Diagnostics.TraceSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.6.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive, Version=4.2.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.4.2.0\lib\net46\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.6.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.6.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Overlapped, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Overlapped.4.3.0\lib\net46\System.Threading.Overlapped.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Thread, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Thread.4.3.0\lib\net46\System.Threading.Thread.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.ThreadPool, Version=4.0.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.ThreadPool.4.3.0\lib\net46\System.Threading.ThreadPool.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Communicator\CreateIfThenCommunicator.cs" />
+    <Compile Include="Communicator\ModuleDetailCommunicator.cs" />
+    <Compile Include="Communicator\ModuleDeviceThenCommunicator.cs" />
+    <Compile Include="Converte\Conversor.cs" />
+    <Compile Include="Converte\DateToHours.cs" />
+    <Compile Include="Converte\EnumToInt.cs" />
+    <Compile Include="Converte\ImageByteToSource.cs" />
+    <Compile Include="Converte\IsStringNullOrEmptyConverter.cs" />
+    <Compile Include="Converte\ValueToBoolean.cs" />
+    <Compile Include="Converte\ZeroToNull.cs" />
+    <Compile Include="Model\Enum\TypeModule.cs" />
+    <Compile Include="Model\FCC\CommandFccStandalone.cs" />
+    <Compile Include="Model\FCC\FccStandaloneModel.cs" />
+    <Compile Include="Model\FCC\UserFccStandalone.cs" />
+    <Compile Include="Model\FlexCloudClone\ComboxItemRTS.cs" />
+    <Compile Include="Model\FlexCloudClone\FlexCloudCloneModel.cs" />
+    <Compile Include="Model\FlexCloudClone\InfoMemory.cs" />
+    <Compile Include="Model\FlexCloudClone\RadioFrequency.cs" />
+    <Compile Include="Model\FlexNet\FlexNetModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Conditional\IfThenConditionalDeleteAllModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Conditional\IfThenConditionalDeleteModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Conditional\IfThenConditionalisUsedModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Date\IfThenDateSet.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Debug\IfThenDebugGet.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Debug\IfThenDebugRemove.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Debug\IfThenDebugSet.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Debug\IfThenDebugSetState.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Rule\IfThenAttachConditionalModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Rule\IfThenCommandModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Rule\IfThenDettachConditionalModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Rule\IfThenRuleDeleteModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Rule\IfThenRuleDeleteAllModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Rule\IfThenRuleEnable.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Rule\IfThenRuleGetModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Rule\IfThenRuleIsUsed.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Rule\IfThenRuleSetModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Zwave\IfThenZwaveGetModel.cs" />
+    <Compile Include="Model\FlexNet\IfThen\Zwave\IfThenZwaveSetModel.cs" />
+    <Compile Include="Model\FlexNet\IR\InfraRedConfGet.cs" />
+    <Compile Include="Model\FlexNet\Json\MacroModel.cs" />
+    <Compile Include="Model\FlexNet\Network\EthernetNetworkConfigGet.cs" />
+    <Compile Include="Model\FlexNet\Network\EthernetNetworkConfigSet.cs" />
+    <Compile Include="Model\FlexNet\Network\EthernetNetworkConfigurationGet.cs" />
+    <Compile Include="Model\FlexNet\Network\EthernetPortsNetworkSet.cs" />
+    <Compile Include="Model\FlexNet\Network\GatewayBasicInfoGet.cs" />
+    <Compile Include="Model\FlexNet\Network\GetConfigurationRede.cs" />
+    <Compile Include="Model\FlexNet\Network\Rip.cs" />
+    <Compile Include="Model\FlexNet\Network\WifiGetConfigurationRede.cs" />
+    <Compile Include="Model\FlexNet\Network\WifiPortsNetworkSet.cs" />
+    <Compile Include="Model\FlexNet\Thermostat\ThermostatCommand.cs" />
+    <Compile Include="Model\FlexNet\Thermostat\ThermostatFanMode.cs" />
+    <Compile Include="Model\FlexNet\Thermostat\ThermostatOperationMode.cs" />
+    <Compile Include="Model\FlexNet\Zwave\AllStatusModel.cs" />
+    <Compile Include="Model\FlexNet\Zwave\AudioVideoSetModel.cs" />
+    <Compile Include="Model\FlexNet\Zwave\BasicSetModel.cs" />
+    <Compile Include="Model\FlexNet\Zwave\BasicStatus.cs" />
+    <Compile Include="Model\FlexNet\Zwave\BinarySetModel.cs" />
+    <Compile Include="Model\FlexNet\Zwave\BinaryStatusModel.cs" />
+    <Compile Include="Model\FlexNet\Zwave\MeterStatusModel.cs" />
+    <Compile Include="Model\FlexNet\Zwave\MultiChannelSetBinaryModel.cs" />
+    <Compile Include="Model\FlexNet\Zwave\MultiLevelSensorStatusModel.cs" />
+    <Compile Include="Model\FlexNet\Zwave\MultiLevelSetModel.cs" />
+    <Compile Include="Model\FlexNet\Zwave\MultiLevelStatusModel.cs" />
+    <Compile Include="Model\FlexNet\Zwave\SceneActivationModel.cs" />
+    <Compile Include="Model\IfThen\CustomCommandModel.cs" />
+    <Compile Include="Model\IfThen\Date\DataTypeModel.cs" />
+    <Compile Include="Model\IfThen\DayOfWeekModel.cs" />
+    <Compile Include="Model\IfThen\DebugConditionalModel.cs" />
+    <Compile Include="Model\IfThen\DelayMacroModel.cs" />
+    <Compile Include="Model\IfThen\FlexCloudCloneIfThenModel.cs" />
+    <Compile Include="Model\IfThen\IfThenModel.cs" />
+    <Compile Include="Model\IfThen\IfThenSerialize.cs" />
+    <Compile Include="Model\IfThen\IfThenType.cs" />
+    <Compile Include="Model\IfThen\ScheduleIfThenModel.cs" />
+    <Compile Include="Model\IfThen\UtilIfThenElse.cs" />
+    <Compile Include="Model\IpCommand\IpCommandModel.cs" />
+    <Compile Include="Model\IR\IRChannel.cs" />
+    <Compile Include="Model\IR\IRModel.cs" />
+    <Compile Include="Model\Module\AssociationFlex.cs" />
+    <Compile Include="Model\Module\GatewayModule.cs" />
+    <Compile Include="Model\Module\ModuleID.cs" />
+    <Compile Include="Model\Module\ModuleInfo.cs" />
+    <Compile Include="Model\Notification\EmailNoticationValidateModel.cs" />
+    <Compile Include="Model\Parse\ParseUserModel.cs" />
+    <Compile Include="Model\RelayTest\RelayTestModel.cs" />
+    <Compile Include="Model\RelayTest\UtilRelayTest.cs" />
+    <Compile Include="Model\Update\FirmwareVersion.cs" />
+    <Compile Include="Model\Zwave\BatteryCommandClass.cs" />
+    <Compile Include="Model\Zwave\BinarySwitchCommand.cs" />
+    <Compile Include="Model\Zwave\MultiChannelBasicCommand.cs" />
+    <Compile Include="Model\Zwave\MultichannelBinaryCommand.cs" />
+    <Compile Include="Model\Zwave\MultichannelMultilevelCommand.cs" />
+    <Compile Include="Model\Zwave\MutilevelSensorCommand.cs" />
+    <Compile Include="Model\Zwave\SceneActivationCommand.cs" />
+    <Compile Include="Model\Zwave\ZwaveParameter.cs" />
+    <Compile Include="Model\Zwave\AntiTheftCommand.cs" />
+    <Compile Include="Model\Zwave\BasicCommand.cs" />
+    <Compile Include="Model\Zwave\BinarySensorReportCommand.cs" />
+    <Compile Include="Model\Zwave\NotificationCommand.cs" />
+    <Compile Include="Model\Zwave\ZwaveCommand.cs" />
+    <Compile Include="Model\ZXT600\ZXTCodeModel.cs" />
+    <Compile Include="Model\ZXT600\ZXTIRLearningMappingModel.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ProjectRepository.cs" />
+    <Compile Include="Model\Ap.cs" />
+    <Compile Include="Model\Av.cs" />
+    <Compile Include="Model\Booster.cs" />
+    <Compile Include="Model\ConfigurationApp.cs" />
+    <Compile Include="Model\Device\CommandClass.cs" />
+    <Compile Include="Model\Device\DeviceModel.cs" />
+    <Compile Include="Model\Email\Email.cs" />
+    <Compile Include="Model\Module\EmailPushNotification.cs" />
+    <Compile Include="Model\Module\ModuleOld.cs" />
+    <Compile Include="Model\Notification\ConditionalNotificationModel.cs" />
+    <Compile Include="Model\Notification\TreeViewNotification.cs" />
+    <Compile Include="Model\Notification\UtilNotificationModel.cs" />
+    <Compile Include="Model\Project\ProjectModel.cs" />
+    <Compile Include="Model\Notification\NotificationModel.cs" />
+    <Compile Include="Model\Rede\WifiNetwork.cs" />
+    <Compile Include="Model\Session\CreatedWith.cs" />
+    <Compile Include="Model\Session\ExpiresAt.cs" />
+    <Compile Include="Model\Session\ListSession.cs" />
+    <Compile Include="Model\Session\Session.cs" />
+    <Compile Include="Model\Session\UserSession.cs" />
+    <Compile Include="Model\ListResult.cs" />
+    <Compile Include="Model\Command.cs" />
+    <Compile Include="Model\CommandEndPoint.cs" />
+    <Compile Include="Model\CommandModule.cs" />
+    <Compile Include="Model\Configuration.cs" />
+    <Compile Include="Model\Endpoint.cs" />
+    <Compile Include="Model\Enum\Statement.cs" />
+    <Compile Include="Model\FlexCloudHubBlaster.cs" />
+    <Compile Include="Model\IfThen\LogicGate.cs" />
+    <Compile Include="Model\ItemMainSideCommunicator.cs" />
+    <Compile Include="Model\ItemMainSideMenu.cs" />
+    <Compile Include="Model\Lan.cs" />
+    <Compile Include="Model\Module\ModuleDevice.cs" />
+    <Compile Include="Model\Multiport.cs" />
+    <Compile Include="Model\ProjectFlex.cs" />
+    <Compile Include="Model\ProjectFile.cs" />
+    <Compile Include="Model\Rest\UserLogin.cs" />
+    <Compile Include="Model\Rest\UtilRest.cs" />
+    <Compile Include="Model\ProjectModel.cs" />
+    <Compile Include="Model\Scene.cs" />
+    <Compile Include="Model\Serial.cs" />
+    <Compile Include="Model\SnackbarCommunicator.cs" />
+    <Compile Include="Model\Thermostat.cs" />
+    <Compile Include="Model\UDPGatewaysEthernetCommunicator.cs" />
+    <Compile Include="Model\UDPGatewaysWifiCommunicator.cs" />
+    <Compile Include="Model\UDPViewModel.cs" />
+    <Compile Include="Model\UserFlex.cs" />
+    <Compile Include="Model\User\Account.cs" />
+    <Compile Include="Model\UtilParseServer.cs" />
+    <Compile Include="Model\Wireless.cs" />
+    <Compile Include="Repository\LoginRepository.cs" />
+    <Compile Include="Repository\ModuleDeviceRepository.cs" />
+    <Compile Include="Service\CloundConnectException.cs" />
+    <Compile Include="Model\IfThen\IfThenRepository.cs" />
+    <Compile Include="Service\Data\Local\LiteDBService.cs" />
+    <Compile Include="Service\FlexCloudClone\FlexCloudCloneService.cs" />
+    <Compile Include="Service\IfThen\GatewayException.cs" />
+    <Compile Include="Service\IfThen\IfThenService.cs" />
+    <Compile Include="Service\IpCommand\IpCommandService.cs" />
+    <Compile Include="Service\IR\IRService.cs" />
+    <Compile Include="Service\ITcpService.cs" />
+    <Compile Include="Service\Parse\ParseModuleService.cs" />
+    <Compile Include="Service\Parse\UtilSessionExternal.cs" />
+    <Compile Include="Service\Parse\UtilParseModuleDevice.cs" />
+    <Compile Include="Service\Parse\UtilParseEndPoint.cs" />
+    <Compile Include="Service\Parse\UtilParseProjectFile.cs" />
+    <Compile Include="Service\Parse\UtilParseClass.cs" />
+    <Compile Include="Service\Parse\UtilParseResult.cs" />
+    <Compile Include="Service\Rede\Udp\UdpService.cs" />
+    <Compile Include="Service\RelayTest\RelayTestService.cs" />
+    <Compile Include="Service\Rest\NotFoundGetToken.cs" />
+    <Compile Include="Service\IServiceBase.cs" />
+    <Compile Include="Service\ZXT\ZXTService.cs" />
+    <Compile Include="Validator\CommandValidationRule.cs" />
+    <Compile Include="Validator\EmailValidationRule.cs" />
+    <Compile Include="Validator\FutureDateValidationRule.cs" />
+    <Compile Include="Validator\IndexComboxValidationRule.cs" />
+    <Compile Include="Validator\NotEmptyValidationRule.cs" />
+    <Compile Include="Validator\NumberRangeValidationRule.cs" />
+    <Compile Include="ViewModel\Configuration\ConfigurationViewModel.cs" />
+    <Compile Include="ViewModel\Gateway\GatewayViewModel.cs" />
+    <Compile Include="ViewModel\Gateway\Radio433\Radio433ViewModel.cs" />
+    <Compile Include="ViewModel\Gateway\Update\UpdateViewModel.cs" />
+    <Compile Include="ViewModel\Gateway\VoiceAssistantSetup\VoiceAssistantSetupViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\Item\CustomCommandViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\Item\DebugConditionalViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\Item\FlexCloudCloneIfThenViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\_Base\IfThenViewModelBase.cs" />
+    <Compile Include="ViewModel\IfThen\_Base\ThenElseViewModelBase.cs" />
+    <Compile Include="ViewModel\Gateway\IPCommand\IPCommandViewModel.cs" />
+    <Compile Include="ViewModel\Gateway\IR\IRLearningViewModel.cs" />
+    <Compile Include="ViewModel\Gateway\RelayTest\RelayTestViewModel.cs" />
+    <Compile Include="ViewModel\Gateway\RTS\RTSViewModel.cs" />
+    <Compile Include="ViewModel\_Dashboard\DashboardViewModel.cs" />
+    <Compile Include="View\Configuration\ConfigurationPage.xaml.cs">
+      <DependentUpon>ConfigurationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ErrorMessageUserControl.xaml.cs">
+      <DependentUpon>ErrorMessageUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\GatewayPage.xaml.cs">
+      <DependentUpon>GatewayPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\Radio433\FlexCloudCloneCloudCardUserControl.xaml.cs">
+      <DependentUpon>FlexCloudCloneCloudCardUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\Radio433\FlexCloudCloneGatewayCardUserControl.xaml.cs">
+      <DependentUpon>FlexCloudCloneGatewayCardUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\Radio433\FlexCloudCloneLocalCardUserControl.xaml.cs">
+      <DependentUpon>FlexCloudCloneLocalCardUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\Radio433\Radio433UserControl.cs">
+      <DependentUpon>Radio433UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\Radio433\FlexCloudListUserControl.xaml.cs">
+      <DependentUpon>FlexCloudListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\Update\GatewayUpdateUserControl.xaml.cs">
+      <DependentUpon>GatewayUpdateUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\VoiceAssistantSetup\VoiceAssistantSetupUserControl.xaml.cs">
+      <DependentUpon>VoiceAssistantSetupUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\CustomCommandAfterAddUserControl.xaml.cs">
+      <DependentUpon>CustomCommandAfterAddUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\CustomCommandUserControl.xaml.cs">
+      <DependentUpon>CustomCommandUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\DebugConditionalAfterAddUserControl.xaml.cs">
+      <DependentUpon>DebugConditionalAfterAddUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\DebugConditionalUserControl.xaml.cs">
+      <DependentUpon>DebugConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\FlexCloudCloneIfThenUserControl.xaml.cs">
+      <DependentUpon>FlexCloudCloneIfThenUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\IPCommandIfThenUserControl.xaml.cs">
+      <DependentUpon>IPCommandIfThenUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\IRIfThenUserControl.xaml.cs">
+      <DependentUpon>IRIfThenUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\DefaultConditionalUserControl.xaml.cs">
+      <DependentUpon>DefaultConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\DomeMotionSensor131543UserControl.xaml.cs">
+      <DependentUpon>DomeMotionSensor131543UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\DomeSiren136543ConditionalUserControl.xaml.cs">
+      <DependentUpon>DomeSiren136543ConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\DoorWindowProIfConditionalUserControl.xaml.cs">
+      <DependentUpon>DoorWindowProIfConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\DSC18103ConditionalUserControl.xaml.cs">
+      <DependentUpon>DSC18103ConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\FX6HPro20737351ConditionalUserControl.xaml.cs">
+      <DependentUpon>FX6HPro20737351ConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\FXA0400379ConditionalUserControl.xaml.cs">
+      <DependentUpon>FXA0400379ConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\FXA3000ConditionalUserControl.xaml.xaml.cs">
+      <DependentUpon>FXA3000ConditionalUserControl.xaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\FXD211ConditionalUserControl.xaml.cs">
+      <DependentUpon>FXD211ConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\FXD5011ConditionalUserControl.xaml.cs">
+      <DependentUpon>FXD5011ConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\FXM5012ConditionalUserControl.xaml.cs">
+      <DependentUpon>FXM5012ConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\FXR314IfConditionalUserControl.xaml.cs">
+      <DependentUpon>FXR314IfConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\FXS5151ConditionalUserControl.xaml.cs">
+      <DependentUpon>FXS5151ConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\FXUserControl.xaml.cs">
+      <DependentUpon>FXUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\PST024AIfConditionalUserControl.xaml.cs">
+      <DependentUpon>PST024AIfConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\SmartColorButtonUserControl.xaml.cs">
+      <DependentUpon>SmartColorButtonUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\If\WiegandInterfaceConditionalUserControl.xaml.cs">
+      <DependentUpon>WiegandInterfaceConditionalUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\ThenElse\DSC18134TestUserControl.xaml.cs">
+      <DependentUpon>DSC18134TestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\ThenElse\FlexCloudHubTestUserControl.xaml.cs">
+      <DependentUpon>FlexCloudHubTestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\ThenElse\FX6HPPro20737351TestUserControl.xaml.cs">
+      <DependentUpon>FX6HPPro20737351TestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\ThenElse\FXA0400379TestUserControl.xaml.cs">
+      <DependentUpon>FXA0400379TestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\ThenElse\FXD211UserControl.xaml.cs">
+      <DependentUpon>FXD211UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\ThenElse\WiegandInterfaceTestUserControl.xaml.cs">
+      <DependentUpon>WiegandInterfaceTestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\ThenElse\FXAThenElseUserControl.xaml.cs">
+      <DependentUpon>FXAThenElseUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\ThenElse\FXS69ATestUserControl.xaml.cs">
+      <DependentUpon>FXS69ATestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\ThenElse\ZXT120TestUserControl.xaml.cs">
+      <DependentUpon>ZXT120TestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\_General\AddRemoveButtonUserControl.xaml.cs">
+      <DependentUpon>AddRemoveButtonUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\_General\CommunicationChatGatewayUserControl.xaml.cs">
+      <DependentUpon>CommunicationChatGatewayUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\_General\ModuleFrontCardUserControl.xaml.cs">
+      <DependentUpon>ModuleFrontCardUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LayoutTest\Module\ThenElse\DomeSirenTestUserControl.xaml.cs">
+      <DependentUpon>DomeSirenTestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\_Base\IfBaseUserControl.xaml.cs">
+      <DependentUpon>IfBaseUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\_Base\ThenElseBaseUserControl.xaml.cs">
+      <DependentUpon>ThenElseBaseUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\IPCommand\IPCommandPage.cs">
+      <DependentUpon>IPCommandPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\IR\Controls\IRDialogUserControl.xaml.cs">
+      <DependentUpon>IRDialogUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\IR\IRLearningUserControl.xaml.cs">
+      <DependentUpon>IRLearningUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Notification\NotificationDetailUserControl.xaml.cs">
+      <DependentUpon>NotificationDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\RelayTest\RelayTestUserControl.cs">
+      <DependentUpon>RelayTestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\RTS\RTSUserControl.cs">
+      <DependentUpon>RTSUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Project\Module\Configuration\ZXTConfigurationUserControl.xaml.cs">
+      <DependentUpon>ZXTConfigurationUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Project\Module\Test\ZXTTestUserControl.xaml.cs">
+      <DependentUpon>ZXTTestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\_Dashboard\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_Base\FlexViewModelBase.cs" />
+    <Compile Include="_Base\ModelBase.cs" />
+    <Compile Include="_Builders\ModuleDeviceBuilder.cs" />
+    <Compile Include="_Base\ComboBoxItemsSourceDecorator.cs" />
+    <Compile Include="_Util\DebugBuild.cs" />
+    <Compile Include="_Util\ExtensionMethods.cs" />
+    <Compile Include="Validator\SimpleDateValidationRule.cs" />
+    <Compile Include="ViewModel\DeviceRegistration\DeviceRegistrationViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\Item\DelayMacroViemModel.cs" />
+    <Compile Include="ViewModel\IfThen\Item\LogicGateAfterAddViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\Item\NotificationIfThenAfterViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\Item\NotificationIfThenViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\Item\OperatorsTypeViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\Item\ScheduleIfAfterAddViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\Item\ScheduleIfThenViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\LoadListIfThenViewModel.cs" />
+    <Compile Include="ViewModel\Login\EmailNullException.cs" />
+    <Compile Include="ViewModel\Login\PasswordNullException.cs" />
+    <Compile Include="ViewModel\Login\TermUserViewModel.cs" />
+    <Compile Include="ViewModel\Notification\NotificationListViewModel.cs" />
+    <Compile Include="Service\Rest\RestService.cs" />
+    <Compile Include="ViewModel\Project\FluxProject\FluxProjectListViewModel.cs" />
+    <Compile Include="ViewModel\Project\FluxProject\LoginFluxProjectViewModel.cs" />
+    <Compile Include="ViewModel\Project\ProjectViewModel.cs" />
+    <Compile Include="View\DeviceRegistration\DeviceRegistrationPage.xaml.cs">
+      <DependentUpon>DeviceRegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\DelayMacroUserControl.xaml.cs">
+      <DependentUpon>DelayMacroUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\LogicGateAfterAddUserControl.xaml.cs">
+      <DependentUpon>LogicGateAfterAddUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\NotificationElseAfterUserControl.xaml.cs">
+      <DependentUpon>NotificationElseAfterUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\NotificationIfThenAfterUserControl.xaml.cs">
+      <DependentUpon>NotificationIfThenAfterUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\NotificationIfThenUserControl.xaml.cs">
+      <DependentUpon>NotificationIfThenUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\OperatorTypeUserControl.xaml.cs">
+      <DependentUpon>OperatorTypeUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\ScheduleIfAfterAddUserControl.xaml.cs">
+      <DependentUpon>ScheduleIfAfterAddUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\ScheduleIfThenUserControl.xaml.cs">
+      <DependentUpon>ScheduleIfThenUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\LoadListIfThenPage.xaml.cs">
+      <DependentUpon>LoadListIfThenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\TermUserUserControl.xaml.cs">
+      <DependentUpon>TermUserUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Notification\NotificationListUserControl.xaml.cs">
+      <DependentUpon>NotificationListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\IfThen\Item\LogicGateViewModel.cs" />
+    <Compile Include="View\IfThen\CreateIfThenPage.xaml.cs">
+      <DependentUpon>CreateIfThenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\Item\LogicGateUserControl.xaml.cs">
+      <DependentUpon>LogicGateUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\FacebookLoginWindow.xaml.cs">
+      <DependentUpon>FacebookLoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\RegisterUserPage.xaml.cs">
+      <DependentUpon>RegisterUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Project\Module\ModuleListUserControl.xaml.cs">
+      <DependentUpon>ModuleListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Project\FluxProject\FluxProjectListPage.xaml.cs">
+      <DependentUpon>FluxProjectListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Project\FluxProject\LoginFluxProjectPage.xaml.cs">
+      <DependentUpon>LoginFluxProjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Project\ProjectPage.xaml.cs">
+      <DependentUpon>ProjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IfThen\IfThenUseControl.xaml.cs">
+      <DependentUpon>IfThenUseControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gateway\Network\NetworkUserControl.cs">
+      <DependentUpon>NetworkUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TerminalWindow.xaml.cs">
+      <DependentUpon>TerminalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\CommandRepository.cs" />
+    <Compile Include="Repository\UDPServiceRepository.cs" />
+    <Compile Include="Service\ILoginGoogleService.cs" />
+    <Compile Include="Service\LoginFacebookService.cs" />
+    <Compile Include="Service\LoginGoogleService.cs" />
+    <Compile Include="Service\LoginService.cs" />
+    <Compile Include="Service\TcpService.cs" />
+    <Compile Include="Service\Rede\UtilRede.cs" />
+    <Compile Include="Converte\NegateBooleanConverter.cs" />
+    <Compile Include="Validator\PortValidationRule.cs" />
+    <Compile Include="Validator\RegexValidateRule.cs" />
+    <Compile Include="Validator\TextBoxValidationRule.cs" />
+    <Compile Include="Model\DrawerHost\DrawerHostItem.cs" />
+    <Compile Include="ViewModel\IfThen\CreateIfThenViewModel.cs" />
+    <Compile Include="ViewModel\Login\FacebookLoginViewModel.cs" />
+    <Compile Include="ViewModel\Login\LoginViewModel.cs" />
+    <Compile Include="ViewModel\Login\RegisterUserViewModel.cs" />
+    <Compile Include="ViewModel\Project\Module\ModuleListViewModel.cs" />
+    <Compile Include="ViewModel\IfThen\IfThenViewModel.cs" />
+    <Compile Include="ViewModel\Gateway\Network\NetworkViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\TerminalWindowViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="View\Configuration\ConfigurationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ErrorMessageUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\GatewayPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\Radio433\FlexCloudCloneCloudCardUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\Radio433\FlexCloudCloneGatewayCardUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\Radio433\FlexCloudCloneLocalCardUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\Radio433\Radio433UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\Radio433\FlexCloudListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\Update\GatewayUpdateUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\VoiceAssistantSetup\VoiceAssistantSetupUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\CustomCommandAfterAddUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\CustomCommandUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\DebugConditionalAfterAddUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\DebugConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\DelayMacroUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\FlexCloudCloneIfThenUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\IPCommandIfThenUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\IRIfThenUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\DefaultConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\DomeMotionSensor131543UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\DomeSiren136543ConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\DoorWindowProIfConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\DSC18103ConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\FX6HPro20737351ConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\FXA0400379ConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\FXA3000ConditionalUserControl.xaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\FXD211ConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\FXD5011ConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\FXM5012ConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\FXR314IfConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\FXS5151ConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\FXUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\PST024AIfConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\SmartColorButtonUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\If\WiegandInterfaceConditionalUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\ThenElse\DSC18134TestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\ThenElse\FlexCloudHubTestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\ThenElse\FX6HPPro20737351TestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\ThenElse\FXA0400379TestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\ThenElse\FXD211UserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\ThenElse\WiegandInterfaceTestUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\ThenElse\FXAThenElseUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\ThenElse\FXS69ATestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\ThenElse\ZXT120TestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\_General\AddRemoveButtonUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\_General\CommunicationChatGatewayUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\_General\ModuleFrontCardUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\NotificationElseAfterUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IfThen\LayoutTest\Module\ThenElse\DomeSirenTestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\_Base\IfBaseUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\_Base\ThenElseBaseUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\IPCommand\IPCommandPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\IR\Controls\IRDialogUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\IR\IRLearningUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\DeviceRegistration\DeviceRegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\LogicGateAfterAddUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\NotificationIfThenAfterUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IfThen\Item\NotificationIfThenUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IfThen\Item\OperatorTypeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\ScheduleIfAfterAddUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\ScheduleIfThenUserControl.xaml" />
+    <Page Include="View\IfThen\LoadListIfThenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login\TermUserUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Notification\NotificationDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Notification\NotificationListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\CreateIfThenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\Item\LogicGateUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login\FacebookLoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Login\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Login\RegisterUserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Project\Module\ModuleListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Project\FluxProject\FluxProjectListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Project\FluxProject\LoginFluxProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Project\Module\Test\ZXTTestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Project\ProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IfThen\IfThenUseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\Network\NetworkUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\RelayTest\RelayTestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gateway\RTS\RTSUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Project\Module\Configuration\ZXTConfigurationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TerminalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\_Dashboard\DashboardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\IfThen\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\User\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-0400-White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-0600-White.png" />
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-5014-White.png" />
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-5016-White.png" />
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-5029-Black.png" />
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-5022-Black.png" />
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-5022-White.png" />
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-3000-Black.png" />
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-3000-White.png" />
+    <Resource Include="Assets\ModuleDevice\Motor\Motor-ESI-ABMHZ.png" />
+    <Resource Include="Assets\ModuleDevice\Motor\FXS-M08-1.png" />
+    <Resource Include="Assets\ModuleDevice\Dimmer\RZP-03.png" />
+    <Resource Include="Assets\ModuleDevice\Dimmer\RZP-15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginwithgoogle.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\slide4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\slide1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Login\Carousel\Office\escr1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Login\Carousel\Residence\resi1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Login\Carousel\Hotel\hotel1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flextermsofuse.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Sensor\Dome-Door-Window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Sensor\Dome-Motion-Sensor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="64x64.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Sensor\Dome-Siren-136543.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\IR\ZXT-120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Gateway\Flex-Cloud-Blaster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Valve\Valve-Dome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\RELAY\DSC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXR\FXR-4-Channel-White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Sensor\Door-Window-PRO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\DoorLock\Flexlock_V3.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Valve\Valve-Gas-Philio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Sensor\PST-02-P12-M-316-500x500.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Thermostat\FX6HPPRO20737351.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\RELAY\FXS69A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-0404-Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-3012-Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-3011-879-Black.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-3021-Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Dimmer\SMART_BUTTON_34_316.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXS\FXS-5151.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXM\FXM-5011.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXR\FXR-211-A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXC\FX-C212A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXA\FXA-5018.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\RELAY\FXD-67A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\DoorLock\FX-F6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\RELAY\RELAYFIT20739351_4_2_1_Channel.jpg" />
+    <Resource Include="Assets\ModuleDevice\RELAY\RELAYFIT20739351_4_2_2_Channel.jpg" />
+    <Resource Include="Assets\ModuleDevice\RELAY\RELAYFIT20739351_4_2_3_Channel.jpg" />
+    <Resource Include="Assets\ModuleDevice\RELAY\RELAYFIT20739351_4_2_4_Channel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Controller\somfy_controller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\Gateway\Flex-Cloud-Hub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\ZXT\ZXT-600.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\ZXT\pathZXT600.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.7\analyzers\dotnet\cs\Microsoft.CodeAnalysis.VersionCheckAnalyzer.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.7\analyzers\dotnet\Microsoft.CodeAnalysis.VersionCheckAnalyzer.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.9.7\analyzers\dotnet\cs\Humanizer.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.9.7\analyzers\dotnet\cs\Microsoft.CodeQuality.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.9.7\analyzers\dotnet\cs\Microsoft.CodeQuality.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.7\analyzers\dotnet\cs\Microsoft.NetCore.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.7\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.7\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.7\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ModuleDevice\FXD\FX-D211.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.7\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.7\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeQuality.Analyzers.2.9.7\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeQuality.Analyzers.2.9.7\build\Microsoft.CodeQuality.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetCore.Analyzers.2.9.7\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetCore.Analyzers.2.9.7\build\Microsoft.NetCore.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.2.9.7\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.2.9.7\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.7\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.7\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
+</Project>

@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="QRCodeGenerator.View.Tab.TabPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:generator="clr-namespace:QRCodeGenerator.View.Generator"
+    xmlns:history="clr-namespace:QRCodeGenerator.View.History"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:QRCodeGenerator.Properties"
+    xmlns:settings="clr-namespace:QRCodeGenerator.View.Settings"
+    xmlns:setupemail="clr-namespace:QRCodeGenerator.View.SetupEmail"
+    Title="MainPage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="{Binding PrimarySoftwareColor, UpdateSourceTrigger=PropertyChanged}"
+    DataContext="{Binding Tab, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <Grid Background="Transparent">
+        <TabControl
+            Margin="0"
+            Padding="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
+            Background="{Binding PrimarySoftwareColor, UpdateSourceTrigger=PropertyChanged}"
+            BorderThickness="0"
+            FocusVisualStyle="{x:Null}"
+            IsEnabled="{Binding IsTabEnable, UpdateSourceTrigger=PropertyChanged}">
+            <TabItem
+                Padding="0"
+                FocusVisualStyle="{x:Null}"
+                Header="{x:Static p:Resources.QR_Code}">
+                <TabItem.Style>
+                    <Style BasedOn="{StaticResource TabItemCustom}" TargetType="{x:Type TabItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <generator:GeneratorUserControl />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TabItem.Style>
+            </TabItem>
+            <TabItem FocusVisualStyle="{x:Null}" Header="{x:Static p:Resources.Email_settings}">
+                <TabItem.Style>
+                    <Style BasedOn="{StaticResource TabItemCustom}" TargetType="{x:Type TabItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <setupemail:SetupEmailUserControl />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TabItem.Style>
+            </TabItem>
+            <TabItem FocusVisualStyle="{x:Null}" Header="{x:Static p:Resources.History}">
+                <TabItem.Style>
+                    <Style BasedOn="{StaticResource TabItemCustom}" TargetType="{x:Type TabItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <history:HistoryUserControl />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TabItem.Style>
+            </TabItem>
+            <TabItem FocusVisualStyle="{x:Null}" Header="{x:Static p:Resources.Settings}">
+                <TabItem.Style>
+                    <Style BasedOn="{StaticResource TabItemCustom}" TargetType="{x:Type TabItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <settings:SettingsUserControl />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TabItem.Style>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

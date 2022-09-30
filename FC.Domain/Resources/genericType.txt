@@ -1,0 +1,900 @@
+
+   [
+      {
+         "key": "0x03",
+         "name": "GENERIC_TYPE_AV_CONTROL_POINT",
+         "help": "Av Control Point",
+         "read_only": "false",
+         "comment": "AV Control Point",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x12",
+               "name": "SPECIFIC_TYPE_DOORBELL",
+               "help": "Doorbell",
+               "comment": ""
+            },
+            {
+               "key": "0x04",
+               "name": "SPECIFIC_TYPE_SATELLITE_RECEIVER",
+               "help": "Satellite Receiver",
+               "comment": "Satellite Receiver"
+            },
+            {
+               "key": "0x11",
+               "name": "SPECIFIC_TYPE_SATELLITE_RECEIVER_V2",
+               "help": "Satellite Receiver V2",
+               "comment": "Satellite Receiver V2"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_SOUND_SWITCH",
+               "help": "Sound Switch"
+            }
+         ]
+      },
+      {
+         "key": "0x04",
+         "name": "GENERIC_TYPE_DISPLAY",
+         "help": "Display",
+         "read_only": "false",
+         "comment": "",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_SIMPLE_DISPLAY",
+               "help": "Simple Display",
+               "comment": "Display (simple) Device Type"
+            }
+         ]
+      },
+      {
+         "key": "0x40",
+         "name": "GENERIC_TYPE_ENTRY_CONTROL",
+         "help": "Entry Control",
+         "read_only": "false",
+         "comment": "Entry Control",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_DOOR_LOCK",
+               "help": "Door Lock",
+               "comment": "Door Lock"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_ADVANCED_DOOR_LOCK",
+               "help": "Advanced Door Lock",
+               "comment": "Advanced Door Lock"
+            },
+            {
+               "key": "0x03",
+               "name": "SPECIFIC_TYPE_SECURE_KEYPAD_DOOR_LOCK",
+               "help": "Secure Keypad Door Lock",
+               "comment": "Door Lock (keypad –lever) Device Type"
+            },
+            {
+               "key": "0x04",
+               "name": "SPECIFIC_TYPE_SECURE_KEYPAD_DOOR_LOCK_DEADBOLT",
+               "help": "Door Lock Keypad Deadbolt",
+               "comment": "Door Lock (keypad – deadbolt) Device Type"
+            },
+            {
+               "key": "0x05",
+               "name": "SPECIFIC_TYPE_SECURE_DOOR",
+               "help": "Secure Door",
+               "comment": "Barrier Operator Specific Device Class"
+            },
+            {
+               "key": "0x06",
+               "name": "SPECIFIC_TYPE_SECURE_GATE",
+               "help": "Secure Gate",
+               "comment": "Barrier Operator Specific Device Class"
+            },
+            {
+               "key": "0x07",
+               "name": "SPECIFIC_TYPE_SECURE_BARRIER_ADDON",
+               "help": "Secure Barrier Addon",
+               "comment": "Barrier Operator Specific Device Class"
+            },
+            {
+               "key": "0x08",
+               "name": "SPECIFIC_TYPE_SECURE_BARRIER_OPEN_ONLY",
+               "help": "Secure Barrier Open Only",
+               "comment": "Barrier Operator Specific Device Class"
+            },
+            {
+               "key": "0x09",
+               "name": "SPECIFIC_TYPE_SECURE_BARRIER_CLOSE_ONLY",
+               "help": "Secure Barrier Close Only",
+               "comment": "Barrier Operator Specific Device Class"
+            },
+            {
+               "key": "0x0A",
+               "name": "SPECIFIC_TYPE_SECURE_LOCKBOX",
+               "help": "Secure Lockbox",
+               "comment": "SDS12724"
+            },
+            {
+               "key": "0x0B",
+               "name": "SPECIFIC_TYPE_SECURE_KEYPAD",
+               "help": "Secure Keypad"
+            }
+         ]
+      },
+      {
+         "key": "0x01",
+         "name": "GENERIC_TYPE_GENERIC_CONTROLLER",
+         "help": "Generic Controller",
+         "read_only": "false",
+         "comment": "Remote Controller",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_PORTABLE_REMOTE_CONTROLLER",
+               "help": "Portable Remote Controller",
+               "comment": "Remote Control (Multi Purpose) Device Type"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_PORTABLE_SCENE_CONTROLLER",
+               "help": "Portable Scene Controller",
+               "comment": "Portable Scene Controller"
+            },
+            {
+               "key": "0x03",
+               "name": "SPECIFIC_TYPE_PORTABLE_INSTALLER_TOOL",
+               "help": "Portable Installer Tool",
+               "comment": ""
+            },
+            {
+               "key": "0x04",
+               "name": "SPECIFIC_TYPE_REMOTE_CONTROL_AV",
+               "help": "Remote Control AV",
+               "comment": "Remote Control (AV) Device Type"
+            },
+            {
+               "key": "0x06",
+               "name": "SPECIFIC_TYPE_REMOTE_CONTROL_SIMPLE",
+               "help": "Remote Control Simple",
+               "comment": "Remote Control (Simple) Device Type"
+            }
+         ]
+      },
+      {
+         "key": "0x31",
+         "name": "GENERIC_TYPE_METER",
+         "help": "Meter",
+         "read_only": "false",
+         "comment": "Meter",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_SIMPLE_METER",
+               "help": "Simple Meter",
+               "comment": "Sub Energy Meter Device Type"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_ADV_ENERGY_CONTROL",
+               "help": "Adv Energy Control",
+               "comment": "Whole Home Energy Meter (Advanced) Device Type"
+            },
+            {
+               "key": "0x03",
+               "name": "SPECIFIC_TYPE_WHOLE_HOME_METER_SIMPLE",
+               "help": "Whole Home Meter Simple",
+               "comment": "Whole Home Meter (Simple) Device Type"
+            }
+         ]
+      },
+      {
+         "key": "0x30",
+         "name": "GENERIC_TYPE_METER_PULSE",
+         "help": "Meter Pulse",
+         "read_only": "false",
+         "comment": "Pulse Meter",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            }
+         ]
+      },
+      {
+         "key": "0xFF",
+         "name": "GENERIC_TYPE_NON_INTEROPERABLE",
+         "help": "Non Interoperable",
+         "read_only": "false",
+         "comment": "Non interoperable",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            }
+         ]
+      },
+      {
+         "key": "0x0F",
+         "name": "GENERIC_TYPE_REPEATER_SLAVE",
+         "help": "Repeater Slave",
+         "read_only": "false",
+         "comment": "Repeater Slave",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_REPEATER_SLAVE",
+               "help": "Repeater Slave",
+               "comment": "Basic Repeater Slave"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_VIRTUAL_NODE",
+               "help": "Virtual Node",
+               "comment": ""
+            }
+         ]
+      },
+      {
+         "key": "0x17",
+         "name": "GENERIC_TYPE_SECURITY_PANEL",
+         "help": "Security Panel",
+         "read_only": "false",
+         "comment": "",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_ZONED_SECURITY_PANEL",
+               "help": "Zoned Security Panel",
+               "comment": ""
+            }
+         ]
+      },
+      {
+         "key": "0x50",
+         "name": "GENERIC_TYPE_SEMI_INTEROPERABLE",
+         "help": "Semi Interoperable",
+         "read_only": "false",
+         "comment": "Semi Interoperable",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_ENERGY_PRODUCTION",
+               "help": "Energy Production",
+               "comment": "Energy Production"
+            }
+         ]
+      },
+      {
+         "key": "0xA1",
+         "name": "GENERIC_TYPE_SENSOR_ALARM",
+         "help": "Sensor Alarm",
+         "read_only": "false",
+         "comment": "",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x05",
+               "name": "SPECIFIC_TYPE_ADV_ZENSOR_NET_ALARM_SENSOR",
+               "help": "Adv Zensor Net Alarm Sensor",
+               "comment": ""
+            },
+            {
+               "key": "0x0A",
+               "name": "SPECIFIC_TYPE_ADV_ZENSOR_NET_SMOKE_SENSOR",
+               "help": "Adv Zensor Net Smoke Sensor",
+               "comment": ""
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_BASIC_ROUTING_ALARM_SENSOR",
+               "help": "Basic Routing Alarm Sensor",
+               "comment": ""
+            },
+            {
+               "key": "0x06",
+               "name": "SPECIFIC_TYPE_BASIC_ROUTING_SMOKE_SENSOR",
+               "help": "Basic Routing Smoke Sensor",
+               "comment": ""
+            },
+            {
+               "key": "0x03",
+               "name": "SPECIFIC_TYPE_BASIC_ZENSOR_NET_ALARM_SENSOR",
+               "help": "Basic Zensor Net Alarm Sensor",
+               "comment": ""
+            },
+            {
+               "key": "0x08",
+               "name": "SPECIFIC_TYPE_BASIC_ZENSOR_NET_SMOKE_SENSOR",
+               "help": "Basic Zensor Net Smoke Sensor",
+               "comment": ""
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_ROUTING_ALARM_SENSOR",
+               "help": "Routing Alarm Sensor",
+               "comment": ""
+            },
+            {
+               "key": "0x07",
+               "name": "SPECIFIC_TYPE_ROUTING_SMOKE_SENSOR",
+               "help": "Routing Smoke Sensor",
+               "comment": ""
+            },
+            {
+               "key": "0x04",
+               "name": "SPECIFIC_TYPE_ZENSOR_NET_ALARM_SENSOR",
+               "help": "Zensor Net Alarm Sensor",
+               "comment": ""
+            },
+            {
+               "key": "0x09",
+               "name": "SPECIFIC_TYPE_ZENSOR_NET_SMOKE_SENSOR",
+               "help": "Zensor Net Smoke Sensor",
+               "comment": ""
+            },
+            {
+               "key": "0x0B",
+               "name": "SPECIFIC_TYPE_ALARM_SENSOR",
+               "help": "Alarm Sensor",
+               "comment": "Sensor (Alarm) Device Type"
+            }
+         ]
+      },
+      {
+         "key": "0x20",
+         "name": "GENERIC_TYPE_SENSOR_BINARY",
+         "help": "Sensor Binary",
+         "read_only": "false",
+         "comment": "Binary Sensor",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_ROUTING_SENSOR_BINARY",
+               "help": "Routing Sensor Binary",
+               "comment": "Routing Binary Sensor"
+            }
+         ]
+      },
+      {
+         "key": "0x21",
+         "name": "GENERIC_TYPE_SENSOR_MULTILEVEL",
+         "help": "Sensor Multilevel",
+         "read_only": "false",
+         "comment": "Multilevel Sensor",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_ROUTING_SENSOR_MULTILEVEL",
+               "help": "Routing Sensor Multilevel",
+               "comment": "Sensor (Multilevel) Device Type"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_CHIMNEY_FAN",
+               "help": "Chimney Fan",
+               "comment": ""
+            }
+         ]
+      },
+      {
+         "key": "0x02",
+         "name": "GENERIC_TYPE_STATIC_CONTROLLER",
+         "help": "Static Controller",
+         "read_only": "false",
+         "comment": "Static Controller",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_PC_CONTROLLER",
+               "help": "Pc Controller",
+               "comment": "Central Controller Device Type"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_SCENE_CONTROLLER",
+               "help": "Scene Controller",
+               "comment": "Scene Controller"
+            },
+            {
+               "key": "0x03",
+               "name": "SPECIFIC_TYPE_STATIC_INSTALLER_TOOL",
+               "help": "Static Installer Tool",
+               "comment": ""
+            },
+            {
+               "key": "0x04",
+               "name": "SPECIFIC_TYPE_SET_TOP_BOX",
+               "help": "Set Top Box",
+               "comment": "Set Top Box Device Type"
+            },
+            {
+               "key": "0x05",
+               "name": "SPECIFIC_TYPE_SUB_SYSTEM_CONTROLLER",
+               "help": "Sub System Controller",
+               "comment": "Sub System Controller Device Type"
+            },
+            {
+               "key": "0x06",
+               "name": "SPECIFIC_TYPE_TV",
+               "help": "TV",
+               "comment": "TV Device Type"
+            },
+            {
+               "key": "0x07",
+               "name": "SPECIFIC_TYPE_GATEWAY",
+               "help": "Gateway",
+               "comment": "Gateway Device Type"
+            }
+         ]
+      },
+      {
+         "key": "0x10",
+         "name": "GENERIC_TYPE_SWITCH_BINARY",
+         "help": "Switch Binary",
+         "read_only": "false",
+         "comment": "Binary Switch",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_POWER_SWITCH_BINARY",
+               "help": "Power Switch Binary",
+               "comment": "On/Off Power Switch Device Type"
+            },
+            {
+               "key": "0x03",
+               "name": "SPECIFIC_TYPE_SCENE_SWITCH_BINARY",
+               "help": "Scene Switch Binary",
+               "comment": "Binary Scene Switch"
+            },
+            {
+               "key": "0x04",
+               "name": "SPECIFIC_TYPE_POWER_STRIP",
+               "help": "Power Strip",
+               "comment": "Power Strip Device Type"
+            },
+            {
+               "key": "0x05",
+               "name": "SPECIFIC_TYPE_SIREN",
+               "help": "Siren",
+               "comment": "Siren Device Type"
+            },
+            {
+               "key": "0x06",
+               "name": "SPECIFIC_TYPE_VALVE_OPEN_CLOSE",
+               "help": "Valve Open/Close",
+               "comment": "Valve (open/close) Device Type"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_COLOR_TUNABLE_BINARY",
+               "help": "Binary Tunable Color Light"
+            },
+            {
+               "key": "0x07",
+               "name": "SPECIFIC_TYPE_IRRIGATION_CONTROLLER",
+               "help": "Irrigation Controller"
+            }
+         ]
+      },
+      {
+         "key": "0x11",
+         "name": "GENERIC_TYPE_SWITCH_MULTILEVEL",
+         "help": "Switch Multilevel",
+         "read_only": "false",
+         "comment": "Multilevel Switch",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x05",
+               "name": "SPECIFIC_TYPE_CLASS_A_MOTOR_CONTROL",
+               "help": "Class A Motor Control",
+               "comment": "Window Covering No Position/Endpoint Device Type"
+            },
+            {
+               "key": "0x06",
+               "name": "SPECIFIC_TYPE_CLASS_B_MOTOR_CONTROL",
+               "help": "Class B Motor Control",
+               "comment": "Window Covering Endpoint Aware Device Type"
+            },
+            {
+               "key": "0x07",
+               "name": "SPECIFIC_TYPE_CLASS_C_MOTOR_CONTROL",
+               "help": "Class C Motor Control",
+               "comment": "Window Covering Position/Endpoint Aware Device Type"
+            },
+            {
+               "key": "0x03",
+               "name": "SPECIFIC_TYPE_MOTOR_MULTIPOSITION",
+               "help": "Motor Multiposition",
+               "comment": "Multiposition Motor"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL",
+               "help": "Power Switch Multilevel",
+               "comment": "Light Dimmer Switch Device Type"
+            },
+            {
+               "key": "0x04",
+               "name": "SPECIFIC_TYPE_SCENE_SWITCH_MULTILEVEL",
+               "help": "Scene Switch Multilevel",
+               "comment": "Multilevel Scene Switch"
+            },
+            {
+               "key": "0x08",
+               "name": "SPECIFIC_TYPE_FAN_SWITCH",
+               "help": "Fan Switch",
+               "comment": "Fan Switch Device Type"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_COLOR_TUNABLE_MULTILEVEL",
+               "help": "Multilevel Tunable Color Light",
+               "comment": ""
+            }
+         ]
+      },
+      {
+         "key": "0x12",
+         "name": "GENERIC_TYPE_SWITCH_REMOTE",
+         "help": "Switch Remote",
+         "read_only": "false",
+         "comment": "Remote Switch",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_SWITCH_REMOTE_BINARY",
+               "help": "Switch Remote Binary",
+               "comment": "Binary Remote Switch"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_SWITCH_REMOTE_MULTILEVEL",
+               "help": "Switch Remote Multilevel",
+               "comment": "Multilevel Remote Switch"
+            },
+            {
+               "key": "0x03",
+               "name": "SPECIFIC_TYPE_SWITCH_REMOTE_TOGGLE_BINARY",
+               "help": "Switch Remote Toggle Binary",
+               "comment": "Binary Toggle Remote Switch"
+            },
+            {
+               "key": "0x04",
+               "name": "SPECIFIC_TYPE_SWITCH_REMOTE_TOGGLE_MULTILEVEL",
+               "help": "Switch Remote Toggle Multilevel",
+               "comment": "Multilevel Toggle Remote Switch"
+            }
+         ]
+      },
+      {
+         "key": "0x13",
+         "name": "GENERIC_TYPE_SWITCH_TOGGLE",
+         "help": "Switch Toggle",
+         "read_only": "false",
+         "comment": "Toggle Switch",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_SWITCH_TOGGLE_BINARY",
+               "help": "Switch Toggle Binary",
+               "comment": "Binary Toggle Switch"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_SWITCH_TOGGLE_MULTILEVEL",
+               "help": "Switch Toggle Multilevel",
+               "comment": "Multilevel Toggle Switch"
+            }
+         ]
+      },
+      {
+         "key": "0x08",
+         "name": "GENERIC_TYPE_THERMOSTAT",
+         "help": "Thermostat",
+         "read_only": "false",
+         "comment": "Thermostat",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x03",
+               "name": "SPECIFIC_TYPE_SETBACK_SCHEDULE_THERMOSTAT",
+               "help": "Setback Schedule Thermostat",
+               "comment": "Setback Schedule Thermostat"
+            },
+            {
+               "key": "0x05",
+               "name": "SPECIFIC_TYPE_SETBACK_THERMOSTAT",
+               "help": "Setback Thermostat",
+               "comment": "Thermostat (Setback) Device Type"
+            },
+            {
+               "key": "0x04",
+               "name": "SPECIFIC_TYPE_SETPOINT_THERMOSTAT",
+               "help": "Setpoint Thermostat",
+               "comment": ""
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_THERMOSTAT_GENERAL",
+               "help": "Thermostat General",
+               "comment": "Thermostat General"
+            },
+            {
+               "key": "0x06",
+               "name": "SPECIFIC_TYPE_THERMOSTAT_GENERAL_V2",
+               "help": "Thermostat General V2",
+               "comment": "Thermostat (HVAC) Device Type"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_THERMOSTAT_HEATING",
+               "help": "Thermostat Heating",
+               "comment": "Thermostat Heating"
+            }
+         ]
+      },
+      {
+         "key": "0x16",
+         "name": "GENERIC_TYPE_VENTILATION",
+         "help": "Ventilation",
+         "read_only": "false",
+         "comment": "",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_RESIDENTIAL_HRV",
+               "help": "Residential Hrv",
+               "comment": ""
+            }
+         ]
+      },
+      {
+         "key": "0x09",
+         "name": "GENERIC_TYPE_WINDOW_COVERING",
+         "help": "Window Covering",
+         "read_only": "false",
+         "comment": "Window Covering",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_SIMPLE_WINDOW_COVERING",
+               "help": "Simple Window Covering",
+               "comment": "Simple Window Covering Control"
+            }
+         ]
+      },
+      {
+         "key": "0x15",
+         "name": "GENERIC_TYPE_ZIP_NODE",
+         "help": "Zip Node",
+         "read_only": "false",
+         "comment": "",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_ZIP_ADV_NODE",
+               "help": "Zip Adv Node",
+               "comment": ""
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_ZIP_TUN_NODE",
+               "help": "Zip Tun Node",
+               "comment": ""
+            }
+         ]
+      },
+      {
+         "key": "0x18",
+         "name": "GENERIC_TYPE_WALL_CONTROLLER",
+         "help": "Wall Controller",
+         "read_only": "false",
+         "comment": "",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_BASIC_WALL_CONTROLLER",
+               "help": "Basic Wall Controller",
+               "comment": "Wall Controller Device Type"
+            }
+         ]
+      },
+      {
+         "key": "0x05",
+         "name": "GENERIC_TYPE_NETWORK_EXTENDER",
+         "help": "Network Extender",
+         "read_only": "false",
+         "comment": "Network Extender Generic Device Class",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_SECURE_EXTENDER",
+               "help": "Secure Extender",
+               "comment": "Specific Device Secure Extender"
+            }
+         ]
+      },
+      {
+         "key": "0x06",
+         "name": "GENERIC_TYPE_APPLIANCE",
+         "help": "Appliance",
+         "read_only": "false",
+         "comment": "",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class Not Used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_GENERAL_APPLIANCE",
+               "help": "General Appliance"
+            },
+            {
+               "key": "0x02",
+               "name": "SPECIFIC_TYPE_KITCHEN_APPLIANCE",
+               "help": "Kitchen Appliance"
+            },
+            {
+               "key": "0x03",
+               "name": "SPECIFIC_TYPE_LAUNDRY_APPLIANCE",
+               "help": "Laundry Appliance"
+            }
+         ]
+      },
+      {
+         "key": "0x07",
+         "name": "GENERIC_TYPE_SENSOR_NOTIFICATION",
+         "help": "Sensor Notification",
+         "read_only": "false",
+         "spec_dev": [
+            {
+               "key": "0x00",
+               "name": "SPECIFIC_TYPE_NOT_USED",
+               "help": "Not Used",
+               "comment": "Specific Device Class not used"
+            },
+            {
+               "key": "0x01",
+               "name": "SPECIFIC_TYPE_NOTIFICATION_SENSOR",
+               "help": "Notification Sensor"
+            }
+         ]
+      }
+   ]

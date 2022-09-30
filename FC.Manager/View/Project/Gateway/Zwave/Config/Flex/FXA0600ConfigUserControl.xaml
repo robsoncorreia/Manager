@@ -1,0 +1,872 @@
+﻿<UserControl
+    x:Class="FC.Manager.View.Project.Gateway.Zwave.Config.Flex.FXA0600ConfigUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:FC.Domain._Util;assembly=FC.Domain"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    DataContext="{Binding FXA0600Config, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <materialDesign:DialogHost
+        DialogContent="{Binding DialogContent}"
+        FocusVisualStyle="{x:Null}"
+        IsOpen="{Binding IsOpenDialogHost}">
+        <Grid Margin="8">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="Foreground" Value="White" />
+                </Style>
+                <Style BasedOn="{StaticResource {x:Type ToolTip}}" TargetType="ToolTip">
+                    <Style.Resources>
+                        <Style TargetType="ContentPresenter">
+                            <Style.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                </Style>
+                            </Style.Resources>
+                        </Style>
+                    </Style.Resources>
+                    <Setter Property="MaxWidth" Value="233" />
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Row="7"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding GetAllCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Get_All}"
+                Style="{StaticResource GetAllFlatButton}"
+                Visibility="Collapsed" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="3"
+                Margin="8,0"
+                HorizontalAlignment="Center"
+                Text="{x:Static p:Resources.Value}" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"
+                Margin="8,0"
+                HorizontalAlignment="Center"
+                Text="{x:Static p:Resources.Actions}" />
+            <Separator
+                Grid.Row="8"
+                Grid.Column="0"
+                Grid.ColumnSpan="6"
+                Style="{StaticResource MaterialDesignDarkSeparator}" />
+
+            <Grid Grid.Row="9" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources.Beep}"
+                    TextTrimming="CharacterEllipsis"
+                    ToolTip="{x:Static p:Resources.Beep}" />
+            </Grid>
+            <StackPanel
+                Grid.Row="9"
+                Grid.Column="3"
+                Margin="8,0"
+                Orientation="Horizontal">
+                <ToggleButton
+                    x:Name="TbBeep"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    IsChecked="{Binding IsBeep, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Width="72"
+                    Margin="8,0,0,2"
+                    VerticalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{x:Static p:Resources.Disabled}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=IsChecked, ElementName=TbBeep}" Value="True">
+                                    <Setter Property="Text" Value="{x:Static p:Resources.Enabled}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+            <Button
+                Grid.Row="9"
+                Grid.Column="4"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding GetBeepCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Get}"
+                Style="{StaticResource GetFlatButton}" />
+            <Button
+                Grid.Row="9"
+                Grid.Column="5"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding SetBeepCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Set}"
+                Style="{StaticResource SetFlatButton}" />
+
+            <Separator
+                Grid.Row="12"
+                Grid.Column="0"
+                Grid.ColumnSpan="6"
+                Style="{StaticResource MaterialDesignDarkSeparator}" />
+            <Grid Grid.Row="13" Grid.ColumnSpan="6">
+                <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.CustomId}" Value="{x:Static model:ZwaveModelUtil.FXA0404}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.CustomId}" Value="{x:Static model:ZwaveModelUtil.FXA0600}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources.Clock}"
+                    TextTrimming="CharacterEllipsis"
+                    ToolTip="{x:Static p:Resources.Clock}" />
+                <materialDesign:TimePicker
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    Foreground="White"
+                    SelectedTime="{Binding Clock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="5"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetClockCommand}"
+                    CommandParameter="{Binding SelectedProjectModel}"
+                    Content="{x:Static p:Resources.Set}"
+                    Style="{StaticResource SetFlatButton}" />
+                <Separator
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+            </Grid>
+
+            <Grid Grid.Row="19" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources.Night_mode}"
+                    ToolTip="{x:Static p:Resources.Night_mode}" />
+                <!--<materialDesign:PackIcon
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Kind="Information"
+                        ToolTip="{x:Static p:Resources._1_98_percentage_brightness_level}" />-->
+            </Grid>
+            <StackPanel
+                Grid.Row="19"
+                Grid.Column="3"
+                Margin="8,0"
+                Orientation="Horizontal">
+                <ToggleButton
+                    x:Name="TbNightMode"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    IsChecked="{Binding IsNightMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Width="72"
+                    Margin="8,0,0,2"
+                    VerticalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{x:Static p:Resources.Disabled}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=IsChecked, ElementName=TbNightMode}" Value="True">
+                                    <Setter Property="Text" Value="{x:Static p:Resources.Enabled}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+            <Button
+                Grid.Row="19"
+                Grid.Column="4"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding GetNightModeCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Get}"
+                Style="{StaticResource GetFlatButton}" />
+            <Button
+                Grid.Row="19"
+                Grid.Column="5"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding SetNightModeCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Set}"
+                Style="{StaticResource SetFlatButton}" />
+            <Separator
+                Grid.Row="20"
+                Grid.Column="0"
+                Grid.ColumnSpan="6"
+                Style="{StaticResource MaterialDesignDarkSeparator}" />
+            <Grid
+                Grid.Row="21"
+                Grid.Column="2"
+                Grid.ColumnSpan="10">
+                <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.CustomId}" Value="{x:Static model:ZwaveModelUtil.FXA0404}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.CustomId}" Value="{x:Static model:ZwaveModelUtil.FXA0600}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources.Night_Mode_Time}"
+                    TextTrimming="CharacterEllipsis"
+                    ToolTip="{x:Static p:Resources.Night_Mode_Time}" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    Content="{x:Static p:Resources.Start_time}" />
+                <materialDesign:TimePicker
+                    x:Name="TpStartNightModeTime"
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Width="64"
+                    Margin="8,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    Foreground="White"
+                    SelectedTime="{Binding NightModeTime.StartNightModeTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Label
+                    Grid.Column="4"
+                    VerticalAlignment="Center"
+                    Content="{x:Static p:Resources.End_time}" />
+                <materialDesign:TimePicker
+                    x:Name="TpEndNightModeTime"
+                    Grid.Row="0"
+                    Grid.Column="5"
+                    Width="64"
+                    Margin="8,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    materialDesign:ThemeAssist.Theme="Dark"
+                    Foreground="White"
+                    SelectedTime="{Binding NightModeTime.EndNightModeTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="6"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding GetNightModeTimeCommand}"
+                    CommandParameter="{Binding SelectedProjectModel}"
+                    Content="{x:Static p:Resources.Get}"
+                    Style="{StaticResource GetFlatButton}" />
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="7"
+                    Margin="8,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding SetNightModeTimeCommand}"
+                    CommandParameter="{Binding SelectedProjectModel}"
+                    Content="{x:Static p:Resources.Set}"
+                    Style="{StaticResource SetFlatButton}" />
+                <Separator
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="10"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+            </Grid>
+            <Grid Grid.Row="24" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources.Demo_mode}"
+                    TextTrimming="CharacterEllipsis"
+                    ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+            </Grid>
+            <StackPanel
+                Grid.Row="24"
+                Grid.Column="3"
+                Margin="8,0"
+                Orientation="Horizontal">
+                <ToggleButton
+                    x:Name="TbDemoMode"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    IsChecked="{Binding IsDemoMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Width="72"
+                    Margin="8,0,0,2"
+                    VerticalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{x:Static p:Resources.Disabled}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=IsChecked, ElementName=TbDemoMode}" Value="True">
+                                    <Setter Property="Text" Value="{x:Static p:Resources.Enabled}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+            <Button
+                Grid.Row="24"
+                Grid.Column="4"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding GetDemoModeCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Get}"
+                Style="{StaticResource GetFlatButton}" />
+            <Button
+                Grid.Row="24"
+                Grid.Column="5"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding SetDemoModeCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Set}"
+                Style="{StaticResource SetFlatButton}" />
+            <Separator
+                Grid.Row="25"
+                Grid.Column="0"
+                Grid.ColumnSpan="6"
+                Style="{StaticResource MaterialDesignDarkSeparator}" />
+            <Grid Grid.Row="26" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources.Demo_scene_interval}"
+                    TextTrimming="CharacterEllipsis"
+                    ToolTip="{x:Static p:Resources.Demo_scene_interval}" />
+            </Grid>
+            <ComboBox
+                x:Name="CbDemoSceneInterval"
+                Grid.Row="26"
+                Grid.Column="3"
+                Margin="8,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                materialDesign:ThemeAssist.Theme="Dark"
+                materialDesign:ValidationAssist.Suppress="True"
+                SelectedIndex="{Binding DemoSceneInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Style="{StaticResource MaterialDesignComboBox}">
+                <ComboBoxItem Content="{x:Static p:Resources._5_seconds}" Tag="1" />
+                <ComboBoxItem Content="{x:Static p:Resources._10_seconds}" Tag="2" />
+                <ComboBoxItem Content="{x:Static p:Resources._15_seconds}" Tag="3" />
+                <ComboBoxItem Content="{x:Static p:Resources._20_seconds}" Tag="4" />
+            </ComboBox>
+            <Button
+                Grid.Row="26"
+                Grid.Column="4"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding GetDemoSceneIntervalCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Get}"
+                Style="{StaticResource GetFlatButton}" />
+            <Button
+                Grid.Row="26"
+                Grid.Column="5"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding SetDemoSceneIntervalCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Set}"
+                Style="{StaticResource SetFlatButton}" />
+            <Separator
+                Grid.Row="29"
+                Grid.Column="0"
+                Grid.ColumnSpan="6"
+                Style="{StaticResource MaterialDesignDarkSeparator}" />
+            <Grid Grid.Row="30" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources.Record_last_state}"
+                    TextTrimming="CharacterEllipsis"
+                    ToolTip="{x:Static p:Resources.Record_last_state}" />
+            </Grid>
+            <StackPanel
+                Grid.Row="30"
+                Grid.Column="3"
+                Margin="8,0"
+                Orientation="Horizontal">
+                <ToggleButton
+                    x:Name="TbRecordLastState"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    IsChecked="{Binding IsRecordLastState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Width="72"
+                    Margin="8,0,0,2"
+                    VerticalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{x:Static p:Resources.Disabled}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=IsChecked, ElementName=TbRecordLastState}" Value="True">
+                                    <Setter Property="Text" Value="{x:Static p:Resources.Enabled}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+            <Button
+                Grid.Row="30"
+                Grid.Column="4"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding GetRecordLastStateCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Get}"
+                Style="{StaticResource GetFlatButton}" />
+            <Button
+                Grid.Row="30"
+                Grid.Column="5"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding SetRecordLastStateCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Set}"
+                Style="{StaticResource SetFlatButton}" />
+            <Separator
+                Grid.Row="31"
+                Grid.Column="0"
+                Grid.ColumnSpan="6"
+                Style="{StaticResource MaterialDesignDarkSeparator}" />
+            <Grid Grid.Row="32" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources.All_on_All_off}"
+                    TextTrimming="CharacterEllipsis"
+                    ToolTip="{x:Static p:Resources.All_on_All_off}" />
+            </Grid>
+            <ComboBox
+                x:Name="CbAllOnAllOff"
+                Grid.Row="32"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Margin="8,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                materialDesign:ThemeAssist.Theme="Dark"
+                materialDesign:ValidationAssist.Suppress="True"
+                SelectedIndex="{Binding AllOnAllOff, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Style="{StaticResource MaterialDesignComboBox}">
+                <ComboBoxItem Content="{x:Static p:Resources.Disable__All_ON__and__All_OFF_}" Tag="1" />
+                <ComboBoxItem Content="{x:Static p:Resources.Allow__All_ON__only}" Tag="2" />
+                <ComboBoxItem Content="{x:Static p:Resources.All_OFF__only}" Tag="3" />
+                <ComboBoxItem Content="{x:Static p:Resources.Allow__All_ON__and__All_OFF_}" Tag="4" />
+            </ComboBox>
+            <Button
+                Grid.Row="32"
+                Grid.Column="4"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding GetAllOnAllOffCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Get}"
+                Style="{StaticResource GetFlatButton}" />
+            <Button
+                Grid.Row="32"
+                Grid.Column="5"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding SetAllOnAllOffCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Set}"
+                Style="{StaticResource SetFlatButton}" />
+            <Separator
+                Grid.Row="33"
+                Grid.Column="0"
+                Grid.ColumnSpan="6"
+                Style="{StaticResource MaterialDesignDarkSeparator}" />
+            <Grid Grid.Row="34" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources._3_way_functions}"
+                    TextTrimming="CharacterEllipsis"
+                    ToolTip="{x:Static p:Resources._3_way_functions}" />
+            </Grid>
+            <ComboBox
+                x:Name="CbTreeWayFunctions"
+                Grid.Row="34"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Margin="8,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                materialDesign:ThemeAssist.Theme="Dark"
+                materialDesign:ValidationAssist.Suppress="True"
+                SelectedIndex="{Binding TreeWayFunctions, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Style="{StaticResource MaterialDesignComboBox}">
+                <ComboBoxItem Content="{x:Static p:Resources.Push_Scene_1___Scene_2}" Tag="0" />
+                <ComboBoxItem Content="{x:Static p:Resources.On_Off_Scene_1___Scene_2}" Tag="1" />
+                <ComboBoxItem Content="{x:Static p:Resources.Push_Scene_3___Scene_4}" Tag="2" />
+                <ComboBoxItem Content="{x:Static p:Resources.On_Off_Scene_3___Scene_4}" Tag="3" />
+
+                <ComboBoxItem Content="{x:Static p:Resources.Push_Dimmer_1___Dimmer_2}" Tag="4" />
+                <ComboBoxItem Content="{x:Static p:Resources.On_Off_Dimmer_1___Dimmer_2}" Tag="5" />
+                <ComboBoxItem Content="{x:Static p:Resources.Push_Relay_1___Relay_2}" Tag="6" />
+                <ComboBoxItem Content="{x:Static p:Resources.On_Off_Relay_1___Relay_2}" Tag="7" />
+
+                <ComboBoxItem Content="{x:Static p:Resources.Push_Dimmer_1___Relay_1}" Tag="8" />
+                <ComboBoxItem Content="{x:Static p:Resources.On_Off_Dimmer_1___Relay_1}" Tag="9" />
+                <ComboBoxItem Content="{x:Static p:Resources.Push_Dimmer_1___Scene_1}" Tag="10" />
+                <ComboBoxItem Content="{x:Static p:Resources.On_Off_Dimmer_1___Scene_1}" Tag="11" />
+
+                <ComboBoxItem Content="{x:Static p:Resources.Push_Relay_1___Scene_1}" Tag="12" />
+                <ComboBoxItem Content="{x:Static p:Resources.On_Off_Relay_1___Scene_1}" Tag="13" />
+            </ComboBox>
+            <Button
+                Grid.Row="34"
+                Grid.Column="4"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding GetTreeWayFunctionsCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Get}"
+                Style="{StaticResource GetFlatButton}" />
+            <Button
+                Grid.Row="34"
+                Grid.Column="5"
+                Margin="8,0"
+                VerticalAlignment="Center"
+                Command="{Binding SetTreeWayFunctionsCommand}"
+                CommandParameter="{Binding SelectedProjectModel}"
+                Content="{x:Static p:Resources.Set}"
+                Style="{StaticResource SetFlatButton}" />
+            <Separator
+                Grid.Row="35"
+                Grid.Column="0"
+                Grid.ColumnSpan="6"
+                Style="{StaticResource MaterialDesignDarkSeparator}" />
+            <Grid Grid.Row="36" Grid.Column="2">
+                <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.CustomId, UpdateSourceTrigger=PropertyChanged}" Value="{x:Static model:ZwaveModelUtil.FXA0400}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{x:Static p:Resources.Economic_mode}"
+                    TextTrimming="CharacterEllipsis"
+                    ToolTip="{x:Static p:Resources.Economic_mode}" />
+            </Grid>
+            <materialDesign:DialogHost
+                Grid.Row="36"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"
+                Margin="8,0"
+                CloseOnClickAway="True"
+                IsOpen="{Binding IsOpenEconomicMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <materialDesign:DialogHost.Style>
+                    <Style TargetType="{x:Type materialDesign:DialogHost}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.CustomId, UpdateSourceTrigger=PropertyChanged}" Value="{x:Static model:ZwaveModelUtil.FXA0400}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </materialDesign:DialogHost.Style>
+                <materialDesign:DialogHost.DialogContent>
+                    <Grid Background="{StaticResource Dark}">
+                        <Grid.Style>
+                            <Style TargetType="{x:Type Grid}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsSendingToGateway}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Margin="4"
+                            Content="{x:Static p:Resources.Economic_mode}"
+                            FontWeight="Black" />
+                        <Button
+                            Margin="0,0,0,30"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Background="Red"
+                            BorderBrush="Red"
+                            Command="{Binding CloseEconomicModeCommand, Mode=OneWay}"
+                            IsCancel="True">
+                            <Button.Style>
+                                <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="{x:Type Button}">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsSendingToGateway, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <materialDesign:PackIcon Kind="Close" />
+                        </Button>
+                        <ListBox
+                            x:Name="CBEndPoints"
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            Margin="0,0,0,16"
+                            Background="{StaticResource Dark}"
+                            ItemsSource="{Binding SelectedProjectModel.SelectedGateway.SelectedZwaveDevice.Endpoints, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel
+                                            Grid.Row="0"
+                                            Margin="8,0,0,0"
+                                            Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Text="{x:Static p:Resources.Channel}" />
+                                            <TextBlock Text="  " />
+                                            <TextBlock Foreground="White" Text="{Binding Channel}" />
+                                            <TextBlock Text="  " />
+                                            <TextBlock Foreground="White" Text="{Binding EconomicMode, UpdateSourceTrigger=PropertyChanged}" />
+                                            <TextBlock Foreground="White" Text="%">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding EconomicMode}" Value="{x:Null}">
+                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </StackPanel>
+                                        <Slider
+                                            Grid.Row="1"
+                                            Width="250"
+                                            materialDesign:ThemeAssist.Theme="Dark"
+                                            Maximum="100"
+                                            Minimum="0"
+                                            Style="{StaticResource MaterialDesignDiscreteHorizontalSlider}"
+                                            Value="{Binding EconomicMode}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="PreviewMouseUp">
+                                                    <i:InvokeCommandAction Command="{Binding ElementName=CBEndPoints, Path=DataContext.SetEconomicModeCommand}">
+                                                        <i:InvokeCommandAction.CommandParameter>
+                                                            <MultiBinding Converter="{StaticResource conversor}">
+                                                                <MultiBinding.Bindings>
+                                                                    <Binding Path="DataContext.SelectedProjectModel" RelativeSource="{RelativeSource AncestorType=Window, Mode=FindAncestor, AncestorLevel=1}" />
+                                                                    <Binding Path="." />
+                                                                </MultiBinding.Bindings>
+                                                            </MultiBinding>
+                                                        </i:InvokeCommandAction.CommandParameter>
+                                                    </i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Slider>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Button
+                            Grid.Row="2"
+                            Margin="16,0,16,16"
+                            VerticalAlignment="Center"
+                            Command="{Binding GetEconomicModeCommand}"
+                            CommandParameter="{Binding SelectedProjectModel}"
+                            Content="{x:Static p:Resources.Get}"
+                            Style="{StaticResource GetFlatButton}" />
+                    </Grid>
+                </materialDesign:DialogHost.DialogContent>
+                <Button Command="{Binding OpenEconomicModeCommand}" Content="{x:Static p:Resources.Open}" />
+            </materialDesign:DialogHost>
+        </Grid>
+    </materialDesign:DialogHost>
+</UserControl>

@@ -1,0 +1,219 @@
+﻿<Page
+    x:Class="FC.Manager.View.AccountSetting.AccountSettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:FC.Domain.Properties;assembly=FC.Domain"
+    Title="UserInformationPage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="Black"
+    DataContext="{Binding AccountSetting, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style TargetType="TabItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Grid Name="Panel" FocusVisualStyle="{x:Null}">
+                            <ContentPresenter
+                                x:Name="ContentSite"
+                                Margin="10,2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                ContentSource="Header"
+                                FocusVisualStyle="{x:Null}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Panel" Property="Background" Value="{StaticResource PrimaryHueDarkBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Panel" Property="Background" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=FrameDashBoard}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border Grid.ColumnSpan="2" Background="{StaticResource TundoraBillson}">
+            <Button
+                Grid.Column="1"
+                Margin="0,12"
+                HorizontalAlignment="Left"
+                Command="{Binding GoBackCommand}"
+                FocusVisualStyle="{x:Null}"
+                Foreground="White"
+                Style="{StaticResource MaterialDesignFlatAccentButton}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                        Width="24"
+                        Height="24"
+                        VerticalAlignment="Center"
+                        Kind="NavigateBefore" />
+                    <TextBlock VerticalAlignment="Center" Text="{x:Static p:Resources.Go_Back}" />
+                </StackPanel>
+            </Button>
+        </Border>
+        <Border
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="2"
+            Padding="24"
+            Background="{StaticResource BigStoneBillson}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="0,20"
+                    Foreground="{StaticResource MaterialDesignDarkForeground}"
+                    Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                    Text="{x:Static p:Resources.Basic_Info}"
+                    Typography.Capitals="AllSmallCaps" />
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Padding="24"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="{StaticResource MineShaftBillson}"
+                    BorderBrush="{StaticResource MaterialDesignDivider}"
+                    BorderThickness="1,1,1,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Image
+                            Width="100"
+                            Height="100"
+                            Margin="0,20"
+                            HorizontalAlignment="Left"
+                            Source="{Binding Path=SourcePicture, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Stretch="UniformToFill">
+                            <Image.Clip>
+                                <RectangleGeometry
+                                    RadiusX="90"
+                                    RadiusY="90"
+                                    Rect="0,0,100,100" />
+                            </Image.Clip>
+                        </Image>
+                        <Button
+                            Grid.Column="1"
+                            Command="{Binding EditImageProfileCommand}"
+                            Content="{x:Static p:Resources.Edit}"
+                            FocusVisualStyle="{x:Null}"
+                            Style="{StaticResource MaterialDesignRaisedButton}" />
+                        <ProgressBar
+                            Width="102"
+                            Height="102"
+                            Margin="0,20"
+                            HorizontalAlignment="Left"
+                            FlowDirection="RightToLeft"
+                            Visibility="{Binding ProgressVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                            Value="{Binding ProgressImageProfile, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                            <ProgressBar.Clip>
+                                <RectangleGeometry
+                                    RadiusX="90"
+                                    RadiusY="90"
+                                    Rect="0,0,102,102" />
+                            </ProgressBar.Clip>
+                        </ProgressBar>
+                    </Grid>
+                </Border>
+                <Border
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Padding="24"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="{StaticResource MineShaftBillson}"
+                    BorderBrush="{StaticResource MaterialDesignDivider}"
+                    BorderThickness="1,1,1,1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                            Style="{StaticResource MaterialDesignBody1TextBlock}"
+                            Text="{x:Static p:Resources.User_Name}"
+                            Typography.Capitals="AllSmallCaps" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                            Style="{StaticResource MaterialDesignBody2TextBlock}"
+                            Text="{Binding Path=ParseUser, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource parseUserToObjectConverter}, ConverterParameter=username}"
+                            Typography.Capitals="AllSmallCaps" />
+                    </Grid>
+                </Border>
+                <Border
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Padding="24"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="{StaticResource MineShaftBillson}"
+                    BorderBrush="{StaticResource MaterialDesignDivider}"
+                    BorderThickness="1,0,1,1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                            Style="{StaticResource MaterialDesignBody1TextBlock}"
+                            Text="{x:Static p:Resources.Email}"
+                            Typography.Capitals="AllSmallCaps" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Foreground="{StaticResource MaterialDesignDarkForeground}"
+                            Style="{StaticResource MaterialDesignBody2TextBlock}"
+                            Text="{Binding Path=ParseUser, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource parseUserToObjectConverter}, ConverterParameter=email}"
+                            Typography.Capitals="AllSmallCaps" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

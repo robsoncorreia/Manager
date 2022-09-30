@@ -1,0 +1,4155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About_Us" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Add Device" xml:space="preserve">
+    <value>Add Device</value>
+  </data>
+  <data name="Add Gateway" xml:space="preserve">
+    <value>Add Gateway</value>
+  </data>
+  <data name="Add IP Device" xml:space="preserve">
+    <value>Add IP Device</value>
+  </data>
+  <data name="Add one or more email addresses separated by commas. Press &quot;Enter&quot; to confirm." xml:space="preserve">
+    <value>Add one or more email addresses separated by commas. Press "Enter" to confirm.</value>
+  </data>
+  <data name="Add selected device to the project" xml:space="preserve">
+    <value>Add selected device to the {0}</value>
+  </data>
+  <data name="Add Selected Gateway" xml:space="preserve">
+    <value>Add Selected Gateway</value>
+  </data>
+  <data name="Add the network's Z-Wave device" xml:space="preserve">
+    <value>Add the network's Z-Wave device</value>
+  </data>
+  <data name="Add to project" xml:space="preserve">
+    <value>Add to {0}</value>
+  </data>
+  <data name="Add Z-Wave device" xml:space="preserve">
+    <value>Add Z-Wave device</value>
+  </data>
+  <data name="Adding Z-Wave device" xml:space="preserve">
+    <value>Adding Z-Wave device</value>
+  </data>
+  <data name="Adding_device_to_the_project" xml:space="preserve">
+    <value>Adding device to the project</value>
+  </data>
+  <data name="Adding_Module" xml:space="preserve">
+    <value>Adding module</value>
+  </data>
+  <data name="Adding_Module_Project" xml:space="preserve">
+    <value>Adding module to the project</value>
+  </data>
+  <data name="Adding_Users" xml:space="preserve">
+    <value>Adding {0} users.</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Add_Group_Work_Channels" xml:space="preserve">
+    <value>Add_Group_Work_Channels</value>
+  </data>
+  <data name="Add_Module" xml:space="preserve">
+    <value>Add module</value>
+  </data>
+  <data name="Add_User" xml:space="preserve">
+    <value>Add User</value>
+  </data>
+  <data name="Administrators" xml:space="preserve">
+    <value>Administrators</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="Advanced_Notification" xml:space="preserve">
+    <value>Advanced_Notification</value>
+  </data>
+  <data name="Alexa" xml:space="preserve">
+    <value>Alexa</value>
+  </data>
+  <data name="Allready_Have_Account" xml:space="preserve">
+    <value>Allready have an account?</value>
+  </data>
+  <data name="All_Command_Deleted_From_Cloud" xml:space="preserve">
+    <value>All command deleted from the cloud</value>
+  </data>
+  <data name="All_Command_Deleted_From_The_Cloud" xml:space="preserve">
+    <value>All command deleted from the cloud.</value>
+  </data>
+  <data name="All_IRerased_From_Local_Storage" xml:space="preserve">
+    <value>All IR erased from local storage</value>
+  </data>
+  <data name="All_Memories_Are_Full" xml:space="preserve">
+    <value>All memories are full</value>
+  </data>
+  <data name="All_Registers_Deleted" xml:space="preserve">
+    <value>All registers deleted</value>
+  </data>
+  <data name="Already added" xml:space="preserve">
+    <value>Already added</value>
+  </data>
+  <data name="Ambience devices" xml:space="preserve">
+    <value>Ambience devices</value>
+  </data>
+  <data name="Ambience zwave devices" xml:space="preserve">
+    <value>Ambience zwave devices</value>
+  </data>
+  <data name="Ambiences" xml:space="preserve">
+    <value>Ambiences</value>
+  </data>
+  <data name="Ambiences images" xml:space="preserve">
+    <value>Ambiences Images</value>
+  </data>
+  <data name="Ambiences Rooms" xml:space="preserve">
+    <value>Ambiences/Rooms</value>
+  </data>
+  <data name="Ambience_Being_Sent_Trash" xml:space="preserve">
+    <value>The ambience is being sent to the trash</value>
+  </data>
+  <data name="Ambience_gateways" xml:space="preserve">
+    <value>Ambience gateways</value>
+  </data>
+  <data name="Ambience_Image" xml:space="preserve">
+    <value>Ambience image</value>
+  </data>
+  <data name="Ambience_Name" xml:space="preserve">
+    <value>Ambience name</value>
+  </data>
+  <data name="Ambience_Name_Must_Least_Characters" xml:space="preserve">
+    <value>The ambience name must be at least 6 characters</value>
+  </data>
+  <data name="Ambience_Sent_Archives_Page" xml:space="preserve">
+    <value>The ambience sent to the archives page</value>
+  </data>
+  <data name="Ambience_Will_Sent_Trash" xml:space="preserve">
+    <value>The ambience will be sent to the trash</value>
+  </data>
+  <data name="AP" xml:space="preserve">
+    <value>AP</value>
+  </data>
+  <data name="AP connection" xml:space="preserve">
+    <value>AP connection</value>
+  </data>
+  <data name="AP DHCP" xml:space="preserve">
+    <value>AP DHCP</value>
+  </data>
+  <data name="AP is enabled" xml:space="preserve">
+    <value>AP is enabled</value>
+  </data>
+  <data name="AP Password" xml:space="preserve">
+    <value>AP Password</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="AppVersion" xml:space="preserve">
+    <value>1.0.0.37</value>
+  </data>
+  <data name="App_Keys" xml:space="preserve">
+    <value>App_Keys</value>
+  </data>
+  <data name="App_Name" xml:space="preserve">
+    <value>FC – Config</value>
+  </data>
+  <data name="App_Users" xml:space="preserve">
+    <value>App users</value>
+  </data>
+  <data name="Archive" xml:space="preserve">
+    <value>Archive</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>Archived</value>
+  </data>
+  <data name="Archived by" xml:space="preserve">
+    <value>Archived by</value>
+  </data>
+  <data name="Archived Project" xml:space="preserve">
+    <value>Archived Project</value>
+  </data>
+  <data name="Archive_Ambience" xml:space="preserve">
+    <value>Archive ambience</value>
+  </data>
+  <data name="Archive_project" xml:space="preserve">
+    <value>Archive project</value>
+  </data>
+  <data name="Archiving ambience" xml:space="preserve">
+    <value>Archiving ambience</value>
+  </data>
+  <data name="Are you sure you want to delete device?" xml:space="preserve">
+    <value>Are you sure you want to delete device?</value>
+  </data>
+  <data name="Are you sure you want to delete image from the ambience?" xml:space="preserve">
+    <value>Are you sure you want to delete image from the ambience?</value>
+  </data>
+  <data name="Are you sure you want to permanently delete all ambiences?" xml:space="preserve">
+    <value>Are you sure you want to permanently delete all ambiences?</value>
+  </data>
+  <data name="Are you sure you want to permanently delete all projects?" xml:space="preserve">
+    <value>Are you sure you want to permanently delete all projects?</value>
+  </data>
+  <data name="Association" xml:space="preserve">
+    <value>Association</value>
+  </data>
+  <data name="Association groups" xml:space="preserve">
+    <value>Association groups</value>
+  </data>
+  <data name="Associations" xml:space="preserve">
+    <value>Associations</value>
+  </data>
+  <data name="Audio_Video" xml:space="preserve">
+    <value>Audio_Video</value>
+  </data>
+  <data name="Australia" xml:space="preserve">
+    <value>Australia</value>
+  </data>
+  <data name="Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="Autoscroll" xml:space="preserve">
+    <value>Autoscroll</value>
+  </data>
+  <data name="Auto_complete" xml:space="preserve">
+    <value>Auto complete</value>
+  </data>
+  <data name="Auto_High" xml:space="preserve">
+    <value>Auto High</value>
+  </data>
+  <data name="Auto_Low" xml:space="preserve">
+    <value>Auto Low</value>
+  </data>
+  <data name="Auto_Medium" xml:space="preserve">
+    <value>Auto Medium</value>
+  </data>
+  <data name="Auto_scroll" xml:space="preserve">
+    <value>Auto scroll</value>
+  </data>
+  <data name="Auxiliary" xml:space="preserve">
+    <value>Auxiliary</value>
+  </data>
+  <data name="Away" xml:space="preserve">
+    <value>Away</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Back_To_The_Login_Page" xml:space="preserve">
+    <value>Back_To_The_Login_Page</value>
+  </data>
+  <data name="Base64" xml:space="preserve">
+    <value>Base64</value>
+  </data>
+  <data name="Basic device information" xml:space="preserve">
+    <value>Basic device information</value>
+  </data>
+  <data name="Basic_Device_Class" xml:space="preserve">
+    <value>Basic Device Class</value>
+  </data>
+  <data name="Basic_Info" xml:space="preserve">
+    <value>Basic Info</value>
+  </data>
+  <data name="Battery_Level_Is" xml:space="preserve">
+    <value>Battery level is {0}%.</value>
+  </data>
+  <data name="Baud_Rate" xml:space="preserve">
+    <value>Baud rate</value>
+  </data>
+  <data name="Baud_Rate_232" xml:space="preserve">
+    <value>Baud Rate 232</value>
+  </data>
+  <data name="Baud_Rate_485" xml:space="preserve">
+    <value>Baud Rate 485</value>
+  </data>
+  <data name="Beta" xml:space="preserve">
+    <value>Beta</value>
+  </data>
+  <data name="Blacklist is enabled" xml:space="preserve">
+    <value>Blacklist is enabled</value>
+  </data>
+  <data name="Blacklist of users" xml:space="preserve">
+    <value>Blacklist of users</value>
+  </data>
+  <data name="Blaster" xml:space="preserve">
+    <value>Blaster</value>
+  </data>
+  <data name="Blaster_360_Mode_Changed_Successfully" xml:space="preserve">
+    <value>Blaster 360 mode changed to {0} successfully.</value>
+  </data>
+  <data name="Blue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="Body_type" xml:space="preserve">
+    <value>Body type</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="Brazil" xml:space="preserve">
+    <value>Brazil</value>
+  </data>
+  <data name="Build" xml:space="preserve">
+    <value>Build</value>
+  </data>
+  <data name="Build_Number" xml:space="preserve">
+    <value>Build Number</value>
+  </data>
+  <data name="Cameras" xml:space="preserve">
+    <value>Cameras</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Can_Not_Add_Logic_Block_First" xml:space="preserve">
+    <value>Can't add logic block as first IF statement</value>
+  </data>
+  <data name="Can_Not_Add_Logic_Block_Statement" xml:space="preserve">
+    <value>Can't add two logic blocks in a row on IF statement</value>
+  </data>
+  <data name="Can_Not_Add_Schedule" xml:space="preserve">
+    <value>Can't add Schedule module, first add a logical operator'</value>
+  </data>
+  <data name="Can_Not_Add_Two_Modules_Row_Statement" xml:space="preserve">
+    <value>Can't add two modules in a row on a IF statement.</value>
+  </data>
+  <data name="Change the primary color of the software" xml:space="preserve">
+    <value>Change the primary color of the software</value>
+  </data>
+  <data name="Changed_Brand_Code" xml:space="preserve">
+    <value>Changed to {0} code {1}.</value>
+  </data>
+  <data name="Changed_Dhcp_Ip_Gateway_Mask" xml:space="preserve">
+    <value>Well Done</value>
+  </data>
+  <data name="Changed_Password" xml:space="preserve">
+    <value>Changed_Password</value>
+  </data>
+  <data name="Changed_SSID" xml:space="preserve">
+    <value>Changed_SSID</value>
+  </data>
+  <data name="Change_Condition_Wifi" xml:space="preserve">
+    <value>Change_Condition_Wifi</value>
+  </data>
+  <data name="Change_Email" xml:space="preserve">
+    <value>Change_Email</value>
+  </data>
+  <data name="Change_Password" xml:space="preserve">
+    <value>Change_Password</value>
+  </data>
+  <data name="Change_Type_Notification" xml:space="preserve">
+    <value>Change_Type_Notification</value>
+  </data>
+  <data name="Changing" xml:space="preserve">
+    <value>Changing</value>
+  </data>
+  <data name="Changing bau rate" xml:space="preserve">
+    <value>Changing bau rate</value>
+  </data>
+  <data name="Changing parity" xml:space="preserve">
+    <value>Changing parity</value>
+  </data>
+  <data name="Changing zwave device configuration" xml:space="preserve">
+    <value>Changing zwave device configuration</value>
+  </data>
+  <data name="Changing_Baud_Rate" xml:space="preserve">
+    <value>Changing baud rate</value>
+  </data>
+  <data name="Changing_Blaster_360_Mode_To" xml:space="preserve">
+    <value>Changing blaster 360 mode to {0}.</value>
+  </data>
+  <data name="Changing_Configuration" xml:space="preserve">
+    <value>Changing configuration</value>
+  </data>
+  <data name="Changing_External_Power_Mode_To" xml:space="preserve">
+    <value>Changing external power mode to {0}.</value>
+  </data>
+  <data name="Changing_Sensor_State" xml:space="preserve">
+    <value>Changing sensor state ...</value>
+  </data>
+  <data name="Changing_Swing_Mode_To" xml:space="preserve">
+    <value>Changing swing mode to {0}.</value>
+  </data>
+  <data name="Changing_To" xml:space="preserve">
+    <value>Changing to {0}.</value>
+  </data>
+  <data name="Changing_Wifi_Configuration" xml:space="preserve">
+    <value>Changing wifi configuration</value>
+  </data>
+  <data name="Channel" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="Channel status" xml:space="preserve">
+    <value>Channel status</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>Channels</value>
+  </data>
+  <data name="Channel_Exception" xml:space="preserve">
+    <value>Select the channel.</value>
+  </data>
+  <data name="Check_Network_Modem" xml:space="preserve">
+    <value>Check network, modem and router cables.</value>
+  </data>
+  <data name="Check_Network_Modem_Router_Cables" xml:space="preserve">
+    <value>Check network, modem, and router cables</value>
+  </data>
+  <data name="Choose a memory location" xml:space="preserve">
+    <value>Choose a memory location</value>
+  </data>
+  <data name="Choose an image" xml:space="preserve">
+    <value>Choose an image</value>
+  </data>
+  <data name="Choose the brand of the device you want to add" xml:space="preserve">
+    <value>Choose the brand of the device you want to add</value>
+  </data>
+  <data name="Choose_Between_Channel_And_Scene" xml:space="preserve">
+    <value>Choose between channel and scene</value>
+  </data>
+  <data name="Choose_Conditional" xml:space="preserve">
+    <value>Choose the conditional</value>
+  </data>
+  <data name="Choose_Excel_File_Import_Irs_Codes" xml:space="preserve">
+    <value>Choose excel file to import irs codes</value>
+  </data>
+  <data name="Choose_Fan_Operation_Mode" xml:space="preserve">
+    <value>Choose fan operation mode</value>
+  </data>
+  <data name="Choose_Image_Displayed_Ambience_List" xml:space="preserve">
+    <value>Choose the image that will be displayed in the environment list</value>
+  </data>
+  <data name="Choose_Intensity_Lighting" xml:space="preserve">
+    <value>Choose the intensity of the lighting</value>
+  </data>
+  <data name="Choose_Model_Code" xml:space="preserve">
+    <value>Choose model and code</value>
+  </data>
+  <data name="Choose_Operating_Mode" xml:space="preserve">
+    <value>Choose the operating mode</value>
+  </data>
+  <data name="Choose_Primary_Color_Ambience" xml:space="preserve">
+    <value>Choose the primary color of the ambience</value>
+  </data>
+  <data name="Choose_Primary_Color_Project" xml:space="preserve">
+    <value>Choose the primary color of the project</value>
+  </data>
+  <data name="Choose_Scene_Below" xml:space="preserve">
+    <value>Choose the scene below</value>
+  </data>
+  <data name="Choose_Temperature" xml:space="preserve">
+    <value>Choose the temperature</value>
+  </data>
+  <data name="Choose_The_Channel" xml:space="preserve">
+    <value>Choose the channel</value>
+  </data>
+  <data name="Choose_The_Channel_Value" xml:space="preserve">
+    <value>Choose the channel value</value>
+  </data>
+  <data name="Choose_Users_Will_Administer_Project" xml:space="preserve">
+    <value>Choose the users who will administer the project</value>
+  </data>
+  <data name="Circulation" xml:space="preserve">
+    <value>Circulation</value>
+  </data>
+  <data name="Class" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <data name="Classes" xml:space="preserve">
+    <value>Classes</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Clear all house home residents" xml:space="preserve">
+    <value>Clear all house home _residents</value>
+  </data>
+  <data name="Clear all house owners" xml:space="preserve">
+    <value>Clear all house _owners</value>
+  </data>
+  <data name="Clear all users found" xml:space="preserve">
+    <value>Clear all users _found</value>
+  </data>
+  <data name="Clear_All" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="Click on an item to see device details" xml:space="preserve">
+    <value>Click on an item to see device details</value>
+  </data>
+  <data name="Click on the image above to choose an image of your preference" xml:space="preserve">
+    <value>Click on the image above to choose an image of your preference</value>
+  </data>
+  <data name="Click on the image to choose an image for the ambience" xml:space="preserve">
+    <value>Click on the image to choose an image for the ambience</value>
+  </data>
+  <data name="Cloner" xml:space="preserve">
+    <value>IRF</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Close software" xml:space="preserve">
+    <value>Close software</value>
+  </data>
+  <data name="Cloud" xml:space="preserve">
+    <value>Cloud</value>
+  </data>
+  <data name="Cloud commands" xml:space="preserve">
+    <value>Cloud commands</value>
+  </data>
+  <data name="Cloud_List" xml:space="preserve">
+    <value>Cloud List</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Command" xml:space="preserve">
+    <value>Command</value>
+  </data>
+  <data name="Command classes" xml:space="preserve">
+    <value>Command classes</value>
+  </data>
+  <data name="Commands" xml:space="preserve">
+    <value>Commands</value>
+  </data>
+  <data name="Commands are stored in the cloud" xml:space="preserve">
+    <value>Commands are stored in the cloud</value>
+  </data>
+  <data name="Commands that are stored at the gateway" xml:space="preserve">
+    <value>Commands that are stored at the gateway</value>
+  </data>
+  <data name="Commands_Sent" xml:space="preserve">
+    <value>Commands Sent</value>
+  </data>
+  <data name="Command_Class" xml:space="preserve">
+    <value>Command Class</value>
+  </data>
+  <data name="Command_Copied" xml:space="preserve">
+    <value>Command copied</value>
+  </data>
+  <data name="Command_Type" xml:space="preserve">
+    <value>Command Type</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Conditional" xml:space="preserve">
+    <value>Conditional</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="Configuration_Changed_Successfully" xml:space="preserve">
+    <value>Configuration changed successfully</value>
+  </data>
+  <data name="Configure email in the email configuration tab." xml:space="preserve">
+    <value>Configure email in the email configuration tab.</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Connecting_To_The_Cloud" xml:space="preserve">
+    <value>Connecting to the cloud</value>
+  </data>
+  <data name="Connecting_To_The_Cloud_To_Delete_Ifthen" xml:space="preserve">
+    <value>Connecting to the cloud to delete ifthen.</value>
+  </data>
+  <data name="Connecting_With_Facebok" xml:space="preserve">
+    <value>Connecting with facebok</value>
+  </data>
+  <data name="Connection type" xml:space="preserve">
+    <value>Connection type</value>
+  </data>
+  <data name="Controller_Id" xml:space="preserve">
+    <value>Controller Id</value>
+  </data>
+  <data name="Control_Relay_State" xml:space="preserve">
+    <value>Control Relay State</value>
+  </data>
+  <data name="Cool" xml:space="preserve">
+    <value>Cool</value>
+  </data>
+  <data name="Copied image" xml:space="preserve">
+    <value>Copied image</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Copy all commands to the cloud" xml:space="preserve">
+    <value>Copy all commands to the cloud</value>
+  </data>
+  <data name="Copy Image" xml:space="preserve">
+    <value>Copy Image</value>
+  </data>
+  <data name="Could_Not_Delete_IfThen_By_Gateway" xml:space="preserve">
+    <value>Could not connect gateway delete anyway ifthen cloud {0}?</value>
+  </data>
+  <data name="Could_Not_Get_ContionalId_Please_Try_Again" xml:space="preserve">
+    <value>Could Not Get ContionalId Please Try Again</value>
+  </data>
+  <data name="Could_Not_Get_Next_Free_Macro_Id" xml:space="preserve">
+    <value>Could not get next free macro id</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Create Ambience" xml:space="preserve">
+    <value>Create Ambience</value>
+  </data>
+  <data name="Create environment group" xml:space="preserve">
+    <value>Create environment group</value>
+  </data>
+  <data name="Create Floor" xml:space="preserve">
+    <value>Create Floor</value>
+  </data>
+  <data name="Create group" xml:space="preserve">
+    <value>Create group</value>
+  </data>
+  <data name="Create new ambience" xml:space="preserve">
+    <value>Create new ambience</value>
+  </data>
+  <data name="CreateAt" xml:space="preserve">
+    <value>Create at</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="Created_At" xml:space="preserve">
+    <value>Created_At</value>
+  </data>
+  <data name="Created_By" xml:space="preserve">
+    <value>Created by</value>
+  </data>
+  <data name="Created_Date_Ascending" xml:space="preserve">
+    <value>Created_Date_Ascending</value>
+  </data>
+  <data name="Created_Date_Descending" xml:space="preserve">
+    <value>Created_Date_Descending</value>
+  </data>
+  <data name="Created_In_IfThen" xml:space="preserve">
+    <value>Created in IfThen</value>
+  </data>
+  <data name="Created_License" xml:space="preserve">
+    <value>Created License</value>
+  </data>
+  <data name="Created_Serials" xml:space="preserve">
+    <value>Created Serials</value>
+  </data>
+  <data name="Create_ambience_group" xml:space="preserve">
+    <value>Create ambience group</value>
+  </data>
+  <data name="Create_At" xml:space="preserve">
+    <value>Create At</value>
+  </data>
+  <data name="Create_License" xml:space="preserve">
+    <value>Create License</value>
+  </data>
+  <data name="Create_New_Command" xml:space="preserve">
+    <value>Create new command (ctrl + n)</value>
+  </data>
+  <data name="Create_Project" xml:space="preserve">
+    <value>Create Project</value>
+  </data>
+  <data name="Creating" xml:space="preserve">
+    <value>Creating</value>
+  </data>
+  <data name="Creating floor" xml:space="preserve">
+    <value>Creating floor</value>
+  </data>
+  <data name="Creating_Ambience" xml:space="preserve">
+    <value>Creating ambience</value>
+  </data>
+  <data name="Creating_Ambience_Project" xml:space="preserve">
+    <value>Creating environment in project {0}.</value>
+  </data>
+  <data name="Creating_If_Then" xml:space="preserve">
+    <value>Creating if then</value>
+  </data>
+  <data name="Creating_Notification" xml:space="preserve">
+    <value>Creating notification ...</value>
+  </data>
+  <data name="Creating_Project" xml:space="preserve">
+    <value>Creating project</value>
+  </data>
+  <data name="Current IP Ethernet" xml:space="preserve">
+    <value>Current IP Ethernet</value>
+  </data>
+  <data name="Current IP Wi-Fi" xml:space="preserve">
+    <value>Current IP Wi-Fi</value>
+  </data>
+  <data name="Current_Version" xml:space="preserve">
+    <value>Current Version</value>
+  </data>
+  <data name="Custom_Version" xml:space="preserve">
+    <value>Custom Version</value>
+  </data>
+  <data name="DashBoard" xml:space="preserve">
+    <value>DashBoard</value>
+  </data>
+  <data name="DashBoard_License" xml:space="preserve">
+    <value>DashBoard License</value>
+  </data>
+  <data name="Dashboard_Project" xml:space="preserve">
+    <value>Dashboard Project</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Data_Saved_Locally" xml:space="preserve">
+    <value>Data saved locally</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Date_Creation" xml:space="preserve">
+    <value>Date_Creation</value>
+  </data>
+  <data name="Date_type" xml:space="preserve">
+    <value>Date type</value>
+  </data>
+  <data name="Date_Update" xml:space="preserve">
+    <value>Date_Update</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="Days_Of_Week" xml:space="preserve">
+    <value>Day of week</value>
+  </data>
+  <data name="Debug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="Debug_Integration" xml:space="preserve">
+    <value>Debug Integration</value>
+  </data>
+  <data name="Default images" xml:space="preserve">
+    <value>Default images</value>
+  </data>
+  <data name="Default Name" xml:space="preserve">
+    <value>Default Name</value>
+  </data>
+  <data name="Dehumidification" xml:space="preserve">
+    <value>Dehumidification</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Delay</value>
+  </data>
+  <data name="Delay_Between_Commands" xml:space="preserve">
+    <value>Delay between the commands (ms)</value>
+  </data>
+  <data name="Delay_ms" xml:space="preserve">
+    <value>Delay (ms)</value>
+  </data>
+  <data name="Delele_All_RF_From_Cloud" xml:space="preserve">
+    <value>Delele all RF from cloud</value>
+  </data>
+  <data name="Delele_All_RF_From_Local" xml:space="preserve">
+    <value>Delele all RF from Local</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Delete all from the Cloud" xml:space="preserve">
+    <value>Delete all from the cloud</value>
+  </data>
+  <data name="Delete all from the Gateway" xml:space="preserve">
+    <value>Delete all from the gateway</value>
+  </data>
+  <data name="Delete all IP commands from the gateway memory" xml:space="preserve">
+    <value>Delete all IP commands from the gateway memory</value>
+  </data>
+  <data name="Delete all IR from local storage" xml:space="preserve">
+    <value>Delete all IR from local storage</value>
+  </data>
+  <data name="Delete all IR from the cloud" xml:space="preserve">
+    <value>Delete all IR from the cloud</value>
+  </data>
+  <data name="Delete all IR from the gateway" xml:space="preserve">
+    <value>Delete all IR from the gateway</value>
+  </data>
+  <data name="Delete all radios from the gateway" xml:space="preserve">
+    <value>Delete all radios from the gateway</value>
+  </data>
+  <data name="Delete all serials" xml:space="preserve">
+    <value>Delete all Serials</value>
+  </data>
+  <data name="Delete device" xml:space="preserve">
+    <value>Delete device</value>
+  </data>
+  <data name="Delete image" xml:space="preserve">
+    <value>Delete image</value>
+  </data>
+  <data name="Delete IP command" xml:space="preserve">
+    <value>Delete IP command</value>
+  </data>
+  <data name="Delete IR from the gateway" xml:space="preserve">
+    <value>Delete IR from the gateway</value>
+  </data>
+  <data name="Delete project" xml:space="preserve">
+    <value>Delete project</value>
+  </data>
+  <data name="Delete radio" xml:space="preserve">
+    <value>Delete radio</value>
+  </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="Deleted by" xml:space="preserve">
+    <value>Deleted by</value>
+  </data>
+  <data name="Deleted_Cloud_IR" xml:space="preserve">
+    <value>IR deleted from cloud</value>
+  </data>
+  <data name="Deleted_Log" xml:space="preserve">
+    <value>Deleted Log</value>
+  </data>
+  <data name="Deleted_Project" xml:space="preserve">
+    <value>Delete project</value>
+  </data>
+  <data name="Deleted_Selected_Row" xml:space="preserve">
+    <value>Deleted Selected Rows</value>
+  </data>
+  <data name="DeleteProject" xml:space="preserve">
+    <value>Delete Project</value>
+  </data>
+  <data name="Delete_All" xml:space="preserve">
+    <value>Delete all</value>
+  </data>
+  <data name="Delete_all_commands_to_the_cloud" xml:space="preserve">
+    <value>Delete all commands from the cloud</value>
+  </data>
+  <data name="Delete_all_history" xml:space="preserve">
+    <value>Delete all history</value>
+  </data>
+  <data name="Delete_All_IP_Commands" xml:space="preserve">
+    <value>Delete all IP commands?</value>
+  </data>
+  <data name="Delete_All_IRs_Cloud" xml:space="preserve">
+    <value>Delete all IRs from the cloud?</value>
+  </data>
+  <data name="Delete_All_IRS_From_Local_List" xml:space="preserve">
+    <value>Delete all IRsfrom the local list</value>
+  </data>
+  <data name="Delete_All_IR_From_Gateway" xml:space="preserve">
+    <value>Delete all IRS from gateway</value>
+  </data>
+  <data name="Delete_All_IR_List" xml:space="preserve">
+    <value>Delete all IRs from list</value>
+  </data>
+  <data name="Delete_All_Local_Database" xml:space="preserve">
+    <value>Delete all IRs from local database?</value>
+  </data>
+  <data name="Delete_All_Memory_Locations" xml:space="preserve">
+    <value>Delete all memory locations</value>
+  </data>
+  <data name="Delete_All_Radio" xml:space="preserve">
+    <value>Delete all radio?</value>
+  </data>
+  <data name="Delete_all_radios_from_the_cloud" xml:space="preserve">
+    <value>Delete all radios from the cloud</value>
+  </data>
+  <data name="Delete_All_RTS_From_Gateway" xml:space="preserve">
+    <value>Delete all RTS from gateway</value>
+  </data>
+  <data name="Delete_All_Serial_Commands" xml:space="preserve">
+    <value>Delete all serial commands from the {0} memory?</value>
+  </data>
+  <data name="Delete_Ambience" xml:space="preserve">
+    <value>Delete ambience</value>
+  </data>
+  <data name="Delete_First_Ifthes" xml:space="preserve">
+    <value>Delete the first 30 ifthens of the gateway</value>
+  </data>
+  <data name="Delete_From_Cloud" xml:space="preserve">
+    <value>Delete from the cloud</value>
+  </data>
+  <data name="Delete_IfThen" xml:space="preserve">
+    <value>Delete IfThen</value>
+  </data>
+  <data name="Delete_Ifthen_Name" xml:space="preserve">
+    <value>Delete ifthen {0}?</value>
+  </data>
+  <data name="Delete_IR" xml:space="preserve">
+    <value>Delete IR</value>
+  </data>
+  <data name="Delete_IR_From_Cloud" xml:space="preserve">
+    <value>Delete IR from the cloud?</value>
+  </data>
+  <data name="Delete_IR_From_Gateway" xml:space="preserve">
+    <value>Delete IR from gateway?</value>
+  </data>
+  <data name="Delete_IR_From_Local_DB_Gateway" xml:space="preserve">
+    <value>Delete IR ID {0} from local DB and gateway?</value>
+  </data>
+  <data name="Delete_Macro_Error" xml:space="preserve">
+    <value>Delete macro error.</value>
+  </data>
+  <data name="Delete_Notification" xml:space="preserve">
+    <value>Delete notification?</value>
+  </data>
+  <data name="Delete_Radio_ID_From_Memory" xml:space="preserve">
+    <value>Delete radio {0} from memory {1} ?</value>
+  </data>
+  <data name="Delete_RF" xml:space="preserve">
+    <value>Delete RF {0}? </value>
+  </data>
+  <data name="Delete_Serial_Command" xml:space="preserve">
+    <value>Delete serial command from {0}, memory {1}?</value>
+  </data>
+  <data name="Delete_The_Object_Then_Add_Another" xml:space="preserve">
+    <value>Delete the Object in Then to add another</value>
+  </data>
+  <data name="Delete_The_Other_Else_Action_First" xml:space="preserve">
+    <value>Delete the other Else Action first.</value>
+  </data>
+  <data name="Delete_Three_Points" xml:space="preserve">
+    <value>Delete...</value>
+  </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>Deleting</value>
+  </data>
+  <data name="Deleting device" xml:space="preserve">
+    <value>Deleting device</value>
+  </data>
+  <data name="Deleting IR command" xml:space="preserve">
+    <value>Deleting IR command</value>
+  </data>
+  <data name="Deleting project" xml:space="preserve">
+    <value>Deleting project</value>
+  </data>
+  <data name="Deleting radio command" xml:space="preserve">
+    <value>Deleting radio command</value>
+  </data>
+  <data name="DeletingIfthenFromTheGateway" xml:space="preserve">
+    <value>Deleting ifthen from the gateway.</value>
+  </data>
+  <data name="Deleting_Ambience" xml:space="preserve">
+    <value>Deleting ambience</value>
+  </data>
+  <data name="Deleting_From_Cloud" xml:space="preserve">
+    <value>Deleting from cloud</value>
+  </data>
+  <data name="Deleting_IR_From_Cloud" xml:space="preserve">
+    <value>Deleting going from the cloud</value>
+  </data>
+  <data name="Deleting_Log" xml:space="preserve">
+    <value>Deleting Log</value>
+  </data>
+  <data name="Deleting_Notification" xml:space="preserve">
+    <value>Deleting notification</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="Detail Device" xml:space="preserve">
+    <value>Detail Device</value>
+  </data>
+  <data name="Detail_Ambience" xml:space="preserve">
+    <value>Detail Ambience</value>
+  </data>
+  <data name="Detail_Module" xml:space="preserve">
+    <value>Detail Module</value>
+  </data>
+  <data name="Detail_Project" xml:space="preserve">
+    <value>Detail Project</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Device</value>
+  </data>
+  <data name="Device added to the project" xml:space="preserve">
+    <value>Device added to the project</value>
+  </data>
+  <data name="Device did not respond" xml:space="preserve">
+    <value>{0} did not respond {1}:{2}</value>
+  </data>
+  <data name="Device display name" xml:space="preserve">
+    <value>Device display name</value>
+  </data>
+  <data name="Device has been added to the project before" xml:space="preserve">
+    <value>Device has been added to the project before</value>
+  </data>
+  <data name="Device Information" xml:space="preserve">
+    <value>Device Information</value>
+  </data>
+  <data name="Device is responding" xml:space="preserve">
+    <value>Device is responding</value>
+  </data>
+  <data name="Device not found" xml:space="preserve">
+    <value>Device not found</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Devices</value>
+  </data>
+  <data name="Devices linked to the gateway" xml:space="preserve">
+    <value>Devices linked to the gateway</value>
+  </data>
+  <data name="Devices_Found" xml:space="preserve">
+    <value>Devices found {0}</value>
+  </data>
+  <data name="Device_gateway" xml:space="preserve">
+    <value>Device gateway</value>
+  </data>
+  <data name="Device_is_not_yet_supported_in_If" xml:space="preserve">
+    <value>Device is not yet supported in If</value>
+  </data>
+  <data name="Device_is_not_yet_supported_in_Then_Else" xml:space="preserve">
+    <value>Device is not yet supported in Then Else</value>
+  </data>
+  <data name="Device_name" xml:space="preserve">
+    <value>Device Name</value>
+  </data>
+  <data name="Device_Not_Registered" xml:space="preserve">
+    <value>Device not Registered - Key: {0}</value>
+  </data>
+  <data name="Device_Not_Responding" xml:space="preserve">
+    <value>Device is not responding</value>
+  </data>
+  <data name="Device_Pressed_Over_Seconds" xml:space="preserve">
+    <value>When the 2 tamper keys in the device 
+are pressed over 5 seconds</value>
+  </data>
+  <data name="Device_Registration" xml:space="preserve">
+    <value>Device Registration</value>
+  </data>
+  <data name="Device_Reset" xml:space="preserve">
+    <value>Device Reset</value>
+  </data>
+  <data name="Device_Type" xml:space="preserve">
+    <value>Device Type</value>
+  </data>
+  <data name="Did not response" xml:space="preserve">
+    <value>did not response.</value>
+  </data>
+  <data name="Diferente" xml:space="preserve">
+    <value>Diferente</value>
+  </data>
+  <data name="Displays network channel values" xml:space="preserve">
+    <value>Displays network channel values</value>
+  </data>
+  <data name="Do you want to archive the ambience?" xml:space="preserve">
+    <value>Do you want to archive the ambience?</value>
+  </data>
+  <data name="Do you want to archive the project?" xml:space="preserve">
+    <value>Do you want to archive the project?</value>
+  </data>
+  <data name="Do you want to delete the ambience?" xml:space="preserve">
+    <value>Do you want to delete the ambience?</value>
+  </data>
+  <data name="Do you want to delete the entire history?" xml:space="preserve">
+    <value>Do you want to delete the entire history?</value>
+  </data>
+  <data name="Do you want to delete the project?" xml:space="preserve">
+    <value>Do you want to delete the project?</value>
+  </data>
+  <data name="Do you want to include the Z-Wave device?" xml:space="preserve">
+    <value>Do you want to include the Z-Wave device?</value>
+  </data>
+  <data name="Do you want to permanently delete project?" xml:space="preserve">
+    <value>Do you want to permanently delete project?</value>
+  </data>
+  <data name="Do you want to remove the device?" xml:space="preserve">
+    <value>Do you want to remove the device?</value>
+  </data>
+  <data name="Do you want to remove Z-Wave device?" xml:space="preserve">
+    <value>Do you want to remove Z-Wave device?</value>
+  </data>
+  <data name="Do you want to replace this zwave device?" xml:space="preserve">
+    <value>Do you want to replace this zwave device?</value>
+  </data>
+  <data name="Do you want to reset the z-wave network?" xml:space="preserve">
+    <value>Do you want to reset the z-wave network?</value>
+  </data>
+  <data name="Do you want to restart the Z-Wave chip?" xml:space="preserve">
+    <value>Do you want to restart the Z-Wave chip?</value>
+  </data>
+  <data name="Do you want to restart the Z-Wave network?" xml:space="preserve">
+    <value>Do you want to restart the Z-Wave network?</value>
+  </data>
+  <data name="Do you want to restore all ambiences?" xml:space="preserve">
+    <value>Do you want to restore all ambiences?</value>
+  </data>
+  <data name="Do you want to send all projects to trash?" xml:space="preserve">
+    <value>Do you want to send all projects to trash?</value>
+  </data>
+  <data name="Do you want to send the ambience to the archive?" xml:space="preserve">
+    <value>Do you want to send the ambience to the archive?</value>
+  </data>
+  <data name="Do you want to unarchive all projects?" xml:space="preserve">
+    <value>Do you want to unarchive all projects?</value>
+  </data>
+  <data name="Do you want to unarchive the project?" xml:space="preserve">
+    <value>Do you want to unarchive the project?</value>
+  </data>
+  <data name="Does_Not_Contain_Property" xml:space="preserve">
+    <value>Does not contain property {0}.</value>
+  </data>
+  <data name="Done_Resetting_IF_Then_Rules" xml:space="preserve">
+    <value>Done Resetting IF-Then Rules!</value>
+  </data>
+  <data name="Dont_Have_Account" xml:space="preserve">
+    <value>Don't have an account?</value>
+  </data>
+  <data name="Door" xml:space="preserve">
+    <value>Door</value>
+  </data>
+  <data name="Door_Window" xml:space="preserve">
+    <value>Door/Window</value>
+  </data>
+  <data name="Down" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="Do_You_Link_Selected_License_Project" xml:space="preserve">
+    <value>You want to link the selected license with the current project?</value>
+  </data>
+  <data name="Do_You_Really_Want_Remove_User" xml:space="preserve">
+    <value>Do you really want to remove {0} user.</value>
+  </data>
+  <data name="Do_You_Really_Want_Remove_Users" xml:space="preserve">
+    <value>Do you really want to remove {0} users.</value>
+  </data>
+  <data name="Do_You_Want_Restore_Ambience" xml:space="preserve">
+    <value>Do you want to restore the ambience {0} ?</value>
+  </data>
+  <data name="Do_You_Want_Restore_Project" xml:space="preserve">
+    <value>Do you want to restore the project {0}?</value>
+  </data>
+  <data name="Do_you_want_to_permanently_delete_ambience?" xml:space="preserve">
+    <value>Do you want to permanently delete ambience?</value>
+  </data>
+  <data name="Drag and drop to add devices to the ambience" xml:space="preserve">
+    <value>Drag and drop to add devices to the ambience</value>
+  </data>
+  <data name="Drag the device here" xml:space="preserve">
+    <value>Drag the device here</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Edit device" xml:space="preserve">
+    <value>Edit device</value>
+  </data>
+  <data name="Edit floor" xml:space="preserve">
+    <value>Edit floor</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Editing</value>
+  </data>
+  <data name="Editing_Notification" xml:space="preserve">
+    <value>Editing notification</value>
+  </data>
+  <data name="Edit_License" xml:space="preserve">
+    <value>Edit License</value>
+  </data>
+  <data name="Edit_Notification" xml:space="preserve">
+    <value>Edit_Notification</value>
+  </data>
+  <data name="Edit_Project" xml:space="preserve">
+    <value>Edit_Project</value>
+  </data>
+  <data name="Else" xml:space="preserve">
+    <value>Else</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Email field cannot be empty" xml:space="preserve">
+    <value>Email field cannot be empty</value>
+  </data>
+  <data name="Email sent successfully to" xml:space="preserve">
+    <value>Email sent successfully to
+{0}</value>
+  </data>
+  <data name="Email settings" xml:space="preserve">
+    <value>Email settings</value>
+  </data>
+  <data name="Email settings saved successfully" xml:space="preserve">
+    <value>Email settings saved successfully</value>
+  </data>
+  <data name="EmailOrUserName" xml:space="preserve">
+    <value>Email \ UserName</value>
+  </data>
+  <data name="Email_Field_Empty" xml:space="preserve">
+    <value>The email field is empty</value>
+  </data>
+  <data name="Email_Notification" xml:space="preserve">
+    <value>Email Notification</value>
+  </data>
+  <data name="Email_Notification_Created" xml:space="preserve">
+    <value>Email notification created.</value>
+  </data>
+  <data name="Email_Null_Exception" xml:space="preserve">
+    <value>Fill in the email field.</value>
+  </data>
+  <data name="Email_Sent_To" xml:space="preserve">
+    <value>Email sent to</value>
+  </data>
+  <data name="Empty_Email_Password" xml:space="preserve">
+    <value>Empty email or password</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Enable Ssl" xml:space="preserve">
+    <value>Enable SSl</value>
+  </data>
+  <data name="Enable_Autoscroll" xml:space="preserve">
+    <value>Enable Autoscroll</value>
+  </data>
+  <data name="Enable_Auto_Complete" xml:space="preserve">
+    <value>Enable Auto Complete</value>
+  </data>
+  <data name="Enable_Horizontal_Scroll" xml:space="preserve">
+    <value>Enable horizontal scroll</value>
+  </data>
+  <data name="Enable_Vertical_Scroll" xml:space="preserve">
+    <value>Enable vertical scroll</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="End time" xml:space="preserve">
+    <value>End time</value>
+  </data>
+  <data name="Endpoint" xml:space="preserve">
+    <value>Endpoint</value>
+  </data>
+  <data name="End_date" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="End_Point" xml:space="preserve">
+    <value>End_Point</value>
+  </data>
+  <data name="End_Points" xml:space="preserve">
+    <value>Endpoints</value>
+  </data>
+  <data name="Energy Save Cool" xml:space="preserve">
+    <value>Energy Save Cool</value>
+  </data>
+  <data name="Energy Save Heat" xml:space="preserve">
+    <value>Energy Save Heat</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Enter SSID" xml:space="preserve">
+    <value>Enter SSID</value>
+  </data>
+  <data name="Equal" xml:space="preserve">
+    <value>Equal</value>
+  </data>
+  <data name="Erasing_All_Command_Go_From_Cloud" xml:space="preserve">
+    <value>Erasing all command go from the cloud</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Error_Fetching_Next_Empty_Conditional" xml:space="preserve">
+    <value>Error fetching next empty conditional id.</value>
+  </data>
+  <data name="Error_Fetching_Next_Empty_Rule" xml:space="preserve">
+    <value>Error fetching next empty rule id.</value>
+  </data>
+  <data name="Error_Saving_Notification" xml:space="preserve">
+    <value>Error_Saving_Notification</value>
+  </data>
+  <data name="Erro_Project_Length_Name" xml:space="preserve">
+    <value>Erro_Project_Length_Name</value>
+  </data>
+  <data name="Ethernet" xml:space="preserve">
+    <value>Ethernet</value>
+  </data>
+  <data name="Ethernet information" xml:space="preserve">
+    <value>Ethernet information</value>
+  </data>
+  <data name="Ethernet TCP port" xml:space="preserve">
+    <value>Ethernet TCP port</value>
+  </data>
+  <data name="Ethernet UDP port" xml:space="preserve">
+    <value>Ethernet UDP port</value>
+  </data>
+  <data name="Ethernet_IP" xml:space="preserve">
+    <value>Ethernet IP</value>
+  </data>
+  <data name="Ethernet_Port" xml:space="preserve">
+    <value>Ethernet Port</value>
+  </data>
+  <data name="EUA" xml:space="preserve">
+    <value>EUA</value>
+  </data>
+  <data name="evice not found" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Example format" xml:space="preserve">
+    <value>Example format</value>
+  </data>
+  <data name="Excel" xml:space="preserve">
+    <value>Excel</value>
+  </data>
+  <data name="Excel_File_Created_List" xml:space="preserve">
+    <value>Excel file created from the list</value>
+  </data>
+  <data name="Excepition_Last_Conditional_ID" xml:space="preserve">
+    <value>Can t get the last id free conditional</value>
+  </data>
+  <data name="Excepition_Last_Rule_ID" xml:space="preserve">
+    <value>Can t get the last id free rule.</value>
+  </data>
+  <data name="Exception No connection could be made because the target machine actively refused them" xml:space="preserve">
+    <value>No connection could be made because the target machine actively refused them {0}</value>
+  </data>
+  <data name="Executing command" xml:space="preserve">
+    <value>Executing command</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="Expiration_Date" xml:space="preserve">
+    <value>Expiration date</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Export cloud list to excel file" xml:space="preserve">
+    <value>Export cloud list to excel file</value>
+  </data>
+  <data name="Export from gateway list" xml:space="preserve">
+    <value>Export from gateway list</value>
+  </data>
+  <data name="Export IP command list to excel file" xml:space="preserve">
+    <value>Export IP command list to excel file</value>
+  </data>
+  <data name="Export local list to an excel file" xml:space="preserve">
+    <value>Export local list to an excel file</value>
+  </data>
+  <data name="Exported_To" xml:space="preserve">
+    <value>Exported to</value>
+  </data>
+  <data name="Exporting" xml:space="preserve">
+    <value>Exporting</value>
+  </data>
+  <data name="Exporting_Data_Excel_File" xml:space="preserve">
+    <value>Exporting data to an excel file.</value>
+  </data>
+  <data name="Exporting_History_Data_Excel_File" xml:space="preserve">
+    <value>Exporting history data to Excel file</value>
+  </data>
+  <data name="Export_gateway_list_to_excel_file" xml:space="preserve">
+    <value>Export gateway list to excel file</value>
+  </data>
+  <data name="Export_List_Excel" xml:space="preserve">
+    <value>Export list to excel</value>
+  </data>
+  <data name="Export_To_Excel" xml:space="preserve">
+    <value>_Export to Excel</value>
+  </data>
+  <data name="External_Power_Mode_Changed_Successfully" xml:space="preserve">
+    <value>External power mode changed to {0} successfully.</value>
+  </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Failed_Delete_Conditional_ID" xml:space="preserve">
+    <value>Failed to try to delete conditional id. Gateway {0}, IP: {1}, Port : {2}.</value>
+  </data>
+  <data name="Failed_Delete_Rule_ID" xml:space="preserve">
+    <value>Failed to try to delete Rule id. Gateway {0}, IP: {1}, Port : {2}.</value>
+  </data>
+  <data name="Failed_Next_Conditional_ID" xml:space="preserve">
+    <value>Failed to try to find the next free conditional id. Gateway {0}, IP: {1}, Port : {2}.</value>
+  </data>
+  <data name="Failed_Next_Rule_ID" xml:space="preserve">
+    <value>Failed to try to find the next free rule id. Gateway {0}, IP: {1}, Port : {2}.</value>
+  </data>
+  <data name="Fan_Mode" xml:space="preserve">
+    <value>Fan Mode</value>
+  </data>
+  <data name="FC SOFTWARE INTEGRATION" xml:space="preserve">
+    <value>FC – SOFTWARE INTEGRATION
+IRF 100 and GIR 100</value>
+  </data>
+  <data name="FC-Config" xml:space="preserve">
+    <value>FC-Config</value>
+  </data>
+  <data name="FC-Finder" xml:space="preserve">
+    <value>FC-Finder</value>
+  </data>
+  <data name="FC-GIR100-211" xml:space="preserve">
+    <value>FC-GIR100-211</value>
+  </data>
+  <data name="FC-IRF100-211" xml:space="preserve">
+    <value>FC-IRF100-211</value>
+  </data>
+  <data name="FC-IRF100-311" xml:space="preserve">
+    <value>FC-IRF100-311</value>
+  </data>
+  <data name="FC-ZIR100-211" xml:space="preserve">
+    <value>FC-ZIR100-211</value>
+  </data>
+  <data name="FC-ZIR100-311" xml:space="preserve">
+    <value>FC-ZIR100-311</value>
+  </data>
+  <data name="FC-ZWS100" xml:space="preserve">
+    <value>FC-ZWS100</value>
+  </data>
+  <data name="FCC_Memory" xml:space="preserve">
+    <value>Flex Cloud Cloner Memory</value>
+  </data>
+  <data name="FC_Updater" xml:space="preserve">
+    <value>FC-Updater</value>
+  </data>
+  <data name="Field_Is_Required" xml:space="preserve">
+    <value>field is required</value>
+  </data>
+  <data name="File_Name" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="Filter_by" xml:space="preserve">
+    <value>Filter by</value>
+  </data>
+  <data name="Filter_by_name" xml:space="preserve">
+    <value>Filter by name</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="Finding" xml:space="preserve">
+    <value>Finding...</value>
+  </data>
+  <data name="Finding_Gateways_Network" xml:space="preserve">
+    <value>Finding gateways on the network</value>
+  </data>
+  <data name="Finding_Notifications" xml:space="preserve">
+    <value>Finding notifications</value>
+  </data>
+  <data name="Finding_Projects" xml:space="preserve">
+    <value>Finding projects</value>
+  </data>
+  <data name="Find_By_Email" xml:space="preserve">
+    <value>Find by Email</value>
+  </data>
+  <data name="Find_Cloner" xml:space="preserve">
+    <value>Find Cloner</value>
+  </data>
+  <data name="Find_Gateways" xml:space="preserve">
+    <value>Find Gateways</value>
+  </data>
+  <data name="Find_User" xml:space="preserve">
+    <value>Find User</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="Firmware" xml:space="preserve">
+    <value>Firmware</value>
+  </data>
+  <data name="Firmware Info" xml:space="preserve">
+    <value>Firmware Info</value>
+  </data>
+  <data name="Firmware_Update" xml:space="preserve">
+    <value>Firmware Update</value>
+  </data>
+  <data name="Firmware_Version" xml:space="preserve">
+    <value>Firmware Version</value>
+  </data>
+  <data name="Flex" xml:space="preserve">
+    <value>Flex</value>
+  </data>
+  <data name="Flex Association_Not_Defined" xml:space="preserve">
+    <value>Flex Association must not have been defined.</value>
+  </data>
+  <data name="Flex_Automation" xml:space="preserve">
+    <value>Flex Automation</value>
+  </data>
+  <data name="Flex_Cloud_Blaster" xml:space="preserve">
+    <value>Flex Cloud Blaster</value>
+  </data>
+  <data name="Flex_Cloud_Cloner" xml:space="preserve">
+    <value>FC-IRF</value>
+  </data>
+  <data name="Flex_Cloud_Cloner_Found" xml:space="preserve">
+    <value>Flex Cloud Cloner found {0}</value>
+  </data>
+  <data name="Flex_Cloud_Hub" xml:space="preserve">
+    <value>Flex Cloud Hub</value>
+  </data>
+  <data name="Flex_Smart_Home" xml:space="preserve">
+    <value>Smart Cloud Manager</value>
+  </data>
+  <data name="Floor Ambience" xml:space="preserve">
+    <value>Floor Ambience</value>
+  </data>
+  <data name="Floor Name" xml:space="preserve">
+    <value>Floor Name</value>
+  </data>
+  <data name="Floors" xml:space="preserve">
+    <value>Floors</value>
+  </data>
+  <data name="For changes to take effect it is necessary to restart" xml:space="preserve">
+    <value>For changes to take effect it is necessary to restart</value>
+  </data>
+  <data name="Found users" xml:space="preserve">
+    <value>Found users</value>
+  </data>
+  <data name="Found_gateways" xml:space="preserve">
+    <value>{0} found gateways.</value>
+  </data>
+  <data name="Frequency" xml:space="preserve">
+    <value>Frequency</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Furnace" xml:space="preserve">
+    <value>Furnace</value>
+  </data>
+  <data name="Gateway" xml:space="preserve">
+    <value>Gateway</value>
+  </data>
+  <data name="Gateway commands" xml:space="preserve">
+    <value>Gateway commands</value>
+  </data>
+  <data name="Gateway not found" xml:space="preserve">
+    <value>Gateway not found</value>
+  </data>
+  <data name="Gateways" xml:space="preserve">
+    <value>Gateways</value>
+  </data>
+  <data name="Gateways_Found_Network" xml:space="preserve">
+    <value>{0} gateways found 
+on the network</value>
+  </data>
+  <data name="Gateway_Did_Not_Respond" xml:space="preserve">
+    <value>Gateway Ip: {0} port: {1}
+did not respond</value>
+  </data>
+  <data name="Gateway_Does_Not_Respond_Command" xml:space="preserve">
+    <value>Gateway does not respond to command {0}</value>
+  </data>
+  <data name="Gateway_functions" xml:space="preserve">
+    <value>Gateway functions</value>
+  </data>
+  <data name="Gateway_Information_Updated" xml:space="preserve">
+    <value>Gateway Mac: {0}, 
+Ip: {1} information updated.</value>
+  </data>
+  <data name="Gateway_IP" xml:space="preserve">
+    <value>Gateway IP</value>
+  </data>
+  <data name="Gateway_IP_That_Will_Receive_Command" xml:space="preserve">
+    <value>Gateway IP that will receive the command</value>
+  </data>
+  <data name="Gateway_List" xml:space="preserve">
+    <value>Gateway List</value>
+  </data>
+  <data name="Gateway_Memory_List_Updated" xml:space="preserve">
+    <value>Gateway memory list updated</value>
+  </data>
+  <data name="Gateway_Not_Defined" xml:space="preserve">
+    <value>Gateway not defined</value>
+  </data>
+  <data name="Gateway_Not_Defined_In_The_Project" xml:space="preserve">
+    <value>Gateway was not defined for any of the project modules.</value>
+  </data>
+  <data name="Gateway_Not_Response_Exception" xml:space="preserve">
+    <value>Gateway: {0}, IP: {1}, Port: {2}, did not respond to the command: {3}.</value>
+  </data>
+  <data name="Gateway_No_Found_Exception" xml:space="preserve">
+    <value>Gateway not found in the project.</value>
+  </data>
+  <data name="Gateway_Null" xml:space="preserve">
+    <value>Gateway Null</value>
+  </data>
+  <data name="Gateway_Port" xml:space="preserve">
+    <value>Gateway Port</value>
+  </data>
+  <data name="Gateway_Port_That_Will_Receive_Command" xml:space="preserve">
+    <value>Gateway port that will receive the command</value>
+  </data>
+  <data name="Gateway_Target" xml:space="preserve">
+    <value>Gateway Target</value>
+  </data>
+  <data name="Gateway_Type" xml:space="preserve">
+    <value>Gateway Type</value>
+  </data>
+  <data name="Gateway_update" xml:space="preserve">
+    <value>Gateway update</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Generate</value>
+  </data>
+  <data name="Generic_Device_Class" xml:space="preserve">
+    <value>Generic  Device Class</value>
+  </data>
+  <data name="Get" xml:space="preserve">
+    <value>Get</value>
+  </data>
+  <data name="Get parameters" xml:space="preserve">
+    <value>Get parameters</value>
+  </data>
+  <data name="Getting" xml:space="preserve">
+    <value>Getting</value>
+  </data>
+  <data name="Getting all the images" xml:space="preserve">
+    <value>Getting all the images</value>
+  </data>
+  <data name="Getting ambience not tied to a floor" xml:space="preserve">
+    <value>Getting ambience not tied to a floor</value>
+  </data>
+  <data name="Getting ambiences" xml:space="preserve">
+    <value>Getting ambiences</value>
+  </data>
+  <data name="Getting ambiences linked to the floor" xml:space="preserve">
+    <value>Getting ambiences linked to the floor</value>
+  </data>
+  <data name="Getting archived projects" xml:space="preserve">
+    <value>Getting archived projects</value>
+  </data>
+  <data name="Getting deleted projects" xml:space="preserve">
+    <value>Getting deleted projects</value>
+  </data>
+  <data name="Getting information from the gateway" xml:space="preserve">
+    <value>Getting information from the gateway</value>
+  </data>
+  <data name="Getting IP commands" xml:space="preserve">
+    <value>Getting IP commands</value>
+  </data>
+  <data name="Getting IP commands from the gateway memory" xml:space="preserve">
+    <value>Getting IP commands from the gateway memory</value>
+  </data>
+  <data name="Getting memory info" xml:space="preserve">
+    <value>Getting memory info</value>
+  </data>
+  <data name="Getting versions of gateways" xml:space="preserve">
+    <value>Getting versions of gateways</value>
+  </data>
+  <data name="Getting_All_IRs_From_Cloud" xml:space="preserve">
+    <value>Getting all IRs from the cloud</value>
+  </data>
+  <data name="Getting_Battery_Information" xml:space="preserve">
+    <value>Getting battery information.</value>
+  </data>
+  <data name="Getting_Configurations_From_Gateway" xml:space="preserve">
+    <value>Getting configurations from gateway
+IP {0} Port {1}</value>
+  </data>
+  <data name="Getting_deleted_ambiences" xml:space="preserve">
+    <value>Getting_deleted_ambiences</value>
+  </data>
+  <data name="Getting_information_from_the_device" xml:space="preserve">
+    <value>Getting information from the device</value>
+  </data>
+  <data name="Getting_Informatio_About_Gateway" xml:space="preserve">
+    <value>Getting information about the pin {0} gateway</value>
+  </data>
+  <data name="Getting_Module_Settings_Node" xml:space="preserve">
+    <value>Getting {0} settings , node id {1}.</value>
+  </data>
+  <data name="Get_All" xml:space="preserve">
+    <value>Get all</value>
+  </data>
+  <data name="Get_All_Codes" xml:space="preserve">
+    <value>Get all codes</value>
+  </data>
+  <data name="Get_All_Gateway_IRS" xml:space="preserve">
+    <value>Get all gateway irs.</value>
+  </data>
+  <data name="Get_Brand" xml:space="preserve">
+    <value>Get Brand</value>
+  </data>
+  <data name="Get_builds" xml:space="preserve">
+    <value>Get builds</value>
+  </data>
+  <data name="Get_Configuration_Rede" xml:space="preserve">
+    <value>Get Configuration Rede</value>
+  </data>
+  <data name="Get_Configuration_Rede_Description" xml:space="preserve">
+    <value>Get the basic information from the ethernet network.</value>
+  </data>
+  <data name="Get_Info" xml:space="preserve">
+    <value>Get Info</value>
+  </data>
+  <data name="Get_Logic_Gate_Exception" xml:space="preserve">
+    <value>Could not get logic gate information.</value>
+  </data>
+  <data name="Going_Down" xml:space="preserve">
+    <value>Going down</value>
+  </data>
+  <data name="Google" xml:space="preserve">
+    <value>Google</value>
+  </data>
+  <data name="Google_Login_Html_Message" xml:space="preserve">
+    <value>Google_Login_Html_Message</value>
+  </data>
+  <data name="Go_Back" xml:space="preserve">
+    <value>Go Back</value>
+  </data>
+  <data name="Graphics_Update" xml:space="preserve">
+    <value>Graphics update</value>
+  </data>
+  <data name="Greater_Than" xml:space="preserve">
+    <value>Greater Than</value>
+  </data>
+  <data name="Greater_Than_Or_Equal" xml:space="preserve">
+    <value>Greater Than Or Equal</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Group by floor" xml:space="preserve">
+    <value>Group by floor</value>
+  </data>
+  <data name="Group by type" xml:space="preserve">
+    <value>Group by type</value>
+  </data>
+  <data name="Group_By" xml:space="preserve">
+    <value>Group By</value>
+  </data>
+  <data name="Group_By_LIcense" xml:space="preserve">
+    <value>Group by:</value>
+  </data>
+  <data name="Group_By_Project_Name" xml:space="preserve">
+    <value>Group_By_Project_Name</value>
+  </data>
+  <data name="Group_By_Technician" xml:space="preserve">
+    <value>Group_By_Technician</value>
+  </data>
+  <data name="Group_N" xml:space="preserve">
+    <value>Group {0}</value>
+  </data>
+  <data name="Heat" xml:space="preserve">
+    <value>Heat</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Hexa" xml:space="preserve">
+    <value>Hexa</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="History_License" xml:space="preserve">
+    <value>History License</value>
+  </data>
+  <data name="Hold off" xml:space="preserve">
+    <value>Hold off</value>
+  </data>
+  <data name="Hold on" xml:space="preserve">
+    <value>Hold on</value>
+  </data>
+  <data name="Home owners" xml:space="preserve">
+    <value>Home owners</value>
+  </data>
+  <data name="Home residents" xml:space="preserve">
+    <value>Home residents</value>
+  </data>
+  <data name="HomeID" xml:space="preserve">
+    <value>Home-ID</value>
+  </data>
+  <data name="House residents" xml:space="preserve">
+    <value>House residents</value>
+  </data>
+  <data name="However_Deleting_Ifthen" xml:space="preserve">
+    <value>However deleting ifthen?</value>
+  </data>
+  <data name="Hub" xml:space="preserve">
+    <value>Hub</value>
+  </data>
+  <data name="Humidification" xml:space="preserve">
+    <value>Humidification</value>
+  </data>
+  <data name="i" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="If" xml:space="preserve">
+    <value>If</value>
+  </data>
+  <data name="Ifthen_Deleted_From_The_Gateway" xml:space="preserve">
+    <value>Ifthens deleted from the gateway.</value>
+  </data>
+  <data name="Ifthen_Has_Been_Deleted_From_The_Cloud" xml:space="preserve">
+    <value>ifthen has been deleted from the cloud.</value>
+  </data>
+  <data name="If_Conditional_Group_State" xml:space="preserve">
+    <value>if {0} {1} {2}.</value>
+  </data>
+  <data name="If_Then" xml:space="preserve">
+    <value>If Then</value>
+  </data>
+  <data name="If_Then_Conditional_Delete_All" xml:space="preserve">
+    <value>If Then Conditional Delete All</value>
+  </data>
+  <data name="If_Then_Conditional_Delete_All_Description" xml:space="preserve">
+    <value>Clears all gateway conditionals</value>
+  </data>
+  <data name="If_Then_Created_Successfully" xml:space="preserve">
+    <value>if then created successfully</value>
+  </data>
+  <data name="If_Then_Load" xml:space="preserve">
+    <value>If Then Load</value>
+  </data>
+  <data name="If_Then_Loaded" xml:space="preserve">
+    <value>If Then {0} loaded</value>
+  </data>
+  <data name="If_Then_Rule_Delete_All" xml:space="preserve">
+    <value>If Then Rule Delete All</value>
+  </data>
+  <data name="If_Then_Rule_Delete_All_Description" xml:space="preserve">
+    <value>Clears all gateway rules.</value>
+  </data>
+  <data name="Illumination" xml:space="preserve">
+    <value>Illumination</value>
+  </data>
+  <data name="Image ID" xml:space="preserve">
+    <value>Image ID</value>
+  </data>
+  <data name="Image name" xml:space="preserve">
+    <value>Image name</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Import ip command from excel to gateway" xml:space="preserve">
+    <value>Import ip command from excel to gateway</value>
+  </data>
+  <data name="Importing_IP_Command" xml:space="preserve">
+    <value>Importing IP command {0}. {1}/{2}</value>
+  </data>
+  <data name="Include Z-Wave device" xml:space="preserve">
+    <value>Include Z-Wave device</value>
+  </data>
+  <data name="Incorrect_Username_Or_Password" xml:space="preserve">
+    <value>Incorrect username or password.</value>
+  </data>
+  <data name="Infrared_Command_Saved_Register_ID" xml:space="preserve">
+    <value>Infrared command saved.
+Register ID {0}</value>
+  </data>
+  <data name="Instructions_Sent_To_Email" xml:space="preserve">
+    <value>Instructions sent to email {0}.</value>
+  </data>
+  <data name="Invalid port number" xml:space="preserve">
+    <value>Invalid port number</value>
+  </data>
+  <data name="Invalid_Device_Name" xml:space="preserve">
+    <value>Invalid device name.</value>
+  </data>
+  <data name="Invalid_ID" xml:space="preserve">
+    <value>Invalid ID</value>
+  </data>
+  <data name="Invalid_IP" xml:space="preserve">
+    <value>Invalid IP</value>
+  </data>
+  <data name="Invalid_Number_Repetitions" xml:space="preserve">
+    <value>Invalid repetitions</value>
+  </data>
+  <data name="Invalid_Rolling_Code" xml:space="preserve">
+    <value>Invalid rolling  code</value>
+  </data>
+  <data name="In_Use" xml:space="preserve">
+    <value>In use</value>
+  </data>
+  <data name="IP" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="IP Ethernet" xml:space="preserve">
+    <value>IP Ethernet</value>
+  </data>
+  <data name="Ip_Command" xml:space="preserve">
+    <value>IP Command</value>
+  </data>
+  <data name="IP_Wi_fi" xml:space="preserve">
+    <value>IP Wi-fi</value>
+  </data>
+  <data name="IR" xml:space="preserve">
+    <value>IR</value>
+  </data>
+  <data name="Irs_Codes_Imported_Excel_File" xml:space="preserve">
+    <value>Irs codes imported from excel file</value>
+  </data>
+  <data name="IRS_Found_Gateway_Memory" xml:space="preserve">
+    <value>{0} irs found in gateway memory</value>
+  </data>
+  <data name="Is_Enable" xml:space="preserve">
+    <value>Is Enable</value>
+  </data>
+  <data name="It is possible to link this ambience to a floor" xml:space="preserve">
+    <value>It is possible to link this ambience to a floor</value>
+  </data>
+  <data name="ITCA_Exception" xml:space="preserve">
+    <value>Failed to send itca command to {0}, IP: {1}, Port {2}.</value>
+  </data>
+  <data name="Items_Per_Page" xml:space="preserve">
+    <value>Items per page</value>
+  </data>
+  <data name="ITRS_Exception" xml:space="preserve">
+    <value>Failed to send itca command to {0}, IP: {1}, Port {2}.</value>
+  </data>
+  <data name="ITZS_Exception" xml:space="preserve">
+    <value>Failed to send itzs command to {0}, IP: {1}, Port {2}.</value>
+  </data>
+  <data name="I_would_do_what" xml:space="preserve">
+    <value>I would do what?</value>
+  </data>
+  <data name="Json in the wrong format" xml:space="preserve">
+    <value>Json in the wrong format</value>
+  </data>
+  <data name="Keeps off for milliseconds" xml:space="preserve">
+    <value>Keeps off for {0} milliseconds</value>
+  </data>
+  <data name="Keeps on for milliseconds" xml:space="preserve">
+    <value>Keeps on for {0} milliseconds</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="Key_Linked_Project" xml:space="preserve">
+    <value>Key linked to the project</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Lan_Undefined" xml:space="preserve">
+    <value>Lan undefined</value>
+  </data>
+  <data name="Lan_Undefined_Exception" xml:space="preserve">
+    <value>Lan settings were not defined in the project.</value>
+  </data>
+  <data name="Last command sent" xml:space="preserve">
+    <value>Last command sent</value>
+  </data>
+  <data name="Last_Updated_Descending" xml:space="preserve">
+    <value>Last Updated descending</value>
+  </data>
+  <data name="Last_Update_Ascending" xml:space="preserve">
+    <value>Last_Update_Ascending</value>
+  </data>
+  <data name="Last_Version" xml:space="preserve">
+    <value>Last version</value>
+  </data>
+  <data name="Learn" xml:space="preserve">
+    <value>Learn</value>
+  </data>
+  <data name="Learning" xml:space="preserve">
+    <value>Learning</value>
+  </data>
+  <data name="Learning mode device" xml:space="preserve">
+    <value>Learning mode {0}</value>
+  </data>
+  <data name="Learning radio" xml:space="preserve">
+    <value>Learning radio</value>
+  </data>
+  <data name="Learning_Position" xml:space="preserve">
+    <value>Learning {0}, position {1}.</value>
+  </data>
+  <data name="Learning_Position_Successful" xml:space="preserve">
+    <value>Learning {0}, position {1} successful.</value>
+  </data>
+  <data name="Learn_Code_IR" xml:space="preserve">
+    <value>Learn code IR</value>
+  </data>
+  <data name="Learn_Mode" xml:space="preserve">
+    <value>Learn Mode</value>
+  </data>
+  <data name="Less_Than" xml:space="preserve">
+    <value>Less Than</value>
+  </data>
+  <data name="Less_Than_Or_Equal" xml:space="preserve">
+    <value>Less Than Or Equal</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="License_Details" xml:space="preserve">
+    <value>License Details</value>
+  </data>
+  <data name="License_Linked_Project" xml:space="preserve">
+    <value>License linked with the project</value>
+  </data>
+  <data name="License_Manager" xml:space="preserve">
+    <value>License Manager</value>
+  </data>
+  <data name="License_Owner" xml:space="preserve">
+    <value>License Owner</value>
+  </data>
+  <data name="License_Users" xml:space="preserve">
+    <value>License Users</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="Linking" xml:space="preserve">
+    <value>Linking</value>
+  </data>
+  <data name="Linking_Project_License" xml:space="preserve">
+    <value>Linking project with license</value>
+  </data>
+  <data name="Link_License" xml:space="preserve">
+    <value>Link license</value>
+  </data>
+  <data name="Link_Selected_License_Current_Project" xml:space="preserve">
+    <value>Link selected license with the current project</value>
+  </data>
+  <data name="List_Available_Gateways_Network" xml:space="preserve">
+    <value>List of available gateways on the network</value>
+  </data>
+  <data name="List_Must_Least_Contain_N_User" xml:space="preserve">
+    <value>The list must at least contain {0} user.</value>
+  </data>
+  <data name="List_Notifications_Updated" xml:space="preserve">
+    <value>List of notifications updated</value>
+  </data>
+  <data name="List_Update" xml:space="preserve">
+    <value>List Update</value>
+  </data>
+  <data name="Loaded_Ambience" xml:space="preserve">
+    <value>Loaded Ambience</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="Loading all projects" xml:space="preserve">
+    <value>Loading all projects</value>
+  </data>
+  <data name="Loading information" xml:space="preserve">
+    <value>Loading information</value>
+  </data>
+  <data name="Loading_Ambience" xml:space="preserve">
+    <value>Loading Ambience</value>
+  </data>
+  <data name="Loading_Cloud_Ifthen_List" xml:space="preserve">
+    <value>loading cloud ifthen list.</value>
+  </data>
+  <data name="Loading_IfThen" xml:space="preserve">
+    <value>Loading IfThen</value>
+  </data>
+  <data name="Loading_Project" xml:space="preserve">
+    <value>Loading project</value>
+  </data>
+  <data name="Local" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="Local_Ip" xml:space="preserve">
+    <value>Local Ip</value>
+  </data>
+  <data name="Local_List" xml:space="preserve">
+    <value>Local List</value>
+  </data>
+  <data name="Local_Port" xml:space="preserve">
+    <value>Local Port</value>
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="Logging_Out" xml:space="preserve">
+    <value>Logging out</value>
+  </data>
+  <data name="Logical comparators" xml:space="preserve">
+    <value>Logical comparators</value>
+  </data>
+  <data name="Logical operator" xml:space="preserve">
+    <value>Logical operator</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Looking_For_All_Projects" xml:space="preserve">
+    <value>Looking for all projects</value>
+  </data>
+  <data name="Looking_Gateways_Network" xml:space="preserve">
+    <value>Looking for gateways in the network.</value>
+  </data>
+  <data name="Looking_Gateway_Information" xml:space="preserve">
+    <value>Looking for gateway information.</value>
+  </data>
+  <data name="Looking_Information" xml:space="preserve">
+    <value>Looking for information from the cloud</value>
+  </data>
+  <data name="Looking_Information_Local" xml:space="preserve">
+    <value>Looking for information from the local.</value>
+  </data>
+  <data name="Look_Licenses_Without_Other_Projects" xml:space="preserve">
+    <value>Look for licenses without links to other projects</value>
+  </data>
+  <data name="MacAddress_Null" xml:space="preserve">
+    <value>MacAddress Null</value>
+  </data>
+  <data name="Macros" xml:space="preserve">
+    <value>Macros</value>
+  </data>
+  <data name="Macro_Id_Was_Successfully_Executed" xml:space="preserve">
+    <value>Macro id {0} was successfully executed.</value>
+  </data>
+  <data name="Macro_Id_Was_Successfully_Stopped" xml:space="preserve">
+    <value>Macro id {0} was successfully stopped</value>
+  </data>
+  <data name="Mac_Address" xml:space="preserve">
+    <value>Mac Address</value>
+  </data>
+  <data name="Mac_Address_Ethernet" xml:space="preserve">
+    <value>Mac Address Ethernet</value>
+  </data>
+  <data name="Mac_Address_Wifi" xml:space="preserve">
+    <value>Mac Address Wi-fi</value>
+  </data>
+  <data name="Mac_Adrress" xml:space="preserve">
+    <value>Mac adrress:</value>
+  </data>
+  <data name="Manage default images of ambiences" xml:space="preserve">
+    <value>Manage default images of ambiences</value>
+  </data>
+  <data name="Manual_High" xml:space="preserve">
+    <value>Manual High</value>
+  </data>
+  <data name="Manual_Low" xml:space="preserve">
+    <value>Manual Low</value>
+  </data>
+  <data name="Manual_Medium" xml:space="preserve">
+    <value>Manual Medium</value>
+  </data>
+  <data name="Manufacturer" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="Manufacturer_Code" xml:space="preserve">
+    <value>Manufacturer_Code</value>
+  </data>
+  <data name="Manufacturer_Code_Erro" xml:space="preserve">
+    <value>Manufacturer_Code_Erro</value>
+  </data>
+  <data name="Manufacturer_Key" xml:space="preserve">
+    <value>Manufacturer Key</value>
+  </data>
+  <data name="Manufacturer_Name" xml:space="preserve">
+    <value>Manufacturer Name</value>
+  </data>
+  <data name="Mask Ethernet" xml:space="preserve">
+    <value>Mask Ethernet</value>
+  </data>
+  <data name="Mask_Wifi" xml:space="preserve">
+    <value>Mask Wifi</value>
+  </data>
+  <data name="Master user" xml:space="preserve">
+    <value>Master user</value>
+  </data>
+  <data name="Memory" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="Memory position not found" xml:space="preserve">
+    <value>Memory position not found</value>
+  </data>
+  <data name="Memory_Id" xml:space="preserve">
+    <value>Memory Id</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Millivolt_Reading" xml:space="preserve">
+    <value>Millivolt Reading</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="Mode_Relay" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="Modules" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="Module_Added_Project" xml:space="preserve">
+    <value>Module added to project {0}.</value>
+  </data>
+  <data name="Module_Added_Then" xml:space="preserve">
+    <value>Module {0}, node {1} add to Then.</value>
+  </data>
+  <data name="Module_not_found_on_Then_list" xml:space="preserve">
+    <value>Module not found on Then list.</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="Months" xml:space="preserve">
+    <value>Months</value>
+  </data>
+  <data name="Motion" xml:space="preserve">
+    <value>Motion</value>
+  </data>
+  <data name="Multi selection" xml:space="preserve">
+    <value>Multi selection</value>
+  </data>
+  <data name="My_Ambiences" xml:space="preserve">
+    <value>My Ambiences</value>
+  </data>
+  <data name="MY_DOWN" xml:space="preserve">
+    <value>MY + DOWN</value>
+  </data>
+  <data name="My_Licenses" xml:space="preserve">
+    <value>My licenses</value>
+  </data>
+  <data name="My_Project" xml:space="preserve">
+    <value>My Project</value>
+  </data>
+  <data name="MY_UP" xml:space="preserve">
+    <value>My + UP</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="Networks" xml:space="preserve">
+    <value>Networks</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="New Zealand" xml:space="preserve">
+    <value>New Zealand</value>
+  </data>
+  <data name="New_Email" xml:space="preserve">
+    <value>New_Email</value>
+  </data>
+  <data name="New_Password" xml:space="preserve">
+    <value>New_Password</value>
+  </data>
+  <data name="New_Project" xml:space="preserve">
+    <value>New Project</value>
+  </data>
+  <data name="New_Project_Created" xml:space="preserve">
+    <value>New_Project_Created</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="No bond" xml:space="preserve">
+    <value>No bond</value>
+  </data>
+  <data name="No gateway was found" xml:space="preserve">
+    <value>No gateway was found</value>
+  </data>
+  <data name="No link" xml:space="preserve">
+    <value>No link</value>
+  </data>
+  <data name="No reply" xml:space="preserve">
+    <value>No reply</value>
+  </data>
+  <data name="Node_Id" xml:space="preserve">
+    <value>Node Id</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Not assigned to groups" xml:space="preserve">
+    <value>Not assigned to groups</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="Notification_Created" xml:space="preserve">
+    <value>Notification created.</value>
+  </data>
+  <data name="Notification_Deleted" xml:space="preserve">
+    <value>Notification deleted</value>
+  </data>
+  <data name="Notification_Device_Not_Response" xml:space="preserve">
+    <value>Unable to connect to {0}, IP {1}, Port {2}. Make sure the device is connected to the network.</value>
+  </data>
+  <data name="Notification_Disabled" xml:space="preserve">
+    <value>Notification_Disabled</value>
+  </data>
+  <data name="Notification_Enabled" xml:space="preserve">
+    <value>Notification_Enabled</value>
+  </data>
+  <data name="Notification_Saved" xml:space="preserve">
+    <value>Notification saved</value>
+  </data>
+  <data name="Notificaton_Enable" xml:space="preserve">
+    <value>Notificaton Enable</value>
+  </data>
+  <data name="Not_Found" xml:space="preserve">
+    <value>Not found</value>
+  </data>
+  <data name="Not_Respond" xml:space="preserve">
+    <value>Not_Respond</value>
+  </data>
+  <data name="No_Gateway_Was_Defined_Module" xml:space="preserve">
+    <value>No gateway was defined for this module</value>
+  </data>
+  <data name="No_IR_In_Memory" xml:space="preserve">
+    <value>No IR in memory</value>
+  </data>
+  <data name="No_Network" xml:space="preserve">
+    <value>Check network, modem, and router cables</value>
+  </data>
+  <data name="No_Registry" xml:space="preserve">
+    <value>No registry</value>
+  </data>
+  <data name="No_Reponse" xml:space="preserve">
+    <value>❌ {0}</value>
+  </data>
+  <data name="No_User_Found" xml:space="preserve">
+    <value>No user found</value>
+  </data>
+  <data name="Number_Channels" xml:space="preserve">
+    <value>Number_Channels</value>
+  </data>
+  <data name="Number_Channels_Erro" xml:space="preserve">
+    <value>Number_Channels_Erro</value>
+  </data>
+  <data name="Number_Licenses" xml:space="preserve">
+    <value>Number of licenses</value>
+  </data>
+  <data name="Number_Modules" xml:space="preserve">
+    <value>{0} Modules</value>
+  </data>
+  <data name="ObjectId" xml:space="preserve">
+    <value>ObjectId</value>
+  </data>
+  <data name="Obtains_IRS_Codes" xml:space="preserve">
+    <value>Obtains the IRS codes from the gateway</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Only numbers" xml:space="preserve">
+    <value>Only numbers</value>
+  </data>
+  <data name="Only numbers are allowed" xml:space="preserve">
+    <value>Only numbers are allowed</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Open ambience" xml:space="preserve">
+    <value>Open ambience</value>
+  </data>
+  <data name="Open archived ambiences" xml:space="preserve">
+    <value>Open archived ambiences</value>
+  </data>
+  <data name="Open floor edit page" xml:space="preserve">
+    <value>Open floor edit page</value>
+  </data>
+  <data name="Open_Excel" xml:space="preserve">
+    <value>Open Excel</value>
+  </data>
+  <data name="Open_The_Door" xml:space="preserve">
+    <value>Open the door</value>
+  </data>
+  <data name="Operation_Canceled" xml:space="preserve">
+    <value>The operation was canceled.</value>
+  </data>
+  <data name="Operato_Type" xml:space="preserve">
+    <value>Operator type</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="Order by" xml:space="preserve">
+    <value>Order by</value>
+  </data>
+  <data name="Order_Project_By" xml:space="preserve">
+    <value>Order_Project_By</value>
+  </data>
+  <data name="Or_Email" xml:space="preserve">
+    <value>OR EMAIL</value>
+  </data>
+  <data name="Parameter" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="Parameter settings" xml:space="preserve">
+    <value>Parameter settings</value>
+  </data>
+  <data name="Parity" xml:space="preserve">
+    <value>Parity</value>
+  </data>
+  <data name="Parity_232" xml:space="preserve">
+    <value>Parity 232</value>
+  </data>
+  <data name="Parity_485" xml:space="preserve">
+    <value>Parity 485</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Password field cannot be empty" xml:space="preserve">
+    <value>Password field cannot be empty</value>
+  </data>
+  <data name="Password_Null_Exception" xml:space="preserve">
+    <value>Fill in the password field.</value>
+  </data>
+  <data name="Password_Validation" xml:space="preserve">
+    <value>Must be at least 4 characters long and must incluede at least one number</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="Path_Invalid" xml:space="preserve">
+    <value>Path invalid</value>
+  </data>
+  <data name="Permanent" xml:space="preserve">
+    <value>PERMANENT</value>
+  </data>
+  <data name="Permanently deleting all projects" xml:space="preserve">
+    <value>Permanently deleting all projects</value>
+  </data>
+  <data name="Pin" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="Play_Again_Code" xml:space="preserve">
+    <value>Play again code?</value>
+  </data>
+  <data name="Play_Again_Command" xml:space="preserve">
+    <value>Play again the command ID {0}?</value>
+  </data>
+  <data name="Play_Else_Macro" xml:space="preserve">
+    <value>Play else macro</value>
+  </data>
+  <data name="Play_From_Memory" xml:space="preserve">
+    <value>Play from memory</value>
+  </data>
+  <data name="Play_IR_When_Clicked" xml:space="preserve">
+    <value>Play IR when clicked on item</value>
+  </data>
+  <data name="Play_Macro" xml:space="preserve">
+    <value>Play macro</value>
+  </data>
+  <data name="Please enter an email" xml:space="preserve">
+    <value>Please enter an email.</value>
+  </data>
+  <data name="Please enter an email valid" xml:space="preserve">
+    <value>Please enter an email valid.</value>
+  </data>
+  <data name="Port" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="Portuguese" xml:space="preserve">
+    <value>Portuguese</value>
+  </data>
+  <data name="Press the button to apply the changes" xml:space="preserve">
+    <value>Press the button to apply the changes</value>
+  </data>
+  <data name="Press the programming button on the back of control, then press the prog button below" xml:space="preserve">
+    <value>Press the programming button on the back of remote control. The motor will move UP and DOWN. Then press the PROG button below.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Primary_Color_Null" xml:space="preserve">
+    <value>Primary Color Null</value>
+  </data>
+  <data name="Primary_Design_Color" xml:space="preserve">
+    <value>Primary design color</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Production" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="Product_Key" xml:space="preserve">
+    <value>Product Key</value>
+  </data>
+  <data name="Product_Name_Invalid" xml:space="preserve">
+    <value>Product_Name_Invalid</value>
+  </data>
+  <data name="Produte_Name" xml:space="preserve">
+    <value>Produte_Name</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Prog" xml:space="preserve">
+    <value>Prog</value>
+  </data>
+  <data name="Project" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="Project devices" xml:space="preserve">
+    <value>Project devices</value>
+  </data>
+  <data name="Project programmers" xml:space="preserve">
+    <value>Project programmers</value>
+  </data>
+  <data name="Project trash" xml:space="preserve">
+    <value>Project trash</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="Project_Data" xml:space="preserve">
+    <value>Project_Data</value>
+  </data>
+  <data name="Project_gateways" xml:space="preserve">
+    <value>Project gateways</value>
+  </data>
+  <data name="Project_History" xml:space="preserve">
+    <value>Project_History</value>
+  </data>
+  <data name="Project_Home_Basic_Configuration" xml:space="preserve">
+    <value>Project_Home_Basic_Configuration</value>
+  </data>
+  <data name="Project_License" xml:space="preserve">
+    <value>Project license</value>
+  </data>
+  <data name="Project_Name" xml:space="preserve">
+    <value>Project name</value>
+  </data>
+  <data name="Project_Name_Ascending" xml:space="preserve">
+    <value>Project_Name_Ascending</value>
+  </data>
+  <data name="Project_Name_Descending" xml:space="preserve">
+    <value>Project_Name_Descending</value>
+  </data>
+  <data name="Project_Name_Must_Least_Characters" xml:space="preserve">
+    <value>The project name must be at least 6 characters</value>
+  </data>
+  <data name="Project_No_Linked_License" xml:space="preserve">
+    <value>This project has no linked license</value>
+  </data>
+  <data name="Project_Sent_Archives_Page" xml:space="preserve">
+    <value>The project sent to the archives page</value>
+  </data>
+  <data name="Project_Users" xml:space="preserve">
+    <value>Project users</value>
+  </data>
+  <data name="Project_Will_Sent_Trash" xml:space="preserve">
+    <value>The project will be sent to the trash</value>
+  </data>
+  <data name="Protocol" xml:space="preserve">
+    <value>Protocol</value>
+  </data>
+  <data name="Pulse" xml:space="preserve">
+    <value>PULSE</value>
+  </data>
+  <data name="Push_Email_Notification" xml:space="preserve">
+    <value>Push / E-Mail Notification</value>
+  </data>
+  <data name="Push_Notification" xml:space="preserve">
+    <value>Push Notification</value>
+  </data>
+  <data name="Push_Notification_Created" xml:space="preserve">
+    <value>Push notification created.</value>
+  </data>
+  <data name="QR Code" xml:space="preserve">
+    <value>QR Code</value>
+  </data>
+  <data name="QRCode Generator" xml:space="preserve">
+    <value>QRCode Generator</value>
+  </data>
+  <data name="Radio_433MHz" xml:space="preserve">
+    <value>Radio 433MHz</value>
+  </data>
+  <data name="Raw_Reading" xml:space="preserve">
+    <value>Raw Reading</value>
+  </data>
+  <data name="Read_Relay_Status" xml:space="preserve">
+    <value>Read Relay Status</value>
+  </data>
+  <data name="Read_Value_From_Analog_Input" xml:space="preserve">
+    <value>Read Value From Analog Input</value>
+  </data>
+  <data name="Reboot" xml:space="preserve">
+    <value>Reboot</value>
+  </data>
+  <data name="Reboot is required" xml:space="preserve">
+    <value>Reboot is required</value>
+  </data>
+  <data name="Reboot_" xml:space="preserve">
+    <value>Rebooting...</value>
+  </data>
+  <data name="Receive" xml:space="preserve">
+    <value>Receive</value>
+  </data>
+  <data name="Received" xml:space="preserve">
+    <value>Received</value>
+  </data>
+  <data name="Receiving_Information_From" xml:space="preserve">
+    <value>Receiving information from
+{0}.</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="Rede" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Registered_In_Memory" xml:space="preserve">
+    <value>{0} registered in memory {1}.</value>
+  </data>
+  <data name="Register_Now" xml:space="preserve">
+    <value>Register Now</value>
+  </data>
+  <data name="Relay" xml:space="preserve">
+    <value>Relay</value>
+  </data>
+  <data name="Relay_State" xml:space="preserve">
+    <value>Relay State</value>
+  </data>
+  <data name="Relay_State_Setted" xml:space="preserve">
+    <value>Relay state changed.</value>
+  </data>
+  <data name="Relay_Test" xml:space="preserve">
+    <value>Relay Test</value>
+  </data>
+  <data name="Release" xml:space="preserve">
+    <value>Release</value>
+  </data>
+  <data name="Release_Integration" xml:space="preserve">
+    <value>Release Integration</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Reload</value>
+  </data>
+  <data name="Reload ambience page" xml:space="preserve">
+    <value>Reload ambience page</value>
+  </data>
+  <data name="Reload device page" xml:space="preserve">
+    <value>Reload device page</value>
+  </data>
+  <data name="Reload list of IP commands" xml:space="preserve">
+    <value>Reload list of IP commands</value>
+  </data>
+  <data name="Reload radio list" xml:space="preserve">
+    <value>Reload radio list</value>
+  </data>
+  <data name="Reloading ambience page" xml:space="preserve">
+    <value>Reloading ambience page</value>
+  </data>
+  <data name="Reload_Command_List" xml:space="preserve">
+    <value>Reload command list (ctrl + r)</value>
+  </data>
+  <data name="Reload_Gateway_List" xml:space="preserve">
+    <value>Reload gateway list</value>
+  </data>
+  <data name="Reload_Page" xml:space="preserve">
+    <value>Reload Page</value>
+  </data>
+  <data name="Remote_Id" xml:space="preserve">
+    <value>Remote Id</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Remove all ambience" xml:space="preserve">
+    <value>Remove all ambience</value>
+  </data>
+  <data name="Remove all cloud command list" xml:space="preserve">
+    <value>Remove all cloud command list</value>
+  </data>
+  <data name="Remove all users from the voice assistant list" xml:space="preserve">
+    <value>Remove all users from the voice assistant list</value>
+  </data>
+  <data name="Remove ambience" xml:space="preserve">
+    <value>Remove ambience</value>
+  </data>
+  <data name="Remove defective Z-Wave device" xml:space="preserve">
+    <value>Remove defective Z-Wave device</value>
+  </data>
+  <data name="Remove device from the environment" xml:space="preserve">
+    <value>Remove device from the environment</value>
+  </data>
+  <data name="Remove from the ambience" xml:space="preserve">
+    <value>Remove from the ambience</value>
+  </data>
+  <data name="Remove Z-Wave device" xml:space="preserve">
+    <value>Remove Z-Wave device</value>
+  </data>
+  <data name="Removes the Z-Wave device from the network" xml:space="preserve">
+    <value>Removes the Z-Wave device from the network</value>
+  </data>
+  <data name="Remove_Email" xml:space="preserve">
+    <value>Remove_Email</value>
+  </data>
+  <data name="Remove_Image" xml:space="preserve">
+    <value>Remove Image</value>
+  </data>
+  <data name="Remove_User" xml:space="preserve">
+    <value>Remove user</value>
+  </data>
+  <data name="Removing defective Z-Wave device" xml:space="preserve">
+    <value>Removing defective Z-Wave device</value>
+  </data>
+  <data name="Removing Z-Wave device" xml:space="preserve">
+    <value>Removing Z-Wave device</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="Repetition" xml:space="preserve">
+    <value>Repetition</value>
+  </data>
+  <data name="Replace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="Replace Z-wave device" xml:space="preserve">
+    <value>Replace Z-wave device</value>
+  </data>
+  <data name="Replace zwave device" xml:space="preserve">
+    <value>Replace zwave device</value>
+  </data>
+  <data name="Replacing Z-wave device" xml:space="preserve">
+    <value>Replacing Z-wave device</value>
+  </data>
+  <data name="Required field" xml:space="preserve">
+    <value>Required field</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="Resend_Memory_Command" xml:space="preserve">
+    <value>Resend memory  {0} command</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Reset the device's Z-Wave chip" xml:space="preserve">
+    <value>Reset the device's Z-Wave chip</value>
+  </data>
+  <data name="Reset Z-Wave network" xml:space="preserve">
+    <value>Reset Z-Wave network</value>
+  </data>
+  <data name="Reseting" xml:space="preserve">
+    <value>Reseting</value>
+  </data>
+  <data name="Reseting_Device" xml:space="preserve">
+    <value>Reseting device</value>
+  </data>
+  <data name="Resets the z-wave network if any" xml:space="preserve">
+    <value>Resets the z-wave network if any</value>
+  </data>
+  <data name="Resetting" xml:space="preserve">
+    <value>Resetting</value>
+  </data>
+  <data name="Resetting pic" xml:space="preserve">
+    <value>Resetting PIC</value>
+  </data>
+  <data name="Resetting Z-Wave chip" xml:space="preserve">
+    <value>Resetting Z-Wave chip</value>
+  </data>
+  <data name="Resetting z-wave network" xml:space="preserve">
+    <value>Resetting z-wave network</value>
+  </data>
+  <data name="Reset_Password" xml:space="preserve">
+    <value>Reset_Password</value>
+  </data>
+  <data name="Reset_Your_Password" xml:space="preserve">
+    <value>Reset your password?</value>
+  </data>
+  <data name="Response size" xml:space="preserve">
+    <value>Response size</value>
+  </data>
+  <data name="Response time" xml:space="preserve">
+    <value>Response time</value>
+  </data>
+  <data name="Response_Ok" xml:space="preserve">
+    <value>✔ {0}</value>
+  </data>
+  <data name="Restart" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="Restart Z-Wave chip" xml:space="preserve">
+    <value>Restart Z-Wave chip</value>
+  </data>
+  <data name="Restarts the device's Z-Wave chip" xml:space="preserve">
+    <value>Restarts the device's Z-Wave chip</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="Restore all" xml:space="preserve">
+    <value>Restore all</value>
+  </data>
+  <data name="Restore ambience" xml:space="preserve">
+    <value>Restore ambience</value>
+  </data>
+  <data name="Restore project" xml:space="preserve">
+    <value>Restore project</value>
+  </data>
+  <data name="Restore to default setting" xml:space="preserve">
+    <value>Restore to default setting</value>
+  </data>
+  <data name="Restored_Ambience" xml:space="preserve">
+    <value>Restored ambience!</value>
+  </data>
+  <data name="Restored_Project" xml:space="preserve">
+    <value>Restored project!</value>
+  </data>
+  <data name="Restore_Settings_Original_Patterns" xml:space="preserve">
+    <value>Restore settings to the original patterns.</value>
+  </data>
+  <data name="Restoring" xml:space="preserve">
+    <value>Restoring</value>
+  </data>
+  <data name="Restoring project" xml:space="preserve">
+    <value>Restoring project</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="Return_App" xml:space="preserve">
+    <value>Return_App</value>
+  </data>
+  <data name="RF deleted from the gateway" xml:space="preserve">
+    <value>RF deleted from the gateway</value>
+  </data>
+  <data name="RF_Deleted" xml:space="preserve">
+    <value>RF {0} deleted.</value>
+  </data>
+  <data name="RF_Microcontroller" xml:space="preserve">
+    <value>RF Microcontroller</value>
+  </data>
+  <data name="Rolling_Code" xml:space="preserve">
+    <value>Rolling Code</value>
+  </data>
+  <data name="Router gateway address" xml:space="preserve">
+    <value>Router gateway address</value>
+  </data>
+  <data name="Router Gateway Ethernet" xml:space="preserve">
+    <value>Router/Gateway Ethernet</value>
+  </data>
+  <data name="Router_Gateway_Wifi" xml:space="preserve">
+    <value>Router Gateway Wi-fi</value>
+  </data>
+  <data name="RTS" xml:space="preserve">
+    <value>RTS</value>
+  </data>
+  <data name="Rule_ID" xml:space="preserve">
+    <value>RuleId</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Save IR" xml:space="preserve">
+    <value>Save IR</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Saved</value>
+  </data>
+  <data name="Save_Cloud" xml:space="preserve">
+    <value>Save in the cloud</value>
+  </data>
+  <data name="Save_If_Then" xml:space="preserve">
+    <value>Save If Then</value>
+  </data>
+  <data name="Save_In_Cloud" xml:space="preserve">
+    <value>Save in cloud</value>
+  </data>
+  <data name="Save_New_Command" xml:space="preserve">
+    <value>Save new command (ctrl + s)</value>
+  </data>
+  <data name="Save_Notification" xml:space="preserve">
+    <value>Save_Notification</value>
+  </data>
+  <data name="Save_Project" xml:space="preserve">
+    <value>Save_Project</value>
+  </data>
+  <data name="Save_Serial_Command_Error_Memory" xml:space="preserve">
+    <value>When trying to save command in memory {0} 
+the gateway returned the following error: {1}.</value>
+  </data>
+  <data name="Save_To_Gateway" xml:space="preserve">
+    <value>Save to gateway</value>
+  </data>
+  <data name="Saving" xml:space="preserve">
+    <value>Saving</value>
+  </data>
+  <data name="Saving IP command" xml:space="preserve">
+    <value>Saving IP command</value>
+  </data>
+  <data name="Saving radio command" xml:space="preserve">
+    <value>Saving radio command</value>
+  </data>
+  <data name="Saving the data" xml:space="preserve">
+    <value>Saving the data</value>
+  </data>
+  <data name="Saving_Code_Gateway" xml:space="preserve">
+    <value>Saving code at the gateway pin {0}</value>
+  </data>
+  <data name="Saving_IR_Code_Local_Cloud_Gateway" xml:space="preserve">
+    <value>Saving IR code on local database, cloud and gateway.</value>
+  </data>
+  <data name="Saving_Serial_Command" xml:space="preserve">
+    <value>Saving serial command to {0}.</value>
+  </data>
+  <data name="Scene" xml:space="preserve">
+    <value>Scene</value>
+  </data>
+  <data name="Scene_Exception" xml:space="preserve">
+    <value>Select the scene.</value>
+  </data>
+  <data name="Scene_Operator_Selected" xml:space="preserve">
+    <value>If device {0} is {1} Scene {2}.</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
+  <data name="Scroll" xml:space="preserve">
+    <value>Scroll</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Search for connected devices on the network" xml:space="preserve">
+    <value>Search for connected devices on the network</value>
+  </data>
+  <data name="Search the network for the gateway to obtain the parameters" xml:space="preserve">
+    <value>Search the network for the gateway to obtain the parameters</value>
+  </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Searching</value>
+  </data>
+  <data name="Search_All_IR_Gateway_Memory" xml:space="preserve">
+    <value>Search all to go in the gateway memory</value>
+  </data>
+  <data name="Search_For_Updates" xml:space="preserve">
+    <value>Search for updates</value>
+  </data>
+  <data name="Search_License" xml:space="preserve">
+    <value>Search license</value>
+  </data>
+  <data name="Seeking_Out_All_Serial_Commands_Gateway" xml:space="preserve">
+    <value>Seeking out all serial 
+commands from the gateway.</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Select a floor to access the ambiences" xml:space="preserve">
+    <value>Select a floor to access the ambiences</value>
+  </data>
+  <data name="Select a project to get more see more details" xml:space="preserve">
+    <value>Select a project to get more see more details</value>
+  </data>
+  <data name="Select an ambience for more details" xml:space="preserve">
+    <value>Select an ambience for more details</value>
+  </data>
+  <data name="Select one or more ambience" xml:space="preserve">
+    <value>Select one or more ambience</value>
+  </data>
+  <data name="Select the device for more see more details" xml:space="preserve">
+    <value>Select the device for more see more details</value>
+  </data>
+  <data name="Select the software language" xml:space="preserve">
+    <value>Select the software language</value>
+  </data>
+  <data name="Select_Action" xml:space="preserve">
+    <value>Select action.</value>
+  </data>
+  <data name="Select_a_combobox_item" xml:space="preserve">
+    <value>Select a combobox item</value>
+  </data>
+  <data name="Select_Brand" xml:space="preserve">
+    <value>Select Brand</value>
+  </data>
+  <data name="Select_Channel_And_Value" xml:space="preserve">
+    <value>Select channel and value.</value>
+  </data>
+  <data name="Select_Class" xml:space="preserve">
+    <value>Select Class</value>
+  </data>
+  <data name="Select_Conditional" xml:space="preserve">
+    <value>Select conditional</value>
+  </data>
+  <data name="Select_Condition_Value" xml:space="preserve">
+    <value>Choose the conditional</value>
+  </data>
+  <data name="Select_date" xml:space="preserve">
+    <value>Select date</value>
+  </data>
+  <data name="Select_Device" xml:space="preserve">
+    <value>Select device</value>
+  </data>
+  <data name="Select_Gateway" xml:space="preserve">
+    <value>Select gateway</value>
+  </data>
+  <data name="Select_Hub" xml:space="preserve">
+    <value>Select Hub</value>
+  </data>
+  <data name="Select_Least_One_User" xml:space="preserve">
+    <value>Select at least one user.</value>
+  </data>
+  <data name="Select_Logic_Port" xml:space="preserve">
+    <value>Select Logic Port</value>
+  </data>
+  <data name="Select_Model" xml:space="preserve">
+    <value>Select Model</value>
+  </data>
+  <data name="Select_Module" xml:space="preserve">
+    <value>Select the module.</value>
+  </data>
+  <data name="Select_Modules_To_Add" xml:space="preserve">
+    <value>Select modules to add to {0}</value>
+  </data>
+  <data name="Select_the_IP_command" xml:space="preserve">
+    <value>Select the IP command</value>
+  </data>
+  <data name="Select_the_radio" xml:space="preserve">
+    <value>Select the radio</value>
+  </data>
+  <data name="Select_The_Relay_Channel" xml:space="preserve">
+    <value>Select the relay channel</value>
+  </data>
+  <data name="Select_The_Scene" xml:space="preserve">
+    <value>Select the scene</value>
+  </data>
+  <data name="Select_the_serial" xml:space="preserve">
+    <value>Select the serial</value>
+  </data>
+  <data name="Select_The_Status_Of_The" xml:space="preserve">
+    <value>Select the status of the channel</value>
+  </data>
+  <data name="Select_time" xml:space="preserve">
+    <value>Select time</value>
+  </data>
+  <data name="Select_Zwave_Association" xml:space="preserve">
+    <value>Select the Z-Wave association class</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Send to email" xml:space="preserve">
+    <value>Send to email</value>
+  </data>
+  <data name="Sending" xml:space="preserve">
+    <value>Sending</value>
+  </data>
+  <data name="Sending email to" xml:space="preserve">
+    <value>Sending email to {0}</value>
+  </data>
+  <data name="Sending_Message" xml:space="preserve">
+    <value>Sending {0}</value>
+  </data>
+  <data name="Send_Sucess" xml:space="preserve">
+    <value>✔ {0}</value>
+  </data>
+  <data name="Send_To_Gateway" xml:space="preserve">
+    <value>Send to gateway</value>
+  </data>
+  <data name="Sensor" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="Sensor_State_Changed" xml:space="preserve">
+    <value>Sensor state changed</value>
+  </data>
+  <data name="Sent" xml:space="preserve">
+    <value>Sent</value>
+  </data>
+  <data name="Separate_Emails_Comma" xml:space="preserve">
+    <value>Separate the E-mails by comma</value>
+  </data>
+  <data name="Serial" xml:space="preserve">
+    <value>Serial</value>
+  </data>
+  <data name="Sessions_Per_User" xml:space="preserve">
+    <value>Sessions per user</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Settings_Changed" xml:space="preserve">
+    <value>Settings changed</value>
+  </data>
+  <data name="Set_Macro_Exception" xml:space="preserve">
+    <value>Failed to set macro command to {0}, IP: {1}, Port {2}.</value>
+  </data>
+  <data name="Set_Model" xml:space="preserve">
+    <value>Set model.</value>
+  </data>
+  <data name="Set_Port_Tcp_Udp_Ethernet" xml:space="preserve">
+    <value>Set_Port_Tcp_Udp_Ethernet</value>
+  </data>
+  <data name="Set_Port_Tcp_Udp_Wifi" xml:space="preserve">
+    <value>Set_Port_Tcp_Udp_Wifi</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="Share by email" xml:space="preserve">
+    <value>Share by email</value>
+  </data>
+  <data name="Show_Password" xml:space="preserve">
+    <value>Show password</value>
+  </data>
+  <data name="Signing up" xml:space="preserve">
+    <value>Signing up</value>
+  </data>
+  <data name="Sign_In" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="Sign_Up" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="siren_condition" xml:space="preserve">
+    <value>Siren condition</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="SMTP server address" xml:space="preserve">
+    <value>SMTP server address</value>
+  </data>
+  <data name="SMTP_server" xml:space="preserve">
+    <value>SMTP server</value>
+  </data>
+  <data name="Software administrator" xml:space="preserve">
+    <value>Software Administrator</value>
+  </data>
+  <data name="Something went wrong, error code" xml:space="preserve">
+    <value>Something went wrong,
+error code {0}</value>
+  </data>
+  <data name="Something went wrong. Code" xml:space="preserve">
+    <value>Something went wrong. Code {0}</value>
+  </data>
+  <data name="Specific device class" xml:space="preserve">
+    <value>Specific Device Class</value>
+  </data>
+  <data name="SSID" xml:space="preserve">
+    <value>SSID</value>
+  </data>
+  <data name="SSID invalid" xml:space="preserve">
+    <value>SSID invalid</value>
+  </data>
+  <data name="SSID_Password" xml:space="preserve">
+    <value>SSID Password</value>
+  </data>
+  <data name="Stage" xml:space="preserve">
+    <value>Stage</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Start date" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="Start time" xml:space="preserve">
+    <value>Start time</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="State_Relay" xml:space="preserve">
+    <value>State Relay:</value>
+  </data>
+  <data name="Static IP W-iFi" xml:space="preserve">
+    <value>Static IP W-iFi</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Stop_Macro" xml:space="preserve">
+    <value>Stop macro</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Successfully_Updated_Project" xml:space="preserve">
+    <value>Successfully updated project</value>
+  </data>
+  <data name="Sucess" xml:space="preserve">
+    <value>Sucess</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="Swing_Mode_Changed_Successfully" xml:space="preserve">
+    <value>Swing mode changed to {0} successfully.</value>
+  </data>
+  <data name="Switching_Brand_Code" xml:space="preserve">
+    <value>Switching brand to {0} code {1}.</value>
+  </data>
+  <data name="Sync" xml:space="preserve">
+    <value>Sync</value>
+  </data>
+  <data name="Synchronize_Cloud_List" xml:space="preserve">
+    <value>Synchronized cloud list</value>
+  </data>
+  <data name="Synchronize_With_Gateway" xml:space="preserve">
+    <value>Synchronize with the gateway</value>
+  </data>
+  <data name="Synchronizing" xml:space="preserve">
+    <value>Synchronizing</value>
+  </data>
+  <data name="Synchronizing with the cloud" xml:space="preserve">
+    <value>Synchronizing with the cloud</value>
+  </data>
+  <data name="Synchronizing with the gateway" xml:space="preserve">
+    <value>Synchronizing with the gateway</value>
+  </data>
+  <data name="Synchronizing_Cloud_List" xml:space="preserve">
+    <value>Synchronizing cloud list with gateway</value>
+  </data>
+  <data name="Synchronizing_Data_From_With_Cloud" xml:space="preserve">
+    <value>Synchronizing data from
+{0} with the cloud.</value>
+  </data>
+  <data name="Synchronizing_Local_List" xml:space="preserve">
+    <value>Synchronizing local list</value>
+  </data>
+  <data name="Synchronizing_Local_List_With_Gateway" xml:space="preserve">
+    <value>Synchronizing local list with gateway</value>
+  </data>
+  <data name="Sync_All" xml:space="preserve">
+    <value>Sync All</value>
+  </data>
+  <data name="Sync_IR_With_Cloud" xml:space="preserve">
+    <value>Sync IR with the cloud</value>
+  </data>
+  <data name="Sync_Old_Project" xml:space="preserve">
+    <value>Sync Flux Project</value>
+  </data>
+  <data name="Syntax_Error" xml:space="preserve">
+    <value>Syntax error</value>
+  </data>
+  <data name="Tamper" xml:space="preserve">
+    <value>Tamper</value>
+  </data>
+  <data name="Target IP" xml:space="preserve">
+    <value>Target IP</value>
+  </data>
+  <data name="Target port" xml:space="preserve">
+    <value>Target port</value>
+  </data>
+  <data name="Task canceled" xml:space="preserve">
+    <value>Task canceled</value>
+  </data>
+  <data name="Task_Cancel" xml:space="preserve">
+    <value>Do you want to cancel the task?</value>
+  </data>
+  <data name="TCP Port Ethernet" xml:space="preserve">
+    <value>TCP Port Ethernet</value>
+  </data>
+  <data name="TCP_Connection_Being_Used" xml:space="preserve">
+    <value>TCP Connection Being Used</value>
+  </data>
+  <data name="TCP_Ethernet_Port" xml:space="preserve">
+    <value>TCP Ethernet Port</value>
+  </data>
+  <data name="TCP_Wifi_Port" xml:space="preserve">
+    <value>TCP Wifi Port</value>
+  </data>
+  <data name="Technical_Manager" xml:space="preserve">
+    <value>Technical_Manager</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="Terminal" xml:space="preserve">
+    <value>Terminal</value>
+  </data>
+  <data name="Terms_Conditions" xml:space="preserve">
+    <value>TERMS &amp; CONDITIONS</value>
+  </data>
+  <data name="Test" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="Test_Command" xml:space="preserve">
+    <value>Test Command</value>
+  </data>
+  <data name="Test_enabled" xml:space="preserve">
+    <value>Test enabled</value>
+  </data>
+  <data name="Test_The_Module_Functionalities_In_Real_Time" xml:space="preserve">
+    <value>Test the functionality of the
+{0} in real time?</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Text in invalid format" xml:space="preserve">
+    <value>Text in invalid format</value>
+  </data>
+  <data name="Text_Comparation_Delete_Project" xml:space="preserve">
+    <value>Text_Comparation_Delete_Project</value>
+  </data>
+  <data name="The ambience details page will open" xml:space="preserve">
+    <value>The ambience details page will open</value>
+  </data>
+  <data name="The ambience will be detached from the floor" xml:space="preserve">
+    <value>The ambience will be detached from the floor</value>
+  </data>
+  <data name="The ambience will be sent to the trash" xml:space="preserve">
+    <value>The ambience will be sent to the trash</value>
+  </data>
+  <data name="The command sent did not return a result" xml:space="preserve">
+    <value>The command sent did not return a result</value>
+  </data>
+  <data name="The controller will be enabled for inclusion mode" xml:space="preserve">
+    <value>The controller will be enabled for inclusion mode</value>
+  </data>
+  <data name="The device ip port did not respond to the" xml:space="preserve">
+    <value>The device IP {0}, port {1}, did not respond to the {2}</value>
+  </data>
+  <data name="The device will be excluded from the project" xml:space="preserve">
+    <value>The device will be excluded from the project</value>
+  </data>
+  <data name="The device will be removed from the ambience" xml:space="preserve">
+    <value>The device will be removed from the ambience</value>
+  </data>
+  <data name="The environment will be sent to archive" xml:space="preserve">
+    <value>The environment will be sent to archive</value>
+  </data>
+  <data name="The environment will be unarchived" xml:space="preserve">
+    <value>The environment will be unarchived</value>
+  </data>
+  <data name="The gateway will be updated to the latest version." xml:space="preserve">
+    <value>The gateway will be updated to the latest version.</value>
+  </data>
+  <data name="The IP command will be deleted gateway" xml:space="preserve">
+    <value>The IP command will be deleted gateway</value>
+  </data>
+  <data name="The IR command will be deleted from the cloud" xml:space="preserve">
+    <value>The IR command will be deleted from the cloud</value>
+  </data>
+  <data name="The IR command will be deleted from the gateway" xml:space="preserve">
+    <value>The IR command will be deleted from the gateway</value>
+  </data>
+  <data name="The IR command will be deleted from the local db" xml:space="preserve">
+    <value>The IR command will be deleted from the local db</value>
+  </data>
+  <data name="The IR command will be saved at the gateway" xml:space="preserve">
+    <value>The IR command will be saved at the gateway</value>
+  </data>
+  <data name="The node will be released if the device does not respond" xml:space="preserve">
+    <value>The node will be released if the device does not respond</value>
+  </data>
+  <data name="The Port must be at least 1 characters" xml:space="preserve">
+    <value>The Port must be at least 1 characters</value>
+  </data>
+  <data name="The project will be archived" xml:space="preserve">
+    <value>The project will be archived</value>
+  </data>
+  <data name="The project will be permanently deleted" xml:space="preserve">
+    <value>The project will be permanently deleted</value>
+  </data>
+  <data name="The project will be restored" xml:space="preserve">
+    <value>The project will be restored</value>
+  </data>
+  <data name="The project will be sent to the trash" xml:space="preserve">
+    <value>The project will be sent to the trash</value>
+  </data>
+  <data name="The radio will be deleted from the gateway's memory" xml:space="preserve">
+    <value>The radio will be deleted from the gateway's memory</value>
+  </data>
+  <data name="The zwave device of that node id will be replaced by another zwave device" xml:space="preserve">
+    <value>The Z-wave device of that node id will be replaced by another zwave device</value>
+  </data>
+  <data name="Then" xml:space="preserve">
+    <value>Then</value>
+  </data>
+  <data name="The_ambience_will_be_restored" xml:space="preserve">
+    <value>The ambience will be restored</value>
+  </data>
+  <data name="The_Lists_Updated" xml:space="preserve">
+    <value>The lists have been updated</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Time out" xml:space="preserve">
+    <value>Time out</value>
+  </data>
+  <data name="Timeout Ms" xml:space="preserve">
+    <value>Timeout (ms)</value>
+  </data>
+  <data name="Time_Relay" xml:space="preserve">
+    <value>Time in Milliseconds</value>
+  </data>
+  <data name="Title_Smart_Cloud_Manager" xml:space="preserve">
+    <value>Smart Cloud Manager</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="To make the changes effective, it is necessary to close and reopen the software. Do you want to close the software?" xml:space="preserve">
+    <value>To make the changes effective, it is necessary to close and reopen the software. Do you want to close the software?</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Total_In_Use" xml:space="preserve">
+    <value>Total in use</value>
+  </data>
+  <data name="Total_Memory_In_Use" xml:space="preserve">
+    <value>Total memory in use</value>
+  </data>
+  <data name="Trying_To_Run_Macro_Id" xml:space="preserve">
+    <value>Trying to run macro id {0}.</value>
+  </data>
+  <data name="Trying_To_Stop_Macro_Id" xml:space="preserve">
+    <value>trying to stop macro id {0}.</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="Turn_Off" xml:space="preserve">
+    <value>Turn Off</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Type IP" xml:space="preserve">
+    <value>Type IP</value>
+  </data>
+  <data name="Type_Not_Supported_Method" xml:space="preserve">
+    <value>Type not supported in the method.</value>
+  </data>
+  <data name="UDP" xml:space="preserve">
+    <value>UDP</value>
+  </data>
+  <data name="UDPService_Sniff_Received" xml:space="preserve">
+    <value>Received broadcast from {0} :
+ {1}
+</value>
+  </data>
+  <data name="UDP_Connection_Being_Used" xml:space="preserve">
+    <value>UDP Connection Being Used.</value>
+  </data>
+  <data name="UDP_Ethernet_Port" xml:space="preserve">
+    <value>UDP Ethernet Port</value>
+  </data>
+  <data name="UDP_Port_Ethernet" xml:space="preserve">
+    <value>UDP Port Ethernet</value>
+  </data>
+  <data name="UDP_Response" xml:space="preserve">
+    <value>UDP Response</value>
+  </data>
+  <data name="UDP_Send_Message" xml:space="preserve">
+    <value>UDP Send Message</value>
+  </data>
+  <data name="UDP_Wifi_Port" xml:space="preserve">
+    <value>UDP Wifi Port</value>
+  </data>
+  <data name="Unable to get all information from the gateway. Click on the device again." xml:space="preserve">
+    <value>Unable to get all information from the gateway. Click on the device again.</value>
+  </data>
+  <data name="Unable_Connect_Gateway_IP_Port_Name" xml:space="preserve">
+    <value>Unable to connect with gateway 
+{0} | IP {1} | Port {2} </value>
+  </data>
+  <data name="Unable_Delete_Try_Again" xml:space="preserve">
+    <value>Unable to delete, try again!</value>
+  </data>
+  <data name="Unarchive" xml:space="preserve">
+    <value>Unarchive</value>
+  </data>
+  <data name="Unarchive all" xml:space="preserve">
+    <value>Unarchive all</value>
+  </data>
+  <data name="Unarchive ambience" xml:space="preserve">
+    <value>Unarchive ambience</value>
+  </data>
+  <data name="Unarchiving project" xml:space="preserve">
+    <value>Unarchiving project</value>
+  </data>
+  <data name="Unlink" xml:space="preserve">
+    <value>Unlink</value>
+  </data>
+  <data name="Unlinked Ambiences" xml:space="preserve">
+    <value>Unlinked Ambiences</value>
+  </data>
+  <data name="Unlinked_Project_License" xml:space="preserve">
+    <value>Unlinked project license</value>
+  </data>
+  <data name="Unlinking" xml:space="preserve">
+    <value>Unlinking</value>
+  </data>
+  <data name="Unlinking_Project_License" xml:space="preserve">
+    <value>Unlinking project license</value>
+  </data>
+  <data name="Unlink_Projec_Another_Project" xml:space="preserve">
+    <value>Unlink project license to use in another project</value>
+  </data>
+  <data name="Unlock" xml:space="preserve">
+    <value>Unlock</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Update RF microcontroller" xml:space="preserve">
+    <value>Update RF microcontroller</value>
+  </data>
+  <data name="Update selected gateways to the latest version" xml:space="preserve">
+    <value>Update selected gateways 
+to the latest version</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>Updated</value>
+  </data>
+  <data name="Updated device name" xml:space="preserve">
+    <value>Updated device name</value>
+  </data>
+  <data name="Updated informations" xml:space="preserve">
+    <value>Updated informations</value>
+  </data>
+  <data name="UpdatedAt" xml:space="preserve">
+    <value>UpdatedAt</value>
+  </data>
+  <data name="Updated_Ambience_Information" xml:space="preserve">
+    <value>Updated ambience information</value>
+  </data>
+  <data name="Updated_By" xml:space="preserve">
+    <value>Updated by</value>
+  </data>
+  <data name="Updated_Graphics" xml:space="preserve">
+    <value>Updated graphics</value>
+  </data>
+  <data name="Updated_Notification" xml:space="preserve">
+    <value>Updated_Notification</value>
+  </data>
+  <data name="Updated_Project" xml:space="preserve">
+    <value>Updated project</value>
+  </data>
+  <data name="Updates_Ambience_Information" xml:space="preserve">
+    <value>Updates all ambience information</value>
+  </data>
+  <data name="Updates_Project_Information" xml:space="preserve">
+    <value>Updates all project information</value>
+  </data>
+  <data name="Update_Ambience" xml:space="preserve">
+    <value>Updated ambience</value>
+  </data>
+  <data name="Update_Gateway_List" xml:space="preserve">
+    <value>Update gateway list</value>
+  </data>
+  <data name="Update_Notification" xml:space="preserve">
+    <value>Update_Notification</value>
+  </data>
+  <data name="Update_Selected" xml:space="preserve">
+    <value>Update selected</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="Updating blacklist of device users" xml:space="preserve">
+    <value>Updating blacklist of device users</value>
+  </data>
+  <data name="Updating data" xml:space="preserve">
+    <value>Updating data</value>
+  </data>
+  <data name="Updating device name" xml:space="preserve">
+    <value>Updating device name</value>
+  </data>
+  <data name="Updating floor information" xml:space="preserve">
+    <value>Updating floor information</value>
+  </data>
+  <data name="Updating Z-Wave device information" xml:space="preserve">
+    <value>Updating Z-Wave device information</value>
+  </data>
+  <data name="UpdatingLicenseList" xml:space="preserve">
+    <value>Updating license list.</value>
+  </data>
+  <data name="Updating_Ambience_Information" xml:space="preserve">
+    <value>Updating ambience information.</value>
+  </data>
+  <data name="Updating_Firmware" xml:space="preserve">
+    <value>Updating firmware</value>
+  </data>
+  <data name="Updating_The_Project" xml:space="preserve">
+    <value>Updating the project</value>
+  </data>
+  <data name="Upgrade to Latest Version" xml:space="preserve">
+    <value>Update to Latest Version</value>
+  </data>
+  <data name="Uploaded_Project" xml:space="preserve">
+    <value>Uploaded project</value>
+  </data>
+  <data name="UP_DOWN" xml:space="preserve">
+    <value>UP + DOWN</value>
+  </data>
+  <data name="Used_by_ifthen" xml:space="preserve">
+    <value>Used by ifthen</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Users_Found" xml:space="preserve">
+    <value>Users found {0}</value>
+  </data>
+  <data name="Users_License" xml:space="preserve">
+    <value>Users of the license</value>
+  </data>
+  <data name="Users_Of_The_Ambience" xml:space="preserve">
+    <value>Users of the Ambience</value>
+  </data>
+  <data name="Users_Removed" xml:space="preserve">
+    <value>{0} users removed.</value>
+  </data>
+  <data name="Users_With_Access_Ambiente" xml:space="preserve">
+    <value>Users with access to this ambience</value>
+  </data>
+  <data name="User_Limite" xml:space="preserve">
+    <value>User limite</value>
+  </data>
+  <data name="User_Limit_Reached" xml:space="preserve">
+    <value>User limit reached!</value>
+  </data>
+  <data name="User_Name" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="User_Permission_Edit_Project" xml:space="preserve">
+    <value>User with permission to edit the project, ambiences and modules</value>
+  </data>
+  <data name="User_Projects" xml:space="preserve">
+    <value>User projects</value>
+  </data>
+  <data name="User_Removed" xml:space="preserve">
+    <value>{0} user removed.</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Value_Analog_Millivolts" xml:space="preserve">
+    <value>Value Analog Millivolts:</value>
+  </data>
+  <data name="Value_Raw" xml:space="preserve">
+    <value>Value Raw:</value>
+  </data>
+  <data name="Ventilation" xml:space="preserve">
+    <value>Ventilation</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Visible" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="Voice assistant users" xml:space="preserve">
+    <value>Voice assistant users</value>
+  </data>
+  <data name="Voice_Assistant" xml:space="preserve">
+    <value>Voice Assistant</value>
+  </data>
+  <data name="Wait" xml:space="preserve">
+    <value>Wait</value>
+  </data>
+  <data name="Wait_For_Configuration_Change" xml:space="preserve">
+    <value>Wait for configuration change.</value>
+  </data>
+  <data name="Wait_Time_Responses" xml:space="preserve">
+    <value>Wait time responses (ms)</value>
+  </data>
+  <data name="Want to restore all projects?" xml:space="preserve">
+    <value>Want to restore all projects?</value>
+  </data>
+  <data name="Want_Delete_Ambience" xml:space="preserve">
+    <value>Do you want to delete ambience?</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="Well_Done" xml:space="preserve">
+    <value>Well done!</value>
+  </data>
+  <data name="When enabled selected command will be executed" xml:space="preserve">
+    <value>When enabled selected command will be executed</value>
+  </data>
+  <data name="When enabled selected radio will be executed" xml:space="preserve">
+    <value>When enabled selected radio will be executed</value>
+  </data>
+  <data name="When enabled, execute the command" xml:space="preserve">
+    <value>When enabled, execute the command</value>
+  </data>
+  <data name="When_Door_Window_State" xml:space="preserve">
+    <value>When the Door/Window state</value>
+  </data>
+  <data name="When_Module_State" xml:space="preserve">
+    <value>When the {0} was in the state</value>
+  </data>
+  <data name="When_PIR_Motion_Detected" xml:space="preserve">
+    <value>When the PIR motion detected</value>
+  </data>
+  <data name="When_Tamper_Keys_Device" xml:space="preserve">
+    <value>2 tamper keys in the device are pressed over 5 seconds (FF)</value>
+  </data>
+  <data name="When_To_Open_The_Lid" xml:space="preserve">
+    <value>When To Open The Lid</value>
+  </data>
+  <data name="Which brand of device are you configuring" xml:space="preserve">
+    <value>Which brand of device are you configuring?</value>
+  </data>
+  <data name="Wi-fi" xml:space="preserve">
+    <value>Wi-fi</value>
+  </data>
+  <data name="Wi-Fi information" xml:space="preserve">
+    <value>Wi-Fi information</value>
+  </data>
+  <data name="Wi-Fi MAC Addres" xml:space="preserve">
+    <value>Wi-Fi MAC Addres</value>
+  </data>
+  <data name="Wi-Fi TCP port" xml:space="preserve">
+    <value>Wi-Fi TCP port</value>
+  </data>
+  <data name="Wi-Fi UDP port" xml:space="preserve">
+    <value>Wi-Fi UDP port</value>
+  </data>
+  <data name="Wifi connection status" xml:space="preserve">
+    <value>Wi-Fi connection status</value>
+  </data>
+  <data name="Wifi_Get_Configuration_Rede" xml:space="preserve">
+    <value>Wifi Get Configuration Rede</value>
+  </data>
+  <data name="Wifi_Get_Configuration_Rede_Description" xml:space="preserve">
+    <value>Get the basic information from the Wi-Fi network.</value>
+  </data>
+  <data name="Wifi_IP" xml:space="preserve">
+    <value>Wifi IP</value>
+  </data>
+  <data name="Without_Internet" xml:space="preserve">
+    <value>Without Internet</value>
+  </data>
+  <data name="Without_Internet_Connection" xml:space="preserve">
+    <value>Without internet connection</value>
+  </data>
+  <data name="Wrong_IF_Statement_structure_Can_Not" xml:space="preserve">
+    <value>Wrong IF statement structure, Can't add two logic blocks in a row on a IF statement.</value>
+  </data>
+  <data name="X_Empty" xml:space="preserve">
+    <value>{0} empty</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="You" xml:space="preserve">
+    <value>You</value>
+  </data>
+  <data name="You must select a gateway" xml:space="preserve">
+    <value>You must select a gateway</value>
+  </data>
+  <data name="You want to delete the floor?" xml:space="preserve">
+    <value>You want to delete the floor?</value>
+  </data>
+  <data name="You_Are_Not_Administrator" xml:space="preserve">
+    <value>You are not an administrator</value>
+  </data>
+  <data name="You_Need_Select_Gateway" xml:space="preserve">
+    <value>You need to select the gateway</value>
+  </data>
+  <data name="You_want_to_delete_that_ifthen" xml:space="preserve">
+    <value>You want to delete that ifthen</value>
+  </data>
+  <data name="You_Want_Unlink_License" xml:space="preserve">
+    <value>Are you sure you want to unlink the license?</value>
+  </data>
+  <data name="Zwave" xml:space="preserve">
+    <value>Z-Wave</value>
+  </data>
+  <data name="Zwave Devices" xml:space="preserve">
+    <value>Zwave Devices</value>
+  </data>
+  <data name="Zwave Frequency" xml:space="preserve">
+    <value>Zwave Frequency</value>
+  </data>
+  <data name="Zwave_Parameters" xml:space="preserve">
+    <value>Z-Wave Parameters</value>
+  </data>
+  <data name="ZXT_600" xml:space="preserve">
+    <value>ZXT-600</value>
+  </data>
+  <data name="_" xml:space="preserve">
+    <value>Wifi</value>
+  </data>
+  <data name="_Add" xml:space="preserve">
+    <value>_Add</value>
+  </data>
+  <data name="_Add New IP Device" xml:space="preserve">
+    <value>Add new IP Device</value>
+  </data>
+  <data name="_Add_Device" xml:space="preserve">
+    <value>_Add Device</value>
+  </data>
+  <data name="_Add_New_Module" xml:space="preserve">
+    <value>_Add New Module</value>
+  </data>
+  <data name="_All" xml:space="preserve">
+    <value>_All</value>
+  </data>
+  <data name="_Apply" xml:space="preserve">
+    <value>_Apply</value>
+  </data>
+  <data name="_Archive" xml:space="preserve">
+    <value>_Archive</value>
+  </data>
+  <data name="_Back" xml:space="preserve">
+    <value>_Back</value>
+  </data>
+  <data name="_Cancel" xml:space="preserve">
+    <value>_Cancel</value>
+  </data>
+  <data name="_Clear" xml:space="preserve">
+    <value>_Clear</value>
+  </data>
+  <data name="_Clear blacklist" xml:space="preserve">
+    <value>_Clear blacklist</value>
+  </data>
+  <data name="_Close" xml:space="preserve">
+    <value>_Close</value>
+  </data>
+  <data name="_Copy" xml:space="preserve">
+    <value>_Copy</value>
+  </data>
+  <data name="_Copy All" xml:space="preserve">
+    <value>_Copy All</value>
+  </data>
+  <data name="_Copy gateway commands to cloud" xml:space="preserve">
+    <value>_Copy gateway commands to cloud</value>
+  </data>
+  <data name="_Create" xml:space="preserve">
+    <value>_Create</value>
+  </data>
+  <data name="_Create_New_Ambience" xml:space="preserve">
+    <value>_Create New Ambience</value>
+  </data>
+  <data name="_Create_New_Project" xml:space="preserve">
+    <value>_Create New Project</value>
+  </data>
+  <data name="_Create_Project" xml:space="preserve">
+    <value>_Create Project</value>
+  </data>
+  <data name="_Delete" xml:space="preserve">
+    <value>_Delete</value>
+  </data>
+  <data name="_Delete_All" xml:space="preserve">
+    <value>_Delete All</value>
+  </data>
+  <data name="_Edit" xml:space="preserve">
+    <value>_Edit</value>
+  </data>
+  <data name="_Export" xml:space="preserve">
+    <value>_Export</value>
+  </data>
+  <data name="_Export_To_Excel" xml:space="preserve">
+    <value>_Export to Excel</value>
+  </data>
+  <data name="_Gateway" xml:space="preserve">
+    <value>_Gateway</value>
+  </data>
+  <data name="_Generate" xml:space="preserve">
+    <value>_Generate</value>
+  </data>
+  <data name="_Get" xml:space="preserve">
+    <value>_Get</value>
+  </data>
+  <data name="_Get all commands from the gateway" xml:space="preserve">
+    <value>_Get all commands from the gateway</value>
+  </data>
+  <data name="_Get gateways versions" xml:space="preserve">
+    <value>_Get gateways versions</value>
+  </data>
+  <data name="_Get States" xml:space="preserve">
+    <value>_Get States</value>
+  </data>
+  <data name="_Go_Back" xml:space="preserve">
+    <value>_Go Back</value>
+  </data>
+  <data name="_Include" xml:space="preserve">
+    <value>_Include</value>
+  </data>
+  <data name="_Learn" xml:space="preserve">
+    <value>_Learn</value>
+  </data>
+  <data name="_New" xml:space="preserve">
+    <value>_New</value>
+  </data>
+  <data name="_Next" xml:space="preserve">
+    <value>_Next</value>
+  </data>
+  <data name="_Ok" xml:space="preserve">
+    <value>_Ok</value>
+  </data>
+  <data name="_Open" xml:space="preserve">
+    <value>_Open</value>
+  </data>
+  <data name="_Page" xml:space="preserve">
+    <value>_Page</value>
+  </data>
+  <data name="_Paste" xml:space="preserve">
+    <value>_Paste</value>
+  </data>
+  <data name="_Permanently delete all projects" xml:space="preserve">
+    <value>_Permanently delete all projects</value>
+  </data>
+  <data name="_Permanently_delete_all_ambiences" xml:space="preserve">
+    <value>_Permanently delete all ambiences</value>
+  </data>
+  <data name="_Play" xml:space="preserve">
+    <value>_Play</value>
+  </data>
+  <data name="_Previous" xml:space="preserve">
+    <value>_Previous</value>
+  </data>
+  <data name="_Recycle_Bin" xml:space="preserve">
+    <value>_Recycle Bin</value>
+  </data>
+  <data name="_Refresh" xml:space="preserve">
+    <value>_Refresh</value>
+  </data>
+  <data name="_Reload" xml:space="preserve">
+    <value>_Reload</value>
+  </data>
+  <data name="_Reload_Page" xml:space="preserve">
+    <value>Reload Page</value>
+  </data>
+  <data name="_Remove" xml:space="preserve">
+    <value>_Remove</value>
+  </data>
+  <data name="_Remove all devices from the ambience" xml:space="preserve">
+    <value>_Remove all devices from the ambience</value>
+  </data>
+  <data name="_Remove_All" xml:space="preserve">
+    <value>_Remove All</value>
+  </data>
+  <data name="_Remove_Selected" xml:space="preserve">
+    <value>_Remove Selected</value>
+  </data>
+  <data name="_Replace" xml:space="preserve">
+    <value>_Replace</value>
+  </data>
+  <data name="_Reset" xml:space="preserve">
+    <value>_Reset</value>
+  </data>
+  <data name="_Restore" xml:space="preserve">
+    <value>_Restore</value>
+  </data>
+  <data name="_Restore all" xml:space="preserve">
+    <value>_Restore all</value>
+  </data>
+  <data name="_Save" xml:space="preserve">
+    <value>_Save</value>
+  </data>
+  <data name="_Search" xml:space="preserve">
+    <value>_Search</value>
+  </data>
+  <data name="_Send" xml:space="preserve">
+    <value>_Send</value>
+  </data>
+  <data name="_Set" xml:space="preserve">
+    <value>_Set</value>
+  </data>
+  <data name="_Stop" xml:space="preserve">
+    <value>_Stop</value>
+  </data>
+  <data name="_Terminal" xml:space="preserve">
+    <value>_Terminal</value>
+  </data>
+  <data name="_Test" xml:space="preserve">
+    <value>_Test</value>
+  </data>
+  <data name="_Unarchive" xml:space="preserve">
+    <value>_Unarchive</value>
+  </data>
+  <data name="_Unarchive All" xml:space="preserve">
+    <value>_Unarchive All</value>
+  </data>
+  <data name="_Unlink" xml:space="preserve">
+    <value>_Unlink</value>
+  </data>
+  <data name="_Update" xml:space="preserve">
+    <value>_Update</value>
+  </data>
+  <data name="_Update cloud data" xml:space="preserve">
+    <value>_Update cloud data</value>
+  </data>
+  <data name="_Update Selected" xml:space="preserve">
+    <value>_Update Selected</value>
+  </data>
+</root>

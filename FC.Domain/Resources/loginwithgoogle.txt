@@ -1,0 +1,30 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <meta http-equiv="refresh" content="10;url=http://www.flexautomation.com.br/">
+</head>
+<body>
+   <!-- <p>Return App</p>-->
+    <div class="jumbotron">
+        <img src="http://www.flexautomation.com.br/_img/img-topo/logo.png" />
+    </div>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="http://www.flexautomation.com.br/_img/img-principal/slide1.jpg" alt="">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="http://www.flexautomation.com.br/_img/img-principal/slide5.jpg" alt="">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="http://www.flexautomation.com.br/_img/img-principal/slide4.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
