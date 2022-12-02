@@ -22,9 +22,6 @@ namespace FC.Manager
 
         public App()
         {
-#if ZWAVE
-            Console.WriteLine("DEBUG is defined");
-#endif
             Settings.Default.Reload();
             string language = ((LanguageEnum)Settings.Default.language).GetEnumDescription();
             CultureInfo culture = new(language);
